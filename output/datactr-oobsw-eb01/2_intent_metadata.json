@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Explicit config plus legacy parser expansion for identical interfaces"
+  },
+  {
+    "field": "vlans",
+    "confidence": 0.9,
+    "reason": "Explicit VLAN IDs and names from config and legacy parser"
+  },
+  {
+    "field": "acls",
+    "confidence": 0.9,
+    "reason": "Full ACL entries parsed from config"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "Tacacs servers and AAA config extracted"
+  },
+  {
+    "field": "hostname",
+    "confidence": 1,
+    "reason": "Explicit hostname command in config"
+  }
+]

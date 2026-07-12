@@ -1,0 +1,95 @@
+========================================================================
+  BATCH EVALUATION REPORT — Brownfield Intent Translation Pipeline
+  Run: 2026-04-28T19:40:05.793353
+========================================================================
+
+Dataset : 34 configs  (29 Cisco deterministic, 5 Arista deterministic, 0 LLM invoked)
+Errors  : 0 pipeline errors (excluded from rates below)
+
+VALIDITY RATES (over all configs):
+  Schema valid (structural YAML integrity)  : 100.0%  (34/34)
+  Semantic valid (rules 101-120, no errors) : 97.1%  (33/34)
+  Overall valid (structural + semantic)     : 100.0%  (34/34)
+  YAML output generated                     : 100.0%  (34/34)
+
+LATENCY (wall-clock, start-to-YAML-generation):
+  Mean   : 0.132 s
+  Median : 0.111 s
+  Stdev  : 0.059 s
+  Min    : 0.064 s
+  Max    : 0.289 s
+
+STAGE LATENCY BREAKDOWN (mean / median):
+  Parse + Map  : 0.014 s / 0.012 s
+  Validate     : 0.091 s / 0.072 s
+  Generate     : 0.025 s / 0.024 s
+
+BY VENDOR:
+  Cisco     n=29  schema=100.0%  semantic=96.6%  yaml=100.0%  lat=0.138s (mean)
+  Arista    n=5  schema=100.0%  semantic=100.0%  yaml=100.0%  lat=0.098s (mean)
+
+BY DEPLOYMENT GROUP:
+  access-nac              n= 8  schema=100.0%  semantic=87.5%  lat=0.195s
+  arista-distribution     n= 5  schema=100.0%  semantic=100.0%  lat=0.098s
+  building-simple         n= 1  schema=100.0%  semantic=100.0%  lat=0.095s
+  distribution            n= 2  schema=100.0%  semantic=100.0%  lat=0.093s
+  oob-server              n=16  schema=100.0%  semantic=100.0%  lat=0.125s
+  remote-edge             n= 2  schema=100.0%  semantic=100.0%  lat=0.080s
+
+SEMANTIC RULE VIOLATIONS (rules 101-120):
+  Rule ID      Configs affected   Total violations
+  --------------------------------------------------
+  119                         1                  1
+
+TEMPLATE BLOCK COVERAGE (EDGE_* template types generated):
+  EDGE_PNP_template                34/34  [####################]  100.0%
+  EDGE_SYSTEM_template             34/34  [####################]  100.0%
+  EDGE_VLAN_template               34/34  [####################]  100.0%
+  EDGE_MGMT_template               34/34  [####################]  100.0%
+  EDGE_ACL_template                30/34  [#################   ]  88.2%
+  EDGE_UPLINK_template             32/34  [##################  ]  94.1%
+  EDGE_SNMP_template               34/34  [####################]  100.0%
+  EDGE_AAA_template                32/34  [##################  ]  94.1%
+  EDGE_NAC_template                 8/34  [####                ]  23.5%
+  EDGE_ACCESS_PORT_template        34/34  [####################]  100.0%
+  EDGE_ROUTED_PORT_template        34/34  [####################]  100.0%
+
+PER-CONFIG DETAIL:
+  File                                  Grp                    Lat(s)   Sch   Sem  YAML  Rules fired
+  --------------------------------------------------------------------------------------------------------------
+  BLDG-A-FLOOR1-SW01.txt                access-nac              0.221    OK    OK   YES  -
+  BLDG-A-FLOOR2-SW01.txt                access-nac              0.159    OK    OK   YES  -
+  BLDG-A-FLOOR3-SW01.txt                access-nac              0.204    OK    OK   YES  -
+  BLDG-B-FLOOR1-SW01.txt                access-nac              0.141    OK    OK   YES  -
+  BLDG-B-FLOOR2-SW01.txt                access-nac              0.173    OK    OK   YES  -
+  BLDG-C-FLOOR1-SW01.txt                access-nac              0.286    OK    OK   YES  -
+  BLDG-C-FLOOR2-SW01.txt                access-nac              0.085    OK    OK   YES  -
+  BLDG-FR-FLOOR1-SW01.txt               access-nac              0.289    OK  FAIL   YES  119
+  BLDG-VA-FLOOR3-SW01.txt               building-simple         0.095    OK    OK   YES  -
+  DATACTR-OOBSW-01.txt                  oob-server              0.097    OK    OK   YES  -
+  DATACTR-OOBSW-02.txt                  oob-server              0.099    OK    OK   YES  -
+  DATACTR-OOBSW-03.txt                  oob-server              0.099    OK    OK   YES  -
+  DATACTR-OOBSW-04.txt                  oob-server              0.098    OK    OK   YES  -
+  DATACTR-OOBSW-05.txt                  oob-server              0.173    OK    OK   YES  -
+  DATACTR-OOBSW-DX01.txt                oob-server              0.111    OK    OK   YES  -
+  DATACTR-OOBSW-EA01.txt                oob-server              0.112    OK    OK   YES  -
+  DATACTR-OOBSW-EB01.txt                oob-server              0.126    OK    OK   YES  -
+  DATACTR-OOBSW-EB02.txt                oob-server              0.114    OK    OK   YES  -
+  DATACTR-OOBSW-EB03.txt                oob-server              0.190    OK    OK   YES  -
+  DATACTR-OOBSW-EB04.txt                oob-server              0.125    OK    OK   YES  -
+  DATACTR-OOBSW-EC01.txt                oob-server              0.109    OK    OK   YES  -
+  DATACTR-OOBSW-EC02.txt                oob-server              0.109    OK    OK   YES  -
+  DATACTR-OOBSW-EC03.txt                oob-server              0.136    OK    OK   YES  -
+  DATACTR-OOBSW-EF01.txt                oob-server              0.108    OK    OK   YES  -
+  DATACTR-OOBSW-EH01.txt                oob-server              0.188    OK    OK   YES  -
+  DIST-SW-BLDGA-01.txt                  distribution            0.110    OK    OK   YES  -
+  DIST-SW-BLDGB-01.txt                  distribution            0.076    OK    OK   YES  -
+  EDGE-SW-REMOTE-01.txt                 remote-edge             0.075    OK    OK   YES  -
+  EDGE-SW-REMOTE-02.txt                 remote-edge             0.085    OK    OK   YES  -
+  CAMPUS-ACCESS-SW03.txt                arista-distribution     0.067    OK    OK   YES  -
+  CAMPUS-ACCESS-SW04.txt                arista-distribution     0.064    OK    OK   YES  -
+  CAMPUS-DIST-SW01-original.txt         arista-distribution     0.220    OK    OK   YES  -
+  CAMPUS-DIST-SW01.txt                  arista-distribution     0.069    OK    OK   YES  -
+  CAMPUS-DIST-SW02.txt                  arista-distribution     0.071    OK    OK   YES  -
+
+========================================================================

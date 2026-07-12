@@ -1,0 +1,45 @@
+hostname {{ device_host_name }}
+
+{# Stack Configuration - Only if switch is a stack #}
+{% if is_stack | default(false) and stack_members | default(1) > 1 %}
+{# Configure stack priorities for each member #}
+{% for member_num in range(1, stack_members + 1) %}
+switch {{ member_num }} priority {{ 16 - member_num }}
+{% endfor %}
+!
+system mtu 9216
+stack-mac persistent timer 0
+{% endif %}
+
+ip routing
+ip domain name {{ domain_name }}
+no ip domain lookup
+
+crypto key generate rsa modulus 2048
+ip http secure-server
+
+spanning-tree mode rapid-pvst
+
+vlan {{ pnp_vlan_id }}
+ name {{ pnp_vlan_name }}
+
+username cisco privilege 15 secret 0 cisco
+
+interface Vlan{{ pnp_vlan_id }}
+ ip address {{ pnp_vlan_network_add }} {{ pnp_vlan_network_mask }}
+ no ip route-cache
+ no shutdown
+
+interface {{ pnp_interface }}
+ switchport mode trunk
+ switchport trunk allowed vlan {{ pnp_vlan_id }}
+
+ip route 0.0.0.0 0.0.0.0 {{ pnp_vlan_default_gateway }}
+
+ip http client source-interface Vlan{{ pnp_vlan_id }}
+!
+ip http client connection forceclose
+
+snmp-server community {{ snmp_community_ro }} RO
+logging host {{ log_server }}
+logging trap informational

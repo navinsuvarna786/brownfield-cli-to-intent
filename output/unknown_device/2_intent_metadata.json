@@ -1,0 +1,7 @@
+[
+  {
+    "field": "hostname",
+    "confidence": 0,
+    "reason": "Hostname is missing in config and legacy parser"
+  }
+]

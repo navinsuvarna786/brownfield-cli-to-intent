@@ -1,0 +1,46 @@
+{# Standard Access Lists - Format: acl_name|sequence|action|source|wildcard|log #}
+{%- set std_acl_list = standard_acls.split(',') if standard_acls else [] %}
+{%- set current_std_acl = '' %}
+{%- for acl_entry in std_acl_list %}
+{%- set acl_parts = acl_entry.strip().split('|') %}
+{%- if acl_parts|length >= 4 %}
+{%- set acl_name = acl_parts[0] %}
+{%- set sequence = acl_parts[1] if acl_parts[1] else '' %}
+{%- set action = acl_parts[2] if acl_parts[2] else 'permit' %}
+{%- set source = acl_parts[3] %}
+{%- set wildcard = acl_parts[4] if acl_parts|length > 4 and acl_parts[4] else '' %}
+{%- set log_enabled = acl_parts[5] if acl_parts|length > 5 and acl_parts[5] == 'true' else false %}
+
+{%- if acl_name != current_std_acl %}
+{%- set current_std_acl = acl_name %}
+!
+ip access-list standard {{ acl_name }}
+{%- endif %}
+ {{ sequence }} {{ action }}{% if source == 'any' %} any{% elif wildcard %} {{ source }} {{ wildcard }}{% else %} host {{ source }}{% endif %}{% if log_enabled %} log{% endif %}
+{%- endif %}
+{%- endfor %}
+
+{# Extended Access Lists - Format: acl_name|sequence|action|protocol|source|source_op|dest|dest_op|log #}
+{%- set ext_acl_list = extended_acls.split(',') if extended_acls else [] %}
+{%- set current_ext_acl = '' %}
+{%- for acl_entry in ext_acl_list %}
+{%- set acl_parts = acl_entry.strip().split('|') %}
+{%- if acl_parts|length >= 7 %}
+{%- set acl_name = acl_parts[0] %}
+{%- set sequence = acl_parts[1] if acl_parts[1] else '' %}
+{%- set action = acl_parts[2] if acl_parts[2] else 'permit' %}
+{%- set protocol = acl_parts[3] %}
+{%- set source = acl_parts[4] %}
+{%- set source_op = acl_parts[5] if acl_parts[5] else '' %}
+{%- set dest = acl_parts[6] %}
+{%- set dest_op = acl_parts[7] if acl_parts|length > 7 and acl_parts[7] else '' %}
+{%- set log_enabled = acl_parts[8] if acl_parts|length > 8 and acl_parts[8] == 'true' else false %}
+
+{%- if acl_name != current_ext_acl %}
+{%- set current_ext_acl = acl_name %}
+!
+ip access-list extended {{ acl_name }}
+{%- endif %}
+ {{ sequence }} {{ action }} {{ protocol }} {{ source }}{% if source_op %} {{ source_op }}{% endif %} {{ dest }}{% if dest_op %} {{ dest_op }}{% endif %}{% if log_enabled %} log{% endif %}
+{%- endif %}
+{%- endfor %}

@@ -1,0 +1,23 @@
+{
+  "config": "CAMPUS-NX-DIST01.txt",
+  "stem": "campus-nx-dist01",
+  "role": "distribution",
+  "hostname_extracted": "CAMPUS-NX-DIST01",
+  "vendor_tag": "unknown",
+  "routing_path": [
+    "Legacy Parser",
+    "Intent Mapper",
+    "Schema Normalizer",
+    "Validator",
+    "Generator"
+  ],
+  "validator_iterations": 1,
+  "outcome": "auto_corrected",
+  "schema_valid": true,
+  "semantic_valid": true,
+  "rules_fired": [],
+  "validation_score": 1.0,
+  "latency_ms": 16594,
+  "has_ground_truth": true,
+  "error": null
+}

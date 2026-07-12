@@ -1,0 +1,27 @@
+[
+  {
+    "field": "local_users",
+    "confidence": 0.95,
+    "reason": "extracted from 'username' command with encrypted password"
+  },
+  {
+    "field": "aaa.tacacs_servers.key",
+    "confidence": 0.9,
+    "reason": "passwords redacted for security"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": 0.9,
+    "reason": "password redacted for security"
+  },
+  {
+    "field": "interfaces.access",
+    "confidence": 0.98,
+    "reason": "expanded identical config for 24 interfaces"
+  },
+  {
+    "field": "snmp.communities",
+    "confidence": 0.95,
+    "reason": "extracted from snmp-server community command"
+  }
+]

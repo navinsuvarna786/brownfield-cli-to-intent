@@ -1,0 +1,75 @@
+no service pad
+service timestamps debug uptime
+service timestamps log datetime localtime
+service password-encryption
+
+enable secret 0 {{ enable_secret }}
+
+crypto key generate rsa modulus 2048
+
+clock timezone {{ timezone }} {{ timezone_offset }} 0
+clock summer-time {{ daylight_savings_name }} recurring
+
+ip name-server {{ dns_servers.split(',') | join(' ') }}
+ip domain name {{ domain_name }}
+no ip domain lookup
+
+{# NTP Configuration #}
+{% if ntp_servers and ntp_servers != "false" %}
+{% for ntp_entry in ntp_servers.split(',') %}
+{% set parts = ntp_entry.split('|') %}
+{% set address = parts[0].strip() %}
+ntp server {{ address }}{% for i in range(1, parts|length) %}{% set part = parts[i].strip() %}{% if part == 'prefer' %} prefer{% elif part.startswith('version:') %} version {{ part.split(':')[1] }}{% elif part.startswith('key:') %} key {{ part.split(':')[1] }}{% endif %}{% endfor %}
+{% endfor %}
+{% endif %}
+{%- if ntp_authenticate and ntp_authenticate != 'false' %}
+ntp authenticate
+{%- if ntp_auth_keys %}
+{%- for key_entry in ntp_auth_keys.split(',') %}
+{%- set key_parts = key_entry.strip().split('|') %}
+{%- if key_parts|length >= 2 %}
+ntp authentication-key {{ key_parts[0] }} md5 {{ key_parts[1] }}
+ntp trusted-key {{ key_parts[0] }}
+{%- endif %}
+{%- endfor %}
+{%- endif %}
+{%- endif %}
+{% if ntp_master %}
+ntp master{% if ntp_master_stratum %} {{ ntp_master_stratum }}{% endif %}
+{% endif %}
+
+diagnostic bootup level minimal
+license boot level {{ license_level | default('network-advantage') }}
+
+spanning-tree mode {{ stp_mode | default('pvst') }}
+spanning-tree extend system-id
+spanning-tree loopguard default
+spanning-tree portfast bpduguard default
+
+{# Logging Configuration #}
+{% if logging_servers %}
+{% for log_server in logging_servers.split(',') %}
+logging host {{ log_server.strip() }}
+{% endfor %}
+{% endif %}
+logging buffered {{ log_severity_level | default('informational') }}
+
+{# Error Disable Configuration #}
+{% if errdisable_causes %}
+{% for cause in errdisable_causes.split(',') %}
+errdisable recovery cause {{ cause.strip() }}
+{% endfor %}
+{% endif %}
+{% if recovery_interval %}
+errdisable recovery interval {{ recovery_interval | default(100) }}
+{% endif %}
+
+{# Local Users Configuration #}
+{% if local_users %}
+{% for user_entry in local_users.split(',') %}
+{% set user_parts = user_entry.split(':') %}
+username {{ user_parts[0].strip() }} password 0 {{ user_parts[1].strip() }}
+{% endfor %}
+{% endif %}
+
+lldp run

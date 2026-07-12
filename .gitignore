@@ -1,0 +1,32 @@
+# Secrets
+.env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# LaTeX build artifacts
+paper/main.aux
+paper/main.log
+paper/main.pdf
+paper/*.bbl
+paper/*.blg
+paper/*.out
+paper/*.toc
+paper/*.lof
+paper/*.lot
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+
+# Chroma vector DB
+scripts/ai_modernization/chroma_db/
+
+# OS
+.DS_Store

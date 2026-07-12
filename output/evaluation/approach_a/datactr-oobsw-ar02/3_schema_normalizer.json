@@ -1,0 +1,684 @@
+{
+  "hostname": "DATACTR-OOBSW-AR02",
+  "domain_name": "campus.example.org",
+  "timezone_config": {},
+  "stp_mode": "rapid-pvst",
+  "dns_servers": [],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "logging_hosts": [],
+  "snmp_config": {
+    "location": "DC OOB Arista SW02",
+    "contact": "NOC-555-0100",
+    "enable_traps": false,
+    "acl_ro": "SNMP-ALLOWED"
+  },
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": [
+      {
+        "name": "192.0.2.11",
+        "ip": "192.0.2.11",
+        "key": "xxxxxxxx"
+      },
+      {
+        "name": "192.0.2.12",
+        "ip": "192.0.2.12",
+        "key": "xxxxxxxx"
+      }
+    ],
+    "tacacs_group_name": "TACACS_GROUP"
+  },
+  "local_users": [
+    {
+      "name": "admin",
+      "password": "xxxxxxxx"
+    }
+  ],
+  "enable_secret": "",
+  "errdisable_config": {},
+  "vlans": [
+    {
+      "id": 620,
+      "name": "SERVER-620"
+    },
+    {
+      "id": 621,
+      "name": "SERVER-621"
+    },
+    {
+      "id": 622,
+      "name": "SERVER-622"
+    },
+    {
+      "id": 623,
+      "name": "SERVER-623"
+    },
+    {
+      "id": 624,
+      "name": "SERVER-624"
+    },
+    {
+      "id": 4090,
+      "name": "INBAND-MGMT"
+    }
+  ],
+  "vrfs": [],
+  "acls": [],
+  "management": {
+    "http_https": {
+      "enabled": true,
+      "https_enabled": true,
+      "shutdown": false
+    },
+    "ssh": {
+      "enabled": true,
+      "idle_timeout": 20
+    }
+  },
+  "banners": {
+    "login": "Authorized access only. Unauthorized use is prohibited."
+  },
+  "uplinks": [],
+  "access_interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 621,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 622,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 623,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 624,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 620,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 621,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 622,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 623,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 624,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 620,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/11",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 621,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/12",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 622,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/13",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 623,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/14",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 624,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/15",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 620,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/16",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 621,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/17",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 622,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/18",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 623,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/19",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 624,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/20",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 620,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/21",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 621,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/22",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 622,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/23",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 623,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/24",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 624,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/25",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 620,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/26",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 621,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/27",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 622,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/28",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 623,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/29",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 624,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/30",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 620,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/31",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 621,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/32",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 622,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/33",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 623,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/34",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 624,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/35",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 620,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/36",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 621,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/37",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 622,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/38",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 623,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/39",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 624,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/40",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 620,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/41",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 621,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/42",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 622,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/43",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 623,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/44",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 624,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/45",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 620,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/46",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 621,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/47",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 622,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/48",
+      "config": {
+        "description": "SERVER-PORT",
+        "access_vlan": 623,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    }
+  ],
+  "routed_interfaces": [
+    {
+      "name": "Vlan4090",
+      "description": "INBAND-MGMT",
+      "vrf": "MDMZ",
+      "ipv4": {
+        "address": "198.51.100.85",
+        "netmask": "255.255.255.0"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false,
+      "dot1q_vlan": null
+    }
+  ],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1
+  },
+  "pnp_config": {},
+  "vrf_config": {}
+}

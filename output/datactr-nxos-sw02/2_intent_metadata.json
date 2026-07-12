@@ -1,0 +1,27 @@
+[
+  {
+    "field": "local_users.password",
+    "confidence": 0.9,
+    "reason": "password obfuscated in config"
+  },
+  {
+    "field": "snmp.communities.community",
+    "confidence": 0.95,
+    "reason": "community string partially redacted"
+  },
+  {
+    "field": "snmp.hosts.community",
+    "confidence": 0.95,
+    "reason": "community string partially redacted"
+  },
+  {
+    "field": "management.interfaces",
+    "confidence": 1,
+    "reason": "mapped Ethernet to GigabitEthernet1/0/x for Catalyst 9300"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "merged VLAN names from config and legacy parser"
+  }
+]

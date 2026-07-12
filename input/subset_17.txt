@@ -1,0 +1,37 @@
+# 17-config stratified evaluation subset
+# Used for field-level accuracy (F1) comparison across Approaches A, B, and C.
+#
+# Groups:
+#   access-nac        : 8 configs (all configs in this group)
+#   oob-server        : 4 configs (selection rule: first four alphabetically
+#                       by filename from the 16 available DATACTR-OOBSW-*.txt
+#                       files, after excluding any -original variants)
+#   arista-distribution: 5 configs (all configs in this group)
+#
+# Total: 17 configs spanning both vendors and all structurally distinct roles.
+#
+# Lines beginning with # are comments and are ignored by compute_f1.py and
+# batch_eval_approach_b.py.
+
+# --- access-nac (8 of 8) ---
+BLDG-A-FLOOR1-SW01.txt
+BLDG-A-FLOOR2-SW01.txt
+BLDG-A-FLOOR3-SW01.txt
+BLDG-B-FLOOR1-SW01.txt
+BLDG-B-FLOOR2-SW01.txt
+BLDG-C-FLOOR1-SW01.txt
+BLDG-C-FLOOR2-SW01.txt
+BLDG-FR-FLOOR1-SW01.txt
+
+# --- oob-server (4 of 16 — first four alphabetically) ---
+DATACTR-OOBSW-01.txt
+DATACTR-OOBSW-02.txt
+DATACTR-OOBSW-03.txt
+DATACTR-OOBSW-04.txt
+
+# --- arista-distribution (5 of 5) ---
+CAMPUS-ACCESS-SW03.txt
+CAMPUS-ACCESS-SW04.txt
+CAMPUS-DIST-SW01-original.txt
+CAMPUS-DIST-SW01.txt
+CAMPUS-DIST-SW02.txt

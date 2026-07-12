@@ -1,0 +1,27 @@
+[
+  {
+    "field": "domain_name",
+    "confidence": 0.9,
+    "reason": "Extracted from 'dns domain' command"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Mapped Ethernet to GigabitEthernet1/0/x per Catalyst 9300 naming"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "Explicit vlan id and name in config"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "Tacacs servers and groups configured"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.9,
+    "reason": "SNMP location, contact, ACL and VRF from config"
+  }
+]

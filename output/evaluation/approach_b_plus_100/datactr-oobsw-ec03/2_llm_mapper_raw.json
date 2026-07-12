@@ -1,0 +1,4 @@
+{
+  "parse_error": "Unterminated string starting at: line 467 column 9 (char 12853)",
+  "raw": "{\n  \"hostname\": \"DATACTR-OOBSW-EC03\",\n  \"domain_name\": \"campus.example.edu\",\n  \"stack_info\": {\n    \"is_stack\": false,\n    \"member_count\": 1,\n    \"master_switch\": 1\n  },\n  \"pnp_config\": {\n    \"pnp_vlan_id\": 236,\n    \"pnp_vlan_name\": \"OOB-mgmt\",\n    \"pnp_vlan_network_add\": \"need_input\",\n    \"pnp_vlan_network_mask\": \"need_input\",\n    \"pnp_vlan_default_gateway\": \"need_input\"\n  },\n  \"vlans\": [\n    {\"id\": 230, \"name\": \"OOB_PDU_KVM\"},\n    {\"id\": 236, \"name\": \"OOB-mgmt\"},\n    {\"id\": 440, \"name\": \"need_i"
+}

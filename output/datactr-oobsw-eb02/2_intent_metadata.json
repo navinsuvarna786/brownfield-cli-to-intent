@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Identical config expanded for multiple interfaces per comment"
+  },
+  {
+    "field": "vlans",
+    "confidence": 0.9,
+    "reason": "VLAN names parsed from config and legacy parser with some missing names"
+  },
+  {
+    "field": "aaa.tacacs_servers.key",
+    "confidence": 0.8,
+    "reason": "Keys are encrypted and redacted in config"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.9,
+    "reason": "SNMP community and hosts extracted from config"
+  },
+  {
+    "field": "management.interfaces",
+    "confidence": 0.85,
+    "reason": "Mgmt interface and VRF extracted from config"
+  }
+]

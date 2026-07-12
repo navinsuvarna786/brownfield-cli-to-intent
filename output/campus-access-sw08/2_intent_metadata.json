@@ -1,0 +1,27 @@
+[
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "AAA group and tacacs servers parsed from config"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Interfaces expanded from identical config comments and mapped to Catalyst 9300 naming"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "VLANs fully parsed from config"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.9,
+    "reason": "SNMP config extracted including ACL, VRF, local interface"
+  },
+  {
+    "field": "management",
+    "confidence": 0.9,
+    "reason": "Management API and SSH config with VRF extracted"
+  }
+]

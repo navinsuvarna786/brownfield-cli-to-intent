@@ -1,0 +1,157 @@
+!Command: show running-config
+!Running configuration last done at: Thu Jan  2 00:00:00 2026
+!Time: Thu Jan  2 00:00:00 2026
+version 10.3(3)F
+hostname CAMPUS-NX-ACCESS03
+!
+feature lldp
+feature lacp
+feature ssh
+!
+username admin password 7 xxxxxxxx role network-admin
+!
+ip access-list standard SNMP-ALLOWED
+  10 permit 192.0.2.11
+  20 permit 192.0.2.12
+  30 permit 192.0.2.0/24
+  40 deny any
+!
+vrf context management
+  ip route 0.0.0.0/0 192.0.2.254
+!
+vlan 1
+vlan 10
+  name DATA
+vlan 20
+  name VOICE
+vlan 30
+  name GUEST
+vlan 50
+  name PRINTER
+vlan 900
+  name MGMT
+!
+interface mgmt0
+  vrf member management
+  ip address 192.0.2.123/24
+!
+interface Ethernet1/1
+  description USER-PORT
+  switchport
+  switchport access vlan 10
+  switchport voice vlan 20
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 20.00 10.00
+  storm-control multicast level 20.00 10.00
+  no shutdown
+!
+interface Ethernet1/2
+  description USER-PORT
+  switchport
+  switchport access vlan 10
+  switchport voice vlan 20
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 20.00 10.00
+  storm-control multicast level 20.00 10.00
+  no shutdown
+!
+interface Ethernet1/3
+  description USER-PORT
+  switchport
+  switchport access vlan 10
+  switchport voice vlan 20
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 20.00 10.00
+  storm-control multicast level 20.00 10.00
+  no shutdown
+!
+interface Ethernet1/4
+  description GUEST-PORT
+  switchport
+  switchport access vlan 30
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 10.00 5.00
+  no shutdown
+!
+interface Ethernet1/5
+  description PRINTER-PORT
+  switchport
+  switchport access vlan 50
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 5.00 2.00
+  no shutdown
+!
+interface Ethernet1/6
+  description PRINTER-PORT
+  switchport
+  switchport access vlan 50
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 5.00 2.00
+  no shutdown
+!
+interface Ethernet1/47
+  description UPLINK-TO-DIST-01
+  switchport
+  switchport mode trunk
+  switchport trunk allowed vlan 10,20,30,50,900
+  spanning-tree port type network
+  no shutdown
+!
+interface Ethernet1/48
+  description UPLINK-TO-DIST-02
+  switchport
+  switchport mode trunk
+  switchport trunk allowed vlan 10,20,30,50,900
+  spanning-tree port type network
+  no shutdown
+!
+interface Vlan900
+  ip address 192.0.2.123/24
+  no shutdown
+!
+ip default-gateway 192.0.2.254
+!
+spanning-tree mode rapid-pvst
+!
+tacacs-server host 192.0.2.11 key 7 xxxxxxxx
+tacacs-server host 192.0.2.12 key 7 xxxxxxxx
+!
+aaa group server tacacs+ TACACS_GROUP
+  server 192.0.2.11
+  server 192.0.2.12
+!
+aaa authentication login default group TACACS_GROUP local
+aaa authorization exec default group TACACS_GROUP local
+!
+snmp-server community xxxxxxxx ro SNMP-ALLOWED
+snmp-server location Campus-Building-C Floor-2
+snmp-server contact NOC-555-0100
+snmp-server enable traps
+!
+ntp server 192.0.2.11 prefer
+ntp server 192.0.2.12
+!
+ip name-server 192.0.2.15
+ip name-server 192.0.2.16
+!
+ip domain-name campus.example.edu
+!
+logging server 192.0.2.17
+!
+banner motd @
+**************************************************************************
+ AUTHORIZED ACCESS ONLY — campus.example.edu
+ All activities are monitored and logged.
+**************************************************************************
+@
+!
+errdisable recovery cause bpduguard
+errdisable recovery interval 300
+!
+end

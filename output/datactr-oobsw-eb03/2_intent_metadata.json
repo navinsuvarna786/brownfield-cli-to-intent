@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Identical config expanded for multiple interfaces per comment"
+  },
+  {
+    "field": "vlans",
+    "confidence": 0.9,
+    "reason": "Parsed from config and legacy parser with some names missing"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "Keys encrypted, tacacs servers and groups parsed"
+  },
+  {
+    "field": "acls",
+    "confidence": 0.95,
+    "reason": "All ACL entries extracted fully"
+  },
+  {
+    "field": "management",
+    "confidence": 0.9,
+    "reason": "VRF, HTTP, SSH, and interface mgmt extracted"
+  }
+]

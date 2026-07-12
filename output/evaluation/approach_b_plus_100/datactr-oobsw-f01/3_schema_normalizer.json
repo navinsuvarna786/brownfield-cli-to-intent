@@ -1,0 +1,527 @@
+{
+  "hostname": "DATACTR-OOBSW-F01",
+  "domain_name": "campus.example.edu",
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "pnp_config": {
+    "pnp_vlan_id": 3069,
+    "pnp_vlan_name": "Native",
+    "pnp_vlan_network_add": "192.0.2.141",
+    "pnp_vlan_network_mask": "255.255.255.0",
+    "pnp_vlan_default_gateway": "192.0.2.254"
+  },
+  "vlans": [
+    {
+      "id": 236,
+      "name": "OOB-MGMT"
+    },
+    {
+      "id": 3069,
+      "name": "Native"
+    },
+    {
+      "id": 510,
+      "name": "SERVER-VLAN-510"
+    },
+    {
+      "id": 511,
+      "name": "SERVER-VLAN-511"
+    },
+    {
+      "id": 512,
+      "name": "SERVER-VLAN-512"
+    },
+    {
+      "id": 513,
+      "name": "SERVER-VLAN-513"
+    },
+    {
+      "id": 514,
+      "name": "SERVER-VLAN-514"
+    },
+    {
+      "id": 515,
+      "name": "SERVER-VLAN-515"
+    },
+    {
+      "id": 516,
+      "name": "SERVER-VLAN-516"
+    }
+  ],
+  "acls": [],
+  "uplinks": [
+    {
+      "type": "port-channel",
+      "name": "Port-channel1",
+      "allowed_vlans": [
+        236,
+        510,
+        511,
+        512,
+        513,
+        514,
+        515,
+        516,
+        3069
+      ],
+      "native_vlan": 3069
+    }
+  ],
+  "snmp_config": {
+    "community_ro": "need_input",
+    "acl_ro": "need_input",
+    "location": "need_input",
+    "contact": "need_input",
+    "chassis_id": "need_input",
+    "enable_traps": false
+  },
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": [],
+    "radius_servers": []
+  },
+  "nac_config": {
+    "dot1x_enabled": false,
+    "radius_group_name": "need_input",
+    "radius_servers": []
+  },
+  "ntp_servers": [
+    "need_input"
+  ],
+  "dns_servers": [
+    "192.0.2.50",
+    "192.0.2.60"
+  ],
+  "stp_mode": "rapid-pvst",
+  "errdisable_config": {
+    "causes": [
+      "security-violation",
+      "gbic-invalid",
+      "psecure-violation"
+    ],
+    "recovery_interval": 100
+  },
+  "access_interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "config": {
+        "access_vlan": 511,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "config": {
+        "access_vlan": 512,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "config": {
+        "access_vlan": 513,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "config": {
+        "access_vlan": 514,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "config": {
+        "access_vlan": 515,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "config": {
+        "access_vlan": 516,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "config": {
+        "access_vlan": 510,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "config": {
+        "access_vlan": 511,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "config": {
+        "access_vlan": 512,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "config": {
+        "access_vlan": 513,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/11",
+      "config": {
+        "access_vlan": 514,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/12",
+      "config": {
+        "access_vlan": 515,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/13",
+      "config": {
+        "access_vlan": 516,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/14",
+      "config": {
+        "access_vlan": 510,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/15",
+      "config": {
+        "access_vlan": 511,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/16",
+      "config": {
+        "access_vlan": 512,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/17",
+      "config": {
+        "access_vlan": 513,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/18",
+      "config": {
+        "access_vlan": 514,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/19",
+      "config": {
+        "access_vlan": 515,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/20",
+      "config": {
+        "access_vlan": 516,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/21",
+      "config": {
+        "access_vlan": 510,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/22",
+      "config": {
+        "access_vlan": 511,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/23",
+      "config": {
+        "access_vlan": 512,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/24",
+      "config": {
+        "access_vlan": 513,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/25",
+      "config": {
+        "access_vlan": 514,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/26",
+      "config": {
+        "access_vlan": 515,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/27",
+      "config": {
+        "access_vlan": 516,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/28",
+      "config": {
+        "access_vlan": 510,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/29",
+      "config": {
+        "access_vlan": 511,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/30",
+      "config": {
+        "access_vlan": 512,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/31",
+      "config": {
+        "access_vlan": 513,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/32",
+      "config": {
+        "access_vlan": 514,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/33",
+      "config": {
+        "access_vlan": 515,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/34",
+      "config": {
+        "access_vlan": 516,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/35",
+      "config": {
+        "access_vlan": 510,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/36",
+      "config": {
+        "access_vlan": 511,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/37",
+      "config": {
+        "access_vlan": 512,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/38",
+      "config": {
+        "access_vlan": 513,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/39",
+      "config": {
+        "access_vlan": 514,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/40",
+      "config": {
+        "access_vlan": 515,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    }
+  ],
+  "routed_interfaces": [
+    {
+      "name": "GigabitEthernet0/0",
+      "vrf": "Mgmt-vrf",
+      "ipv4": {
+        "address": "need_input",
+        "netmask": "need_input"
+      }
+    },
+    {
+      "name": "Vlan3069",
+      "vrf": "need_input",
+      "ipv4": {
+        "address": "192.0.2.141",
+        "netmask": "255.255.255.0"
+      }
+    }
+  ]
+}

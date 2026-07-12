@@ -1,0 +1,27 @@
+[
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "AAA config present but 'no aaa root' disables default AAA"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Interfaces mapped from EthernetX to GigabitEthernet1/0/X with identical config expansion"
+  },
+  {
+    "field": "management",
+    "confidence": 0.95,
+    "reason": "Management API and SSH config with VRF MDMZ extracted"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "All VLANs with IDs and names extracted"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.9,
+    "reason": "SNMP config with ACL and VRF extracted"
+  }
+]

@@ -1,0 +1,3 @@
+# Ambiguous interface role cases
+# Format: <config-stem> <interface-name> <reason>
+# See docs/labeling_protocol.md Section 6 for classification rules

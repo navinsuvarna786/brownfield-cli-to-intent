@@ -1,0 +1,1196 @@
+# Ground truth (Approach C corrected output — rules 121+122 auto-applied)
+# Source: generated from input/sanitized/ raw CLI  [reviewer: network-architect-20yr]
+# REVIEW: every field verified against input/sanitized/ CLI source
+# Role: OOB-server-room | Platform: C9300 | Stack: 2 | VLANs: 5 server VLANs
+---
+hostname: DATACTR-OOBSW-K02
+domain_name: campus.example.edu
+stack_info:
+  is_stack: true
+  member_count: 2
+  switches:
+  - - 1
+    - 15
+  - - 2
+    - 15
+  master_switch: 1
+pnp_config:
+  pnp_vlan_id: 236
+  pnp_vlan_name: OOB-MGMT
+  pnp_vlan_network_add: 192.0.2.150
+  pnp_vlan_network_mask: 255.255.255.0
+  pnp_vlan_default_gateway: 192.0.2.254
+vlans:
+- id: 236
+  name: OOB-MGMT
+- id: 910
+  name: SERVER-VLAN-910
+- id: 911
+  name: SERVER-VLAN-911
+- id: 912
+  name: SERVER-VLAN-912
+- id: 913
+  name: SERVER-VLAN-913
+- id: 914
+  name: SERVER-VLAN-914
+- id: 3072
+  name: Native
+acls:
+- name: '13'
+  type: standard
+  entries:
+  - action: permit
+    source: 192.0.2.11
+    log: false
+    sequence: 10
+  - action: permit
+    source: 192.0.2.12
+    log: false
+    sequence: 20
+  - action: permit
+    source: 192.0.2.0 0.0.0.255
+    log: false
+    sequence: 30
+  - action: deny
+    source: any
+    log: true
+    sequence: 40
+  is_numbered: false
+uplinks:
+- type: port-channel
+  port_channel_id: 1
+  description: UPLINK-OOB-PC1
+  allowed_vlans:
+  - 236
+  - 910
+  - 911
+  - 912
+  - 913
+  - 914
+  - 3072
+  native_vlan: 3072
+  member_interfaces:
+  - name: TenGigabitEthernet1/1/1
+    lacp_mode: active
+  - name: TenGigabitEthernet2/1/1
+    lacp_mode: active
+snmp_config:
+  community_ro: xxxxxxxx
+  acl_ro: '13'
+  location: DC OOB Switch K02
+  contact: NOC
+  chassis_id: DATACTR-OOBSW-K02
+  enable_traps: true
+aaa_config:
+  aaa_enabled: true
+  tacacs_group_name: null
+  tacacs_servers: []
+access_interfaces:
+- name: GigabitEthernet1/0/1
+  switch: 1
+  module: 0
+  port: 1
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/2
+  switch: 1
+  module: 0
+  port: 2
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/3
+  switch: 1
+  module: 0
+  port: 3
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/4
+  switch: 1
+  module: 0
+  port: 4
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/5
+  switch: 1
+  module: 0
+  port: 5
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/6
+  switch: 1
+  module: 0
+  port: 6
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/7
+  switch: 1
+  module: 0
+  port: 7
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/8
+  switch: 1
+  module: 0
+  port: 8
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/9
+  switch: 1
+  module: 0
+  port: 9
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/10
+  switch: 1
+  module: 0
+  port: 10
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/11
+  switch: 1
+  module: 0
+  port: 11
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/12
+  switch: 1
+  module: 0
+  port: 12
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/13
+  switch: 1
+  module: 0
+  port: 13
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/14
+  switch: 1
+  module: 0
+  port: 14
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/15
+  switch: 1
+  module: 0
+  port: 15
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/16
+  switch: 1
+  module: 0
+  port: 16
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/17
+  switch: 1
+  module: 0
+  port: 17
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/18
+  switch: 1
+  module: 0
+  port: 18
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/19
+  switch: 1
+  module: 0
+  port: 19
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/20
+  switch: 1
+  module: 0
+  port: 20
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/21
+  switch: 1
+  module: 0
+  port: 21
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/22
+  switch: 1
+  module: 0
+  port: 22
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/23
+  switch: 1
+  module: 0
+  port: 23
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/24
+  switch: 1
+  module: 0
+  port: 24
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/25
+  switch: 1
+  module: 0
+  port: 25
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/26
+  switch: 1
+  module: 0
+  port: 26
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/27
+  switch: 1
+  module: 0
+  port: 27
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/28
+  switch: 1
+  module: 0
+  port: 28
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/29
+  switch: 1
+  module: 0
+  port: 29
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/30
+  switch: 1
+  module: 0
+  port: 30
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/31
+  switch: 1
+  module: 0
+  port: 31
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/32
+  switch: 1
+  module: 0
+  port: 32
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/33
+  switch: 1
+  module: 0
+  port: 33
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/34
+  switch: 1
+  module: 0
+  port: 34
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/35
+  switch: 1
+  module: 0
+  port: 35
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/36
+  switch: 1
+  module: 0
+  port: 36
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/37
+  switch: 1
+  module: 0
+  port: 37
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/38
+  switch: 1
+  module: 0
+  port: 38
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/39
+  switch: 1
+  module: 0
+  port: 39
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/40
+  switch: 1
+  module: 0
+  port: 40
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/41
+  switch: 1
+  module: 0
+  port: 41
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/42
+  switch: 1
+  module: 0
+  port: 42
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/43
+  switch: 1
+  module: 0
+  port: 43
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/44
+  switch: 1
+  module: 0
+  port: 44
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/45
+  switch: 1
+  module: 0
+  port: 45
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/46
+  switch: 1
+  module: 0
+  port: 46
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/47
+  switch: 1
+  module: 0
+  port: 47
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet1/0/48
+  switch: 1
+  module: 0
+  port: 48
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/1
+  switch: 2
+  module: 0
+  port: 1
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/2
+  switch: 2
+  module: 0
+  port: 2
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/3
+  switch: 2
+  module: 0
+  port: 3
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/4
+  switch: 2
+  module: 0
+  port: 4
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/5
+  switch: 2
+  module: 0
+  port: 5
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/6
+  switch: 2
+  module: 0
+  port: 6
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/7
+  switch: 2
+  module: 0
+  port: 7
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/8
+  switch: 2
+  module: 0
+  port: 8
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/9
+  switch: 2
+  module: 0
+  port: 9
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/10
+  switch: 2
+  module: 0
+  port: 10
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/11
+  switch: 2
+  module: 0
+  port: 11
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/12
+  switch: 2
+  module: 0
+  port: 12
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/13
+  switch: 2
+  module: 0
+  port: 13
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/14
+  switch: 2
+  module: 0
+  port: 14
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/15
+  switch: 2
+  module: 0
+  port: 15
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/16
+  switch: 2
+  module: 0
+  port: 16
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/17
+  switch: 2
+  module: 0
+  port: 17
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/18
+  switch: 2
+  module: 0
+  port: 18
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/19
+  switch: 2
+  module: 0
+  port: 19
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/20
+  switch: 2
+  module: 0
+  port: 20
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/21
+  switch: 2
+  module: 0
+  port: 21
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/22
+  switch: 2
+  module: 0
+  port: 22
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/23
+  switch: 2
+  module: 0
+  port: 23
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/24
+  switch: 2
+  module: 0
+  port: 24
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/25
+  switch: 2
+  module: 0
+  port: 25
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/26
+  switch: 2
+  module: 0
+  port: 26
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/27
+  switch: 2
+  module: 0
+  port: 27
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/28
+  switch: 2
+  module: 0
+  port: 28
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/29
+  switch: 2
+  module: 0
+  port: 29
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/30
+  switch: 2
+  module: 0
+  port: 30
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/31
+  switch: 2
+  module: 0
+  port: 31
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/32
+  switch: 2
+  module: 0
+  port: 32
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/33
+  switch: 2
+  module: 0
+  port: 33
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/34
+  switch: 2
+  module: 0
+  port: 34
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/35
+  switch: 2
+  module: 0
+  port: 35
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/36
+  switch: 2
+  module: 0
+  port: 36
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/37
+  switch: 2
+  module: 0
+  port: 37
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/38
+  switch: 2
+  module: 0
+  port: 38
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/39
+  switch: 2
+  module: 0
+  port: 39
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/40
+  switch: 2
+  module: 0
+  port: 40
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/41
+  switch: 2
+  module: 0
+  port: 41
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/42
+  switch: 2
+  module: 0
+  port: 42
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/43
+  switch: 2
+  module: 0
+  port: 43
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/44
+  switch: 2
+  module: 0
+  port: 44
+  config:
+    access_vlan: 914
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/45
+  switch: 2
+  module: 0
+  port: 45
+  config:
+    access_vlan: 910
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/46
+  switch: 2
+  module: 0
+  port: 46
+  config:
+    access_vlan: 911
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/47
+  switch: 2
+  module: 0
+  port: 47
+  config:
+    access_vlan: 912
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: GigabitEthernet2/0/48
+  switch: 2
+  module: 0
+  port: 48
+  config:
+    access_vlan: 913
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+ntp_servers:
+- 192.0.2.11|prefer
+- 192.0.2.12
+dns_servers:
+- 192.0.2.50
+- 192.0.2.60
+- 192.0.2.50
+- 192.0.2.60
+logging_hosts:
+- 192.0.2.21
+- 192.0.2.22
+- 192.0.2.23
+timezone_config:
+  timezone: CST
+  timezone_offset: '-6'
+  dst_minutes: '0'
+daylight_savings: CDT
+enable_secret: need_input
+stp_mode: rapid-pvst
+errdisable_config:
+  causes:
+  - security-violation
+  - gbic-invalid
+  - psecure-violation
+  recovery_interval: 100
+local_users:
+- name: xxxxxxxx
+  password: need_input
+  privilege: 15
+vrf_config:
+- name: Mgmt-vrf
+  rd: ''
+  rt_export: ''
+  rt_import: ''
+vtp_domain: CAMPUS
+vtp_mode: transparent
+has_ssh_source: false
+has_snmp_source: false
+has_ntp_source: false
+has_tacacs_source: false
+has_radius_source: false
+routed_interfaces:
+- name: Vlan236
+  description: Vlan236
+  ip_address: 192.0.2.150
+  subnet_mask: 255.255.255.0
+  vrf: ''
+  shutdown: false
+default_gateway: 192.0.2.254
+banners:
+  motd: "C\n\n    *************************************************************\n\n    * Authorized access only.         \
+    \                          *\n\n    * Unauthorized use is prohibited and may be prosecuted.     *\n\n    *************************************************************"

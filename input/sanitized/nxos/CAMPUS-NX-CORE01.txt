@@ -1,0 +1,160 @@
+!Command: show running-config
+!Running configuration last done at: Thu Jan  2 00:00:00 2026
+!Time: Thu Jan  2 00:00:00 2026
+version 10.3(3)F
+hostname CAMPUS-NX-CORE01
+!
+feature lldp
+feature lacp
+feature interface-vlan
+feature bgp
+feature ospf
+feature ssh
+!
+username admin password 7 xxxxxxxx role network-admin
+!
+ip access-list standard SNMP-ALLOWED
+  10 permit 192.0.2.11
+  20 permit 192.0.2.12
+  30 permit 192.0.2.0/24
+  40 deny any
+!
+vrf context management
+  ip route 0.0.0.0/0 192.0.2.254
+!
+vlan 1
+vlan 900
+  name MGMT
+!
+interface mgmt0
+  vrf member management
+  ip address 192.0.2.150/24
+!
+interface port-channel10
+  description DOWNLINK-DIST01
+  no switchport
+  ip address 10.0.10.1/30
+  ip ospf network point-to-point
+  no shutdown
+!
+interface port-channel11
+  description DOWNLINK-DIST02
+  no switchport
+  ip address 10.0.11.1/30
+  ip ospf network point-to-point
+  no shutdown
+!
+interface port-channel12
+  description DOWNLINK-DIST03-VPC
+  no switchport
+  ip address 10.0.12.1/30
+  ip ospf network point-to-point
+  no shutdown
+!
+interface port-channel20
+  description UPLINK-WAN-ROUTER
+  no switchport
+  ip address 203.0.113.2/30
+  no shutdown
+!
+interface Ethernet1/1
+  description DOWNLINK-DIST01-1
+  channel-group 10 mode active
+  no shutdown
+!
+interface Ethernet1/2
+  description DOWNLINK-DIST01-2
+  channel-group 10 mode active
+  no shutdown
+!
+interface Ethernet1/3
+  description DOWNLINK-DIST02-1
+  channel-group 11 mode active
+  no shutdown
+!
+interface Ethernet1/4
+  description DOWNLINK-DIST02-2
+  channel-group 11 mode active
+  no shutdown
+!
+interface Ethernet1/5
+  description DOWNLINK-DIST03-VPC-1
+  channel-group 12 mode active
+  no shutdown
+!
+interface Ethernet1/6
+  description DOWNLINK-DIST03-VPC-2
+  channel-group 12 mode active
+  no shutdown
+!
+interface Ethernet1/7
+  description WAN-UPLINK-1
+  channel-group 20 mode active
+  no shutdown
+!
+interface Ethernet1/8
+  description WAN-UPLINK-2
+  channel-group 20 mode active
+  no shutdown
+!
+interface Vlan900
+  description MGMT-SVI
+  ip address 192.0.2.150/24
+  no shutdown
+!
+router ospf 1
+  router-id 192.0.2.150
+  area 0
+  network 10.0.10.0/30 area 0
+  network 10.0.11.0/30 area 0
+  network 10.0.12.0/30 area 0
+  redistribute bgp 65001 subnets
+!
+router bgp 65001
+  router-id 192.0.2.150
+  neighbor 203.0.113.1 remote-as 65000
+  neighbor 203.0.113.1 description UPSTREAM-ISP
+  address-family ipv4
+    network 10.100.0.0/16
+    neighbor 203.0.113.1 activate
+    redistribute ospf 1 route-map OSPF-TO-BGP
+!
+ip prefix-list CORPORATE routes seq 5 permit 10.100.0.0/16 le 24
+!
+route-map OSPF-TO-BGP permit 10
+  match ip address prefix-list CORPORATE
+!
+spanning-tree mode rapid-pvst
+!
+tacacs-server host 192.0.2.11 key 7 xxxxxxxx
+tacacs-server host 192.0.2.12 key 7 xxxxxxxx
+!
+aaa group server tacacs+ TACACS_GROUP
+  server 192.0.2.11
+  server 192.0.2.12
+!
+aaa authentication login default group TACACS_GROUP local
+aaa authorization exec default group TACACS_GROUP local
+aaa accounting exec default start-stop group TACACS_GROUP
+!
+snmp-server community xxxxxxxx ro SNMP-ALLOWED
+snmp-server location Campus-Core-Switch-Room
+snmp-server contact NOC-555-0100
+snmp-server enable traps
+!
+ntp server 192.0.2.11 prefer
+ntp server 192.0.2.12
+!
+ip name-server 192.0.2.15
+ip name-server 192.0.2.16
+!
+ip domain-name campus.example.edu
+!
+logging server 192.0.2.17
+logging server 192.0.2.18
+!
+banner motd @
+AUTHORIZED ACCESS ONLY. Core infrastructure device. Unauthorized access prosecuted.
+@
+!
+end

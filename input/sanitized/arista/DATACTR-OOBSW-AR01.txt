@@ -1,0 +1,320 @@
+! Command: show running-config
+! device: DATACTR-OOBSW-AR01 (DCS-7050TX3-48C8, EOS-4.30.5M)
+!
+no aaa root
+!
+hostname DATACTR-OOBSW-AR01
+!
+switchport default mode routed
+!
+vlan internal order ascending range 3500 3750
+!
+vlan 510
+   name SERVER-510
+!
+vlan 511
+   name SERVER-511
+!
+vlan 512
+   name SERVER-512
+!
+vlan 513
+   name SERVER-513
+!
+vlan 514
+   name SERVER-514
+!
+vlan 515
+   name SERVER-515
+!
+vlan 4090
+   name INBAND-MGMT
+!
+
+dns domain campus.example.org
+!
+snmp-server ipv4 access-list SNMP-ALLOWED vrf MDMZ
+snmp-server contact NOC-555-0100
+snmp-server location DC OOB Arista SW01
+snmp-server vrf MDMZ local-interface Vlan4090
+!
+interface Ethernet49
+   description UPLINK-OOB
+   switchport mode trunk
+   switchport trunk allowed vlan 510,511,512,513,514,515,4090
+!
+interface Ethernet1
+   description SERVER-PORT
+   switchport access vlan 511
+   switchport
+!
+interface Ethernet2
+   description SERVER-PORT
+   switchport access vlan 512
+   switchport
+!
+interface Ethernet3
+   description SERVER-PORT
+   switchport access vlan 513
+   switchport
+!
+interface Ethernet4
+   description SERVER-PORT
+   switchport access vlan 514
+   switchport
+!
+interface Ethernet5
+   description SERVER-PORT
+   switchport access vlan 515
+   switchport
+!
+interface Ethernet6
+   description SERVER-PORT
+   switchport access vlan 510
+   switchport
+!
+interface Ethernet7
+   description SERVER-PORT
+   switchport access vlan 511
+   switchport
+!
+interface Ethernet8
+   description SERVER-PORT
+   switchport access vlan 512
+   switchport
+!
+interface Ethernet9
+   description SERVER-PORT
+   switchport access vlan 513
+   switchport
+!
+interface Ethernet10
+   description SERVER-PORT
+   switchport access vlan 514
+   switchport
+!
+interface Ethernet11
+   description SERVER-PORT
+   switchport access vlan 515
+   switchport
+!
+interface Ethernet12
+   description SERVER-PORT
+   switchport access vlan 510
+   switchport
+!
+interface Ethernet13
+   description SERVER-PORT
+   switchport access vlan 511
+   switchport
+!
+interface Ethernet14
+   description SERVER-PORT
+   switchport access vlan 512
+   switchport
+!
+interface Ethernet15
+   description SERVER-PORT
+   switchport access vlan 513
+   switchport
+!
+interface Ethernet16
+   description SERVER-PORT
+   switchport access vlan 514
+   switchport
+!
+interface Ethernet17
+   description SERVER-PORT
+   switchport access vlan 515
+   switchport
+!
+interface Ethernet18
+   description SERVER-PORT
+   switchport access vlan 510
+   switchport
+!
+interface Ethernet19
+   description SERVER-PORT
+   switchport access vlan 511
+   switchport
+!
+interface Ethernet20
+   description SERVER-PORT
+   switchport access vlan 512
+   switchport
+!
+interface Ethernet21
+   description SERVER-PORT
+   switchport access vlan 513
+   switchport
+!
+interface Ethernet22
+   description SERVER-PORT
+   switchport access vlan 514
+   switchport
+!
+interface Ethernet23
+   description SERVER-PORT
+   switchport access vlan 515
+   switchport
+!
+interface Ethernet24
+   description SERVER-PORT
+   switchport access vlan 510
+   switchport
+!
+interface Ethernet25
+   description SERVER-PORT
+   switchport access vlan 511
+   switchport
+!
+interface Ethernet26
+   description SERVER-PORT
+   switchport access vlan 512
+   switchport
+!
+interface Ethernet27
+   description SERVER-PORT
+   switchport access vlan 513
+   switchport
+!
+interface Ethernet28
+   description SERVER-PORT
+   switchport access vlan 514
+   switchport
+!
+interface Ethernet29
+   description SERVER-PORT
+   switchport access vlan 515
+   switchport
+!
+interface Ethernet30
+   description SERVER-PORT
+   switchport access vlan 510
+   switchport
+!
+interface Ethernet31
+   description SERVER-PORT
+   switchport access vlan 511
+   switchport
+!
+interface Ethernet32
+   description SERVER-PORT
+   switchport access vlan 512
+   switchport
+!
+interface Ethernet33
+   description SERVER-PORT
+   switchport access vlan 513
+   switchport
+!
+interface Ethernet34
+   description SERVER-PORT
+   switchport access vlan 514
+   switchport
+!
+interface Ethernet35
+   description SERVER-PORT
+   switchport access vlan 515
+   switchport
+!
+interface Ethernet36
+   description SERVER-PORT
+   switchport access vlan 510
+   switchport
+!
+interface Ethernet37
+   description SERVER-PORT
+   switchport access vlan 511
+   switchport
+!
+interface Ethernet38
+   description SERVER-PORT
+   switchport access vlan 512
+   switchport
+!
+interface Ethernet39
+   description SERVER-PORT
+   switchport access vlan 513
+   switchport
+!
+interface Ethernet40
+   description SERVER-PORT
+   switchport access vlan 514
+   switchport
+!
+interface Ethernet41
+   description SERVER-PORT
+   switchport access vlan 515
+   switchport
+!
+interface Ethernet42
+   description SERVER-PORT
+   switchport access vlan 510
+   switchport
+!
+interface Ethernet43
+   description SERVER-PORT
+   switchport access vlan 511
+   switchport
+!
+interface Ethernet44
+   description SERVER-PORT
+   switchport access vlan 512
+   switchport
+!
+interface Ethernet45
+   description SERVER-PORT
+   switchport access vlan 513
+   switchport
+!
+interface Ethernet46
+   description SERVER-PORT
+   switchport access vlan 514
+   switchport
+!
+interface Ethernet47
+   description SERVER-PORT
+   switchport access vlan 515
+   switchport
+!
+interface Ethernet48
+   description SERVER-PORT
+   switchport access vlan 510
+   switchport
+!
+
+interface Vlan4090
+   description INBAND-MGMT
+   vrf MDMZ
+   ip address 198.51.100.84/24
+!
+management api http-commands
+   no protocol http
+   protocol https
+   no shutdown
+   !
+   vrf MDMZ
+      no shutdown
+!
+management ssh
+   idle-timeout 20
+   authentication mode keyboard-interactive
+   vrf MDMZ
+      no shutdown
+ntp server 192.0.2.11 prefer
+ntp server 192.0.2.12
+!
+aaa group server tacacs+ TACACS_GROUP
+   server 192.0.2.11
+   server 192.0.2.12
+!
+tacacs-server host 192.0.2.11 key 7 xxxxxxxx
+tacacs-server host 192.0.2.12 key 7 xxxxxxxx
+!
+username admin privilege 15 role network-admin secret sha512 xxxxxxxx
+!
+banner login
+Authorized access only. Unauthorized use is prohibited.
+EOF
+!

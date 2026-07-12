@@ -1,0 +1,244 @@
+{
+  "run_timestamp": "2026-04-28T19:41:13.395470",
+  "ground_truth_dir": "ground_truth",
+  "predictions_dir": "output/evaluation/approach_a",
+  "subset": "input/subset_17.txt",
+  "overall": {
+    "n_evaluated": 17,
+    "n_missing_gt": 0,
+    "macro_f1": 0.998,
+    "macro_precision": 0.9999,
+    "macro_recall": 0.996,
+    "mean_object_completeness": 0.9577
+  },
+  "by_group": {
+    "access-nac": {
+      "n": 8,
+      "macro_f1": 0.9999,
+      "macro_precision": 0.9999,
+      "macro_recall": 0.9999,
+      "mean_object_completeness": 0.996
+    },
+    "arista-distribution": {
+      "n": 5,
+      "macro_f1": 0.9932,
+      "macro_precision": 1.0,
+      "macro_recall": 0.9866,
+      "mean_object_completeness": 0.8627
+    },
+    "oob-server": {
+      "n": 4,
+      "macro_f1": 1.0,
+      "macro_precision": 1.0,
+      "macro_recall": 1.0,
+      "mean_object_completeness": 1.0
+    }
+  },
+  "per_config": [
+    {
+      "f1": 0.9995,
+      "precision": 0.999,
+      "recall": 1.0,
+      "object_completeness": 1.0,
+      "gt_pairs": 2054,
+      "pred_pairs": 2056,
+      "tp": 2054,
+      "pred_source": "output/evaluation/approach_a/bldg-a-floor1-sw01/3_schema_normalizer.json",
+      "stem": "BLDG-A-FLOOR1-SW01",
+      "group": "access-nac"
+    },
+    {
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "object_completeness": 1.0,
+      "gt_pairs": 1412,
+      "pred_pairs": 1412,
+      "tp": 1412,
+      "pred_source": "output/evaluation/approach_a/bldg-a-floor2-sw01/3_schema_normalizer.json",
+      "stem": "BLDG-A-FLOOR2-SW01",
+      "group": "access-nac"
+    },
+    {
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "object_completeness": 1.0,
+      "gt_pairs": 769,
+      "pred_pairs": 769,
+      "tp": 769,
+      "pred_source": "output/evaluation/approach_a/bldg-a-floor3-sw01/3_schema_normalizer.json",
+      "stem": "BLDG-A-FLOOR3-SW01",
+      "group": "access-nac"
+    },
+    {
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "object_completeness": 1.0,
+      "gt_pairs": 577,
+      "pred_pairs": 577,
+      "tp": 577,
+      "pred_source": "output/evaluation/approach_a/bldg-b-floor1-sw01/3_schema_normalizer.json",
+      "stem": "BLDG-B-FLOOR1-SW01",
+      "group": "access-nac"
+    },
+    {
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "object_completeness": 1.0,
+      "gt_pairs": 572,
+      "pred_pairs": 572,
+      "tp": 572,
+      "pred_source": "output/evaluation/approach_a/bldg-b-floor2-sw01/3_schema_normalizer.json",
+      "stem": "BLDG-B-FLOOR2-SW01",
+      "group": "access-nac"
+    },
+    {
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "object_completeness": 1.0,
+      "gt_pairs": 1412,
+      "pred_pairs": 1412,
+      "tp": 1412,
+      "pred_source": "output/evaluation/approach_a/bldg-c-floor1-sw01/3_schema_normalizer.json",
+      "stem": "BLDG-C-FLOOR1-SW01",
+      "group": "access-nac"
+    },
+    {
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "object_completeness": 1.0,
+      "gt_pairs": 450,
+      "pred_pairs": 450,
+      "tp": 450,
+      "pred_source": "output/evaluation/approach_a/bldg-c-floor2-sw01/3_schema_normalizer.json",
+      "stem": "BLDG-C-FLOOR2-SW01",
+      "group": "access-nac"
+    },
+    {
+      "f1": 0.9998,
+      "precision": 1.0,
+      "recall": 0.9995,
+      "object_completeness": 0.9677,
+      "gt_pairs": 2101,
+      "pred_pairs": 2100,
+      "tp": 2100,
+      "pred_source": "output/evaluation/approach_a/bldg-fr-floor1-sw01/3_schema_normalizer.json",
+      "stem": "BLDG-FR-FLOOR1-SW01",
+      "group": "access-nac"
+    },
+    {
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "object_completeness": 1.0,
+      "gt_pairs": 597,
+      "pred_pairs": 597,
+      "tp": 597,
+      "pred_source": "output/evaluation/approach_a/datactr-oobsw-01/3_schema_normalizer.json",
+      "stem": "DATACTR-OOBSW-01",
+      "group": "oob-server"
+    },
+    {
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "object_completeness": 1.0,
+      "gt_pairs": 589,
+      "pred_pairs": 589,
+      "tp": 589,
+      "pred_source": "output/evaluation/approach_a/datactr-oobsw-02/3_schema_normalizer.json",
+      "stem": "DATACTR-OOBSW-02",
+      "group": "oob-server"
+    },
+    {
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "object_completeness": 1.0,
+      "gt_pairs": 589,
+      "pred_pairs": 589,
+      "tp": 589,
+      "pred_source": "output/evaluation/approach_a/datactr-oobsw-03/3_schema_normalizer.json",
+      "stem": "DATACTR-OOBSW-03",
+      "group": "oob-server"
+    },
+    {
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "object_completeness": 1.0,
+      "gt_pairs": 583,
+      "pred_pairs": 583,
+      "tp": 583,
+      "pred_source": "output/evaluation/approach_a/datactr-oobsw-04/3_schema_normalizer.json",
+      "stem": "DATACTR-OOBSW-04",
+      "group": "oob-server"
+    },
+    {
+      "f1": 0.9901,
+      "precision": 1.0,
+      "recall": 0.9804,
+      "object_completeness": 0.8235,
+      "gt_pairs": 153,
+      "pred_pairs": 150,
+      "tp": 150,
+      "pred_source": "output/evaluation/approach_a/campus-access-sw03/3_schema_normalizer.json",
+      "stem": "CAMPUS-ACCESS-SW03",
+      "group": "arista-distribution"
+    },
+    {
+      "f1": 0.9911,
+      "precision": 1.0,
+      "recall": 0.9824,
+      "object_completeness": 0.8235,
+      "gt_pairs": 170,
+      "pred_pairs": 167,
+      "tp": 167,
+      "pred_source": "output/evaluation/approach_a/campus-access-sw04/3_schema_normalizer.json",
+      "stem": "CAMPUS-ACCESS-SW04",
+      "group": "arista-distribution"
+    },
+    {
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "object_completeness": 1.0,
+      "gt_pairs": 861,
+      "pred_pairs": 861,
+      "tp": 861,
+      "pred_source": "output/evaluation/approach_a/campus-dist-sw01-original/3_schema_normalizer.json",
+      "stem": "CAMPUS-DIST-SW01-original",
+      "group": "arista-distribution"
+    },
+    {
+      "f1": 0.9919,
+      "precision": 1.0,
+      "recall": 0.984,
+      "object_completeness": 0.8333,
+      "gt_pairs": 187,
+      "pred_pairs": 184,
+      "tp": 184,
+      "pred_source": "output/evaluation/approach_a/campus-dist-sw01/3_schema_normalizer.json",
+      "stem": "CAMPUS-DIST-SW01",
+      "group": "arista-distribution"
+    },
+    {
+      "f1": 0.9931,
+      "precision": 1.0,
+      "recall": 0.9863,
+      "object_completeness": 0.8333,
+      "gt_pairs": 219,
+      "pred_pairs": 216,
+      "tp": 216,
+      "pred_source": "output/evaluation/approach_a/campus-dist-sw02/3_schema_normalizer.json",
+      "stem": "CAMPUS-DIST-SW02",
+      "group": "arista-distribution"
+    }
+  ],
+  "missing_ground_truth": []
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Expanded identical config comments for all listed interfaces"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "Extracted all VLANs from config and legacy parser"
+  },
+  {
+    "field": "hostname",
+    "confidence": 1,
+    "reason": "Directly from config and legacy parser"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "Parsed new-model AAA with local users and authentication"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.95,
+    "reason": "Extracted communities, hosts, location, contact from config"
+  }
+]

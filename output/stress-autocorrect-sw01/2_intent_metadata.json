@@ -1,0 +1,27 @@
+[
+  {
+    "field": "aaa.tacacs_servers.key",
+    "confidence": "low",
+    "reason": "passwords marked need_input"
+  },
+  {
+    "field": "aaa.server.radius.key",
+    "confidence": "low",
+    "reason": "passwords marked xxxxxxxx"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": "low",
+    "reason": "password marked need_input"
+  },
+  {
+    "field": "local_users.secret",
+    "confidence": "low",
+    "reason": "password marked need_input"
+  },
+  {
+    "field": "banners",
+    "confidence": "high",
+    "reason": "extracted from config comments"
+  }
+]

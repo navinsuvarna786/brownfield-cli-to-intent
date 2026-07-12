@@ -1,0 +1,132 @@
+========================================================================
+  APPROACH A — Rules-Only Baseline Evaluation
+  (no schema normalization, no inline validation guardrail)
+  Run: 2026-05-01T15:07:16.475904
+========================================================================
+
+Dataset : 97 configs (72 Cisco, 25 Arista, 0 LLM)
+Errors  : 0 pipeline errors
+
+VALIDITY RATES (post-hoc, over all configs):
+  Schema valid   : 100.0%  (97/97)
+  Semantic valid : 52.6%  (51/97)
+  YAML generated : 100.0%  (97/97)
+
+LATENCY: mean=0.037s  median=0.032s  stdev=0.018s  min=0.013s  max=0.102s
+
+BY DEPLOYMENT GROUP:
+  access-nac              n= 8  schema=100.0%  semantic=75.0%  lat=0.049s
+  arista-distribution     n=24  schema=100.0%  semantic=8.3%  lat=0.022s
+  building-simple         n= 1  schema=100.0%  semantic=0.0%  lat=0.034s
+  distribution            n= 6  schema=100.0%  semantic=100.0%  lat=0.023s
+  oob-server              n=29  schema=100.0%  semantic=51.7%  lat=0.033s
+  other                   n=24  schema=100.0%  semantic=70.8%  lat=0.058s
+  remote-edge             n= 5  schema=100.0%  semantic=100.0%  lat=0.025s
+
+SEMANTIC RULE VIOLATIONS (post-hoc, rules 101-120):
+  Rule 119: 1 config(s) affected
+  Rule 121: 38 config(s) affected
+  Rule 122: 8 config(s) affected
+
+PER-CONFIG DETAIL:
+  File                                  Grp                    Lat(s)   Sch   Sem  YAML  Rules
+  ---------------------------------------------------------------------------------------------------------
+  BLDG-A-FLOOR1-SW01.txt                access-nac              0.080    OK  FAIL   YES  122
+  BLDG-A-FLOOR2-SW01.txt                access-nac              0.053    OK    OK   YES  -
+  BLDG-A-FLOOR3-SW01.txt                access-nac              0.036    OK    OK   YES  -
+  BLDG-B-FLOOR1-SW01.txt                access-nac              0.033    OK    OK   YES  -
+  BLDG-B-FLOOR2-SW01.txt                access-nac              0.031    OK    OK   YES  -
+  BLDG-C-FLOOR1-SW01.txt                access-nac              0.055    OK    OK   YES  -
+  BLDG-C-FLOOR2-SW01.txt                access-nac              0.028    OK    OK   YES  -
+  BLDG-D-FLOOR1-SW01.txt                other                   0.069    OK  FAIL   YES  122
+  BLDG-D-FLOOR2-SW01.txt                other                   0.069    OK  FAIL   YES  122
+  BLDG-D-FLOOR3-SW01.txt                other                   0.053    OK    OK   YES  -
+  BLDG-E-FLOOR1-SW01.txt                other                   0.053    OK    OK   YES  -
+  BLDG-E-FLOOR2-SW01.txt                other                   0.053    OK    OK   YES  -
+  BLDG-E-FLOOR3-SW01.txt                other                   0.037    OK    OK   YES  -
+  BLDG-F-FLOOR1-SW01.txt                other                   0.070    OK  FAIL   YES  122
+  BLDG-F-FLOOR2-SW01.txt                other                   0.072    OK    OK   YES  -
+  BLDG-F-FLOOR3-SW01.txt                other                   0.053    OK    OK   YES  -
+  BLDG-FR-FLOOR1-SW01.txt               access-nac              0.079    OK  FAIL   YES  119,121
+  BLDG-G-FLOOR1-SW01.txt                other                   0.069    OK  FAIL   YES  122
+  BLDG-G-FLOOR2-SW01.txt                other                   0.053    OK    OK   YES  -
+  BLDG-G-FLOOR3-SW01.txt                other                   0.036    OK    OK   YES  -
+  BLDG-H-FLOOR1-SW01.txt                other                   0.071    OK  FAIL   YES  122
+  BLDG-H-FLOOR2-SW01.txt                other                   0.053    OK    OK   YES  -
+  BLDG-H-FLOOR3-SW01.txt                other                   0.036    OK    OK   YES  -
+  BLDG-J-FLOOR1-SW01.txt                other                   0.052    OK    OK   YES  -
+  BLDG-J-FLOOR2-SW01.txt                other                   0.054    OK    OK   YES  -
+  BLDG-K-FLOOR1-SW01.txt                other                   0.070    OK  FAIL   YES  122
+  BLDG-K-FLOOR2-SW01.txt                other                   0.070    OK    OK   YES  -
+  BLDG-L-FLOOR1-SW01.txt                other                   0.070    OK  FAIL   YES  122
+  BLDG-L-FLOOR2-SW01.txt                other                   0.055    OK    OK   YES  -
+  BLDG-M-FLOOR1-SW01.txt                other                   0.102    OK    OK   YES  -
+  BLDG-N-FLOOR1-SW01.txt                other                   0.031    OK    OK   YES  -
+  BLDG-P-FLOOR1-SW01.txt                other                   0.047    OK    OK   YES  -
+  BLDG-VA-FLOOR3-SW01.txt               building-simple         0.034    OK  FAIL   YES  121
+  CAMPUS-DIST-SW03.txt                  arista-distribution     0.019    OK    OK   YES  -
+  CAMPUS-DIST-SW04.txt                  arista-distribution     0.019    OK    OK   YES  -
+  DATACTR-OOBSW-01.txt                  oob-server              0.032    OK    OK   YES  -
+  DATACTR-OOBSW-02.txt                  oob-server              0.032    OK    OK   YES  -
+  DATACTR-OOBSW-03.txt                  oob-server              0.033    OK    OK   YES  -
+  DATACTR-OOBSW-04.txt                  oob-server              0.032    OK    OK   YES  -
+  DATACTR-OOBSW-05.txt                  oob-server              0.031    OK    OK   YES  -
+  DATACTR-OOBSW-DX01.txt                oob-server              0.036    OK  FAIL   YES  121
+  DATACTR-OOBSW-EA01.txt                oob-server              0.037    OK  FAIL   YES  121
+  DATACTR-OOBSW-EB01.txt                oob-server              0.036    OK  FAIL   YES  121
+  DATACTR-OOBSW-EB02.txt                oob-server              0.036    OK  FAIL   YES  121
+  DATACTR-OOBSW-EB03.txt                oob-server              0.035    OK  FAIL   YES  121
+  DATACTR-OOBSW-EB04.txt                oob-server              0.035    OK  FAIL   YES  121
+  DATACTR-OOBSW-EC01.txt                oob-server              0.037    OK  FAIL   YES  121
+  DATACTR-OOBSW-EC02.txt                oob-server              0.036    OK  FAIL   YES  121
+  DATACTR-OOBSW-EC03.txt                oob-server              0.037    OK  FAIL   YES  121
+  DATACTR-OOBSW-EF01.txt                oob-server              0.037    OK  FAIL   YES  121
+  DATACTR-OOBSW-EH01.txt                oob-server              0.036    OK  FAIL   YES  121
+  DATACTR-OOBSW-F01.txt                 oob-server              0.031    OK    OK   YES  -
+  DATACTR-OOBSW-F02.txt                 oob-server              0.031    OK    OK   YES  -
+  DATACTR-OOBSW-G01.txt                 oob-server              0.031    OK    OK   YES  -
+  DATACTR-OOBSW-G02.txt                 oob-server              0.030    OK    OK   YES  -
+  DATACTR-OOBSW-H01.txt                 oob-server              0.033    OK    OK   YES  -
+  DATACTR-OOBSW-H02.txt                 oob-server              0.031    OK    OK   YES  -
+  DATACTR-OOBSW-J01.txt                 oob-server              0.031    OK    OK   YES  -
+  DATACTR-OOBSW-J02.txt                 oob-server              0.031    OK    OK   YES  -
+  DATACTR-OOBSW-K01.txt                 oob-server              0.046    OK    OK   YES  -
+  DATACTR-OOBSW-K02.txt                 oob-server              0.045    OK    OK   YES  -
+  DIST-SW-BLDGA-01.txt                  distribution            0.037    OK    OK   YES  -
+  DIST-SW-BLDGB-01.txt                  distribution            0.024    OK    OK   YES  -
+  DIST-SW-BLDGC-01.txt                  distribution            0.019    OK    OK   YES  -
+  DIST-SW-BLDGD-01.txt                  distribution            0.020    OK    OK   YES  -
+  DIST-SW-BLDGE-01.txt                  distribution            0.020    OK    OK   YES  -
+  DIST-SW-BLDGF-01.txt                  distribution            0.019    OK    OK   YES  -
+  EDGE-SW-REMOTE-01.txt                 remote-edge             0.025    OK    OK   YES  -
+  EDGE-SW-REMOTE-02.txt                 remote-edge             0.028    OK    OK   YES  -
+  EDGE-SW-REMOTE-03.txt                 remote-edge             0.023    OK    OK   YES  -
+  EDGE-SW-REMOTE-04.txt                 remote-edge             0.023    OK    OK   YES  -
+  EDGE-SW-REMOTE-05.txt                 remote-edge             0.023    OK    OK   YES  -
+  CAMPUS-ACCESS-SW03.txt                arista-distribution     0.022    OK  FAIL   YES  121
+  CAMPUS-ACCESS-SW04.txt                arista-distribution     0.018    OK  FAIL   YES  121
+  CAMPUS-ACCESS-SW05.txt                arista-distribution     0.018    OK  FAIL   YES  121
+  CAMPUS-ACCESS-SW06.txt                arista-distribution     0.019    OK  FAIL   YES  121
+  CAMPUS-ACCESS-SW07.txt                arista-distribution     0.026    OK  FAIL   YES  121
+  CAMPUS-ACCESS-SW08.txt                arista-distribution     0.025    OK  FAIL   YES  121
+  CAMPUS-ACCESS-SW09.txt                arista-distribution     0.019    OK  FAIL   YES  121
+  CAMPUS-ACCESS-SW10.txt                arista-distribution     0.020    OK  FAIL   YES  121
+  CAMPUS-ACCESS-SW11.txt                arista-distribution     0.019    OK  FAIL   YES  121
+  CAMPUS-ACCESS-SW12.txt                arista-distribution     0.026    OK  FAIL   YES  121
+  CAMPUS-DIST-SW01-original.txt         arista-distribution     0.055    OK  FAIL   YES  121
+  CAMPUS-DIST-SW01.txt                  arista-distribution     0.020    OK  FAIL   YES  121
+  CAMPUS-DIST-SW02.txt                  arista-distribution     0.020    OK  FAIL   YES  121
+  CAMPUS-DIST-SW03.txt                  arista-distribution     0.022    OK  FAIL   YES  121
+  CAMPUS-DIST-SW04.txt                  arista-distribution     0.022    OK  FAIL   YES  121
+  CAMPUS-DIST-SW05.txt                  arista-distribution     0.021    OK  FAIL   YES  121
+  CAMPUS-DIST-SW06.txt                  arista-distribution     0.021    OK  FAIL   YES  121
+  CAMPUS-DIST-SW07.txt                  arista-distribution     0.021    OK  FAIL   YES  121
+  CAMPUS-DIST-SW08.txt                  arista-distribution     0.023    OK  FAIL   YES  121
+  CAMPUS-DIST-SW09.txt                  arista-distribution     0.021    OK  FAIL   YES  121
+  CAMPUS-SPINE-SW01.txt                 arista-distribution     0.013    OK  FAIL   YES  121
+  CAMPUS-SPINE-SW02.txt                 arista-distribution     0.013    OK  FAIL   YES  121
+  DATACTR-OOBSW-AR01.txt                oob-server              0.026    OK  FAIL   YES  121
+  DATACTR-OOBSW-AR02.txt                oob-server              0.025    OK  FAIL   YES  121
+  DATACTR-SPINE-SW01.txt                oob-server              0.014    OK  FAIL   YES  121
+
+========================================================================

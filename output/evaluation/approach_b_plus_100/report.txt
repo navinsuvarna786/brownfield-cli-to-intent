@@ -1,0 +1,130 @@
+========================================================================
+  APPROACH B+ — Schema-Constrained LLM + RAG Ablation
+  Model: gpt-4o-mini
+  Run:   2026-05-01T16:57:01.274065
+========================================================================
+
+Dataset: 97 configs
+Schema valid  : 85.6%  (83/97)
+Semantic valid: 0.0%  (0/97)
+
+EXPECTED INTERPRETATION (compare against paper Table 3):
+  Approach A (rules-only)     : semantic_valid = 44.1%
+  Approach B (zero-guardrail) : semantic_valid = 17.6%
+  Approach B+ (this run)      : semantic_valid = 0.0%
+  Approach C (full guardrails): semantic_valid = 97.1%
+
+  B--B+ gap = prompt engineering alone
+  B+--C gap = normalizer + semantic rules + retry loop
+
+BY GROUP:
+  access-nac              n= 9  schema=100.0%  semantic=0.0%  lat=20.9s
+  arista-distribution     n=24  schema=100.0%  semantic=0.0%  lat=21.3s
+  distribution            n= 6  schema=100.0%  semantic=0.0%  lat=13.5s
+  oob-server              n=29  schema=51.7%  semantic=0.0%  lat=37.7s
+  other                   n=24  schema=100.0%  semantic=0.0%  lat=27.7s
+  remote-edge             n= 5  schema=100.0%  semantic=0.0%  lat=25.4s
+
+RULE VIOLATIONS:
+  Rule 117: 1 configs
+  Rule 121: 97 configs
+
+PER-CONFIG:
+  BLDG-A-FLOOR1-SW01.txt                    11.5s  sch:OK  sem:FAIL  121
+  BLDG-A-FLOOR2-SW01.txt                    11.9s  sch:OK  sem:FAIL  121
+  BLDG-A-FLOOR3-SW01.txt                    23.9s  sch:OK  sem:FAIL  121
+  BLDG-B-FLOOR1-SW01.txt                    10.6s  sch:OK  sem:FAIL  121
+  BLDG-B-FLOOR2-SW01.txt                    44.9s  sch:OK  sem:FAIL  117,121
+  BLDG-C-FLOOR1-SW01.txt                    11.0s  sch:OK  sem:FAIL  121
+  BLDG-C-FLOOR2-SW01.txt                    26.8s  sch:OK  sem:FAIL  121
+  BLDG-D-FLOOR1-SW01.txt                    29.6s  sch:OK  sem:FAIL  121
+  BLDG-D-FLOOR2-SW01.txt                    29.3s  sch:OK  sem:FAIL  121
+  BLDG-D-FLOOR3-SW01.txt                    27.4s  sch:OK  sem:FAIL  121
+  BLDG-E-FLOOR1-SW01.txt                    27.7s  sch:OK  sem:FAIL  121
+  BLDG-E-FLOOR2-SW01.txt                    24.9s  sch:OK  sem:FAIL  121
+  BLDG-E-FLOOR3-SW01.txt                    27.1s  sch:OK  sem:FAIL  121
+  BLDG-F-FLOOR1-SW01.txt                    24.4s  sch:OK  sem:FAIL  121
+  BLDG-F-FLOOR2-SW01.txt                    31.4s  sch:OK  sem:FAIL  121
+  BLDG-F-FLOOR3-SW01.txt                    25.4s  sch:OK  sem:FAIL  121
+  BLDG-FR-FLOOR1-SW01.txt                   13.3s  sch:OK  sem:FAIL  121
+  BLDG-G-FLOOR1-SW01.txt                    27.8s  sch:OK  sem:FAIL  121
+  BLDG-G-FLOOR2-SW01.txt                    23.8s  sch:OK  sem:FAIL  121
+  BLDG-G-FLOOR3-SW01.txt                    23.7s  sch:OK  sem:FAIL  121
+  BLDG-H-FLOOR1-SW01.txt                    25.9s  sch:OK  sem:FAIL  121
+  BLDG-H-FLOOR2-SW01.txt                    27.1s  sch:OK  sem:FAIL  121
+  BLDG-H-FLOOR3-SW01.txt                    29.9s  sch:OK  sem:FAIL  121
+  BLDG-J-FLOOR1-SW01.txt                    26.9s  sch:OK  sem:FAIL  121
+  BLDG-J-FLOOR2-SW01.txt                    24.6s  sch:OK  sem:FAIL  121
+  BLDG-K-FLOOR1-SW01.txt                    26.0s  sch:OK  sem:FAIL  121
+  BLDG-K-FLOOR2-SW01.txt                    25.4s  sch:OK  sem:FAIL  121
+  BLDG-L-FLOOR1-SW01.txt                    24.0s  sch:OK  sem:FAIL  121
+  BLDG-L-FLOOR2-SW01.txt                    27.0s  sch:OK  sem:FAIL  121
+  BLDG-M-FLOOR1-SW01.txt                    25.8s  sch:OK  sem:FAIL  121
+  BLDG-N-FLOOR1-SW01.txt                    40.3s  sch:OK  sem:FAIL  121
+  BLDG-P-FLOOR1-SW01.txt                    40.0s  sch:OK  sem:FAIL  121
+  BLDG-VA-FLOOR3-SW01.txt                   34.4s  sch:OK  sem:FAIL  121
+  CAMPUS-DIST-SW03.txt                      13.1s  sch:OK  sem:FAIL  121
+  CAMPUS-DIST-SW04.txt                      12.8s  sch:OK  sem:FAIL  121
+  DATACTR-OOBSW-01.txt                      44.2s  sch:OK  sem:FAIL  121
+  DATACTR-OOBSW-02.txt                      10.1s  sch:OK  sem:FAIL  121
+  DATACTR-OOBSW-03.txt                      41.9s  sch:OK  sem:FAIL  121
+  DATACTR-OOBSW-04.txt                      39.8s  sch:FAIL  sem:FAIL  121
+  DATACTR-OOBSW-05.txt                      48.0s  sch:OK  sem:FAIL  121
+  DATACTR-OOBSW-DX01.txt                    46.0s  sch:FAIL  sem:FAIL  121
+  DATACTR-OOBSW-EA01.txt                    43.0s  sch:FAIL  sem:FAIL  121
+  DATACTR-OOBSW-EB01.txt                    37.9s  sch:FAIL  sem:FAIL  121
+  DATACTR-OOBSW-EB02.txt                    44.0s  sch:FAIL  sem:FAIL  121
+  DATACTR-OOBSW-EB03.txt                    42.1s  sch:FAIL  sem:FAIL  121
+  DATACTR-OOBSW-EB04.txt                    40.4s  sch:FAIL  sem:FAIL  121
+  DATACTR-OOBSW-EC01.txt                    41.2s  sch:FAIL  sem:FAIL  121
+  DATACTR-OOBSW-EC02.txt                    39.1s  sch:FAIL  sem:FAIL  121
+  DATACTR-OOBSW-EC03.txt                    38.7s  sch:FAIL  sem:FAIL  121
+  DATACTR-OOBSW-EF01.txt                    26.7s  sch:OK  sem:FAIL  121
+  DATACTR-OOBSW-EH01.txt                    29.9s  sch:OK  sem:FAIL  121
+  DATACTR-OOBSW-F01.txt                     47.9s  sch:OK  sem:FAIL  121
+  DATACTR-OOBSW-F02.txt                     40.0s  sch:OK  sem:FAIL  121
+  DATACTR-OOBSW-G01.txt                     38.6s  sch:OK  sem:FAIL  121
+  DATACTR-OOBSW-G02.txt                     39.9s  sch:FAIL  sem:FAIL  121
+  DATACTR-OOBSW-H01.txt                     38.1s  sch:OK  sem:FAIL  121
+  DATACTR-OOBSW-H02.txt                     39.9s  sch:FAIL  sem:FAIL  121
+  DATACTR-OOBSW-J01.txt                     38.2s  sch:FAIL  sem:FAIL  121
+  DATACTR-OOBSW-J02.txt                     40.2s  sch:FAIL  sem:FAIL  121
+  DATACTR-OOBSW-K01.txt                     37.8s  sch:OK  sem:FAIL  121
+  DATACTR-OOBSW-K02.txt                     41.9s  sch:OK  sem:FAIL  121
+  DIST-SW-BLDGA-01.txt                       8.9s  sch:OK  sem:FAIL  121
+  DIST-SW-BLDGB-01.txt                      26.3s  sch:OK  sem:FAIL  121
+  DIST-SW-BLDGC-01.txt                      12.2s  sch:OK  sem:FAIL  121
+  DIST-SW-BLDGD-01.txt                      11.9s  sch:OK  sem:FAIL  121
+  DIST-SW-BLDGE-01.txt                      10.6s  sch:OK  sem:FAIL  121
+  DIST-SW-BLDGF-01.txt                      11.2s  sch:OK  sem:FAIL  121
+  EDGE-SW-REMOTE-01.txt                     26.0s  sch:OK  sem:FAIL  121
+  EDGE-SW-REMOTE-02.txt                     22.2s  sch:OK  sem:FAIL  121
+  EDGE-SW-REMOTE-03.txt                     26.3s  sch:OK  sem:FAIL  121
+  EDGE-SW-REMOTE-04.txt                     27.0s  sch:OK  sem:FAIL  121
+  EDGE-SW-REMOTE-05.txt                     25.6s  sch:OK  sem:FAIL  121
+  CAMPUS-ACCESS-SW03.txt                    22.8s  sch:OK  sem:FAIL  121
+  CAMPUS-ACCESS-SW04.txt                    14.6s  sch:OK  sem:FAIL  121
+  CAMPUS-ACCESS-SW05.txt                    16.9s  sch:OK  sem:FAIL  121
+  CAMPUS-ACCESS-SW06.txt                    23.0s  sch:OK  sem:FAIL  121
+  CAMPUS-ACCESS-SW07.txt                    37.9s  sch:OK  sem:FAIL  121
+  CAMPUS-ACCESS-SW08.txt                    38.6s  sch:OK  sem:FAIL  121
+  CAMPUS-ACCESS-SW09.txt                    22.4s  sch:OK  sem:FAIL  121
+  CAMPUS-ACCESS-SW10.txt                    20.9s  sch:OK  sem:FAIL  121
+  CAMPUS-ACCESS-SW11.txt                    19.3s  sch:OK  sem:FAIL  121
+  CAMPUS-ACCESS-SW12.txt                    38.9s  sch:OK  sem:FAIL  121
+  CAMPUS-DIST-SW01-original.txt             20.0s  sch:OK  sem:FAIL  121
+  CAMPUS-DIST-SW01.txt                      15.2s  sch:OK  sem:FAIL  121
+  CAMPUS-DIST-SW02.txt                      21.6s  sch:OK  sem:FAIL  121
+  CAMPUS-DIST-SW03.txt                      22.4s  sch:OK  sem:FAIL  121
+  CAMPUS-DIST-SW04.txt                      22.5s  sch:OK  sem:FAIL  121
+  CAMPUS-DIST-SW05.txt                      22.9s  sch:OK  sem:FAIL  121
+  CAMPUS-DIST-SW06.txt                      21.2s  sch:OK  sem:FAIL  121
+  CAMPUS-DIST-SW07.txt                      23.0s  sch:OK  sem:FAIL  121
+  CAMPUS-DIST-SW08.txt                      20.7s  sch:OK  sem:FAIL  121
+  CAMPUS-DIST-SW09.txt                      22.5s  sch:OK  sem:FAIL  121
+  CAMPUS-SPINE-SW01.txt                      8.6s  sch:OK  sem:FAIL  121
+  CAMPUS-SPINE-SW02.txt                      9.8s  sch:OK  sem:FAIL  121
+  DATACTR-OOBSW-AR01.txt                    37.1s  sch:OK  sem:FAIL  121
+  DATACTR-OOBSW-AR02.txt                    32.6s  sch:OK  sem:FAIL  121
+  DATACTR-SPINE-SW01.txt                     8.0s  sch:OK  sem:FAIL  121
+========================================================================

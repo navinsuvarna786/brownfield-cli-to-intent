@@ -1,0 +1,2098 @@
+{
+  "intent": {
+    "hostname": "BLDG-A-FLOOR2-SW01",
+    "domain_name": "campus.example.edu",
+    "system": {
+      "timezone": {
+        "name": "CST",
+        "offset": "-6:00"
+      },
+      "summer_time": {
+        "name": "CDT",
+        "type": "recurring"
+      },
+      "spanning_tree": {
+        "mode": "rapid-pvst",
+        "extend_system_id": true
+      },
+      "errdisable_recovery": {
+        "causes": [
+          "security-violation",
+          "gbic-invalid",
+          "psecure-violation"
+        ],
+        "interval": 100
+      },
+      "local_users": [
+        {
+          "username": "xxxxxxxx",
+          "privilege": 15,
+          "password": {
+            "type": "7",
+            "value": "xxxxxxxx"
+          }
+        }
+      ],
+      "banners": [
+        "*************************************************************",
+        "* Authorized access only.                                   *",
+        "* Unauthorized use is prohibited and may be prosecuted.     *",
+        "*************************************************************"
+      ]
+    },
+    "management": {
+      "interfaces": [
+        {
+          "name": "GigabitEthernet0/0",
+          "vrf": "Mgmt-vrf",
+          "ip_address": null,
+          "negotiation": "auto"
+        }
+      ],
+      "vrfs": [
+        {
+          "name": "Mgmt-vrf"
+        }
+      ],
+      "http": {
+        "authentication": "aaa"
+      },
+      "ssh": {
+        "version": 2
+      },
+      "dns_servers": [
+        "192.0.2.50",
+        "192.0.2.60"
+      ]
+    },
+    "vlans": [
+      {
+        "id": 10,
+        "name": "DATA"
+      },
+      {
+        "id": 20,
+        "name": "VOICE"
+      },
+      {
+        "id": 40,
+        "name": "IOT"
+      },
+      {
+        "id": 900,
+        "name": "MGMT"
+      }
+    ],
+    "vrfs": [
+      {
+        "name": "Mgmt-vrf"
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Vlan900",
+        "type": "SVI",
+        "ip_address": "192.0.2.102",
+        "ip_mask": "255.255.255.0",
+        "ip_redirects": false
+      },
+      {
+        "name": "Port-channel10",
+        "type": "port-channel",
+        "description": "UPLINK-PC10",
+        "switchport_mode": "trunk",
+        "native_vlan": 900,
+        "allowed_vlans": [
+          10,
+          20,
+          40,
+          900
+        ]
+      },
+      {
+        "name": "TenGigabitEthernet1/1/1",
+        "type": "physical",
+        "description": "MEMBER-PC10",
+        "channel_group": {
+          "id": 10,
+          "mode": "active"
+        }
+      },
+      {
+        "name": "TenGigabitEthernet2/1/1",
+        "type": "physical",
+        "description": "MEMBER-PC10",
+        "channel_group": {
+          "id": 10,
+          "mode": "active"
+        }
+      },
+      {
+        "name": "GigabitEthernet1/0/1",
+        "type": "physical",
+        "switchport_mode": "access",
+        "access_vlan": 10,
+        "authentication": {
+          "host_mode": "multi-auth",
+          "order": [
+            "dot1x",
+            "mab"
+          ],
+          "priority": [
+            "dot1x",
+            "mab"
+          ],
+          "port_control": "auto",
+          "periodic": true,
+          "timer_reauthenticate": "server"
+        },
+        "mab": true,
+        "dot1x": {
+          "pae": "authenticator"
+        },
+        "logging_event_link_status": false,
+        "storm_control": {
+          "broadcast_level": "2.00",
+          "broadcast_level_shutdown": "1.00",
+          "multicast_level": "2.00",
+          "multicast_level_shutdown": "1.00"
+        },
+        "spanning_tree": {
+          "portfast": true,
+          "bpduguard": true
+        }
+      },
+      {
+        "name": "GigabitEthernet1/0/2",
+        "type": "physical",
+        "switchport_mode": "access",
+        "access_vlan": 10,
+        "authentication": {
+          "host_mode": "multi-auth",
+          "order": [
+            "dot1x",
+            "mab"
+          ],
+          "priority": [
+            "dot1x",
+            "mab"
+          ],
+          "port_control": "auto",
+          "periodic": true,
+          "timer_reauthenticate": "server"
+        },
+        "mab": true,
+        "dot1x": {
+          "pae": "authenticator"
+        },
+        "logging_event_link_status": false,
+        "storm_control": {
+          "broadcast_level": "2.00",
+          "broadcast_level_shutdown": "1.00",
+          "multicast_level": "2.00",
+          "multicast_level_shutdown": "1.00"
+        },
+        "spanning_tree": {
+          "portfast": true,
+          "bpduguard": true
+        }
+      },
+      {
+        "name": "GigabitEthernet1/0/3",
+        "type": "physical",
+        "switchport_mode": "access",
+        "access_vlan": 10,
+        "voice_vlan": 20,
+        "authentication": {
+          "host_mode": "multi-auth",
+          "order": [
+            "dot1x",
+            "mab"
+          ],
+          "priority": [
+            "dot1x",
+            "mab"
+          ],
+          "port_control": "auto",
+          "periodic": true,
+          "timer_reauthenticate": "server"
+        },
+        "mab": true,
+        "dot1x": {
+          "pae": "authenticator"
+        },
+        "logging_event_link_status": false,
+        "storm_control": {
+          "broadcast_level": "2.00",
+          "broadcast_level_shutdown": "1.00",
+          "multicast_level": "2.00",
+          "multicast_level_shutdown": "1.00"
+        },
+        "spanning_tree": {
+          "portfast": true,
+          "bpduguard": true
+        }
+      }
+    ],
+    "routes": [
+      {
+        "default_gateway": "192.0.2.254"
+      }
+    ],
+    "snmp": {
+      "communities": [
+        {
+          "name": "xxxxxxxx",
+          "access": "RO",
+          "acl": "13"
+        }
+      ],
+      "location": "Building-A Floor-2 IDF",
+      "contact": "NOC",
+      "chassis_id": "BLDG-A-FLOOR2-SW01",
+      "hosts": [
+        {
+          "ip": "192.0.2.24",
+          "version": "2c",
+          "community": "xxxxxxxx"
+        }
+      ]
+    },
+    "acls": [
+      {
+        "name": "13",
+        "type": "standard",
+        "entries": [
+          {
+            "sequence": 10,
+            "action": "permit",
+            "source": "192.0.2.11",
+            "log": false
+          },
+          {
+            "sequence": 20,
+            "action": "permit",
+            "source": "192.0.2.12",
+            "log": false
+          },
+          {
+            "sequence": 30,
+            "action": "permit",
+            "source": "192.0.2.0 0.0.0.255",
+            "log": false
+          }
+        ]
+      },
+      {
+        "name": "109",
+        "type": "extended",
+        "entries": [
+          {
+            "sequence": 10,
+            "action": "permit",
+            "protocol": "ip",
+            "source": "192.0.2.0 0.0.0.255",
+            "destination": "any",
+            "log": false
+          },
+          {
+            "sequence": 20,
+            "action": "permit",
+            "protocol": "ip",
+            "source": "host 192.0.2.31",
+            "destination": "any",
+            "log": false
+          }
+        ]
+      }
+    ],
+    "aaa": {
+      "enabled": true,
+      "groups": [
+        {
+          "name": "RADIUS_GROUP",
+          "type": "radius",
+          "servers": [
+            "radius-svr-01",
+            "radius-svr-02"
+          ],
+          "deadtime": 1
+        },
+        {
+          "name": "Tacacs_Group",
+          "type": "tacacs+",
+          "servers": [
+            "tacacs-svr-01",
+            "tacacs-svr-02"
+          ]
+        }
+      ],
+      "authentication": {
+        "login": {
+          "default": [
+            "local",
+            "group Tacacs_Group",
+            "enable"
+          ]
+        },
+        "dot1x": {
+          "default": [
+            "group RADIUS_GROUP"
+          ]
+        }
+      },
+      "authorization": {
+        "exec": {
+          "default": [
+            "group Tacacs_Group",
+            "local"
+          ]
+        },
+        "commands_15": {
+          "default": [
+            "group Tacacs_Group",
+            "if-authenticated"
+          ]
+        },
+        "network": {
+          "default": [
+            "group RADIUS_GROUP"
+          ]
+        }
+      },
+      "accounting": {
+        "dot1x": {
+          "default": [
+            "start-stop",
+            "group RADIUS_GROUP"
+          ]
+        },
+        "exec": {
+          "default": [
+            "start-stop",
+            "group Tacacs_Group"
+          ]
+        }
+      },
+      "servers": {
+        "radius_dynamic_author": {
+          "client": "192.0.2.31",
+          "server_key": "xxxxxxxx",
+          "port": 3799,
+          "auth_type": "all"
+        },
+        "tacacs": [
+          {
+            "name": "tacacs-svr-01",
+            "address": "192.0.2.11",
+            "key": "xxxxxxxx",
+            "timeout": 3
+          },
+          {
+            "name": "tacacs-svr-02",
+            "address": "192.0.2.12",
+            "key": "xxxxxxxx",
+            "timeout": 3
+          }
+        ],
+        "radius": [
+          {
+            "name": "radius-svr-01",
+            "address": "192.0.2.31",
+            "auth_port": 1645,
+            "acct_port": 1646,
+            "key": "xxxxxxxx"
+          },
+          {
+            "name": "radius-svr-02",
+            "address": "192.0.2.32",
+            "auth_port": 1645,
+            "acct_port": 1646,
+            "key": "xxxxxxxx"
+          }
+        ]
+      },
+      "logging": {
+        "hosts": [
+          "192.0.2.21",
+          "192.0.2.22",
+          "192.0.2.23"
+        ]
+      },
+      "ntp": {
+        "servers": [
+          {
+            "ip": "192.0.2.11",
+            "prefer": true
+          },
+          {
+            "ip": "192.0.2.12"
+          }
+        ]
+      },
+      "stack": {
+        "is_stack": true,
+        "member_count": 2,
+        "switches": [
+          {
+            "id": 1,
+            "priority": 15
+          },
+          {
+            "id": 2,
+            "priority": 15
+          }
+        ],
+        "master_switch": 1
+      }
+    },
+    "metadata": [
+      {
+        "field": "interfaces",
+        "confidence": 0.95,
+        "reason": "Explicit config and legacy parser match for all interfaces including multi-interface identical configs"
+      },
+      {
+        "field": "aaa",
+        "confidence": 0.9,
+        "reason": "Complete AAA groups, servers, and policies parsed from config and legacy output"
+      },
+      {
+        "field": "acls",
+        "confidence": 0.9,
+        "reason": "Full ACL entries extracted from config and legacy parser"
+      },
+      {
+        "field": "vlans",
+        "confidence": 0.95,
+        "reason": "All VLANs with IDs and names explicitly configured"
+      },
+      {
+        "field": "stack_info",
+        "confidence": 0.9,
+        "reason": "Stack info from legacy parser matches config switch provision commands"
+      }
+    ]
+  },
+  "access_interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "switch": 1,
+      "module": 0,
+      "port": 1,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "switch": 1,
+      "module": 0,
+      "port": 2,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "switch": 1,
+      "module": 0,
+      "port": 3,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "switch": 1,
+      "module": 0,
+      "port": 4,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "switch": 1,
+      "module": 0,
+      "port": 5,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "switch": 1,
+      "module": 0,
+      "port": 6,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "switch": 1,
+      "module": 0,
+      "port": 7,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "switch": 1,
+      "module": 0,
+      "port": 8,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "switch": 1,
+      "module": 0,
+      "port": 9,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "switch": 1,
+      "module": 0,
+      "port": 10,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/11",
+      "switch": 1,
+      "module": 0,
+      "port": 11,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/12",
+      "switch": 1,
+      "module": 0,
+      "port": 12,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/13",
+      "switch": 1,
+      "module": 0,
+      "port": 13,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/14",
+      "switch": 1,
+      "module": 0,
+      "port": 14,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/15",
+      "switch": 1,
+      "module": 0,
+      "port": 15,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/16",
+      "switch": 1,
+      "module": 0,
+      "port": 16,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/17",
+      "switch": 1,
+      "module": 0,
+      "port": 17,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/18",
+      "switch": 1,
+      "module": 0,
+      "port": 18,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/19",
+      "switch": 1,
+      "module": 0,
+      "port": 19,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/20",
+      "switch": 1,
+      "module": 0,
+      "port": 20,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/21",
+      "switch": 1,
+      "module": 0,
+      "port": 21,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/22",
+      "switch": 1,
+      "module": 0,
+      "port": 22,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/23",
+      "switch": 1,
+      "module": 0,
+      "port": 23,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/24",
+      "switch": 1,
+      "module": 0,
+      "port": 24,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/25",
+      "switch": 1,
+      "module": 0,
+      "port": 25,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/26",
+      "switch": 1,
+      "module": 0,
+      "port": 26,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/27",
+      "switch": 1,
+      "module": 0,
+      "port": 27,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/28",
+      "switch": 1,
+      "module": 0,
+      "port": 28,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/29",
+      "switch": 1,
+      "module": 0,
+      "port": 29,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/30",
+      "switch": 1,
+      "module": 0,
+      "port": 30,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/31",
+      "switch": 1,
+      "module": 0,
+      "port": 31,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/32",
+      "switch": 1,
+      "module": 0,
+      "port": 32,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/33",
+      "switch": 1,
+      "module": 0,
+      "port": 33,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/34",
+      "switch": 1,
+      "module": 0,
+      "port": 34,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/35",
+      "switch": 1,
+      "module": 0,
+      "port": 35,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/36",
+      "switch": 1,
+      "module": 0,
+      "port": 36,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/37",
+      "switch": 1,
+      "module": 0,
+      "port": 37,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/38",
+      "switch": 1,
+      "module": 0,
+      "port": 38,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/39",
+      "switch": 1,
+      "module": 0,
+      "port": 39,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/40",
+      "switch": 1,
+      "module": 0,
+      "port": 40,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/41",
+      "switch": 1,
+      "module": 0,
+      "port": 41,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/42",
+      "switch": 1,
+      "module": 0,
+      "port": 42,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/43",
+      "switch": 1,
+      "module": 0,
+      "port": 43,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/44",
+      "switch": 1,
+      "module": 0,
+      "port": 44,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/45",
+      "switch": 1,
+      "module": 0,
+      "port": 45,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/46",
+      "switch": 1,
+      "module": 0,
+      "port": 46,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/47",
+      "switch": 1,
+      "module": 0,
+      "port": 47,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/48",
+      "switch": 1,
+      "module": 0,
+      "port": 48,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/1",
+      "switch": 2,
+      "module": 0,
+      "port": 1,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/2",
+      "switch": 2,
+      "module": 0,
+      "port": 2,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/3",
+      "switch": 2,
+      "module": 0,
+      "port": 3,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/4",
+      "switch": 2,
+      "module": 0,
+      "port": 4,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/5",
+      "switch": 2,
+      "module": 0,
+      "port": 5,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/6",
+      "switch": 2,
+      "module": 0,
+      "port": 6,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/7",
+      "switch": 2,
+      "module": 0,
+      "port": 7,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/8",
+      "switch": 2,
+      "module": 0,
+      "port": 8,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/9",
+      "switch": 2,
+      "module": 0,
+      "port": 9,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/10",
+      "switch": 2,
+      "module": 0,
+      "port": 10,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/11",
+      "switch": 2,
+      "module": 0,
+      "port": 11,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/12",
+      "switch": 2,
+      "module": 0,
+      "port": 12,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/13",
+      "switch": 2,
+      "module": 0,
+      "port": 13,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/14",
+      "switch": 2,
+      "module": 0,
+      "port": 14,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/15",
+      "switch": 2,
+      "module": 0,
+      "port": 15,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/16",
+      "switch": 2,
+      "module": 0,
+      "port": 16,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/17",
+      "switch": 2,
+      "module": 0,
+      "port": 17,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/18",
+      "switch": 2,
+      "module": 0,
+      "port": 18,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/19",
+      "switch": 2,
+      "module": 0,
+      "port": 19,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/20",
+      "switch": 2,
+      "module": 0,
+      "port": 20,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/21",
+      "switch": 2,
+      "module": 0,
+      "port": 21,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/22",
+      "switch": 2,
+      "module": 0,
+      "port": 22,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/23",
+      "switch": 2,
+      "module": 0,
+      "port": 23,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/24",
+      "switch": 2,
+      "module": 0,
+      "port": 24,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/25",
+      "switch": 2,
+      "module": 0,
+      "port": 25,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/26",
+      "switch": 2,
+      "module": 0,
+      "port": 26,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/27",
+      "switch": 2,
+      "module": 0,
+      "port": 27,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/28",
+      "switch": 2,
+      "module": 0,
+      "port": 28,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/29",
+      "switch": 2,
+      "module": 0,
+      "port": 29,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/30",
+      "switch": 2,
+      "module": 0,
+      "port": 30,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/31",
+      "switch": 2,
+      "module": 0,
+      "port": 31,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/32",
+      "switch": 2,
+      "module": 0,
+      "port": 32,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/33",
+      "switch": 2,
+      "module": 0,
+      "port": 33,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/34",
+      "switch": 2,
+      "module": 0,
+      "port": 34,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/35",
+      "switch": 2,
+      "module": 0,
+      "port": 35,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/36",
+      "switch": 2,
+      "module": 0,
+      "port": 36,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/37",
+      "switch": 2,
+      "module": 0,
+      "port": 37,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/38",
+      "switch": 2,
+      "module": 0,
+      "port": 38,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/39",
+      "switch": 2,
+      "module": 0,
+      "port": 39,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/40",
+      "switch": 2,
+      "module": 0,
+      "port": 40,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/41",
+      "switch": 2,
+      "module": 0,
+      "port": 41,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/42",
+      "switch": 2,
+      "module": 0,
+      "port": 42,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/43",
+      "switch": 2,
+      "module": 0,
+      "port": 43,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/44",
+      "switch": 2,
+      "module": 0,
+      "port": 44,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/45",
+      "switch": 2,
+      "module": 0,
+      "port": 45,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/46",
+      "switch": 2,
+      "module": 0,
+      "port": 46,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/47",
+      "switch": 2,
+      "module": 0,
+      "port": 47,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    },
+    {
+      "name": "GigabitEthernet2/0/48",
+      "switch": 2,
+      "module": 0,
+      "port": 48,
+      "config": {
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true
+      }
+    }
+  ],
+  "uplinks": [
+    {
+      "type": "port-channel",
+      "port_channel_id": 10,
+      "description": "UPLINK-PC10",
+      "allowed_vlans": [
+        10,
+        20,
+        40,
+        900
+      ],
+      "native_vlan": 900,
+      "member_interfaces": [
+        {
+          "name": "TenGigabitEthernet1/1/1",
+          "lacp_mode": "active"
+        },
+        {
+          "name": "TenGigabitEthernet2/1/1",
+          "lacp_mode": "active"
+        }
+      ]
+    }
+  ],
+  "vlans": [
+    {
+      "id": 10,
+      "name": "DATA"
+    },
+    {
+      "id": 20,
+      "name": "VOICE"
+    },
+    {
+      "id": 40,
+      "name": "IOT"
+    },
+    {
+      "id": 900,
+      "name": "MGMT"
+    }
+  ],
+  "acls": [
+    {
+      "name": "13",
+      "type": "standard",
+      "entries": [
+        {
+          "action": "permit",
+          "source": "192.0.2.11",
+          "log": false,
+          "sequence": 10
+        },
+        {
+          "action": "permit",
+          "source": "192.0.2.12",
+          "log": false,
+          "sequence": 20
+        },
+        {
+          "action": "permit",
+          "source": "192.0.2.0 0.0.0.255",
+          "log": false,
+          "sequence": 30
+        }
+      ],
+      "is_numbered": false
+    },
+    {
+      "name": "109",
+      "type": "extended",
+      "entries": [
+        {
+          "action": "permit",
+          "protocol": "ip",
+          "log": false,
+          "source": "192.0.2.0 0.0.0.255",
+          "destination": "any",
+          "sequence": 10
+        },
+        {
+          "action": "permit",
+          "protocol": "ip",
+          "log": false,
+          "source": "host 192.0.2.31",
+          "destination": "any",
+          "sequence": 20
+        }
+      ],
+      "is_numbered": false
+    }
+  ],
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_group_name": "Tacacs_Group",
+    "tacacs_servers": [
+      {
+        "name": "tacacs-svr-01",
+        "ip": "192.0.2.11",
+        "key": "need_input"
+      },
+      {
+        "name": "tacacs-svr-02",
+        "ip": "192.0.2.12",
+        "key": "need_input"
+      }
+    ]
+  },
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "13",
+    "location": "Building-A Floor-2 IDF",
+    "contact": "NOC",
+    "chassis_id": "BLDG-A-FLOOR2-SW01",
+    "enable_traps": true
+  },
+  "local_users": [
+    {
+      "name": "xxxxxxxx",
+      "password": "need_input",
+      "privilege": 15
+    }
+  ],
+  "logging_hosts": [
+    "192.0.2.21",
+    "192.0.2.22",
+    "192.0.2.23"
+  ],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "dns_servers": [
+    "192.0.2.50",
+    "192.0.2.60",
+    "192.0.2.50",
+    "192.0.2.60"
+  ],
+  "vrf_config": {
+    "name": "Mgmt-vrf",
+    "rd": "",
+    "rt_export": "",
+    "rt_import": ""
+  },
+  "hostname": "BLDG-A-FLOOR2-SW01",
+  "domain_name": "campus.example.edu"
+}

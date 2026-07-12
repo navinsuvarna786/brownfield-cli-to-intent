@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Expanded identical config for multiple interfaces"
+  },
+  {
+    "field": "acls",
+    "confidence": 0.99,
+    "reason": "Extracted all ACL entries fully from config and legacy parser"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.98,
+    "reason": "Parsed AAA groups, servers, and policies from config"
+  },
+  {
+    "field": "stack_info",
+    "confidence": 0.99,
+    "reason": "Stack info from legacy parser matches config"
+  },
+  {
+    "field": "vlans",
+    "confidence": 0.99,
+    "reason": "All VLANs extracted from config and legacy parser"
+  }
+]

@@ -1,0 +1,17 @@
+{# VLAN Configuration - Pipe delimited format for CC compatibility #}
+{# Format: vlan_id|vlan_name #}
+{%- set vlan_list = vlans.split(',') if vlans else [] %}
+{%- for vlan_entry in vlan_list %}
+{%- set vlan_parts = vlan_entry.strip().split('|') %}
+{%- if vlan_parts|length >= 1 and vlan_parts[0] %}
+{%- set vlan_id = vlan_parts[0] %}
+{%- set vlan_name = vlan_parts[1] if vlan_parts|length > 1 and vlan_parts[1] else '' %}
+vlan {{ vlan_id }}
+{%- if vlan_name %}
+ name {{ vlan_name }}
+{%- endif %}
+{%- endif %}
+{%- endfor %}
+
+vtp domain {{ vtp_domain }}
+vtp mode {{ vtp_mode | default('transparent') }}

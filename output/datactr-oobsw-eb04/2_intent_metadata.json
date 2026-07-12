@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Identical config for multiple interfaces expanded"
+  },
+  {
+    "field": "vlans",
+    "confidence": 0.9,
+    "reason": "VLAN names from config and legacy parser merged"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "Tacacs servers and groups extracted from config"
+  },
+  {
+    "field": "acls",
+    "confidence": 0.95,
+    "reason": "Full ACL entries extracted without truncation"
+  },
+  {
+    "field": "management",
+    "confidence": 0.9,
+    "reason": "VRF, HTTP, SSH, and mgmt interfaces parsed from config"
+  }
+]

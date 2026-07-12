@@ -1,0 +1,11 @@
+{
+  "valid": true,
+  "score": 0.9,
+  "issues": [
+    {
+      "field": "Rule 119 (Verify ACL names referenced in SNMP configuration are defined in the ACL table)",
+      "message": "snmp_config.acl_ro: references ACL 'snmp-server' which is not defined in the ACL table",
+      "severity": "high"
+    }
+  ]
+}

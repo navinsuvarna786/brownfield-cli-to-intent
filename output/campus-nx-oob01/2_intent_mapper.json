@@ -1,0 +1,525 @@
+{
+  "hostname": "CAMPUS-NX-OOB01",
+  "domain_name": "campus.example.edu",
+  "system": {
+    "spanning_tree_mode": "rapid-pvst",
+    "local_users": [
+      {
+        "name": "admin",
+        "password": "xxxxxxx",
+        "role": "network-admin"
+      }
+    ],
+    "banners": [
+      "AUTHORIZED ACCESS ONLY. Data center OOB management switch."
+    ]
+  },
+  "management": {
+    "interfaces": [
+      {
+        "name": "Mgmt0",
+        "vrf": "management",
+        "ip_address": "192.0.2.160/24"
+      }
+    ],
+    "vrfs": [
+      {
+        "name": "management"
+      }
+    ],
+    "ssh": {
+      "enabled": true
+    }
+  },
+  "vlans": [
+    {
+      "id": 1,
+      "name": "VLAN_0001"
+    },
+    {
+      "id": 500,
+      "name": "OOB-MGMT"
+    },
+    {
+      "id": 501,
+      "name": "OOB-PDU"
+    },
+    {
+      "id": 502,
+      "name": "SERVER-VLAN-502"
+    },
+    {
+      "id": 503,
+      "name": "SERVER-VLAN-503"
+    },
+    {
+      "id": 504,
+      "name": "SERVER-VLAN-504"
+    },
+    {
+      "id": 505,
+      "name": "SERVER-VLAN-505"
+    },
+    {
+      "id": 506,
+      "name": "SERVER-VLAN-506"
+    },
+    {
+      "id": 507,
+      "name": "SERVER-VLAN-507"
+    },
+    {
+      "id": 508,
+      "name": "SERVER-VLAN-508"
+    },
+    {
+      "id": 509,
+      "name": "SERVER-VLAN-509"
+    },
+    {
+      "id": 510,
+      "name": "SERVER-VLAN-510"
+    },
+    {
+      "id": 511,
+      "name": "SERVER-VLAN-511"
+    },
+    {
+      "id": 512,
+      "name": "SERVER-VLAN-512"
+    },
+    {
+      "id": 513,
+      "name": "SERVER-VLAN-513"
+    },
+    {
+      "id": 514,
+      "name": "SERVER-VLAN-514"
+    },
+    {
+      "id": 515,
+      "name": "SERVER-VLAN-515"
+    },
+    {
+      "id": 3069,
+      "name": "NATIVE"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "GigabitEthernet1/0/49",
+      "description": "UPLINK-TRUNK-1",
+      "mode": "trunk",
+      "native_vlan": 3069,
+      "allowed_vlans": [
+        500,
+        501,
+        502,
+        503,
+        504,
+        505,
+        506,
+        507,
+        508,
+        509,
+        510,
+        511,
+        512,
+        513,
+        514,
+        515,
+        3069
+      ],
+      "spanning_tree_port_type": "network",
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/50",
+      "description": "UPLINK-TRUNK-2",
+      "mode": "trunk",
+      "native_vlan": 3069,
+      "allowed_vlans": [
+        500,
+        501,
+        502,
+        503,
+        504,
+        505,
+        506,
+        507,
+        508,
+        509,
+        510,
+        511,
+        512,
+        513,
+        514,
+        515,
+        3069
+      ],
+      "spanning_tree_port_type": "network",
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/1",
+      "description": "SERVER-MGMT-PORT",
+      "mode": "access",
+      "access_vlan": 500,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00",
+        "multicast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "description": "SERVER-MGMT-PORT",
+      "mode": "access",
+      "access_vlan": 500,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00",
+        "multicast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "description": "PDU-PORT",
+      "mode": "access",
+      "access_vlan": 501,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "description": "PDU-PORT",
+      "mode": "access",
+      "access_vlan": 501,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "description": "SERVER-DATA-PORT",
+      "mode": "access",
+      "access_vlan": 502,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "description": "SERVER-DATA-PORT",
+      "mode": "access",
+      "access_vlan": 503,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "description": "SERVER-DATA-PORT",
+      "mode": "access",
+      "access_vlan": 504,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "description": "SERVER-DATA-PORT",
+      "mode": "access",
+      "access_vlan": 505,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "description": "SERVER-DATA-PORT",
+      "mode": "access",
+      "access_vlan": 506,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "description": "SERVER-DATA-PORT",
+      "mode": "access",
+      "access_vlan": 507,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/11",
+      "description": "SERVER-DATA-PORT",
+      "mode": "access",
+      "access_vlan": 508,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/12",
+      "description": "SERVER-DATA-PORT",
+      "mode": "access",
+      "access_vlan": 509,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/13",
+      "description": "SERVER-DATA-PORT",
+      "mode": "access",
+      "access_vlan": 510,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/14",
+      "description": "SERVER-DATA-PORT",
+      "mode": "access",
+      "access_vlan": 511,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/15",
+      "description": "SERVER-DATA-PORT",
+      "mode": "access",
+      "access_vlan": 512,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/16",
+      "description": "SERVER-DATA-PORT",
+      "mode": "access",
+      "access_vlan": 513,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/17",
+      "description": "SERVER-DATA-PORT",
+      "mode": "access",
+      "access_vlan": 514,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/18",
+      "description": "SERVER-DATA-PORT",
+      "mode": "access",
+      "access_vlan": 515,
+      "spanning_tree_port_type": "edge",
+      "spanning_tree_bpduguard": true,
+      "storm_control": {
+        "broadcast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "Vlan500",
+      "ip_address": "192.0.2.160/24",
+      "shutdown": false
+    }
+  ],
+  "routes": [
+    {
+      "vrf": "management",
+      "prefix": "0.0.0.0/0",
+      "next_hop": "192.0.2.254"
+    }
+  ],
+  "snmp": {
+    "communities": [
+      {
+        "name": "xxxxxxxx",
+        "access": "ro",
+        "acl": "SNMP-ALLOWED"
+      }
+    ],
+    "location": "Data-Center-Rack-A OOB-Switch",
+    "contact": "NOC-555-0100",
+    "enable_traps": true
+  },
+  "acls": [
+    {
+      "name": "SNMP-ALLOWED",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.11",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "192.0.2.12",
+          "log": false
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "192.0.2.0/24",
+          "log": false
+        },
+        {
+          "sequence": 40,
+          "action": "deny",
+          "source": "any",
+          "log": false
+        }
+      ]
+    }
+  ],
+  "aaa": {
+    "tacacs_servers": [
+      {
+        "host": "192.0.2.11",
+        "key": "xxxxxxx"
+      },
+      {
+        "host": "192.0.2.12",
+        "key": "xxxxxxx"
+      }
+    ],
+    "groups": [
+      {
+        "name": "TACACS_GROUP",
+        "servers": [
+          "192.0.2.11",
+          "192.0.2.12"
+        ]
+      }
+    ],
+    "authentication": {
+      "login": {
+        "default": [
+          "TACACS_GROUP",
+          "local"
+        ]
+      }
+    },
+    "authorization": {
+      "exec": {
+        "default": [
+          "TACACS_GROUP",
+          "local"
+        ]
+      }
+    }
+  },
+  "logging": {
+    "hosts": [
+      "192.0.2.17"
+    ]
+  },
+  "ntp": {
+    "servers": [
+      {
+        "address": "192.0.2.11",
+        "prefer": true
+      },
+      {
+        "address": "192.0.2.12"
+      }
+    ]
+  },
+  "dns_servers": [
+    "192.0.2.15",
+    "192.0.2.16"
+  ],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "access_interfaces": [],
+  "uplinks": [],
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "SNMP-ALLOWED",
+    "location": "Data-Center-Rack-A OOB-Switch",
+    "contact": "NOC-555-0100",
+    "enable_traps": true
+  },
+  "local_users": [
+    {
+      "name": "admin",
+      "password": "need_input"
+    }
+  ],
+  "logging_hosts": [],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": null
+}

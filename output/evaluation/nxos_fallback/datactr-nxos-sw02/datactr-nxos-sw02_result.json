@@ -1,0 +1,23 @@
+{
+  "config": "DATACTR-NXOS-SW02.txt",
+  "stem": "datactr-nxos-sw02",
+  "role": "oob-server",
+  "hostname_extracted": "DATACTR-NXOS-SW02",
+  "vendor_tag": "unknown",
+  "routing_path": [
+    "Legacy Parser",
+    "Intent Mapper",
+    "Schema Normalizer",
+    "Validator",
+    "Generator"
+  ],
+  "validator_iterations": 1,
+  "outcome": "auto_corrected",
+  "schema_valid": true,
+  "semantic_valid": true,
+  "rules_fired": [],
+  "validation_score": 1.0,
+  "latency_ms": 14518,
+  "has_ground_truth": false,
+  "error": null
+}

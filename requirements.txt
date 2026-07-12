@@ -1,0 +1,13 @@
+langchain
+langchain-openai
+langchain-chroma
+langgraph
+chromadb
+pandas
+pydantic
+pyyaml
+python-dotenv
+netmiko
+paramiko
+langchain-huggingface
+yamale

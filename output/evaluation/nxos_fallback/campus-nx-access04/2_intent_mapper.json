@@ -1,0 +1,341 @@
+{
+  "hostname": "CAMPUS-NX-ACCESS04",
+  "domain_name": "campus.example.edu",
+  "system": {
+    "spanning_tree_mode": "rapid-pvst",
+    "errdisable_recovery": {
+      "causes": [
+        "dot1x",
+        "bpduguard"
+      ],
+      "interval": 300
+    },
+    "local_users": [
+      {
+        "name": "admin",
+        "password": "xxxxxxx",
+        "role": "network-admin"
+      }
+    ],
+    "banners": [
+      "************************************************************************** AUTHORIZED ACCESS ONLY \u2014 campus.example.edu Unauthorized use is strictly prohibited. All sessions are recorded.**************************************************************************"
+    ]
+  },
+  "management": {
+    "interfaces": [
+      {
+        "name": "Mgmt0",
+        "vrf": "management",
+        "ip_address": "192.0.2.124/24"
+      }
+    ],
+    "vrfs": [
+      {
+        "name": "management"
+      }
+    ]
+  },
+  "vlans": [
+    {
+      "id": 1,
+      "name": "VLAN_0001"
+    },
+    {
+      "id": 10,
+      "name": "DATA"
+    },
+    {
+      "id": 20,
+      "name": "VOICE"
+    },
+    {
+      "id": 50,
+      "name": "MEDICAL-DEVICES"
+    },
+    {
+      "id": 60,
+      "name": "BIOMEDICAL"
+    },
+    {
+      "id": 900,
+      "name": "MGMT"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "management"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "description": "CLINICIAN-PORT",
+      "switchport_mode": "access",
+      "access_vlan": 10,
+      "voice_vlan": 20,
+      "spanning_tree_port_type": "edge",
+      "bpduguard": "enable",
+      "storm_control": {
+        "broadcast": "20.00 10.00",
+        "multicast": "20.00 10.00"
+      },
+      "authentication": "port-control auto",
+      "dot1x": "pae authenticator",
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "description": "CLINICIAN-PORT",
+      "switchport_mode": "access",
+      "access_vlan": 10,
+      "voice_vlan": 20,
+      "spanning_tree_port_type": "edge",
+      "bpduguard": "enable",
+      "storm_control": {
+        "broadcast": "20.00 10.00",
+        "multicast": "20.00 10.00"
+      },
+      "authentication": "port-control auto",
+      "dot1x": "pae authenticator",
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "description": "MEDICAL-DEVICE-PORT",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "spanning_tree_port_type": "edge",
+      "bpduguard": "enable",
+      "storm_control": {
+        "broadcast": "5.00 2.00"
+      },
+      "authentication": "port-control auto",
+      "dot1x": "pae authenticator",
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "description": "MEDICAL-DEVICE-PORT",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "spanning_tree_port_type": "edge",
+      "bpduguard": "enable",
+      "storm_control": {
+        "broadcast": "5.00 2.00"
+      },
+      "authentication": "port-control auto",
+      "dot1x": "pae authenticator",
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "description": "BIOMEDICAL-DEVICE",
+      "switchport_mode": "access",
+      "access_vlan": 60,
+      "spanning_tree_port_type": "edge",
+      "bpduguard": "enable",
+      "storm_control": {
+        "broadcast": "3.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/47",
+      "description": "UPLINK-DIST-A",
+      "switchport_mode": "trunk",
+      "trunk_allowed_vlans": [
+        10,
+        20,
+        50,
+        60,
+        900
+      ],
+      "spanning_tree_port_type": "network",
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/48",
+      "description": "UPLINK-DIST-B",
+      "switchport_mode": "trunk",
+      "trunk_allowed_vlans": [
+        10,
+        20,
+        50,
+        60,
+        900
+      ],
+      "spanning_tree_port_type": "network",
+      "shutdown": false
+    },
+    {
+      "name": "Vlan900",
+      "ip_address": "192.0.2.124/24",
+      "shutdown": false
+    }
+  ],
+  "routes": [
+    {
+      "vrf": "management",
+      "prefix": "0.0.0.0/0",
+      "next_hop": "192.0.2.254"
+    }
+  ],
+  "snmp": {
+    "communities": [
+      {
+        "name": "xxxxxxxx",
+        "access": "ro",
+        "acl": "SNMP-ALLOWED"
+      }
+    ],
+    "location": "Medical-Center Floor-3 Wing-B",
+    "contact": "NOC-555-0100",
+    "enable_traps": true
+  },
+  "acls": [
+    {
+      "name": "SNMP-ALLOWED",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.11",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "192.0.2.12",
+          "log": false
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "192.0.2.0/24",
+          "log": false
+        },
+        {
+          "sequence": 40,
+          "action": "deny",
+          "source": "any",
+          "log": false
+        }
+      ]
+    }
+  ],
+  "aaa": {
+    "tacacs_servers": [
+      {
+        "host": "192.0.2.11",
+        "key": "xxxxxxx"
+      },
+      {
+        "host": "192.0.2.12",
+        "key": "xxxxxxx"
+      }
+    ],
+    "radius_servers": [
+      {
+        "host": "192.0.2.13",
+        "key": "xxxxxxx",
+        "auth_port": 1812,
+        "acct_port": 1813
+      },
+      {
+        "host": "192.0.2.14",
+        "key": "xxxxxxx",
+        "auth_port": 1812,
+        "acct_port": 1813
+      }
+    ],
+    "groups": [
+      {
+        "name": "TACACS_GROUP",
+        "servers": [
+          "192.0.2.11",
+          "192.0.2.12"
+        ]
+      },
+      {
+        "name": "RADIUS_GROUP",
+        "servers": [
+          "192.0.2.13",
+          "192.0.2.14"
+        ]
+      }
+    ],
+    "authentication": {
+      "login": {
+        "default": [
+          "TACACS_GROUP",
+          "local"
+        ]
+      },
+      "dot1x": {
+        "default": [
+          "RADIUS_GROUP"
+        ]
+      }
+    },
+    "authorization": {
+      "exec": {
+        "default": [
+          "TACACS_GROUP",
+          "local"
+        ]
+      }
+    }
+  },
+  "logging": {
+    "hosts": [
+      "192.0.2.17",
+      "192.0.2.18"
+    ]
+  },
+  "ntp": {
+    "servers": [
+      {
+        "address": "192.0.2.11",
+        "prefer": true
+      },
+      {
+        "address": "192.0.2.12"
+      }
+    ]
+  },
+  "dns_servers": [
+    "192.0.2.15",
+    "192.0.2.16"
+  ],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "access_interfaces": [],
+  "uplinks": [],
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "SNMP-ALLOWED",
+    "location": "Medical-Center Floor-3 Wing-B",
+    "contact": "NOC-555-0100",
+    "enable_traps": true
+  },
+  "local_users": [
+    {
+      "name": "admin",
+      "password": "need_input"
+    }
+  ],
+  "logging_hosts": [],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": null
+}

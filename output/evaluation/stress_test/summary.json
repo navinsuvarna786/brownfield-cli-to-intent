@@ -1,0 +1,133 @@
+{
+  "generated_at": "2026-04-29T11:57:39.916681",
+  "total_configs": 5,
+  "total_elapsed_s": 73.9,
+  "results": [
+    {
+      "config": "STRESS-UNKNOWN-VENDOR-SW01",
+      "vendor_tag": "unknown",
+      "hostname_extracted": "STRESS-UNKNOWN-VENDOR-SW01",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "auto_corrections": [
+        "rule121: stp_mode='need_input'",
+        "rule121: logging_hosts=['need_input']",
+        "rule121: errdisable_config.causes=['need_input']"
+      ],
+      "outcome": "passed_first_try",
+      "valid": true,
+      "validation_score": 1.0,
+      "issues_flagged": [],
+      "latency_ms": 15177,
+      "error": null
+    },
+    {
+      "config": "STRESS-SNMPV3-ONLY-SW01",
+      "vendor_tag": "unknown",
+      "hostname_extracted": "STRESS-SNMPV3-ONLY-SW01",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "auto_corrections": [
+        "rule121: stp_mode='need_input'",
+        "rule121: errdisable_config.causes=['need_input']"
+      ],
+      "outcome": "passed_first_try",
+      "valid": true,
+      "validation_score": 1.0,
+      "issues_flagged": [],
+      "latency_ms": 8950,
+      "error": null
+    },
+    {
+      "config": "STRESS-DEGRADED-CISCO-SW01",
+      "vendor_tag": "cisco",
+      "hostname_extracted": "unknown",
+      "routing_path": [
+        "Legacy Parser",
+        "Cisco Mapper",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Cisco Mapper",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator"
+      ],
+      "validator_iterations": 2,
+      "auto_corrections": [],
+      "outcome": "escalated_abort",
+      "valid": false,
+      "validation_score": 0.8,
+      "issues_flagged": [
+        "[error] hostname: Hostname is missing"
+      ],
+      "latency_ms": 25386,
+      "error": null
+    },
+    {
+      "config": "STRESS-AUTOCORRECT-SW01",
+      "vendor_tag": "cisco",
+      "hostname_extracted": "STRESS-AUTOCORRECT-SW01",
+      "routing_path": [
+        "Legacy Parser",
+        "Cisco Mapper",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "auto_corrections": [
+        "rule121: ntp_servers=['need_input']",
+        "rule121: dns_servers=['need_input']",
+        "rule121: stp_mode='need_input'",
+        "rule121: errdisable_config.causes=['need_input']"
+      ],
+      "outcome": "passed_first_try",
+      "valid": true,
+      "validation_score": 1.0,
+      "issues_flagged": [],
+      "latency_ms": 13790,
+      "error": null
+    },
+    {
+      "config": "STRESS-MAXDEGRADED-SW01",
+      "vendor_tag": "unknown",
+      "hostname_extracted": "unknown",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator"
+      ],
+      "validator_iterations": 3,
+      "auto_corrections": [],
+      "outcome": "escalated_abort",
+      "valid": false,
+      "validation_score": 0.8,
+      "issues_flagged": [
+        "[error] hostname: Hostname is missing"
+      ],
+      "latency_ms": 10554,
+      "error": null
+    }
+  ]
+}

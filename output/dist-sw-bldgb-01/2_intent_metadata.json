@@ -1,0 +1,27 @@
+[
+  {
+    "field": "enable_secret",
+    "confidence": "high",
+    "reason": "extracted from enable secret line with encryption"
+  },
+  {
+    "field": "local_users",
+    "confidence": "high",
+    "reason": "username line with encrypted password"
+  },
+  {
+    "field": "tacacs_servers",
+    "confidence": "high",
+    "reason": "tacacs server config with IP and key"
+  },
+  {
+    "field": "interfaces_access",
+    "confidence": "high",
+    "reason": "explicit identical config comment for 24 interfaces"
+  },
+  {
+    "field": "vlans",
+    "confidence": "high",
+    "reason": "explicit vlan config lines in device config"
+  }
+]

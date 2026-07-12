@@ -1,0 +1,146 @@
+{# Management VRF Configuration - Only if management VRF is configured #}
+{%- if mgmt_vrf_config %}
+{%- set vrf_parts = mgmt_vrf_config.strip().split('|') %}
+{%- if vrf_parts|length >= 1 and vrf_parts[0] %}
+{%- set vrf_name = vrf_parts[0] %}
+{%- set vrf_rd = vrf_parts[1] if vrf_parts|length > 1 and vrf_parts[1] else '' %}
+{%- set vrf_rt_export = vrf_parts[2] if vrf_parts|length > 2 and vrf_parts[2] else '' %}
+{%- set vrf_rt_import = vrf_parts[3] if vrf_parts|length > 3 and vrf_parts[3] else '' %}
+vrf definition {{ vrf_name }}
+{%- if vrf_rd %}
+ rd {{ vrf_rd }}
+{%- endif %}
+{%- if vrf_rt_export %}
+ route-target export {{ vrf_rt_export }}
+{%- endif %}
+{%- if vrf_rt_import %}
+ route-target import {{ vrf_rt_import }}
+{%- endif %}
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+{%- endif %}
+{%- endif %}
+
+{# Enable IP Routing #}
+ip routing
+
+{# Management Interface Configuration - Only if management is enabled #}
+{%- if enable_management and enable_management != 'false' %}
+{# Management Interface Configuration - Either GigE0/0 or VLAN based #}
+{%- if mgmt_interface_type == 'ethernet' %}
+{# Ethernet Management Port (GigabitEthernet0/0) #}
+interface {{ mgmt_interface | default('GigabitEthernet0/0') }}
+ description {{ mgmt_description | default('MGMT INTERFACE') }}
+{%- if mgmt_vrf_config %}
+{%- set vrf_parts = mgmt_vrf_config.strip().split('|') %}
+{%- if vrf_parts|length >= 1 and vrf_parts[0] %}
+ vrf forwarding {{ vrf_parts[0] }}
+{%- endif %}
+{%- endif %}
+ ip address {{ mgmt_ip_address }} {{ mgmt_subnet_mask }}
+ negotiation auto
+ no shutdown
+
+{%- elif mgmt_interface_type == 'vlan' %}
+{# VLAN-based Management #}
+{# Create Management VLAN #}
+vlan {{ mgmt_vlan_id }}
+ name {{ mgmt_vlan_name | default('MGMT') }}
+
+interface Vlan{{ mgmt_vlan_id }}
+ description {{ mgmt_description | default('Management VLAN Interface') }}
+{%- if mgmt_vrf_config %}
+{%- set vrf_parts = mgmt_vrf_config.strip().split('|') %}
+{%- if vrf_parts|length >= 1 and vrf_parts[0] %}
+ vrf forwarding {{ vrf_parts[0] }}
+{%- endif %}
+{%- endif %}
+ ip address {{ mgmt_ip_address }} {{ mgmt_subnet_mask }}
+ no ip route-cache
+ no shutdown
+
+{# Disable default VLAN1 #}
+interface Vlan1
+ no ip address
+ no ip route-cache
+ shutdown
+
+{# Default Gateway for VLAN-based management #}
+{%- if mgmt_vrf_config %}
+{%- set vrf_parts = mgmt_vrf_config.strip().split('|') %}
+{%- if vrf_parts|length >= 1 and vrf_parts[0] %}
+ip route vrf {{ vrf_parts[0] }} 0.0.0.0 0.0.0.0 {{ mgmt_default_gateway }}
+{%- endif %}
+{%- else %}
+{# Remove any existing default route from PnP before adding management default route #}
+no ip route 0.0.0.0 0.0.0.0
+ip route 0.0.0.0 0.0.0.0 {{ mgmt_default_gateway }}
+{%- endif %}
+{%- endif %}
+{%- endif %}
+
+{# HTTP/HTTPS Configuration #}
+{%- if http_server and http_server != 'false' %}
+ip http server
+{%- else %}
+no ip http server
+{%- endif %}
+{%- if https_server and https_server != 'false' %}
+ip http secure-server
+{%- else %}
+no ip http secure-server
+{%- endif %}
+ip http authentication aaa
+ip http client connection forceclose
+
+{# Source Interface Configuration - Based on management type #}
+{%- if enable_management and enable_management != 'false' %}
+{%- if mgmt_interface_type == 'ethernet' %}
+{%- set source_interface = mgmt_interface | default('GigabitEthernet0/0') %}
+{%- elif mgmt_interface_type == 'vlan' %}
+{%- set source_interface = 'Vlan' + mgmt_vlan_id|string %}
+{%- endif %}
+
+{%- if ssh_source_interface and ssh_source_interface != 'false' %}
+
+ip ssh source-interface {{ source_interface }}
+ip ssh version 2
+{%- endif %}
+{%- if snmp_source_interface and snmp_source_interface != 'false' %}
+snmp-server source-interface traps {{ source_interface }}
+snmp-server source-interface inform {{ source_interface }}
+{%- endif %}
+{%- if ntp_source_interface and ntp_source_interface != 'false' %}
+ntp source {{ source_interface }}
+{%- endif %}
+{%- if tacacs_source_interface and tacacs_source_interface != 'false' %}
+ip tacacs source-interface {{ source_interface }}
+{%- endif %}
+{%- if radius_source_interface and radius_source_interface != 'false' %}
+ip radius source-interface {{ source_interface }}
+{%- endif %}
+{%- endif %}
+
+{# Forwarding Protocol #}
+ip forward-protocol nd
+
+{# Line Configuration #}
+line con 0
+ stopbits 1
+ logging synchronous
+line vty 0 4
+ logging synchronous
+ transport input ssh
+line vty 5 15
+ logging synchronous
+ transport input ssh
+
+
+{# Privilege Levels #}
+privilege exec level 1 show startup-config
+privilege exec level 1 show running-config
+privilege exec level 1 show

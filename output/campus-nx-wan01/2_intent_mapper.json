@@ -1,0 +1,235 @@
+{
+  "hostname": "CAMPUS-NX-WAN01",
+  "domain_name": "campus.example.edu",
+  "system": {
+    "spanning_tree_mode": "rapid-pvst",
+    "local_users": [
+      {
+        "name": "admin",
+        "password": "xxxxxxx",
+        "role": "network-admin"
+      }
+    ]
+  },
+  "management": {
+    "interfaces": [
+      {
+        "name": "GigabitEthernet1/0/0",
+        "vrf": "management",
+        "ip_address": "192.0.2.180/24"
+      }
+    ]
+  },
+  "vlans": [
+    {
+      "id": 1,
+      "name": "VLAN_0001"
+    },
+    {
+      "id": 900,
+      "name": "MGMT"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "management"
+    },
+    {
+      "name": "INTERNET"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "description": "WAN-CIRCUIT-PROVIDER-A",
+      "type": "routed",
+      "vrf": "INTERNET",
+      "ip_address": "203.0.113.2/30",
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "description": "WAN-CIRCUIT-PROVIDER-B-BACKUP",
+      "type": "routed",
+      "vrf": "INTERNET",
+      "ip_address": "203.0.113.6/30",
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "description": "CAMPUS-CORE-UPLINK",
+      "type": "routed",
+      "ip_address": "10.0.0.2/30",
+      "ospf_network": "point-to-point",
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "description": "CAMPUS-CORE-UPLINK-REDUNDANT",
+      "type": "routed",
+      "ip_address": "10.0.0.6/30",
+      "ospf_network": "point-to-point",
+      "shutdown": false
+    },
+    {
+      "name": "Vlan900",
+      "description": "MGMT-SVI",
+      "type": "SVI",
+      "ip_address": "192.0.2.180/24",
+      "shutdown": false,
+      "vrf": "INTERNET"
+    }
+  ],
+  "routes": [
+    {
+      "vrf": "management",
+      "prefix": "0.0.0.0/0",
+      "next_hop": "192.0.2.254"
+    },
+    {
+      "vrf": "INTERNET",
+      "prefix": "0.0.0.0/0",
+      "next_hop": "203.0.113.1"
+    }
+  ],
+  "snmp": {
+    "communities": [
+      {
+        "name": "xxxxxxxx",
+        "access": "ro",
+        "acl": "SNMP-ALLOWED"
+      }
+    ],
+    "location": "Campus-WAN-Aggregation-Router",
+    "contact": "NOC-555-0100",
+    "enable_traps": true
+  },
+  "acls": [
+    {
+      "name": "SNMP-ALLOWED",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.11",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "192.0.2.12",
+          "log": false
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "192.0.2.0/24",
+          "log": false
+        },
+        {
+          "sequence": 40,
+          "action": "deny",
+          "source": "any",
+          "log": false
+        }
+      ]
+    }
+  ],
+  "aaa": {
+    "tacacs_servers": [
+      {
+        "host": "192.0.2.11",
+        "key": "xxxxxxx"
+      },
+      {
+        "host": "192.0.2.12",
+        "key": "xxxxxxx"
+      }
+    ],
+    "groups": [
+      {
+        "name": "TACACS_GROUP",
+        "servers": [
+          "192.0.2.11",
+          "192.0.2.12"
+        ]
+      }
+    ],
+    "authentication": {
+      "login": {
+        "default": [
+          "TACACS_GROUP",
+          "local"
+        ]
+      }
+    },
+    "authorization": {
+      "exec": {
+        "default": [
+          "TACACS_GROUP",
+          "local"
+        ]
+      }
+    },
+    "accounting": {
+      "exec": {
+        "default": [
+          "start-stop",
+          "TACACS_GROUP"
+        ]
+      }
+    }
+  },
+  "logging": {
+    "hosts": [
+      "192.0.2.17",
+      "192.0.2.18"
+    ]
+  },
+  "ntp": {
+    "servers": [
+      {
+        "address": "192.0.2.11",
+        "prefer": true
+      },
+      {
+        "address": "192.0.2.12"
+      }
+    ]
+  },
+  "dns_servers": [
+    "192.0.2.15",
+    "192.0.2.16"
+  ],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "access_interfaces": [],
+  "uplinks": [],
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "SNMP-ALLOWED",
+    "location": "Campus-WAN-Aggregation-Router",
+    "contact": "NOC-555-0100",
+    "enable_traps": true
+  },
+  "local_users": [
+    {
+      "name": "admin",
+      "password": "need_input"
+    }
+  ],
+  "logging_hosts": [],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": null
+}

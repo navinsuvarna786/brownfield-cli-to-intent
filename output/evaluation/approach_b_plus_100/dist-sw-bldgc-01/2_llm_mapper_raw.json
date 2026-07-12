@@ -1,0 +1,196 @@
+{
+  "hostname": "DIST-SW-BLDGC-01",
+  "domain_name": "campus.example.edu",
+  "stack_info": {
+    "is_stack": true,
+    "member_count": 2,
+    "master_switch": 1
+  },
+  "pnp_config": {
+    "pnp_vlan_id": 900,
+    "pnp_vlan_name": "MGMT",
+    "pnp_vlan_network_add": "192.0.2.201",
+    "pnp_vlan_network_mask": "255.255.255.0",
+    "pnp_vlan_default_gateway": "192.0.2.254"
+  },
+  "vlans": [
+    {
+      "id": 10,
+      "name": "DATA"
+    },
+    {
+      "id": 20,
+      "name": "VOICE"
+    },
+    {
+      "id": 30,
+      "name": "GUEST"
+    },
+    {
+      "id": 40,
+      "name": "IOT"
+    },
+    {
+      "id": 900,
+      "name": "MGMT"
+    }
+  ],
+  "acls": [
+    {
+      "name": "13",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.0 0.0.0.255",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "deny",
+          "source": "any",
+          "log": true
+        }
+      ]
+    }
+  ],
+  "uplinks": [
+    {
+      "type": "port-channel",
+      "name": "Port-channel10",
+      "allowed_vlans": [
+        10,
+        20,
+        30,
+        40,
+        900
+      ],
+      "native_vlan": 900
+    },
+    {
+      "type": "port-channel",
+      "name": "Port-channel11",
+      "allowed_vlans": [
+        10,
+        20,
+        30,
+        40,
+        900
+      ],
+      "native_vlan": 900
+    },
+    {
+      "type": "port-channel",
+      "name": "Port-channel12",
+      "allowed_vlans": [
+        10,
+        20,
+        30,
+        40,
+        900
+      ],
+      "native_vlan": 900
+    }
+  ],
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "13",
+    "location": "Campus Distribution Building-C",
+    "contact": "NOC-555-0100",
+    "chassis_id": "need_input",
+    "enable_traps": false
+  },
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": [
+      {
+        "name": "tacacs-svr-01",
+        "ip": "need_input",
+        "key": "need_input"
+      },
+      {
+        "name": "tacacs-svr-02",
+        "ip": "need_input",
+        "key": "need_input"
+      }
+    ],
+    "radius_servers": [
+      {
+        "name": "radius-svr-01",
+        "ip": "need_input",
+        "key": "need_input"
+      },
+      {
+        "name": "radius-svr-02",
+        "ip": "need_input",
+        "key": "need_input"
+      }
+    ]
+  },
+  "nac_config": {
+    "dot1x_enabled": true,
+    "radius_group_name": "RADIUS_GROUP",
+    "radius_servers": []
+  },
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "dns_servers": [
+    "192.0.2.50",
+    "192.0.2.60"
+  ],
+  "stp_mode": "rapid-pvst",
+  "errdisable_config": {
+    "causes": [
+      "security-violation",
+      "gbic-invalid",
+      "psecure-violation"
+    ],
+    "recovery_interval": 100
+  },
+  "access_interfaces": [],
+  "routed_interfaces": [
+    {
+      "name": "Vlan900",
+      "vrf": "Mgmt-vrf",
+      "ipv4": {
+        "address": "192.0.2.201",
+        "netmask": "255.255.255.0"
+      }
+    },
+    {
+      "name": "Vlan10",
+      "vrf": "need_input",
+      "ipv4": {
+        "address": "192.0.2.201",
+        "netmask": "255.255.255.0"
+      }
+    },
+    {
+      "name": "Vlan20",
+      "vrf": "need_input",
+      "ipv4": {
+        "address": "192.0.2.202",
+        "netmask": "255.255.255.0"
+      }
+    },
+    {
+      "name": "Vlan30",
+      "vrf": "need_input",
+      "ipv4": {
+        "address": "192.0.2.203",
+        "netmask": "255.255.255.0"
+      }
+    },
+    {
+      "name": "Vlan40",
+      "vrf": "need_input",
+      "ipv4": {
+        "address": "192.0.2.204",
+        "netmask": "255.255.255.0"
+      }
+    }
+  ]
+}

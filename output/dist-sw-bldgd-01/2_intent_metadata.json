@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Mapped TenGigabitEthernet to GigabitEthernet1/0/x for Catalyst 9300"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "Extracted full AAA groups and policies from config"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "All VLANs explicitly defined in config and legacy parser"
+  },
+  {
+    "field": "acls",
+    "confidence": 1,
+    "reason": "Complete ACL entries extracted from config and legacy parser"
+  },
+  {
+    "field": "stack_info",
+    "confidence": 1,
+    "reason": "Stack info from legacy parser matches config"
+  }
+]

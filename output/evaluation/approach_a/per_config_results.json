@@ -1,0 +1,3070 @@
+[
+  {
+    "file": "BLDG-A-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "access-nac",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0804,
+    "stage_times": {
+      "parse_map_s": 0.0398,
+      "generate_s": 0.0405
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "122"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-A-FLOOR2-SW01.txt",
+    "vendor": "cisco",
+    "group": "access-nac",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.053,
+    "stage_times": {
+      "parse_map_s": 0.0216,
+      "generate_s": 0.0314
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-A-FLOOR3-SW01.txt",
+    "vendor": "cisco",
+    "group": "access-nac",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0361,
+    "stage_times": {
+      "parse_map_s": 0.0127,
+      "generate_s": 0.0234
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-B-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "access-nac",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0326,
+    "stage_times": {
+      "parse_map_s": 0.0112,
+      "generate_s": 0.0214
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-B-FLOOR2-SW01.txt",
+    "vendor": "cisco",
+    "group": "access-nac",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0312,
+    "stage_times": {
+      "parse_map_s": 0.0098,
+      "generate_s": 0.0214
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-C-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "access-nac",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0546,
+    "stage_times": {
+      "parse_map_s": 0.0216,
+      "generate_s": 0.033
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-C-FLOOR2-SW01.txt",
+    "vendor": "cisco",
+    "group": "access-nac",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0276,
+    "stage_times": {
+      "parse_map_s": 0.0085,
+      "generate_s": 0.0191
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-D-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0692,
+    "stage_times": {
+      "parse_map_s": 0.0298,
+      "generate_s": 0.0394
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "122"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-D-FLOOR2-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0691,
+    "stage_times": {
+      "parse_map_s": 0.0298,
+      "generate_s": 0.0393
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "122"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-D-FLOOR3-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0526,
+    "stage_times": {
+      "parse_map_s": 0.0215,
+      "generate_s": 0.0311
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-E-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0528,
+    "stage_times": {
+      "parse_map_s": 0.0218,
+      "generate_s": 0.031
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-E-FLOOR2-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0529,
+    "stage_times": {
+      "parse_map_s": 0.0218,
+      "generate_s": 0.0311
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-E-FLOOR3-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0372,
+    "stage_times": {
+      "parse_map_s": 0.0128,
+      "generate_s": 0.0244
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-F-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0705,
+    "stage_times": {
+      "parse_map_s": 0.0305,
+      "generate_s": 0.04
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "122"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-F-FLOOR2-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0716,
+    "stage_times": {
+      "parse_map_s": 0.0317,
+      "generate_s": 0.0399
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-F-FLOOR3-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0528,
+    "stage_times": {
+      "parse_map_s": 0.0216,
+      "generate_s": 0.0312
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-FR-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "access-nac",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0793,
+    "stage_times": {
+      "parse_map_s": 0.0379,
+      "generate_s": 0.0413
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "119",
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-G-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0692,
+    "stage_times": {
+      "parse_map_s": 0.0301,
+      "generate_s": 0.0391
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "122"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-G-FLOOR2-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0527,
+    "stage_times": {
+      "parse_map_s": 0.0214,
+      "generate_s": 0.0313
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-G-FLOOR3-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0357,
+    "stage_times": {
+      "parse_map_s": 0.0126,
+      "generate_s": 0.023
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-H-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0713,
+    "stage_times": {
+      "parse_map_s": 0.0312,
+      "generate_s": 0.04
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "122"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-H-FLOOR2-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0526,
+    "stage_times": {
+      "parse_map_s": 0.0213,
+      "generate_s": 0.0312
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-H-FLOOR3-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0358,
+    "stage_times": {
+      "parse_map_s": 0.0128,
+      "generate_s": 0.023
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-J-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0522,
+    "stage_times": {
+      "parse_map_s": 0.021,
+      "generate_s": 0.0312
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-J-FLOOR2-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0539,
+    "stage_times": {
+      "parse_map_s": 0.0211,
+      "generate_s": 0.0327
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-K-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0698,
+    "stage_times": {
+      "parse_map_s": 0.0305,
+      "generate_s": 0.0393
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "122"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-K-FLOOR2-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0705,
+    "stage_times": {
+      "parse_map_s": 0.0311,
+      "generate_s": 0.0394
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-L-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0695,
+    "stage_times": {
+      "parse_map_s": 0.0302,
+      "generate_s": 0.0393
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "122"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-L-FLOOR2-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0549,
+    "stage_times": {
+      "parse_map_s": 0.0228,
+      "generate_s": 0.0321
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-M-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.1016,
+    "stage_times": {
+      "parse_map_s": 0.0129,
+      "generate_s": 0.0887
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-N-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0306,
+    "stage_times": {
+      "parse_map_s": 0.0095,
+      "generate_s": 0.0211
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-P-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "other",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0472,
+    "stage_times": {
+      "parse_map_s": 0.0174,
+      "generate_s": 0.0298
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "BLDG-VA-FLOOR3-SW01.txt",
+    "vendor": "cisco",
+    "group": "building-simple",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0336,
+    "stage_times": {
+      "parse_map_s": 0.0119,
+      "generate_s": 0.0216
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-DIST-SW03.txt",
+    "vendor": "cisco",
+    "group": "arista-distribution",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0192,
+    "stage_times": {
+      "parse_map_s": 0.0049,
+      "generate_s": 0.0143
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_NAC_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-DIST-SW04.txt",
+    "vendor": "cisco",
+    "group": "arista-distribution",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0189,
+    "stage_times": {
+      "parse_map_s": 0.0046,
+      "generate_s": 0.0143
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_NAC_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-01.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0317,
+    "stage_times": {
+      "parse_map_s": 0.0098,
+      "generate_s": 0.0219
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-02.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0316,
+    "stage_times": {
+      "parse_map_s": 0.0098,
+      "generate_s": 0.0218
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-03.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0328,
+    "stage_times": {
+      "parse_map_s": 0.0108,
+      "generate_s": 0.022
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-04.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0316,
+    "stage_times": {
+      "parse_map_s": 0.0094,
+      "generate_s": 0.0222
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-05.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0314,
+    "stage_times": {
+      "parse_map_s": 0.0094,
+      "generate_s": 0.0219
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-DX01.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0361,
+    "stage_times": {
+      "parse_map_s": 0.0128,
+      "generate_s": 0.0232
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-EA01.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0366,
+    "stage_times": {
+      "parse_map_s": 0.0128,
+      "generate_s": 0.0237
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-EB01.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0364,
+    "stage_times": {
+      "parse_map_s": 0.0128,
+      "generate_s": 0.0236
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-EB02.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0362,
+    "stage_times": {
+      "parse_map_s": 0.0125,
+      "generate_s": 0.0237
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-EB03.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0347,
+    "stage_times": {
+      "parse_map_s": 0.0122,
+      "generate_s": 0.0225
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-EB04.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0353,
+    "stage_times": {
+      "parse_map_s": 0.012,
+      "generate_s": 0.0232
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-EC01.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0375,
+    "stage_times": {
+      "parse_map_s": 0.0139,
+      "generate_s": 0.0236
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-EC02.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0357,
+    "stage_times": {
+      "parse_map_s": 0.0119,
+      "generate_s": 0.0237
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-EC03.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0369,
+    "stage_times": {
+      "parse_map_s": 0.0126,
+      "generate_s": 0.0243
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-EF01.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0368,
+    "stage_times": {
+      "parse_map_s": 0.0145,
+      "generate_s": 0.0222
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-EH01.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0357,
+    "stage_times": {
+      "parse_map_s": 0.0122,
+      "generate_s": 0.0234
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-F01.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.031,
+    "stage_times": {
+      "parse_map_s": 0.0095,
+      "generate_s": 0.0215
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-F02.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0306,
+    "stage_times": {
+      "parse_map_s": 0.0093,
+      "generate_s": 0.0212
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-G01.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0311,
+    "stage_times": {
+      "parse_map_s": 0.0097,
+      "generate_s": 0.0214
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-G02.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0305,
+    "stage_times": {
+      "parse_map_s": 0.0095,
+      "generate_s": 0.021
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-H01.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0325,
+    "stage_times": {
+      "parse_map_s": 0.0097,
+      "generate_s": 0.0227
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-H02.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0306,
+    "stage_times": {
+      "parse_map_s": 0.0093,
+      "generate_s": 0.0212
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-J01.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0309,
+    "stage_times": {
+      "parse_map_s": 0.0095,
+      "generate_s": 0.0214
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-J02.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0312,
+    "stage_times": {
+      "parse_map_s": 0.0099,
+      "generate_s": 0.0213
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-K01.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0456,
+    "stage_times": {
+      "parse_map_s": 0.0158,
+      "generate_s": 0.0297
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-K02.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.045,
+    "stage_times": {
+      "parse_map_s": 0.0152,
+      "generate_s": 0.0297
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "DIST-SW-BLDGA-01.txt",
+    "vendor": "cisco",
+    "group": "distribution",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0368,
+    "stage_times": {
+      "parse_map_s": 0.013,
+      "generate_s": 0.0238
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "DIST-SW-BLDGB-01.txt",
+    "vendor": "cisco",
+    "group": "distribution",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0241,
+    "stage_times": {
+      "parse_map_s": 0.0068,
+      "generate_s": 0.0173
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "DIST-SW-BLDGC-01.txt",
+    "vendor": "cisco",
+    "group": "distribution",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0195,
+    "stage_times": {
+      "parse_map_s": 0.0052,
+      "generate_s": 0.0143
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_NAC_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "DIST-SW-BLDGD-01.txt",
+    "vendor": "cisco",
+    "group": "distribution",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0198,
+    "stage_times": {
+      "parse_map_s": 0.0055,
+      "generate_s": 0.0142
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_NAC_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "DIST-SW-BLDGE-01.txt",
+    "vendor": "cisco",
+    "group": "distribution",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0198,
+    "stage_times": {
+      "parse_map_s": 0.0062,
+      "generate_s": 0.0136
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_NAC_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "DIST-SW-BLDGF-01.txt",
+    "vendor": "cisco",
+    "group": "distribution",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0186,
+    "stage_times": {
+      "parse_map_s": 0.0044,
+      "generate_s": 0.0141
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_NAC_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "EDGE-SW-REMOTE-01.txt",
+    "vendor": "cisco",
+    "group": "remote-edge",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0245,
+    "stage_times": {
+      "parse_map_s": 0.0068,
+      "generate_s": 0.0176
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "EDGE-SW-REMOTE-02.txt",
+    "vendor": "cisco",
+    "group": "remote-edge",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0281,
+    "stage_times": {
+      "parse_map_s": 0.0087,
+      "generate_s": 0.0194
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_NAC_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 11,
+    "generator_error": null
+  },
+  {
+    "file": "EDGE-SW-REMOTE-03.txt",
+    "vendor": "cisco",
+    "group": "remote-edge",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0232,
+    "stage_times": {
+      "parse_map_s": 0.0066,
+      "generate_s": 0.0166
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "EDGE-SW-REMOTE-04.txt",
+    "vendor": "cisco",
+    "group": "remote-edge",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0234,
+    "stage_times": {
+      "parse_map_s": 0.0067,
+      "generate_s": 0.0167
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "EDGE-SW-REMOTE-05.txt",
+    "vendor": "cisco",
+    "group": "remote-edge",
+    "path": "cisco_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0232,
+    "stage_times": {
+      "parse_map_s": 0.0066,
+      "generate_s": 0.0166
+    },
+    "schema_valid": true,
+    "semantic_valid": true,
+    "rules_fired": [],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-ACCESS-SW03.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0218,
+    "stage_times": {
+      "parse_map_s": 0.0084,
+      "generate_s": 0.0134
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 8,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-ACCESS-SW04.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0175,
+    "stage_times": {
+      "parse_map_s": 0.0042,
+      "generate_s": 0.0133
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_SNMP_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 7,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-ACCESS-SW05.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0183,
+    "stage_times": {
+      "parse_map_s": 0.0048,
+      "generate_s": 0.0136
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 8,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-ACCESS-SW06.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0189,
+    "stage_times": {
+      "parse_map_s": 0.0049,
+      "generate_s": 0.0139
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 8,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-ACCESS-SW07.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0264,
+    "stage_times": {
+      "parse_map_s": 0.0078,
+      "generate_s": 0.0185
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-ACCESS-SW08.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0252,
+    "stage_times": {
+      "parse_map_s": 0.008,
+      "generate_s": 0.0172
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-ACCESS-SW09.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0186,
+    "stage_times": {
+      "parse_map_s": 0.0048,
+      "generate_s": 0.0137
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 8,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-ACCESS-SW10.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0196,
+    "stage_times": {
+      "parse_map_s": 0.0051,
+      "generate_s": 0.0145
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 8,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-ACCESS-SW11.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0191,
+    "stage_times": {
+      "parse_map_s": 0.0048,
+      "generate_s": 0.0142
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 8,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-ACCESS-SW12.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0256,
+    "stage_times": {
+      "parse_map_s": 0.0081,
+      "generate_s": 0.0175
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-DIST-SW01-original.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.055,
+    "stage_times": {
+      "parse_map_s": 0.0264,
+      "generate_s": 0.0286
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_ACL_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 10,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-DIST-SW01.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0202,
+    "stage_times": {
+      "parse_map_s": 0.0055,
+      "generate_s": 0.0147
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-DIST-SW02.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0199,
+    "stage_times": {
+      "parse_map_s": 0.005,
+      "generate_s": 0.0148
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 8,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-DIST-SW03.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0216,
+    "stage_times": {
+      "parse_map_s": 0.0054,
+      "generate_s": 0.0162
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-DIST-SW04.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0216,
+    "stage_times": {
+      "parse_map_s": 0.0054,
+      "generate_s": 0.0162
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-DIST-SW05.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0212,
+    "stage_times": {
+      "parse_map_s": 0.0052,
+      "generate_s": 0.0159
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-DIST-SW06.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0211,
+    "stage_times": {
+      "parse_map_s": 0.0052,
+      "generate_s": 0.0159
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-DIST-SW07.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0213,
+    "stage_times": {
+      "parse_map_s": 0.0053,
+      "generate_s": 0.0159
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-DIST-SW08.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0227,
+    "stage_times": {
+      "parse_map_s": 0.0053,
+      "generate_s": 0.0173
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-DIST-SW09.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0211,
+    "stage_times": {
+      "parse_map_s": 0.0053,
+      "generate_s": 0.0159
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_UPLINK_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 9,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-SPINE-SW01.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.013,
+    "stage_times": {
+      "parse_map_s": 0.0023,
+      "generate_s": 0.0107
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 7,
+    "generator_error": null
+  },
+  {
+    "file": "CAMPUS-SPINE-SW02.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0132,
+    "stage_times": {
+      "parse_map_s": 0.0023,
+      "generate_s": 0.0109
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 7,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-AR01.txt",
+    "vendor": "arista",
+    "group": "oob-server",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0258,
+    "stage_times": {
+      "parse_map_s": 0.0074,
+      "generate_s": 0.0184
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 8,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-OOBSW-AR02.txt",
+    "vendor": "arista",
+    "group": "oob-server",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0255,
+    "stage_times": {
+      "parse_map_s": 0.0072,
+      "generate_s": 0.0182
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ACCESS_PORT_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 8,
+    "generator_error": null
+  },
+  {
+    "file": "DATACTR-SPINE-SW01.txt",
+    "vendor": "arista",
+    "group": "oob-server",
+    "path": "arista_deterministic_no_norm",
+    "approach": "A",
+    "llm_invoked": false,
+    "total_elapsed_s": 0.0136,
+    "stage_times": {
+      "parse_map_s": 0.0024,
+      "generate_s": 0.0112
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "yaml_generated": true,
+    "templates_generated": [
+      "EDGE_PNP_template",
+      "EDGE_SYSTEM_template",
+      "EDGE_VLAN_template",
+      "EDGE_MGMT_template",
+      "EDGE_SNMP_template",
+      "EDGE_AAA_template",
+      "EDGE_ROUTED_PORT_template"
+    ],
+    "template_count": 7,
+    "generator_error": null
+  }
+]

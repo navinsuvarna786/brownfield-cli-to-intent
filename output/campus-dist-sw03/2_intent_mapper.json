@@ -1,0 +1,222 @@
+{
+  "hostname": "CAMPUS-DIST-SW03",
+  "domain_name": "campus.example.org",
+  "system": {
+    "local_users": [
+      {
+        "username": "admin",
+        "privilege": 15,
+        "role": "network-admin",
+        "secret_type": "sha512"
+      }
+    ],
+    "banners": [
+      "Authorized access only. Unauthorized use is prohibited."
+    ]
+  },
+  "management": {
+    "interfaces": [
+      {
+        "name": "Vlan4060",
+        "vrf": "MDMZ"
+      }
+    ],
+    "vrfs": [
+      "MDMZ"
+    ],
+    "http": {
+      "enabled": false
+    },
+    "https": {
+      "enabled": true,
+      "vrf": "MDMZ"
+    },
+    "ssh": {
+      "idle_timeout": 20,
+      "authentication_mode": "keyboard-interactive",
+      "vrf": "MDMZ"
+    }
+  },
+  "vlans": [
+    {
+      "id": 100,
+      "name": "USERS"
+    },
+    {
+      "id": 200,
+      "name": "VOICE"
+    },
+    {
+      "id": 300,
+      "name": "IOT"
+    },
+    {
+      "id": 777,
+      "name": "AP-MGMT"
+    },
+    {
+      "id": 4060,
+      "name": "INBAND-MGMT"
+    },
+    {
+      "id": 4094,
+      "name": "MLAG-PEER"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "MDMZ"
+    },
+    {
+      "name": "VRFA"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "Port-Channel999",
+      "description": "MLAG-PEER-LINK",
+      "mode": "trunk",
+      "trunk_allowed_vlans": "all"
+    },
+    {
+      "name": "GigabitEthernet1/0/23",
+      "description": "MLAG-PEER-LINK-MEMBER",
+      "channel_group": 999,
+      "channel_mode": "active"
+    },
+    {
+      "name": "GigabitEthernet1/0/24",
+      "description": "MLAG-PEER-LINK-MEMBER",
+      "channel_group": 999,
+      "channel_mode": "active"
+    },
+    {
+      "name": "Vlan4094",
+      "description": "MLAG-PEER",
+      "ip_address": "169.254.0.3/30"
+    },
+    {
+      "name": "Port-Channel2001",
+      "description": "UPLINK-PC2001",
+      "mode": "trunk",
+      "trunk_allowed_vlans": "100,200,300,777,4060"
+    },
+    {
+      "name": "GigabitEthernet1/0/27",
+      "description": "UPLINK-MEMBER",
+      "channel_group": 2001,
+      "channel_mode": "active"
+    },
+    {
+      "name": "GigabitEthernet1/0/28",
+      "description": "UPLINK-MEMBER",
+      "channel_group": 2001,
+      "channel_mode": "active"
+    }
+  ],
+  "sub_interfaces": [],
+  "svis": [
+    {
+      "name": "Vlan100",
+      "description": "USERS",
+      "vrf": "VRFA",
+      "ip_address": "198.51.100.71/24",
+      "virtual_router_address": "198.51.100.1"
+    },
+    {
+      "name": "Vlan200",
+      "description": "VOICE",
+      "vrf": "VRFA",
+      "ip_address": "198.51.101.71/24",
+      "virtual_router_address": "198.51.101.1"
+    },
+    {
+      "name": "Vlan300",
+      "description": "IOT",
+      "vrf": "VRFA",
+      "ip_address": "198.51.102.71/24",
+      "virtual_router_address": "198.51.102.1"
+    },
+    {
+      "name": "Vlan777",
+      "description": "AP-MGMT",
+      "vrf": "VRFA",
+      "ip_address": "198.51.103.71/24",
+      "virtual_router_address": "198.51.103.1"
+    },
+    {
+      "name": "Vlan4060",
+      "description": "INBAND-MGMT",
+      "vrf": "MDMZ",
+      "ip_address": "198.51.100.71/24"
+    }
+  ],
+  "loopbacks": [],
+  "port_channels": [
+    {
+      "name": "Port-Channel999",
+      "description": "MLAG-PEER-LINK",
+      "mode": "trunk",
+      "trunk_allowed_vlans": "all"
+    },
+    {
+      "name": "Port-Channel2001",
+      "description": "UPLINK-PC2001",
+      "mode": "trunk",
+      "trunk_allowed_vlans": "100,200,300,777,4060"
+    }
+  ],
+  "routes": [],
+  "snmp": {
+    "communities": [],
+    "location": "Campus Distribution SW03",
+    "contact": "NOC-555-0100",
+    "traps_enabled": false,
+    "acl": "SNMP-ALLOWED",
+    "vrf": "MDMZ",
+    "local_interface": "Vlan4060"
+  },
+  "acls": [],
+  "aaa": {
+    "tacacs_servers": [
+      "192.0.2.11",
+      "192.0.2.12"
+    ],
+    "groups": [
+      "TACACS_GROUP"
+    ],
+    "auth_mode": "keyboard-interactive"
+  },
+  "logging": {},
+  "ntp": {
+    "servers": [
+      "192.0.2.11",
+      "192.0.2.12"
+    ],
+    "prefer": "192.0.2.11"
+  },
+  "dns_servers": [],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "access_interfaces": [],
+  "uplinks": [],
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "snmp_config": {
+    "location": "Campus Distribution SW03",
+    "contact": "NOC-555-0100",
+    "enable_traps": false
+  },
+  "local_users": [],
+  "logging_hosts": [],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": null
+}

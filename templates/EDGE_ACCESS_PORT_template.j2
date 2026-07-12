@@ -1,0 +1,59 @@
+{%- set interface_list = access_interfaces.split(',') if access_interfaces else [] %}
+{%- for interface_entry in interface_list %}
+{%- set interface_parts = interface_entry.strip().split('|') %}
+{%- if interface_parts|length >= 4 %}
+{%- set interface_name = interface_parts[0] %}
+{%- set interface_desc = interface_parts[1] %}
+{%- set access_vlan = interface_parts[2] %}
+{%- set voice_vlan = interface_parts[3] if interface_parts[3] else '' %}
+{%- set port_security = interface_parts[4] if interface_parts|length > 4 and interface_parts[4] == 'true' else false %}
+{%- set security_max = interface_parts[5] if interface_parts|length > 5 and interface_parts[5] else '2' %}
+{%- set security_violation = interface_parts[6] if interface_parts|length > 6 and interface_parts[6] else 'restrict' %}
+{%- set portfast = interface_parts[7] if interface_parts|length > 7 and interface_parts[7] == 'false' else true %}
+{%- set bpduguard = interface_parts[8] if interface_parts|length > 8 and interface_parts[8] == 'false' else true %}
+{%- set disable_logging = interface_parts[9] if interface_parts|length > 9 and interface_parts[9] == 'false' else true
+%}
+{%- set nac_enable = true if interface_parts|length > 10 and interface_parts[10] == 'true' else false %}
+{%- set storm_broadcast = interface_parts[11] if interface_parts|length > 11 and interface_parts[11] else '' %}
+{%- set storm_multicast = interface_parts[12] if interface_parts|length > 12 and interface_parts[12] else '' %}
+
+interface {{ interface_name }}
+description {{ interface_desc }}
+switchport mode access
+switchport access vlan {{ access_vlan }}
+{%- if voice_vlan %}
+switchport voice vlan {{ voice_vlan }}
+{%- endif %}
+{%- if port_security %}
+switchport port-security
+switchport port-security maximum {{ security_max }}
+switchport port-security violation {{ security_violation }}
+switchport port-security aging time 2
+{%- endif %}
+{%- if nac_enable %}
+authentication host-mode multi-auth
+authentication order dot1x mab
+authentication priority dot1x mab
+authentication port-control auto
+authentication periodic
+authentication timer reauthenticate server
+mab
+dot1x pae authenticator
+{%- endif %}
+{%- if storm_broadcast %}
+storm-control broadcast level {{ storm_broadcast }}
+{%- endif %}
+{%- if storm_multicast %}
+storm-control multicast level {{ storm_multicast }}
+{%- endif %}
+{%- if portfast %}
+spanning-tree portfast
+{%- endif %}
+{%- if bpduguard %}
+spanning-tree bpduguard enable
+{%- endif %}
+{%- if disable_logging %}
+no logging event link-status
+{%- endif %}
+{%- endif %}
+{%- endfor %}

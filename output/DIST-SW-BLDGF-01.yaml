@@ -1,0 +1,143 @@
+catalyst_center:
+  inventory:
+    devices:
+    - name: DIST-SW-BLDGF-01
+      fqdn_name: DIST-SW-BLDGF-01.campus.example.edu
+      device_ip: need_input
+      pid: C9300-24P
+      serial_number: TBD-MIGRATION
+      state: PNP
+      device_role: ACCESS
+      site: need_input
+      onboarding_template:
+        name: EDGE_PNP_template
+        variables:
+        - name: device_host_name
+          value: DIST-SW-BLDGF-01
+        - name: domain_name
+          value: campus.example.edu
+        - name: pnp_vlan_id
+          value: '1'
+        - name: pnp_vlan_name
+          value: MGMT
+        - name: pnp_vlan_network_add
+          value: need_input
+        - name: pnp_vlan_network_mask
+          value: 255.255.255.0
+        - name: pnp_vlan_default_gateway
+          value: need_input
+        - name: pnp_interface
+          value: GigabitEthernet1/0/1
+        - name: snmp_community_ro
+          value: xxxxxxxx
+        - name: log_server
+          value: 192.0.2.21
+        - name: is_stack
+          value: 'false'
+        - name: stack_members
+          value: '1'
+      dayn_templates:
+        regular:
+        - name: EDGE_SYSTEM_template
+          variables:
+          - name: enable_secret
+            value: need_input
+          - name: hostname
+            value: DIST-SW-BLDGF-01
+          - name: domain_name
+            value: campus.example.edu
+          - name: timezone
+            value: need_input
+          - name: timezone_offset
+            value: need_input
+          - name: daylight_savings_name
+            value: need_input
+          - name: dns_servers
+            value: |
+              192.0.2.50,192.0.2.60
+          - name: ntp_servers
+            value: |
+              192.0.2.11|prefer,192.0.2.12
+          - name: license_level
+            value: network-advantage
+          - name: stp_mode
+            value: rapid-pvst
+          - name: ntp_authenticate
+            value: 'false'
+          - name: ntp_master
+            value: 'false'
+          - name: logging_servers
+            value: |
+              192.0.2.21,192.0.2.22,192.0.2.23
+          - name: log_severity_level
+            value: informational
+          - name: local_users
+            value: |
+              xxxxxxxx:need_input
+          redeploy_template: ON_CHANGE
+        - name: EDGE_VLAN_template
+          variables:
+          - name: vlans
+            value: 13|DATA,23|VOICE,33|GUEST,43|IOT,901|MGMT
+          - name: vtp_domain
+            value: CWAN
+          - name: vtp_mode
+            value: transparent
+          redeploy_template: ON_CHANGE
+        - name: EDGE_MGMT_template
+          variables:
+          - name: enable_management
+            value: 'false'
+          - name: http_server
+            value: 'true'
+          - name: https_server
+            value: 'true'
+          - name: mgmt_vrf_config
+            value: |
+              Mgmt-vrf|||
+          - name: mgmt_interface_type
+            value: vlan
+          - name: mgmt_vlan_id
+            value: '1'
+          - name: mgmt_ip_address
+            value: need_input
+          - name: mgmt_subnet_mask
+            value: 255.255.255.0
+          - name: mgmt_default_gateway
+            value: need_input
+          - name: mgmt_vlan_name
+            value: MGMT
+          redeploy_template: ON_CHANGE
+        - name: EDGE_ACL_template
+          variables:
+          - name: standard_acls
+            value: |
+              13|10|permit|192.0.2.0|0.0.0.255|false,
+              13|20|deny|any||true
+          - name: extended_acls
+            value: ''
+          redeploy_template: ON_CHANGE
+        - name: EDGE_UPLINK_template
+          variables:
+          - name: uplinks
+            value: |
+              port-channel||UPLINK-CORE-PC40|40|13,23,33,43,901,901|901|true||,
+              port-channel||DOWNLINK-ACCESS-PC41|41|13,23,33,43,901|901|true||
+          redeploy_template: ON_CHANGE
+        - name: EDGE_SNMP_template
+          variables:
+          - name: snmp_community_ro
+            value: xxxxxxxx
+          - name: snmp_community_rw
+            value: xxxxxxxx
+          - name: snmp_location
+            value: Campus Distribution Building-F
+          - name: snmp_contact
+            value: NOC-555-0100
+          - name: snmp_acl_ro
+            value: '13'
+          - name: snmp_acl_rw
+            value: '13'
+          - name: enable_traps
+            value: 'false'
+          redeploy_template: ON_CHANGE

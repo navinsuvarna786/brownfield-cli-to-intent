@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Expanded identical config comments for multiple interfaces"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "Parsed multiple AAA groups and servers with keys encrypted"
+  },
+  {
+    "field": "acls",
+    "confidence": 0.9,
+    "reason": "Extracted full ACL entries with sequences and actions"
+  },
+  {
+    "field": "stack_info",
+    "confidence": 0.95,
+    "reason": "Legacy parser provided detailed stack info"
+  },
+  {
+    "field": "vlans",
+    "confidence": 0.95,
+    "reason": "Extracted all VLANs with IDs and names"
+  }
+]

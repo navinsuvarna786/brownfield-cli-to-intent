@@ -1,0 +1,482 @@
+{
+  "hostname": "DIST-SW-BLDGC-01",
+  "domain_name": "campus.example.edu",
+  "system": {
+    "timezone": "CST",
+    "timezone_offset": "-6",
+    "daylight_savings": "CDT",
+    "spanning_tree_mode": "rapid-pvst",
+    "errdisable_recovery": {
+      "causes": [
+        "security-violation",
+        "gbic-invalid",
+        "psecure-violation"
+      ],
+      "interval": 100
+    },
+    "local_users": [
+      {
+        "name": "xxxxxxxx",
+        "privilege": 15
+      }
+    ]
+  },
+  "management": {
+    "vrfs": [
+      "Mgmt-vrf"
+    ],
+    "ssh": {
+      "version": 2
+    },
+    "http": {
+      "authentication": "aaa"
+    },
+    "lines": {
+      "console": {
+        "exec_timeout": "5 0",
+        "stopbits": 1
+      },
+      "vty_0_4": {
+        "access_class": "13",
+        "exec_timeout": "20 0",
+        "privilege": 15,
+        "transport_input": "ssh"
+      },
+      "vty_5_15": {
+        "access_class": "13",
+        "exec_timeout": "20 0",
+        "privilege": 15,
+        "transport_input": "ssh"
+      }
+    }
+  },
+  "vlans": [
+    {
+      "id": 10,
+      "name": "DATA"
+    },
+    {
+      "id": 20,
+      "name": "VOICE"
+    },
+    {
+      "id": 30,
+      "name": "GUEST"
+    },
+    {
+      "id": 40,
+      "name": "IOT"
+    },
+    {
+      "id": 900,
+      "name": "MGMT"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "Mgmt-vrf"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "GigabitEthernet0/0",
+      "vrf": "Mgmt-vrf",
+      "negotiation_auto": true
+    },
+    {
+      "name": "Vlan900",
+      "ip_address": "192.0.2.201",
+      "ip_mask": "255.255.255.0",
+      "ip_redirects": false
+    },
+    {
+      "name": "Vlan10",
+      "description": "DATA",
+      "ip_address": "192.0.2.201",
+      "ip_mask": "255.255.255.0",
+      "ip_redirects": false,
+      "ip_proxy_arp": false,
+      "standby": {
+        "version": 2,
+        "group": 0,
+        "ip": "192.0.2.1",
+        "priority": 110,
+        "preempt": true
+      }
+    },
+    {
+      "name": "Vlan20",
+      "description": "VOICE",
+      "ip_address": "192.0.2.202",
+      "ip_mask": "255.255.255.0",
+      "ip_redirects": false,
+      "ip_proxy_arp": false,
+      "standby": {
+        "version": 2,
+        "group": 0,
+        "ip": "192.0.2.65",
+        "priority": 110,
+        "preempt": true
+      }
+    },
+    {
+      "name": "Vlan30",
+      "description": "GUEST",
+      "ip_address": "192.0.2.203",
+      "ip_mask": "255.255.255.0",
+      "ip_redirects": false,
+      "ip_proxy_arp": false,
+      "standby": {
+        "version": 2,
+        "group": 0,
+        "ip": "192.0.2.129",
+        "priority": 110,
+        "preempt": true
+      }
+    },
+    {
+      "name": "Vlan40",
+      "description": "IOT",
+      "ip_address": "192.0.2.204",
+      "ip_mask": "255.255.255.0",
+      "ip_redirects": false,
+      "ip_proxy_arp": false,
+      "standby": {
+        "version": 2,
+        "group": 0,
+        "ip": "192.0.2.193",
+        "priority": 110,
+        "preempt": true
+      }
+    },
+    {
+      "name": "Port-channel10",
+      "description": "UPLINK-CORE-PC10",
+      "switchport_mode": "trunk",
+      "native_vlan": 900,
+      "allowed_vlans": [
+        10,
+        20,
+        30,
+        40,
+        900
+      ]
+    },
+    {
+      "name": "TenGigabitEthernet1/1/1",
+      "description": "UPLINK-CORE-MEMBER",
+      "channel_group": {
+        "id": 10,
+        "mode": "active"
+      }
+    },
+    {
+      "name": "TenGigabitEthernet2/1/1",
+      "description": "UPLINK-CORE-MEMBER",
+      "channel_group": {
+        "id": 10,
+        "mode": "active"
+      }
+    },
+    {
+      "name": "Port-channel11",
+      "description": "DOWNLINK-ACCESS-PC11",
+      "switchport_mode": "trunk",
+      "native_vlan": 900,
+      "allowed_vlans": [
+        10,
+        20,
+        30,
+        40,
+        900
+      ]
+    },
+    {
+      "name": "TenGigabitEthernet1/1/2",
+      "description": "DOWNLINK-ACCESS-MEMBER",
+      "channel_group": {
+        "id": 11,
+        "mode": "active"
+      }
+    },
+    {
+      "name": "Port-channel12",
+      "description": "DOWNLINK-ACCESS-PC12",
+      "switchport_mode": "trunk",
+      "native_vlan": 900,
+      "allowed_vlans": [
+        10,
+        20,
+        30,
+        40,
+        900
+      ]
+    },
+    {
+      "name": "TenGigabitEthernet2/1/2",
+      "description": "DOWNLINK-ACCESS-MEMBER",
+      "channel_group": {
+        "id": 12,
+        "mode": "active"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "default_gateway": "192.0.2.254"
+    }
+  ],
+  "snmp": {
+    "communities": [
+      {
+        "name": "xxxxxxxx",
+        "mode": "RO",
+        "acl": "13"
+      },
+      {
+        "name": "xxxxxxxx",
+        "mode": "RW",
+        "acl": "13"
+      }
+    ],
+    "location": "Campus Distribution Building-C",
+    "contact": "NOC-555-0100",
+    "hosts": [
+      "192.0.2.21",
+      "192.0.2.22"
+    ],
+    "version": "2c"
+  },
+  "acls": [
+    {
+      "name": "13",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.0 0.0.0.255"
+        },
+        {
+          "sequence": 20,
+          "action": "deny",
+          "source": "any",
+          "log": true
+        }
+      ]
+    }
+  ],
+  "aaa": {
+    "enabled": true,
+    "groups": [
+      {
+        "name": "RADIUS_GROUP",
+        "type": "radius",
+        "servers": [
+          "radius-svr-01",
+          "radius-svr-02"
+        ]
+      },
+      {
+        "name": "Tacacs_Group",
+        "type": "tacacs+",
+        "servers": [
+          "tacacs-svr-01",
+          "tacacs-svr-02"
+        ]
+      }
+    ],
+    "authentication": {
+      "login": {
+        "default": [
+          "local",
+          "group Tacacs_Group",
+          "enable"
+        ]
+      },
+      "dot1x": {
+        "default": [
+          "group RADIUS_GROUP"
+        ]
+      }
+    },
+    "authorization": {
+      "exec": {
+        "default": [
+          "group Tacacs_Group",
+          "local"
+        ]
+      },
+      "commands_15": {
+        "default": [
+          "group Tacacs_Group",
+          "if-authenticated"
+        ]
+      },
+      "network": {
+        "default": [
+          "group RADIUS_GROUP"
+        ]
+      }
+    },
+    "accounting": {
+      "dot1x": {
+        "default": [
+          "start-stop",
+          "group RADIUS_GROUP"
+        ]
+      },
+      "exec": {
+        "default": [
+          "start-stop",
+          "group Tacacs_Group"
+        ]
+      }
+    },
+    "server_radius_dynamic_author": {
+      "client": "192.0.2.31",
+      "server_key": "xxxxxxx",
+      "port": 3799,
+      "auth_type": "all"
+    }
+  },
+  "logging": {
+    "hosts": [
+      "192.0.2.21",
+      "192.0.2.22",
+      "192.0.2.23"
+    ]
+  },
+  "ntp": {
+    "servers": [
+      {
+        "address": "192.0.2.11",
+        "prefer": true
+      },
+      {
+        "address": "192.0.2.12"
+      }
+    ]
+  },
+  "dns_servers": [
+    "192.0.2.50",
+    "192.0.2.60"
+  ],
+  "stack": {
+    "is_stack": true,
+    "member_count": 2,
+    "members": [
+      {
+        "id": 1,
+        "priority": 15
+      },
+      {
+        "id": 2,
+        "priority": 15
+      }
+    ],
+    "master": 1
+  },
+  "access_interfaces": [],
+  "uplinks": [
+    {
+      "type": "port-channel",
+      "port_channel_id": 10,
+      "description": "UPLINK-CORE-PC10",
+      "allowed_vlans": [
+        10,
+        20,
+        30,
+        40,
+        900,
+        900
+      ],
+      "native_vlan": 900,
+      "member_interfaces": [
+        {
+          "name": "TenGigabitEthernet1/1/1",
+          "lacp_mode": "active"
+        },
+        {
+          "name": "TenGigabitEthernet2/1/1",
+          "lacp_mode": "active"
+        }
+      ]
+    },
+    {
+      "type": "port-channel",
+      "port_channel_id": 11,
+      "description": "DOWNLINK-ACCESS-PC11",
+      "allowed_vlans": [
+        10,
+        20,
+        30,
+        40,
+        900
+      ],
+      "native_vlan": 900,
+      "member_interfaces": [
+        {
+          "name": "TenGigabitEthernet1/1/1",
+          "lacp_mode": "active"
+        }
+      ]
+    },
+    {
+      "type": "port-channel",
+      "port_channel_id": 12,
+      "description": "DOWNLINK-ACCESS-PC12",
+      "allowed_vlans": [
+        10,
+        20,
+        30,
+        40,
+        900
+      ],
+      "native_vlan": 900,
+      "member_interfaces": [
+        {
+          "name": "TenGigabitEthernet1/1/1",
+          "lacp_mode": "active"
+        }
+      ]
+    }
+  ],
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_group_name": "Tacacs_Group",
+    "tacacs_servers": []
+  },
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "13",
+    "community_rw": "xxxxxxxx",
+    "acl_rw": "13",
+    "location": "Campus Distribution Building-C",
+    "contact": "NOC-555-0100",
+    "enable_traps": false
+  },
+  "local_users": [
+    {
+      "name": "xxxxxxxx",
+      "password": "need_input",
+      "privilege": 15
+    }
+  ],
+  "logging_hosts": [
+    "192.0.2.21",
+    "192.0.2.22",
+    "192.0.2.23"
+  ],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": {
+    "name": "Mgmt-vrf",
+    "rd": "",
+    "rt_export": "",
+    "rt_import": ""
+  }
+}

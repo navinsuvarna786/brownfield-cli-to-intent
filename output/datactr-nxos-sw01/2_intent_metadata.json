@@ -1,0 +1,27 @@
+[
+  {
+    "field": "local_users.password",
+    "confidence": 0.8,
+    "reason": "password obfuscated in config"
+  },
+  {
+    "field": "vlans",
+    "confidence": 0.9,
+    "reason": "duplicate VLAN IDs with different names, merged names from config"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "expanded identical config comments to individual interfaces with mapped names"
+  },
+  {
+    "field": "management.interfaces",
+    "confidence": 0.9,
+    "reason": "mapped mgmt0 to GigabitEthernet1/0/0 with VRF"
+  },
+  {
+    "field": "snmp.communities",
+    "confidence": 0.85,
+    "reason": "community string partially redacted"
+  }
+]

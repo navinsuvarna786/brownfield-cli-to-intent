@@ -1,0 +1,27 @@
+[
+  {
+    "field": "aaa.tacacs_servers",
+    "confidence": 0.8,
+    "reason": "Tacacs servers listed by name but IPs not resolved"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": 0.9,
+    "reason": "Enable secret encrypted, value redacted"
+  },
+  {
+    "field": "local_users.password",
+    "confidence": 0.9,
+    "reason": "Local user password encrypted, value redacted"
+  },
+  {
+    "field": "snmp.community_names",
+    "confidence": 0.95,
+    "reason": "Community names redacted for security"
+  },
+  {
+    "field": "interfaces.TenGigabitEthernet1/1/1",
+    "confidence": 0.95,
+    "reason": "Interface config duplicated for multiple interfaces"
+  }
+]

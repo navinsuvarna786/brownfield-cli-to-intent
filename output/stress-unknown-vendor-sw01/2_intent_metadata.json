@@ -1,0 +1,27 @@
+[
+  {
+    "field": "aaa",
+    "confidence": 0.95,
+    "reason": "Parsed tacacs groups and servers from config"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.9,
+    "reason": "Mapped Arista Ethernet to Cisco GigabitEthernet naming and expanded identical config"
+  },
+  {
+    "field": "acls",
+    "confidence": 0.9,
+    "reason": "Extracted full ACL 13 with all permit rules"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "VLANs fully listed from config and legacy parser"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.95,
+    "reason": "SNMP community, location, contact, traps extracted from config"
+  }
+]

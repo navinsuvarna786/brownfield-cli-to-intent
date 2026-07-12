@@ -1,0 +1,27 @@
+[
+  {
+    "field": "aaa",
+    "confidence": 0.95,
+    "reason": "Parsed tacacs and radius servers and groups from config"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.98,
+    "reason": "Mapped all Ethernet interfaces with identical config expansion and mgmt0"
+  },
+  {
+    "field": "acls",
+    "confidence": 1,
+    "reason": "Extracted full ACL entries from config"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "Extracted all VLANs with names from config and legacy parser"
+  },
+  {
+    "field": "system.banners",
+    "confidence": 0.9,
+    "reason": "Extracted multiline banner from config"
+  }
+]

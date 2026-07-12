@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces",
+    "confidence": 0.99,
+    "reason": "Explicit config and legacy parser match for all interfaces including expanded identical configs"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "All VLANs explicitly defined in config and legacy parser"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.95,
+    "reason": "AAA new-model enabled with local login, no tacacs configured"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.95,
+    "reason": "SNMP communities and hosts fully extracted from config"
+  },
+  {
+    "field": "ntp",
+    "confidence": 0.9,
+    "reason": "NTP servers and prefer flag extracted from config"
+  }
+]

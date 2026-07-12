@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Expanded identical config for multiple Ethernet interfaces to individual GigabitEthernet1/0/x interfaces"
+  },
+  {
+    "field": "management",
+    "confidence": 0.9,
+    "reason": "Extracted management VRF and protocols from management api and ssh blocks"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "Parsed tacacs servers and groups from config"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.9,
+    "reason": "Extracted SNMP location, contact, ACL, VRF, and local interface"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "Extracted all VLANs with IDs and names from config"
+  }
+]

@@ -1,0 +1,318 @@
+{
+  "hostname": "DATACTR-NXOS-SW02",
+  "domain_name": "campus.example.edu",
+  "system": {
+    "local_users": [
+      {
+        "name": "admin",
+        "password": "xxxxxxx",
+        "role": "network-admin"
+      }
+    ]
+  },
+  "management": {
+    "interfaces": [
+      {
+        "name": "GigabitEthernet1/0/25",
+        "description": "UPLINK-TRUNK",
+        "mode": "trunk",
+        "trunk_allowed_vlans": [
+          900,
+          901,
+          902
+        ],
+        "shutdown": false
+      },
+      {
+        "name": "GigabitEthernet1/0/26",
+        "description": "UPLINK-TRUNK",
+        "mode": "trunk",
+        "trunk_allowed_vlans": [
+          900,
+          901,
+          902
+        ],
+        "shutdown": false
+      }
+    ],
+    "mgmt_interface": {
+      "name": "mgmt0",
+      "vrf": "management",
+      "ip_address": "198.51.100.91/24"
+    },
+    "vrfs": [
+      {
+        "name": "management"
+      }
+    ],
+    "ssh": {
+      "enabled": true
+    },
+    "http": {
+      "enabled": false
+    },
+    "https": {
+      "enabled": false
+    }
+  },
+  "vlans": [
+    {
+      "id": 1,
+      "name": "VLAN_0001"
+    },
+    {
+      "id": 900,
+      "name": "SERVER-900"
+    },
+    {
+      "id": 901,
+      "name": "SERVER-901"
+    },
+    {
+      "id": 902,
+      "name": "SERVER-902"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 901,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 901,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 901,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 901,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/13",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 901,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/16",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 901,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/19",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 901,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/22",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 901,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 902,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 902,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 902,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/11",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 902,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/14",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 902,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/17",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 902,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/20",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 902,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/23",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 902,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 900,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 900,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 900,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/12",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 900,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/15",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 900,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/18",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 900,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/21",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 900,
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/24",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 900,
+      "shutdown": false
+    }
+  ],
+  "routes": [
+    {
+      "prefix": "0.0.0.0/0",
+      "next_hop": "192.0.2.254",
+      "vrf": "management"
+    }
+  ],
+  "snmp": {
+    "communities": [
+      {
+        "community": "xxxxxxx",
+        "group": "network-operator"
+      }
+    ],
+    "hosts": [
+      {
+        "ip": "192.0.2.21",
+        "version": "2c",
+        "community": "xxxxxxx",
+        "traps": true
+      }
+    ]
+  },
+  "ntp": {
+    "servers": [
+      "192.0.2.11",
+      "192.0.2.12"
+    ]
+  },
+  "dns_servers": [
+    "192.0.2.50"
+  ],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "access_interfaces": [],
+  "uplinks": [],
+  "acls": [],
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "snmp_config": {
+    "enable_traps": false
+  },
+  "local_users": [
+    {
+      "name": "admin",
+      "password": "need_input"
+    }
+  ],
+  "logging_hosts": [
+    "need_input"
+  ],
+  "ntp_servers": [
+    "192.0.2.11"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": null,
+  "timezone_config": {
+    "timezone": "need_input",
+    "timezone_offset": null,
+    "dst_minutes": null
+  },
+  "catalyst_center": {},
+  "stp_mode": "need_input",
+  "errdisable_config": {
+    "causes": [
+      "need_input"
+    ]
+  }
+}

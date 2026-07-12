@@ -1,0 +1,191 @@
+{
+  "hostname": "DATACTR-OOBSW-03",
+  "domain_name": "campus.example.edu",
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "pnp_config": {
+    "pnp_vlan_id": 236,
+    "pnp_vlan_name": "OOB-MGMT",
+    "pnp_vlan_network_add": "192.0.2.138",
+    "pnp_vlan_network_mask": "255.255.255.0",
+    "pnp_vlan_default_gateway": "192.0.2.254"
+  },
+  "vlans": [
+    {
+      "id": 230,
+      "name": "OOB-PDU"
+    },
+    {
+      "id": 236,
+      "name": "OOB-MGMT"
+    },
+    {
+      "id": 730,
+      "name": "SERVER-VLAN-730"
+    },
+    {
+      "id": 731,
+      "name": "SERVER-VLAN-731"
+    },
+    {
+      "id": 732,
+      "name": "SERVER-VLAN-732"
+    },
+    {
+      "id": 3069,
+      "name": "Native"
+    }
+  ],
+  "acls": [],
+  "uplinks": [
+    {
+      "type": "trunk",
+      "name": "TenGigabitEthernet1/1/1",
+      "allowed_vlans": [
+        230,
+        236,
+        730,
+        731,
+        732,
+        3069
+      ],
+      "native_vlan": 3069
+    }
+  ],
+  "snmp_config": {},
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": [],
+    "radius_servers": []
+  },
+  "nac_config": {},
+  "ntp_servers": [],
+  "dns_servers": [
+    "192.0.2.50",
+    "192.0.2.60"
+  ],
+  "stp_mode": "rapid-pvst",
+  "errdisable_config": {
+    "causes": [
+      "security-violation",
+      "gbic-invalid",
+      "psecure-violation"
+    ],
+    "recovery_interval": 100
+  },
+  "access_interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "config": {
+        "access_vlan": 230,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "config": {
+        "access_vlan": 230,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "config": {
+        "access_vlan": 230,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "config": {
+        "access_vlan": 230,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "config": {
+        "access_vlan": 230,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "config": {
+        "access_vlan": 230,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "config": {
+        "access_vlan": 230,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "config": {
+        "access_vlan": 230,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "config": {
+        "access_vlan": 230,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "config": {
+        "access_vlan": 230,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    }
+  ],
+  "routed_interfaces": [
+    {
+      "name": "Vlan236",
+      "vrf": "Mgmt-vrf",
+      "ipv4": {
+        "address": "192.0.2.138",
+        "netmask": "255.255.255.0"
+      }
+    }
+  ]
+}

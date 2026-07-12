@@ -1,0 +1,275 @@
+{
+  "hostname": "CAMPUS-NX-REMOTE01",
+  "domain_name": "campus.example.edu",
+  "system": {
+    "spanning_tree_mode": "rapid-pvst",
+    "errdisable": {
+      "causes": [
+        "bpduguard"
+      ],
+      "recovery_interval": 300
+    },
+    "local_users": [
+      {
+        "name": "admin",
+        "password": "xxxxxxx",
+        "role": "network-admin"
+      }
+    ]
+  },
+  "management": {
+    "interfaces": [
+      {
+        "name": "mgmt0",
+        "vrf": "management",
+        "ip_address": "192.0.2.170/24"
+      }
+    ],
+    "vrfs": [
+      {
+        "name": "management"
+      }
+    ],
+    "ssh": {
+      "enabled": true
+    }
+  },
+  "vlans": [
+    {
+      "id": 1,
+      "name": "VLAN_0001"
+    },
+    {
+      "id": 10,
+      "name": "DATA"
+    },
+    {
+      "id": 20,
+      "name": "VOICE"
+    },
+    {
+      "id": 900,
+      "name": "MGMT"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "management",
+      "routes": [
+        {
+          "prefix": "0.0.0.0/0",
+          "next_hop": "192.0.2.254"
+        }
+      ]
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "description": "USER-PORT",
+      "mode": "access",
+      "access_vlan": 10,
+      "voice_vlan": 20,
+      "spanning_tree_port_type": "edge",
+      "bpduguard": true,
+      "storm_control": {
+        "broadcast_level": "20.00 10.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "description": "USER-PORT",
+      "mode": "access",
+      "access_vlan": 10,
+      "voice_vlan": 20,
+      "spanning_tree_port_type": "edge",
+      "bpduguard": true,
+      "storm_control": {
+        "broadcast_level": "20.00 10.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "description": "USER-PORT",
+      "mode": "access",
+      "access_vlan": 10,
+      "voice_vlan": 20,
+      "spanning_tree_port_type": "edge",
+      "bpduguard": true,
+      "storm_control": {
+        "broadcast_level": "20.00 10.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "description": "USER-PORT",
+      "mode": "access",
+      "access_vlan": 10,
+      "voice_vlan": 20,
+      "spanning_tree_port_type": "edge",
+      "bpduguard": true,
+      "storm_control": {
+        "broadcast_level": "20.00 10.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/47",
+      "description": "UPLINK-WAN-CAMPUS",
+      "mode": "trunk",
+      "trunk_allowed_vlans": [
+        10,
+        20,
+        900
+      ],
+      "spanning_tree_port_type": "network",
+      "shutdown": false
+    },
+    {
+      "name": "Vlan900",
+      "ip_address": "192.0.2.170/24",
+      "shutdown": false
+    }
+  ],
+  "routes": [
+    {
+      "prefix": "0.0.0.0/0",
+      "next_hop": "192.0.2.254",
+      "vrf": "management"
+    }
+  ],
+  "snmp": {
+    "communities": [
+      {
+        "name": "xxxxxxxx",
+        "acl": "SNMP-ALLOWED",
+        "access": "ro"
+      }
+    ],
+    "location": "Remote-Office-01",
+    "contact": "NOC-555-0100",
+    "enable_traps": true
+  },
+  "acls": [
+    {
+      "name": "SNMP-ALLOWED",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.11",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "192.0.2.12",
+          "log": false
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "192.0.2.0/24",
+          "log": false
+        },
+        {
+          "sequence": 40,
+          "action": "deny",
+          "source": "any",
+          "log": false
+        }
+      ]
+    }
+  ],
+  "aaa": {
+    "tacacs_servers": [
+      {
+        "host": "192.0.2.11",
+        "key": "xxxxxxx"
+      },
+      {
+        "host": "192.0.2.12",
+        "key": "xxxxxxx"
+      }
+    ],
+    "groups": [
+      {
+        "name": "TACACS_GROUP",
+        "servers": [
+          "192.0.2.11",
+          "192.0.2.12"
+        ]
+      }
+    ],
+    "authentication": {
+      "login": {
+        "default": [
+          "TACACS_GROUP",
+          "local"
+        ]
+      }
+    },
+    "authorization": {
+      "exec": {
+        "default": [
+          "TACACS_GROUP",
+          "local"
+        ]
+      }
+    }
+  },
+  "logging": {
+    "hosts": [
+      "192.0.2.17"
+    ]
+  },
+  "ntp": {
+    "servers": [
+      {
+        "address": "192.0.2.11",
+        "prefer": true
+      },
+      {
+        "address": "192.0.2.12"
+      }
+    ]
+  },
+  "dns_servers": [
+    "192.0.2.15",
+    "192.0.2.16"
+  ],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "access_interfaces": [],
+  "uplinks": [],
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "SNMP-ALLOWED",
+    "location": "Remote-Office-01",
+    "contact": "NOC-555-0100",
+    "enable_traps": true
+  },
+  "local_users": [
+    {
+      "name": "admin",
+      "password": "need_input"
+    }
+  ],
+  "logging_hosts": [],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": null
+}

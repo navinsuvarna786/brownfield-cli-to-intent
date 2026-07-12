@@ -1,0 +1,27 @@
+[
+  {
+    "field": "domain_name",
+    "confidence": 0.9,
+    "reason": "extracted from 'dns domain' command"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "mapped Ethernet to GigabitEthernet1/0/x per Cisco Catalyst 9300 naming"
+  },
+  {
+    "field": "local_users",
+    "confidence": 0.9,
+    "reason": "parsed username admin with privilege and secret"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.9,
+    "reason": "snmp-server commands with vrf and ACL"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "tacacs group and servers configured"
+  }
+]

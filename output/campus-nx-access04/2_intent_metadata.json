@@ -1,0 +1,32 @@
+[
+  {
+    "field": "aaa",
+    "confidence": 0.95,
+    "reason": "Extracted tacacs and radius servers and groups from config"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.98,
+    "reason": "Mapped Arista Ethernet to Cisco GigabitEthernet and expanded identical configs"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "VLAN IDs and names from config and legacy parser"
+  },
+  {
+    "field": "acls",
+    "confidence": 1,
+    "reason": "Full ACL entries extracted from config and legacy parser"
+  },
+  {
+    "field": "snmp",
+    "confidence": 1,
+    "reason": "SNMP community, location, contact, traps from config"
+  },
+  {
+    "field": "management",
+    "confidence": 0.9,
+    "reason": "Management interface and VRF from config"
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "field": "local_users.password",
+    "confidence": 0.9,
+    "reason": "password encrypted, placeholder used"
+  },
+  {
+    "field": "aaa.tacacs_servers.key",
+    "confidence": 0.9,
+    "reason": "key encrypted, placeholder used"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": 0.9,
+    "reason": "secret encrypted, placeholder used"
+  },
+  {
+    "field": "interfaces_access",
+    "confidence": 1,
+    "reason": "expanded identical config for 48 interfaces"
+  },
+  {
+    "field": "snmp.communities[0].name",
+    "confidence": 1,
+    "reason": "community string redacted"
+  }
+]

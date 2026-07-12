@@ -1,0 +1,27 @@
+[
+  {
+    "field": "domain_name",
+    "confidence": 0.9,
+    "reason": "Extracted from 'dns domain' command"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 1,
+    "reason": "Mapped Ethernet to GigabitEthernet1/0/x per Cisco Catalyst 9300 naming"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "Extracted all VLANs with IDs and names"
+  },
+  {
+    "field": "snmp",
+    "confidence": 1,
+    "reason": "Extracted SNMP contact, location, VRF, and ACL"
+  },
+  {
+    "field": "ntp",
+    "confidence": 1,
+    "reason": "Extracted NTP servers with prefer flag"
+  }
+]

@@ -1,0 +1,206 @@
+# Ground truth (Approach C corrected output — rules 121+122 auto-applied)
+# Source: output/campus-access-sw03/3_schema_normalizer.json
+# REVIEW: compare every field against input/sanitized/ raw CLI
+---
+hostname: CAMPUS-ACCESS-SW03
+domain_name: campus.example.org
+stp_mode: rapid-pvst
+dns_servers:
+- need_input
+ntp_servers:
+- 192.0.2.11|prefer
+- 192.0.2.12
+logging_hosts:
+- need_input
+snmp_config:
+  location: Building-C Access Switch
+  contact: NOC-555-0100
+  enable_traps: false
+  acl_ro: SNMP-ALLOWED
+aaa_config:
+  aaa_enabled: true
+  tacacs_servers:
+  - name: 192.0.2.11
+    ip: 192.0.2.11
+    key: xxxxxxxx
+  - name: 192.0.2.12
+    ip: 192.0.2.12
+    key: xxxxxxxx
+  tacacs_group_name: TACACS_GROUP
+local_users:
+- name: admin
+  password: xxxxxxxx
+enable_secret: ''
+errdisable_config:
+  causes:
+  - need_input
+vlans:
+- id: 100
+  name: USERS
+- id: 200
+  name: VOICE
+- id: 4060
+  name: INBAND-MGMT
+management:
+  http_https:
+    enabled: true
+    https_enabled: true
+    shutdown: false
+  ssh:
+    enabled: true
+    idle_timeout: 20
+banners:
+  login: Authorized access only. Unauthorized use is prohibited.
+uplinks:
+- type: trunk
+  name: Ethernet25
+  description: UPLINK
+  allowed_vlans:
+  - 100
+  - 200
+  - 4060
+  native_vlan: null
+# CORRECTION: uplink added by blind annotation review (2026-04-30)
+# CLI source: interface Ethernet25 / description UPLINK / switchport mode trunk
+# allowed vlan 100,200,4060 — missed in original pipeline-derived annotation
+access_interfaces:
+- name: GigabitEthernet1/0/1
+  config:
+    description: USER
+    access_vlan: 100
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: GigabitEthernet1/0/2
+  config:
+    description: USER
+    access_vlan: 100
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: GigabitEthernet1/0/4
+  config:
+    description: IP-PHONE
+    access_vlan: 100
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: GigabitEthernet1/0/5
+  config:
+    description: USER
+    access_vlan: 100
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: GigabitEthernet1/0/7
+  config:
+    description: USER
+    access_vlan: 100
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: GigabitEthernet1/0/8
+  config:
+    description: IP-PHONE
+    access_vlan: 100
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: GigabitEthernet1/0/10
+  config:
+    description: USER
+    access_vlan: 100
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: GigabitEthernet1/0/11
+  config:
+    description: USER
+    access_vlan: 100
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: GigabitEthernet1/0/13
+  config:
+    description: USER
+    access_vlan: 100
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: GigabitEthernet1/0/14
+  config:
+    description: USER
+    access_vlan: 100
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: GigabitEthernet1/0/16
+  config:
+    description: IP-PHONE
+    access_vlan: 100
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: GigabitEthernet1/0/17
+  config:
+    description: USER
+    access_vlan: 100
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: GigabitEthernet1/0/19
+  config:
+    description: USER
+    access_vlan: 100
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: GigabitEthernet1/0/20
+  config:
+    description: IP-PHONE
+    access_vlan: 100
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: GigabitEthernet1/0/22
+  config:
+    description: USER
+    access_vlan: 100
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: GigabitEthernet1/0/23
+  config:
+    description: USER
+    access_vlan: 100
+    shutdown: true
+    portfast: true
+    bpduguard: true
+routed_interfaces:
+- name: Vlan100
+  description: USERS
+  vrf: VRFA
+  ipv4:
+    address: 198.51.107.1
+    netmask: 255.255.255.0
+  shutdown: false
+  pim_sparse: false
+- name: Vlan200
+  description: VOICE
+  vrf: VRFA
+  ipv4:
+    address: 198.51.108.1
+    netmask: 255.255.255.0
+  shutdown: false
+  pim_sparse: false
+- name: Vlan4060
+  description: INBAND-MGMT
+  vrf: MDMZ
+  ipv4:
+    address: 198.51.100.62
+    netmask: 255.255.255.0
+  shutdown: false
+  pim_sparse: false
+stack_info:
+  is_stack: false
+  member_count: 1

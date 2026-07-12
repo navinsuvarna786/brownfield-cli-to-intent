@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces",
+    "confidence": "high",
+    "reason": "explicit config and legacy parser match for access and uplink interfaces"
+  },
+  {
+    "field": "aaa",
+    "confidence": "high",
+    "reason": "full AAA groups and servers config parsed"
+  },
+  {
+    "field": "vlans",
+    "confidence": "high",
+    "reason": "all VLANs explicitly defined in config and legacy parser"
+  },
+  {
+    "field": "snmp",
+    "confidence": "high",
+    "reason": "community, location, contact, hosts fully extracted"
+  },
+  {
+    "field": "stack_info",
+    "confidence": "high",
+    "reason": "stack config and member info from legacy parser"
+  }
+]

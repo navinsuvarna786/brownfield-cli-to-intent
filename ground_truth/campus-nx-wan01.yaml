@@ -1,0 +1,99 @@
+# Ground truth — NX-OS LLM fallback evaluation
+# Source: input/sanitized/nxos/CAMPUS-NX-WAN01.txt
+# Role: WAN aggregation (L3, dual ISP BGP) | Platform: NX-OS 10.3(3)F
+# REVIEW: every field verified against raw CLI source
+---
+hostname: CAMPUS-NX-WAN01
+domain_name: campus.example.edu
+stp_mode: rapid-pvst
+dns_servers:
+- 192.0.2.15
+- 192.0.2.16
+ntp_servers:
+- 192.0.2.11|prefer
+- 192.0.2.12
+logging_hosts:
+- 192.0.2.17
+- 192.0.2.18
+errdisable_config:
+  causes:
+  - need_input
+stack_info:
+  is_stack: false
+  member_count: 1
+  switches:
+  - - 1
+    - 24
+  master_switch: 1
+pnp_config:
+  pnp_vlan_id: 900
+  pnp_vlan_name: MGMT
+  pnp_vlan_network_add: 192.0.2.180
+  pnp_vlan_network_mask: 255.255.255.0
+  pnp_vlan_default_gateway: 192.0.2.254
+vlans:
+- id: 900
+  name: MGMT
+acls:
+- name: SNMP-ALLOWED
+  type: standard
+  entries:
+  - action: permit
+    source: 192.0.2.11
+    log: false
+    sequence: 10
+  - action: permit
+    source: 192.0.2.12
+    log: false
+    sequence: 20
+  - action: permit
+    source: 192.0.2.0 0.0.0.255
+    log: false
+    sequence: 30
+  - action: deny
+    source: any
+    log: false
+    sequence: 40
+  is_numbered: false
+uplinks:
+- type: routed-port
+  name: Ethernet1/1
+  description: WAN-CIRCUIT-PROVIDER-A
+  ip_address: 203.0.113.2
+  prefix_length: 30
+  vrf: INTERNET
+- type: routed-port
+  name: Ethernet1/2
+  description: WAN-CIRCUIT-PROVIDER-B-BACKUP
+  ip_address: 203.0.113.6
+  prefix_length: 30
+  vrf: INTERNET
+snmp_config:
+  community_ro: xxxxxxxx
+  acl_ro: SNMP-ALLOWED
+  location: Campus-WAN-Aggregation-Router
+  contact: NOC-555-0100
+  chassis_id: CAMPUS-NX-WAN01
+  enable_traps: true
+aaa_config:
+  aaa_enabled: true
+  tacacs_group_name: TACACS_GROUP
+  tacacs_servers:
+  - name: tacacs-svr-01
+    ip: 192.0.2.11
+    key: need_input
+  - name: tacacs-svr-02
+    ip: 192.0.2.12
+    key: need_input
+  dot1x_enabled: false
+banners:
+  login: AUTHORIZED ACCESS ONLY. WAN edge device. All sessions are logged.
+routed_interfaces:
+- name: Ethernet1/3
+  description: CAMPUS-CORE-UPLINK
+  ip_address: 10.0.0.2
+  prefix_length: 30
+- name: Ethernet1/4
+  description: CAMPUS-CORE-UPLINK-REDUNDANT
+  ip_address: 10.0.0.6
+  prefix_length: 30

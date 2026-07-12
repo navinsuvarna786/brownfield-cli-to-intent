@@ -1,0 +1,27 @@
+[
+  {
+    "field": "domain_name",
+    "confidence": 0.9,
+    "reason": "Extracted from 'dns domain' command"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Mapped EthernetX to GigabitEthernet1/0/X per target device naming"
+  },
+  {
+    "field": "local_users",
+    "confidence": 0.9,
+    "reason": "Extracted from 'username' command with privilege and secret"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.9,
+    "reason": "Extracted SNMP config including ACL and VRF"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "Extracted tacacs servers and groups from config"
+  }
+]

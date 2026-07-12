@@ -1,0 +1,27 @@
+[
+  {
+    "field": "local_users",
+    "confidence": 0.9,
+    "reason": "passwords masked in config"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": 0.9,
+    "reason": "secret value masked"
+  },
+  {
+    "field": "snmp_communities",
+    "confidence": 1,
+    "reason": "parsed from config"
+  },
+  {
+    "field": "interfaces_access",
+    "confidence": 1,
+    "reason": "expanded identical config for multiple interfaces"
+  },
+  {
+    "field": "ntp_servers",
+    "confidence": 1,
+    "reason": "parsed from config"
+  }
+]

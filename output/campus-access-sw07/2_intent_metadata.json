@@ -1,0 +1,27 @@
+[
+  {
+    "field": "aaa_enabled",
+    "confidence": 1,
+    "reason": "explicit no aaa root command"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "expanded identical config comments for all interfaces"
+  },
+  {
+    "field": "management",
+    "confidence": 0.9,
+    "reason": "parsed management api and ssh with vrf and protocols"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "from config and legacy parser"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.9,
+    "reason": "snmp-server commands with vrf and ACL"
+  }
+]

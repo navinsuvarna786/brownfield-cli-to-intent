@@ -1,0 +1,27 @@
+[
+  {
+    "field": "local_users.password",
+    "confidence": "medium",
+    "reason": "password encrypted, key redacted"
+  },
+  {
+    "field": "aaa.tacacs_servers.key",
+    "confidence": "medium",
+    "reason": "key encrypted, redacted"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": "medium",
+    "reason": "secret encrypted, redacted"
+  },
+  {
+    "field": "interfaces.GigabitEthernet1/0/1..48.storm_control",
+    "confidence": "high",
+    "reason": "extracted from config with explicit levels"
+  },
+  {
+    "field": "interfaces.TenGigabitEthernet1/1/1.description",
+    "confidence": "high",
+    "reason": "extracted from config"
+  }
+]

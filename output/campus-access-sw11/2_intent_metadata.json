@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Mapped EthernetX to GigabitEthernet1/0/X per Cisco Catalyst 9300 naming"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "Extracted tacacs+ groups and servers with keys"
+  },
+  {
+    "field": "management",
+    "confidence": 0.9,
+    "reason": "Extracted management API and SSH config with VRF MDMZ"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "Extracted all VLANs with IDs and names"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.9,
+    "reason": "Extracted SNMP contact, location, ACL, VRF, and local interface"
+  }
+]

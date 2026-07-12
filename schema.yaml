@@ -1,0 +1,694 @@
+---
+catalyst_center: include('catalyst_center', required=False)
+defaults: any(required=False)
+---
+catalyst_center:
+  authentication_templates: list(include('authentication_template'), required=False)
+  wireless: include('ns_wireless', required=False)
+  inventory: include('inventory', required=False)
+  sites: include('sites', required=False)
+  network_settings: include('network_settings', required=False)
+  network_profiles: include('network_profiles', required=False)
+  lan_automation: list(include('lan_automation'), required=False)
+  fabric: include('fabric', required=False)
+  templates: include('templates', required=False)
+
+authentication_template:
+  name: str()
+  dot1x_to_mab_fallback_timeout: int(min=3, max=120, required=False)
+  wake_on_lan: bool(required=False)
+  number_of_hosts: enum('Unlimited', 'Single', required=False)
+  bpdu_guard: bool(required=False)
+  authentication_order: enum('mac', 'dot1x', required=False)
+  pre_auth_acl: include('authentication_template_pre_auth_acl', required=False)
+
+authentication_template_pre_auth_acl:
+  enabled: bool(required=False)
+  implicit_action: enum('DENY', 'PERMIT', required=False)
+  description: str(required=False)
+  access_contracts: list(include('authentication_template_pre_auth_acl_access_contracts'), required=False)
+
+authentication_template_pre_auth_acl_access_contracts:
+  action: enum('PERMIT', 'DENY')
+  port: enum('domain', 'bootpc', 'bootps')
+  protocol: enum('TCP', 'UDP', 'TCP_UDP')
+
+fabric:
+  l3_virtual_networks: list(include('fabric_sites_l3_virtual_networks'), required=False)
+  transits: list(include('fabric_transits'), required=False)
+  fabric_sites: list(include('fabric_sites'), required=False)
+  border_devices: list(include('fabric_border_devices'), required=False)
+
+network_profiles:
+  switching: list(include('np_switching'), required=False)
+  wireless: list(include('np_wireless'), required=False)
+
+templates:
+  projects: list(include('tpl_projects'), required=False)
+  tags: list(include('tpl_tags'), required=False)
+
+tpl_tags:
+  name: str()
+  description: str(required=False)
+
+tpl_projects:
+  name: str()
+  description: str(required=False)
+  onboarding_templates: list(include('tpl_templates'), required=False)
+  dayn_templates: list(include('tpl_templates'), required=False)
+
+tpl_templates:
+  name: str()
+  version: str(required=False)
+  description: str(required=False)
+  language: enum('JINJA', 'VELOCITY', required=False)
+  device_types: list(include('tpl_device_types'), required=False)
+  software_type: str(required=False)
+  software_version: str(required=False)
+  variables: list(include('tpl_variables'), required=False)
+  tags: list(str(), required=False)
+  management_device_ips: list(str(), required=False)
+  containing_templates: list(str(), required=False)
+  composite: bool(required=False)
+  redeploy_template: enum('ALWAYS', 'NEVER', 'ON_CHANGE', required=False)
+
+tpl_device_types:
+  product_family: str()
+  product_series: str(required=False)
+  product_type: str(required=False)
+
+tpl_variables:
+  name: str()
+  field_name: str(required=False)
+  required: bool(required=False)
+  data_type: enum('STRING', 'INTEGER', 'IPADDRESS', 'MACADDRESS', 'SECTIONDIVIDER')
+  hint_text: str(required=False)
+  additional_info: str(required=False)
+
+sites:
+  areas: list(include('site_areas'), required=False)
+  buildings: list(include('site_buildings'), required=False)
+  floors: list(include('site_floors'), required=False)
+
+site_areas:
+  name: str()
+  parent_name: str(required=False)
+  cli_credentials: str(required=False)
+  snmpv3_credentials: str(required=False)
+  snmpv2_read_credentials: str(required=False)
+  snmpv2_write_credentials: str(required=False)
+  https_read_credentials: str(required=False)
+  https_write_credentials: str(required=False)
+  network_settings: include('sites_network_settings', required=False)
+  ip_pools_reservations: list(str(), required=False)
+
+site_buildings:
+  name: str()
+  parent_name: str(required=False)
+  cli_credentials: str(required=False)
+  snmpv3_credentials: str(required=False)
+  snmpv2_read_credentials: str(required=False)
+  snmpv2_write_credentials: str(required=False)
+  https_read_credentials: str(required=False)
+  https_write_credentials: str(required=False)
+  network_settings: include('sites_network_settings', required=False)
+  latitude: num(required=False)
+  longitude: num(required=False)
+  address: str(required=False)
+  country: str(required=False)
+  ip_pools_reservations: list(str(), required=False)
+
+site_floors:
+  name: str()
+  floor_number: int(required=False)
+  height: num(required=False)
+  length: num(required=False)
+  rf_model: enum('Cubes And Walled Offices', 'Drywall Office Only', 'Indoor High Ceiling', 'Outdoor Open Space', 'Free Space', required=False)
+  width: num(required=False)
+  parent_name: str(required=False)
+  cli_credentials: str(required=False)
+  snmpv3_credentials: str(required=False)
+  snmpv2_read_credentials: str(required=False)
+  snmpv2_write_credentials: str(required=False)
+  https_read_credentials: str(required=False)
+  https_write_credentials: str(required=False)
+  network_settings: include('sites_network_settings', required=False)
+  ip_pools_reservations: list(str(), required=False)
+
+network_settings:
+  aaa_servers: list(include('ns_network_aaa_servers'), required=False)
+  network: list(include('ns_network'), required=False)
+  telemetry: list(include('ns_network_telemetry'), required=False)
+  device_credentials: include('ns_device_credentials', required=False)
+  ip_pools: list(include('ns_ip_pools'), required=False)
+
+sites_network_settings:
+  aaa_servers: str(required=False)
+  network: str(required=False)
+  telemetry: str(required=False)
+
+inventory:
+  devices: list(include('in_devices'), required=False)
+  discovery: list(include('in_discovery'), required=False)
+
+lan_automation:
+  name: str()
+  type: enum('link', 'devices')
+  status: enum('START', 'STOP')
+  discovered_device_site_name_hierarchy: str()
+  primary_device_management_ip_address: ip()
+  secondary_device_management_ip_address: ip(required=False)
+  primary_device_interface_names: list(str(), required=False)
+  ip_pools: list(include('lan_automation_ip_pools'), required=False)
+  multicast_enabled: bool(required=False)
+  host_name_prefix: str(required=False)
+  isis_domain_password: str(required=False)
+  advertise_lan_automation_routes_into_bgp: bool(required=False)
+  discovery_level: int(min=1, max=5, required=False)
+  discovery_timeout: int(min=20, max=10080, required=False)
+  discovery_devices: list(include('lan_automation_discovery_devices'), required=False)
+
+lan_automation_discovery_devices:
+  device_serial_number: str()
+  device_host_name: str(required=False)
+  device_site_name_hierarchy: str(required=False)
+  device_management_ip_address: ip(required=False)
+
+lan_automation_ip_pools:
+  name: str()
+  role: enum('PRINCIPAL_IP_ADDRESS_POOL', 'LINK_OVERLAPPING_IP_POOL', required=False)
+
+in_devices:
+  name: str()
+  fqdn_name: str(required=False)
+  device_ip: ip(required=False)
+  pid: any(str(), null(), required=False)
+  serial_number: any(str(), null(), required=False)
+  state: enum('INIT','PNP','PROVISION', 'REPROVISION', 'ASSIGN')
+  device_role: enum('ACCESS', 'CORE', 'DISTRIBUTION', 'BORDER ROUTER')
+  site: str()
+  fabric_site: str(required=False)
+  fabric_roles: list(enum('BORDER_NODE','CONTROL_PLANE_NODE','EDGE_NODE', 'WIRELESS_CONTROLLER_NODE'), required=False)
+  onboarding_template: include('in_devices_onboarding_templates', required=False)
+  dayn_templates: include('in_devices_dayn_templates', required=False)
+  primary_managed_ap_locations: list(str(), required=False)
+  secondary_managed_ap_locations: list(str(), required=False)
+  port_assignments: list(include('in_devices_port_assignments'), required=False)
+  tags: list(str(), required=False)
+
+in_devices_port_assignments:
+  interface_name: str(required=False)
+  connected_device_type: enum('USER_DEVICE', 'ACCESS_POINT', 'TRUNKING_DEVICE', 'AUTHENTICATOR_SWITCH', 'SUPPLICANT_BASED_EXTENDED_NODE')
+  data_vlan_name: str(required=False)
+  voice_vlan_name: str(required=False)
+  security_group_name: str(required=False)
+  authenticate_template_name: enum('No Authentication', 'Open Authentication', 'Closed Authentication', 'Low Impact', required=False)
+
+in_devices_onboarding_templates:
+  name: str()
+  variables: list(include('in_devices_templates_variables'), required=False)
+
+in_devices_dayn_templates:
+  regular: list(include('in_devices_dayn_templates_regular'), required=False)
+  composite: list(include('in_devices_dayn_templates_composite'), required=False)
+  redeploy_template: enum('ALWAYS', 'NEVER', 'ON_CHANGE', required=False)
+
+in_devices_dayn_templates_regular:
+  name: str()
+  variables: list(include('in_devices_templates_variables'), required=False)
+  redeploy_template: enum('ALWAYS', 'NEVER', 'ON_CHANGE', required=False)
+  copying_config: bool(required=False)
+  force_push_template: bool(required=False)
+
+in_devices_dayn_templates_composite:
+  name: str()
+  variables: list(include('in_devices_templates_composite_variables'), required=False)
+  redeploy_template: enum('ALWAYS', 'NEVER', 'ON_CHANGE', required=False)
+  copying_config: bool(required=False)
+  force_push_template: bool(required=False)
+
+in_devices_templates_variables:
+  name: str()
+  value: str()
+
+in_devices_templates_composite_variables:
+  name: str()
+  value: str()
+  template_name: str()
+
+in_discovery:
+  name: str()
+  type: enum('Single', 'Range', 'Multi Range', 'CDP', 'LLDP', 'CIDR', required=False)
+  global_credential_list: list(str(), required=False)
+  ip_address_list: str(required=False)
+  preferred_mgmt_ip_method: enum('UseLoopBack', 'None', required=False)
+  protocol_order: str(required=False)
+  time_out: int(required=False)
+  cdp_level: int(required=False)
+  enable_password_list: list(str(), required=False)
+  ip_filter_list: list(str(), required=False)
+  netconf_port: str(required=False)
+  retry: int(required=False)
+  user_name_list: list(str(), required=False)
+  snmp_version: enum('v2', 'v3', required=False)
+  snmp_user_name: str(required=False)
+  snmp_rw_community_desc: str(required=False)
+  snmp_ro_community_desc: str(required=False)
+  snmp_ro_community: str(required=False)
+  snmp_rw_community: str(required=False)
+  snmp_priv_protocol: enum('AES128', required=False)
+  snmp_priv_passphrase: str(required=False)
+  snmp_mode: enum('AuthPriv', 'AuthNoPriv', 'NoAuthNoPriv', required=False)
+  snmp_auth_protocol: enum('SHA', 'MD5', required=False)
+  snmp_auth_passphrase: str(required=False)
+  https_read_credential: include('ns_network_device_credentials_https_read', required=False)
+  http_write_credential: include('ns_network_device_credentials_https_write', required=False)
+
+ns_device_credentials:
+  cli_credentials: list(include('ns_network_device_credentials_cli'), required=False)
+  https_read_credentials: list(include('ns_network_device_credentials_https_read'), required=False)
+  https_write_credentials: list(include('ns_network_device_credentials_https_write'), required=False)
+  snmpv3_credentials: list(include('ns_network_device_credentials_snmpv3'), required=False)
+  snmpv2_read_credentials: list(include('ns_network_device_credentials_snmpv2_read'), required=False)
+  snmpv2_write_credentials: list(include('ns_network_device_credentials_snmpv2_write'), required=False)
+
+ns_network_device_credentials_cli:
+  name: str()
+  username: str()
+  password: str()
+  enable: str(required=False)
+
+ns_network_device_credentials_snmpv2_read:
+  name: str()
+  description: str(required=False)
+  read_community: str()
+
+ns_network_device_credentials_snmpv2_write:
+  name: str()
+  description: str(required=False)
+  write_community: str()
+
+ns_network_device_credentials_https_read:
+  name: str()
+  username: str()
+  password: str()
+  port: int(min=1, max=65535, required=False)
+
+ns_network_device_credentials_https_write:
+  name: str()
+  username: str()
+  password: str()
+  port: int(min=1, max=65535, required=False)
+
+ns_network_device_credentials_snmpv3:
+  name: str()
+  auth_type: enum('SHA', 'MD5', required=False)
+  privacy_type: enum('AES256', 'AES192', 'AES128', required=False)
+  snmp_mode: enum('AUTHPRIV', 'AUTHNOPRIV', 'NOAUTHNOPRIV')
+  username: str()
+  auth_password: str()
+  privacy_password: str()
+
+ns_network:
+  name: str()
+  dhcp_servers: list(ip(), required=False)
+  domain_name: str(required=False)
+  banner: str(required=False)
+  dns_servers: list(ip(), max=2, required=False)
+  timezone: str(required=False)
+  ntp_servers: list(ip(), required=False)
+
+ns_network_aaa_servers:
+  name: str()
+  client_and_endpoint_aaa: include('ns_network_client_and_endpoint_aaa', required=False)
+  network_aaa: include('ns_network_network_aaa', required=False)
+
+ns_network_network_aaa:
+  server_type: enum('ISE', 'AAA')
+  protocol: enum('TACACS', 'RADIUS')
+  primary_ip: ip(required=False)
+  secondary_ip: ip(required=False)
+  pan: ip(required=False)
+  shared_secret: str(required=False)
+
+ns_network_client_and_endpoint_aaa:
+  server_type: enum('ISE', 'AAA')
+  protocol: enum('TACACS', 'RADIUS')
+  primary_ip: ip(required=False)
+  secondary_ip: ip(required=False)
+  pan: ip(required=False)
+  shared_secret: str(required=False)
+
+ns_network_telemetry:
+  name: str()
+  wired_data_collection: bool()
+  wireless_telemetry: bool()
+  enable_netflow_collector_on_devices: bool()
+  catalyst_center_as_network_collector: bool()
+  netflow_collector_ip_address: ip(required=False)
+  netflow_collector_port: int(min=1, max=65535, required=False)
+  snmp_servers: list(ip(), required=False)
+  syslog_servers: list(ip(), required=False)
+  catalyst_center_as_snmp_server: bool()
+  catalyst_center_as_syslog_server: bool()
+
+ns_wireless:
+  ssids: list(include('ns_wireless_ssids'), required=False)
+  rf_profiles: list(include('ns_wireless_rf_profiles'), required=False)
+  interfaces: list(include('ns_wireless_interfaces'), required=False)
+
+ns_wireless_interfaces:
+  name: str()
+  vlan_id: int(min=1, max=4094)
+
+ns_wireless_ssids:
+  name: str()
+  auth_type: enum('WPA2_ENTERPRISE', 'WPA2_PERSONAL', 'OPEN', 'WPA3_ENTERPRISE', 'WPA3_PERSONAL', 'WPA2_WPA3_PERSONAL', 'WPA2_WPA3_ENTERPRISE', 'OPEN_SECURED')
+  wlan_type: enum('Enterprise', 'Guest')
+  aaa_override: bool(required=False)
+  acct_servers: list(ip(), required=False)
+  acl_name: str(required=False)
+  ap_beacon_protection: bool(required=False)
+  auth_key8021x: bool(required=False)
+  auth_key8021x_plus_ft: bool(required=False)
+  auth_key8021x_sha256: bool(required=False)
+  auth_key_easy_psk: bool(required=False)
+  auth_key_easy_psk_sha256: bool(required=False)
+  auth_key_owe: bool(required=False)
+  auth_key_psk: bool(required=False)
+  auth_key_psk_plus_ft: bool(required=False)
+  auth_key_sae: bool(required=False)
+  auth_key_sae_ext: bool(required=False)
+  auth_key_sae_ext_plus_ft: bool(required=False)
+  auth_key_sae_plus_ft: bool(required=False)
+  auth_key_suite_b1921x: bool(required=False)
+  auth_key_suite_b1x: bool(required=False)
+  auth_server: enum('auth_ise', 'auth_external', 'auth_internal', required=False)
+  auth_servers: list(ip(), required=False)
+  basic_service_set_client_idle_timeout: int(min=15, max=100000, required=False)
+  basic_service_set_max_idle: bool(required=False)
+  broadcast_ssid: bool(required=False)
+  cckm: bool(required=False)
+  cckm_tsf_tolerance: any(int(min=100, max=5000), int(min=0, max=0), required=False)
+  client_exclusion: bool(required=False)
+  client_exclusion_timeout: int(min=0, max=2147483647, required=False)
+  client_rate_limit: any(int(min=8000, max=100000000000), int(min=0, max=0), required=False)
+  coverage_hole_detection: bool(required=False)
+  directed_multicast_service: bool(required=False)
+  egress_qos: enum('PLATINUM', 'SILVER', 'GOLD', 'BRONZE', required=False)
+  enabled: bool(required=False)
+  external_auth_ip_address: str(required=False)
+  fast_lane: bool(required=False)
+  fast_transition: enum('ADAPTIVE', 'DISABLE', 'ENABLE', required=False)
+  fast_transition_over_the_distributed_system: bool(required=False)
+  ghz24_policy: enum('dot11-g-only', 'dot11-bg-only', required=False)
+  ghz6_policy_client_steering: bool(required=False)
+  hex: bool(required=False)
+  ingress_qos: enum('PLATINUM-UP', 'SILVER-UP', 'GOLD-UP', 'BRONZE-UP', required=False)
+  l3_auth_type: enum('open', 'web_auth', required=False)
+  mac_filtering: bool(required=False)
+  mft_client_protection: enum('OPTIONAL', 'DISABLED', 'REQUIRED', required=False)
+  multi_psk_settings: include('ns_wireless_ssids_multi_psk_settings', required=False)
+  nas_options: list(str(), required=False)
+  neighbor_list: bool(required=False)
+  open_ssid: bool(required=False)
+  passphrase: str(required=False)
+  posturing: bool(required=False)
+  profile_name: str(required=False)
+  protected_management_frame: enum('REQUIRED', 'DISABLED', 'OPTIONAL', required=False)
+  random_mac_filter: bool(required=False)
+  rsn_cipher_suite_ccmp128: bool(required=False)
+  rsn_cipher_suite_gcmp128: bool(required=False)
+  rsn_cipher_suite_ccmp256: bool(required=False)
+  rsn_cipher_suite_gcmp256: bool(required=False)
+  session_timeout: any(int(min=1, max=86400), int(min=0, max=0), required=False)
+  session_timeout_enable: bool(required=False)
+  sleeping_client: bool(required=False)
+  sleeping_client_timeout: int(min=10, max=43200, required=False)
+  ssid_radio_type: enum('Triple Band', '5GHz', '2.4GHz', '6GHz', '2.4GHz and 5GHz', '2.4GHz and 6GHz', '5GHz and 6GHz', required=False)
+
+ns_wireless_ssids_multi_psk_settings:
+  priority: str()
+  passphrase: str(required=False)
+  passphrase_type: enum('ASCII', 'HEX', required=False)
+
+ns_wireless_rf_profiles:
+  name: str()
+  default_rf_profile: bool(required=False)
+  enable_radio_type_a: bool()
+  enable_radio_type_b: bool()
+  enable_radio_type_c: bool()
+  radio_type_a_properties: include('ns_wireless_rf_profile_radio_properties_5ghz', required=False)
+  radio_type_b_properties: include('ns_wireless_rf_profile_radio_properties_24ghz', required=False)
+  radio_type_c_properties: include('ns_wireless_rf_profile_radio_properties_6ghz', required=False)
+
+ns_wireless_rf_profile_radio_properties_5ghz:
+  parent_profile: enum('HIGH', 'TYPICAL', 'LOW', 'CUSTOM', required=False)
+  radio_channels: str(required=False)
+  data_rates: str(required=False)
+  mandatory_data_rates: str(required=False)
+  power_threshold_v1: int(min=-80, max=-50, required=False)
+  rx_sop_threshold: enum('HIGH', 'MEDIUM', 'LOW', 'AUTO', 'CUSTOM', required=False)
+  min_power_level: int(min=-10, max=30, required=False)
+  max_power_level: int(min=-10, max=30, required=False)
+  channel_width: enum('20', '40', '80', '160', 'best', required=False)
+  preamble_puncture: bool(required=False)
+  zero_wait_dfs_enable: bool(required=False)
+  custom_rx_sop_threshold: int(min=-85, max=-60, required=False)
+  max_radio_clients: int(min=0, max=500, required=False)
+  fra_properties_a: include('ns_wireless_rf_profile_fra_properties_a', required=False)
+  coverage_hole_detection_properties: include('ns_wireless_rf_profile_chd_properties', required=False)
+  spatial_reuse_properties: include('ns_wireless_rf_profile_sr_properties', required=False)
+
+ns_wireless_rf_profile_radio_properties_24ghz:
+  parent_profile: enum('HIGH', 'TYPICAL', 'LOW', 'CUSTOM', required=False)
+  radio_channels: str(required=False)
+  data_rates: str(required=False)
+  mandatory_data_rates: str(required=False)
+  power_threshold_v1: int(min=-80, max=-50, required=False)
+  rx_sop_threshold: enum('HIGH', 'MEDIUM', 'LOW', 'AUTO', 'CUSTOM', required=False)
+  min_power_level: int(min=-10, max=30, required=False)
+  max_power_level: int(min=-10, max=30, required=False)
+  custom_rx_sop_threshold: int(min=-85, max=-60, required=False)
+  max_radio_clients: int(min=0, max=500, required=False)
+  coverage_hole_detection_properties: include('ns_wireless_rf_profile_chd_properties', required=False)
+  spatial_reuse_properties: include('ns_wireless_rf_profile_sr_properties', required=False)
+
+ns_wireless_rf_profile_radio_properties_6ghz:
+  parent_profile: enum('CUSTOM', required=False)
+  radio_channels: str(required=False)
+  data_rates: str(required=False)
+  mandatory_data_rates: str(required=False)
+  power_threshold_v1: int(min=-80, max=-50, required=False)
+  rx_sop_threshold: enum('HIGH', 'MEDIUM', 'LOW', 'AUTO', 'CUSTOM', required=False)
+  min_power_level: int(min=-10, max=30, required=False)
+  max_power_level: int(min=-10, max=30, required=False)
+  enable_standard_power_service: bool(required=False)
+  multi_bssid_properties: include('ns_wireless_rf_profile_multi_bssid_properties', required=False)
+  preamble_puncture: bool(required=False)
+  min_dbs_width: enum(20, 40, 80, 160, 320, required=False)
+  max_dbs_width: enum(20, 40, 80, 160, 320, required=False)
+  max_radio_clients: int(min=0, max=500, required=False)
+  custom_rx_sop_threshold: int(min=-85, max=-60, required=False)
+  psc_enforcing_enabled: bool(required=False)
+  discovery_frames_6ghz: enum('None', 'Broadcast Probe Response', 'FILS Discovery', required=False)
+  broadcast_probe_response_interval: int(min=5, max=25, required=False)
+  fra_properties_c: include('ns_wireless_rf_profile_fra_properties_c', required=False)
+  coverage_hole_detection_properties: include('ns_wireless_rf_profile_chd_properties', required=False)
+  spatial_reuse_properties: include('ns_wireless_rf_profile_sr_properties', required=False)
+
+ns_wireless_rf_profile_fra_properties_a:
+  client_aware: bool(required=False)
+  client_select: int(min=0, max=100, required=False)
+  client_reset: int(min=0, max=100, required=False)
+
+ns_wireless_rf_profile_fra_properties_c:
+  client_reset_count: int(min=1, max=10, required=False)
+  client_utilization_threshold: int(min=0, max=100, required=False)
+
+ns_wireless_rf_profile_chd_properties:
+  chd_client_level: int(min=1, max=200, required=False)
+  chd_data_rssi_threshold: int(min=-90, max=-60, required=False)
+  chd_voice_rssi_threshold: int(min=-90, max=-60, required=False)
+  chd_exception_level: int(min=0, max=100, required=False)
+
+ns_wireless_rf_profile_sr_properties:
+  dot11ax_non_srg_obss_packet_detect: bool(required=False)
+  dot11ax_non_srg_obss_packet_detect_max_threshold: int(min=-82, max=-62, required=False)
+  dot11ax_srg_obss_packet_detect: bool(required=False)
+  dot11ax_srg_obss_packet_detect_min_threshold: int(min=-82, max=-62, required=False)
+  dot11ax_srg_obss_packet_detect_max_threshold: int(min=-82, max=-62, required=False)
+
+ns_wireless_rf_profile_multi_bssid_properties:
+  dot11ax_parameters: include('ns_wireless_rf_profile_dot11ax_parameters', required=False)
+  dot11be_parameters: include('ns_wireless_rf_profile_dot11be_parameters', required=False)
+  target_wake_time: bool(required=False)
+  twt_broadcast_support: bool(required=False)
+
+ns_wireless_rf_profile_dot11ax_parameters:
+  ofdma_down_link: bool(required=False)
+  ofdma_up_link: bool(required=False)
+  mu_mimo_up_link: bool(required=False)
+  mu_mimo_down_link: bool(required=False)
+
+ns_wireless_rf_profile_dot11be_parameters:
+  ofdma_down_link: bool(required=False)
+  ofdma_up_link: bool(required=False)
+  mu_mimo_up_link: bool(required=False)
+  mu_mimo_down_link: bool(required=False)
+  ofdma_multi_ru: bool(required=False)
+
+ns_ip_pools:
+  name: str()
+  ip_address_space: enum('IPv4', 'IPv6')
+  type: enum('generic', 'tunnel', required=False)
+  dhcp_servers: list(ip(), required=False)
+  dns_servers: list(ip(), required=False)
+  gateway: str(required=False)
+  ip_pool_cidr: ip(required=False)
+  ip_pools_reservations: list(include('ns_ip_pools_reservations'), required=False)
+
+ns_ip_pools_reservations:
+  name: str()
+  prefix_length: int(min=1, max=32, required=False)
+  subnet: ip(required=False)
+  gateway: ip(required=False)
+  type: enum('generic', 'LAN', 'WAN', 'management', 'service', required=False)
+  dhcp_servers: list(ip(), required=False)
+  dns_servers: list(ip(), required=False)
+
+np_switching:
+  name: str()
+  sites: list(str(), required=False)
+  dayn_templates: list(str(), required=False)
+  onboarding_templates: list(str(), required=False)
+
+np_wireless:
+  name: str()
+  sites: list(str(), required=False)
+  ssid_details: list(include('np_wireless_ssid_details'), required=False)
+  additional_interfaces: list(str(), required=False)
+  ap_zones: list(include('np_wireless_ap_zones'), required=False)
+
+np_wireless_ap_zones:
+  name: str()
+  rf_profile_name: str()
+  ssids: list(str())
+
+ns_switching_templates:
+  type: enum('day0.templates', 'cli.templates')
+  template_name: str()
+
+np_wireless_ssid_details:
+  name: str(required=False)
+  enable_fabric: bool(required=False)
+  enable_flex_connect: bool(required=False)
+  local_to_vlan: int(required=False)
+  wlan_profile_name: str(required=False)
+  interface_name: str(required=False)
+  dot11be_profile: str(required=False)
+
+fabric_transits:
+  name: str()
+  type: enum('IP_BASED_TRANSIT', 'SDA_LISP_PUB_SUB_TRANSIT', 'SDA_LISP_BGP_TRANSIT')
+  routing_protocol_name: enum('BGP', required=False)
+  autonomous_system_number: int(min=1, max=4294967295, required=False)
+  multicast_over_sda_transit: bool(required=False)
+  control_plane_devices: list(str(), required=False)
+
+fabric_sites:
+  name: str()
+  authentication_template: include('authentication_template', required=False)
+  pub_sub_enabled: bool(required=False)
+  l3_virtual_networks: list(str(), required=False)
+  l2_virtual_networks: list(include('fabric_sites_l2_virtual_networks'), required=False)
+  anycast_gateways: list(include('fabric_sites_anycast_gateways'), required=False)
+  wireless_ssids: list(include('fabric_sites_wireless_ssids'), required=False)
+  fabric_zones: list(include('fabric_sites_fabric_zones'), required=False)
+
+fabric_sites_fabric_zones:
+  name: str()
+  authentication_template: include('authentication_template', required=False)
+  l3_virtual_networks: list(str(), required=False)
+
+fabric_sites_wireless_ssids:
+  name: str()
+  vlan_name: str()
+  security_group_name: str(required=False)
+
+fabric_border_devices:
+  name: str()
+  border_types: list(enum('LAYER_2', 'LAYER_3'))
+  sda_transit: str(required=False)
+  connected_to_internet: bool(required=False)
+  import_external_routes: bool()
+  default_exit: bool()
+  border_priority: int(min=1, max=9, required=False)
+  prepend_autonomous_system_count: int(min=1, max=10, required=False)
+  local_autonomous_system_number: int(min=1, max=4294967295)
+  external_handoff_pool: str(required=False)
+  l2_handoffs: include('fabric_border_devices_l2_handoffs', required=False)
+  l3_handoffs: list(include('fabric_border_devices_l3_handoffs'), required=False)
+
+fabric_border_devices_l2_handoffs:
+  l2_without_anycast_gateway: include('fabric_border_devices_l2_handoffs_without_anycast_gateway', required=False)
+  l2_with_anycast_gateway: list(include('fabric_border_devices_l2_handoffs_with_anycast_gateway'), required=False)
+
+fabric_border_devices_l3_handoffs:
+  name: str()
+  interfaces: list(include('fabric_border_devices_l3_handoffs_interfaces'))
+
+fabric_border_devices_l3_handoffs_interfaces:
+  name: str()
+  virtual_networks: list(include('fabric_border_devices_l3_handoffs_virtual_networks'))
+
+fabric_border_devices_l3_handoffs_virtual_networks:
+  name: str()
+  local_ip_address: ip(required=False)
+  peer_ip_address: ip(required=False)
+  peer_ipv6_address: ip(version=6, required=False)
+  local_ipv6_address: ip(version=6, required=False)
+  tcp_mss_adjustment: int(min=500, max=1440, required=False)
+  vlan: int(min=2, max=4093)
+
+fabric_border_devices_l2_handoffs_without_anycast_gateway:
+  vlans: list(include('fabric_border_devices_l2_handoffs_without_anycast_gateway_vlans'), required=False)
+  interfaces: list(str(), required=False)
+
+fabric_border_devices_l2_handoffs_without_anycast_gateway_vlans:
+  name: str()
+  external_vlan: int(min=2, max=4094, required=False)
+
+fabric_border_devices_l2_handoffs_with_anycast_gateway:
+  l3_virtual_network: str()
+  ip_pool_name: str()
+  external_vlan: int(min=2, max=4094, required=False)
+  interfaces: list(str(), required=False)
+
+fabric_sites_l3_virtual_networks:
+  name: str()
+
+fabric_sites_l2_virtual_networks:
+  name: str()
+  vlan_name: str(required=False)
+  vlan_id: int(min=2, max=4093, required=False)
+  traffic_type: enum('DATA', 'VOICE', required=False)
+  fabric_enabled_wireless: bool(required=False)
+  associated_l3_virtual_network: str(required=False)
+
+fabric_sites_anycast_gateways:
+  ip_pool_name: str()
+  pool_type: any(enum('EXTENDED_NODE', 'FABRIC_AP'), null(), required=False)
+  auto_generate_vlan_name: bool(required=False)
+  vlan_name: str(required=False)
+  vlan_id: int(min=2, max=4093, required=False)
+  security_group_name: str(required=False)
+  ip_directed_broadcast: bool(required=False)
+  intra_subnet_routing_enabled: bool(required=False)
+  multiple_ip_to_mac_addresses: bool(required=False)
+  supplicant_based_extended_node_onboarding: bool(required=False)
+  layer2_flooding: bool(required=False)
+  traffic_type: enum('DATA', 'VOICE', required=False)
+  critical_pool: bool(required=False)
+  wireless_pool: bool(required=False)
+  l3_virtual_network: str(required=False)

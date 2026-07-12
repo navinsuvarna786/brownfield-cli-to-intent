@@ -1,0 +1,423 @@
+{
+  "hostname": "DIST-SW-BLDGF-01",
+  "domain_name": "campus.example.edu",
+  "system": {
+    "timezone": "CST",
+    "timezone_offset": "-6",
+    "daylight_savings": "CDT",
+    "spanning_tree_mode": "rapid-pvst",
+    "errdisable_recovery": {
+      "causes": [
+        "security-violation",
+        "gbic-invalid",
+        "psecure-violation"
+      ],
+      "interval": 100
+    },
+    "local_users": [
+      {
+        "name": "xxxxxxxx",
+        "privilege": 15
+      }
+    ]
+  },
+  "management": {
+    "vrfs": [
+      {
+        "name": "Mgmt-vrf"
+      }
+    ],
+    "http_authentication": "aaa",
+    "ssh_version": 2,
+    "lines": {
+      "console": {
+        "exec_timeout": "5 0",
+        "stopbits": 1
+      },
+      "vty_0_4": {
+        "access_class": "13",
+        "exec_timeout": "20 0",
+        "privilege": 15,
+        "transport_input": [
+          "ssh"
+        ],
+        "transport_preferred": "none"
+      },
+      "vty_5_15": {
+        "access_class": "13",
+        "exec_timeout": "20 0",
+        "privilege": 15,
+        "transport_input": [
+          "ssh"
+        ],
+        "transport_preferred": "none"
+      }
+    }
+  },
+  "vlans": [
+    {
+      "id": 13,
+      "name": "DATA"
+    },
+    {
+      "id": 23,
+      "name": "VOICE"
+    },
+    {
+      "id": 33,
+      "name": "GUEST"
+    },
+    {
+      "id": 43,
+      "name": "IOT"
+    },
+    {
+      "id": 901,
+      "name": "MGMT"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "Mgmt-vrf"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "GigabitEthernet0/0",
+      "vrf": "Mgmt-vrf",
+      "ip_address": null,
+      "negotiation": "auto"
+    },
+    {
+      "name": "Vlan901",
+      "ip_address": "192.0.2.231",
+      "ip_mask": "255.255.255.0",
+      "ip_redirects": false
+    },
+    {
+      "name": "Vlan13",
+      "description": "DATA",
+      "ip_address": "192.0.2.231",
+      "ip_mask": "255.255.255.0",
+      "ip_redirects": false,
+      "ip_proxy_arp": false,
+      "standby": {
+        "version": 2,
+        "group": 0,
+        "ip": "192.0.2.4",
+        "priority": 100,
+        "preempt": true
+      }
+    },
+    {
+      "name": "Vlan23",
+      "description": "VOICE",
+      "ip_address": "192.0.2.232",
+      "ip_mask": "255.255.255.0",
+      "ip_redirects": false,
+      "ip_proxy_arp": false,
+      "standby": {
+        "version": 2,
+        "group": 0,
+        "ip": "192.0.2.68",
+        "priority": 100,
+        "preempt": true
+      }
+    },
+    {
+      "name": "Vlan33",
+      "description": "GUEST",
+      "ip_address": "192.0.2.233",
+      "ip_mask": "255.255.255.0",
+      "ip_redirects": false,
+      "ip_proxy_arp": false,
+      "standby": {
+        "version": 2,
+        "group": 0,
+        "ip": "192.0.2.132",
+        "priority": 100,
+        "preempt": true
+      }
+    },
+    {
+      "name": "Vlan43",
+      "description": "IOT",
+      "ip_address": "192.0.2.234",
+      "ip_mask": "255.255.255.0",
+      "ip_redirects": false,
+      "ip_proxy_arp": false,
+      "standby": {
+        "version": 2,
+        "group": 0,
+        "ip": "192.0.2.196",
+        "priority": 100,
+        "preempt": true
+      }
+    },
+    {
+      "name": "Port-channel40",
+      "description": "UPLINK-CORE-PC40",
+      "switchport_mode": "trunk",
+      "native_vlan": 901,
+      "allowed_vlans": [
+        13,
+        23,
+        33,
+        43,
+        901,
+        901
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0/1",
+      "description": "UPLINK-CORE-MEMBER",
+      "channel_group": {
+        "id": 40,
+        "mode": "active"
+      }
+    },
+    {
+      "name": "Port-channel41",
+      "description": "DOWNLINK-ACCESS-PC41",
+      "switchport_mode": "trunk",
+      "native_vlan": 901,
+      "allowed_vlans": [
+        13,
+        23,
+        33,
+        43,
+        901
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "description": "DOWNLINK-ACCESS-MEMBER",
+      "channel_group": {
+        "id": 41,
+        "mode": "active"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "default_gateway": "192.0.2.254"
+    }
+  ],
+  "snmp": {
+    "communities": [
+      {
+        "name": "xxxxxxxx",
+        "access": "RO",
+        "acl": "13"
+      },
+      {
+        "name": "xxxxxxxx",
+        "access": "RW",
+        "acl": "13"
+      }
+    ],
+    "location": "Campus Distribution Building-F",
+    "contact": "NOC-555-0100",
+    "hosts": [
+      "192.0.2.21",
+      "192.0.2.22"
+    ],
+    "version": "2c"
+  },
+  "acls": [
+    {
+      "name": "13",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.0 0.0.0.255"
+        },
+        {
+          "sequence": 20,
+          "action": "deny",
+          "source": "any",
+          "log": true
+        }
+      ]
+    }
+  ],
+  "aaa": {
+    "enabled": true,
+    "groups": [
+      {
+        "name": "RADIUS_GROUP",
+        "type": "radius",
+        "servers": [
+          "radius-svr-01",
+          "radius-svr-02"
+        ],
+        "deadtime": 1
+      },
+      {
+        "name": "Tacacs_Group",
+        "type": "tacacs+",
+        "servers": [
+          "tacacs-svr-01",
+          "tacacs-svr-02"
+        ]
+      }
+    ],
+    "authentication": {
+      "login": {
+        "default": [
+          "local",
+          "group Tacacs_Group",
+          "enable"
+        ]
+      },
+      "dot1x": {
+        "default": [
+          "group RADIUS_GROUP"
+        ]
+      }
+    },
+    "authorization": {
+      "exec": {
+        "default": [
+          "group Tacacs_Group",
+          "local"
+        ]
+      },
+      "commands_15": {
+        "default": [
+          "group Tacacs_Group",
+          "if-authenticated"
+        ]
+      },
+      "network": {
+        "default": [
+          "group RADIUS_GROUP"
+        ]
+      }
+    },
+    "accounting": {
+      "dot1x": {
+        "default": [
+          "start-stop",
+          "group RADIUS_GROUP"
+        ]
+      },
+      "exec": {
+        "default": [
+          "start-stop",
+          "group Tacacs_Group"
+        ]
+      }
+    },
+    "server_radius_dynamic_author": {
+      "client": "192.0.2.31",
+      "server_key": "xxxxxxx",
+      "port": 3799,
+      "auth_type": "all"
+    }
+  },
+  "logging": {
+    "hosts": [
+      "192.0.2.21",
+      "192.0.2.22",
+      "192.0.2.23"
+    ]
+  },
+  "ntp": {
+    "servers": [
+      {
+        "address": "192.0.2.11",
+        "prefer": true
+      },
+      {
+        "address": "192.0.2.12"
+      }
+    ]
+  },
+  "dns_servers": [
+    "192.0.2.50",
+    "192.0.2.60"
+  ],
+  "stack": {
+    "is_stack": false,
+    "member_count": 1,
+    "switches": [
+      [
+        1,
+        15
+      ]
+    ],
+    "master_switch": 1
+  },
+  "access_interfaces": [],
+  "uplinks": [
+    {
+      "type": "port-channel",
+      "port_channel_id": 40,
+      "description": "UPLINK-CORE-PC40",
+      "allowed_vlans": [
+        13,
+        23,
+        33,
+        43,
+        901,
+        901
+      ],
+      "native_vlan": 901,
+      "member_interfaces": []
+    },
+    {
+      "type": "port-channel",
+      "port_channel_id": 41,
+      "description": "DOWNLINK-ACCESS-PC41",
+      "allowed_vlans": [
+        13,
+        23,
+        33,
+        43,
+        901
+      ],
+      "native_vlan": 901,
+      "member_interfaces": []
+    }
+  ],
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_group_name": "Tacacs_Group",
+    "tacacs_servers": []
+  },
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "13",
+    "community_rw": "xxxxxxxx",
+    "acl_rw": "13",
+    "location": "Campus Distribution Building-F",
+    "contact": "NOC-555-0100",
+    "enable_traps": false
+  },
+  "local_users": [
+    {
+      "name": "xxxxxxxx",
+      "password": "need_input",
+      "privilege": 15
+    }
+  ],
+  "logging_hosts": [
+    "192.0.2.21",
+    "192.0.2.22",
+    "192.0.2.23"
+  ],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": {
+    "name": "Mgmt-vrf",
+    "rd": "",
+    "rt_export": "",
+    "rt_import": ""
+  }
+}

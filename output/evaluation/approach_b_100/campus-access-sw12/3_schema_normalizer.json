@@ -1,0 +1,530 @@
+{
+  "hostname": "CAMPUS-ACCESS-SW12",
+  "domain_name": "campus.example.org",
+  "system": {
+    "local_users": [
+      {
+        "username": "admin",
+        "privilege": 15,
+        "role": "network-admin",
+        "secret_type": "sha512"
+      }
+    ]
+  },
+  "management": {
+    "interfaces": [
+      {
+        "name": "Vlan4063",
+        "vrf": "MDMZ"
+      }
+    ],
+    "vrfs": [
+      "MDMZ"
+    ],
+    "http": {
+      "enabled": false
+    },
+    "https": {
+      "enabled": true,
+      "vrf": "MDMZ"
+    },
+    "ssh": {
+      "idle_timeout": 20,
+      "authentication_mode": "keyboard-interactive",
+      "vrf": "MDMZ"
+    }
+  },
+  "vlans": [
+    {
+      "id": 130,
+      "name": "USERS"
+    },
+    {
+      "id": 230,
+      "name": "VOICE"
+    },
+    {
+      "id": 330,
+      "name": "GUEST"
+    },
+    {
+      "id": 777,
+      "name": "AP-MGMT"
+    },
+    {
+      "id": 4063,
+      "name": "INBAND-MGMT"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "MDMZ"
+    },
+    {
+      "name": "VRFA"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "Port-channel502",
+      "description": "UPLINK-PC502",
+      "mode": "trunk",
+      "trunk_allowed_vlans": [
+        130,
+        230,
+        330,
+        777,
+        4063
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0/49",
+      "description": "UPLINK-MEMBER",
+      "channel_group": {
+        "id": 502,
+        "mode": "active"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/50",
+      "description": "UPLINK-MEMBER",
+      "channel_group": {
+        "id": 502,
+        "mode": "active"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/1",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/11",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/13",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/14",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/15",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/17",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/18",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/19",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/21",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/22",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/23",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/25",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/26",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/27",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/29",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/30",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/31",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/33",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/34",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/35",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/37",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/38",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/39",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/41",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/42",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/43",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/45",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/46",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/47",
+      "description": "USER",
+      "mode": "access",
+      "access_vlan": 130
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "description": "IP-PHONE",
+      "mode": "trunk",
+      "native_vlan": 130,
+      "trunk_allowed_vlans": [
+        130,
+        230
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "description": "IP-PHONE",
+      "mode": "trunk",
+      "native_vlan": 130,
+      "trunk_allowed_vlans": [
+        130,
+        230
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0/12",
+      "description": "IP-PHONE",
+      "mode": "trunk",
+      "native_vlan": 130,
+      "trunk_allowed_vlans": [
+        130,
+        230
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0/16",
+      "description": "IP-PHONE",
+      "mode": "trunk",
+      "native_vlan": 130,
+      "trunk_allowed_vlans": [
+        130,
+        230
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0/20",
+      "description": "IP-PHONE",
+      "mode": "trunk",
+      "native_vlan": 130,
+      "trunk_allowed_vlans": [
+        130,
+        230
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0/24",
+      "description": "IP-PHONE",
+      "mode": "trunk",
+      "native_vlan": 130,
+      "trunk_allowed_vlans": [
+        130,
+        230
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0/28",
+      "description": "IP-PHONE",
+      "mode": "trunk",
+      "native_vlan": 130,
+      "trunk_allowed_vlans": [
+        130,
+        230
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0/32",
+      "description": "IP-PHONE",
+      "mode": "trunk",
+      "native_vlan": 130,
+      "trunk_allowed_vlans": [
+        130,
+        230
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0/36",
+      "description": "IP-PHONE",
+      "mode": "trunk",
+      "native_vlan": 130,
+      "trunk_allowed_vlans": [
+        130,
+        230
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0/40",
+      "description": "IP-PHONE",
+      "mode": "trunk",
+      "native_vlan": 130,
+      "trunk_allowed_vlans": [
+        130,
+        230
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0/44",
+      "description": "IP-PHONE",
+      "mode": "trunk",
+      "native_vlan": 130,
+      "trunk_allowed_vlans": [
+        130,
+        230
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0/48",
+      "description": "IP-PHONE",
+      "mode": "trunk",
+      "native_vlan": 130,
+      "trunk_allowed_vlans": [
+        130,
+        230
+      ]
+    }
+  ],
+  "svis": [
+    {
+      "name": "Vlan130",
+      "description": "USERS",
+      "vrf": "VRFA",
+      "ip_address": "198.51.100.70/24"
+    },
+    {
+      "name": "Vlan230",
+      "description": "VOICE",
+      "vrf": "VRFA",
+      "ip_address": "198.51.101.70/24"
+    },
+    {
+      "name": "Vlan330",
+      "description": "GUEST",
+      "vrf": "VRFA",
+      "ip_address": "198.51.102.70/24"
+    },
+    {
+      "name": "Vlan777",
+      "description": "AP-MGMT",
+      "vrf": "VRFA",
+      "ip_address": "198.51.103.70/24"
+    },
+    {
+      "name": "Vlan4063",
+      "description": "INBAND-MGMT",
+      "vrf": "MDMZ",
+      "ip_address": "198.51.100.70/24"
+    }
+  ],
+  "snmp": {
+    "communities": [],
+    "location": "Building-H Access SW12",
+    "contact": "NOC-555-0100",
+    "vrf": "MDMZ",
+    "local_interface": "Vlan4063",
+    "access_list": "SNMP-ALLOWED"
+  },
+  "aaa": {
+    "groups": [
+      {
+        "name": "TACACS_GROUP",
+        "servers": [
+          "192.0.2.11",
+          "192.0.2.12"
+        ]
+      }
+    ],
+    "servers": [
+      {
+        "host": "192.0.2.11",
+        "key": "7 xxxxxxxx"
+      },
+      {
+        "host": "192.0.2.12",
+        "key": "7 xxxxxxxx"
+      }
+    ]
+  },
+  "ntp": {
+    "servers": [
+      {
+        "address": "192.0.2.11",
+        "prefer": true
+      },
+      {
+        "address": "192.0.2.12"
+      }
+    ]
+  },
+  "dns_servers": [],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "access_interfaces": [],
+  "uplinks": [],
+  "acls": [],
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "snmp_config": {
+    "location": "Building-H Access SW12",
+    "contact": "NOC-555-0100",
+    "enable_traps": false
+  },
+  "local_users": [],
+  "logging_hosts": [],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": null
+}

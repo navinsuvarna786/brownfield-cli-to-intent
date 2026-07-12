@@ -1,0 +1,27 @@
+[
+  {
+    "field": "domain_name",
+    "confidence": 0.9,
+    "reason": "Extracted from 'dns domain' command"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 1,
+    "reason": "Mapped Ethernet1-4 to GigabitEthernet1/0/1-4 per target device naming"
+  },
+  {
+    "field": "aaa",
+    "confidence": 1,
+    "reason": "Extracted tacacs group and servers with keys"
+  },
+  {
+    "field": "management.api_http_commands.protocol_https",
+    "confidence": 1,
+    "reason": "Explicit 'protocol https' and 'no protocol http' under management api http-commands"
+  },
+  {
+    "field": "snmp",
+    "confidence": 1,
+    "reason": "Extracted snmp-server contact, location, ACL and VRF local-interface"
+  }
+]

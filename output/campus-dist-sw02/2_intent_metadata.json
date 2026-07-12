@@ -1,0 +1,27 @@
+[
+  {
+    "field": "domain_name",
+    "confidence": 0.9,
+    "reason": "extracted from 'dns domain' command"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 1,
+    "reason": "expanded identical config comments and mapped Arista Ethernet to Cisco GigabitEthernet format"
+  },
+  {
+    "field": "snmp",
+    "confidence": 1,
+    "reason": "extracted from snmp-server commands"
+  },
+  {
+    "field": "aaa",
+    "confidence": 1,
+    "reason": "explicit 'no aaa root' disables AAA"
+  },
+  {
+    "field": "ntp",
+    "confidence": 1,
+    "reason": "parsed ntp server commands with prefer flag"
+  }
+]

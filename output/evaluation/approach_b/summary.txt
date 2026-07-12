@@ -1,0 +1,49 @@
+========================================================================
+  APPROACH B — Single-Pass LLM Evaluation
+  (no normalizer, no validator, no retry loop)
+  Run: 2026-04-28T20:56:28.566344
+========================================================================
+
+Dataset : 17 configs (12 Cisco, 5 Arista)
+LLM calls: 17 (1 per config, no retries)
+Errors  : 0 pipeline errors
+
+VALIDITY RATES (post-hoc, over all configs):
+  Schema valid   : 100.0%  (17/17)
+  Semantic valid : 17.6%  (3/17)
+  YAML generated : 100.0%  (17/17)
+
+TOTAL LATENCY: mean=41.554s  median=26.011s  stdev=26.381s  min=14.061s  max=104.155s
+LLM LATENCY:  mean=41.515s  median=25.960s  max=104.111s
+
+BY DEPLOYMENT GROUP:
+  access-nac              n= 8  schema=100.0%  semantic=25.0%  lat=46.348s  llm=46.296s
+  arista-distribution     n= 5  schema=100.0%  semantic=0.0%  lat=28.097s  llm=28.071s
+  oob-server              n= 4  schema=100.0%  semantic=25.0%  lat=48.790s  llm=48.758s
+
+SEMANTIC RULE VIOLATIONS (post-hoc, rules 101-120):
+  Rule 119: 1 config(s) affected
+  Rule 121: 14 config(s) affected
+
+PER-CONFIG DETAIL:
+  File                                  Grp                    Tot(s)   LLM(s)   Sch   Sem  YAML  Rules
+  -------------------------------------------------------------------------------------------------------------------
+  BLDG-A-FLOOR1-SW01.txt                access-nac             19.625   19.536    OK  FAIL   YES  121
+  BLDG-A-FLOOR2-SW01.txt                access-nac             26.011   25.960    OK  FAIL   YES  121
+  BLDG-A-FLOOR3-SW01.txt                access-nac            104.155  104.111    OK  FAIL   YES  121
+  BLDG-B-FLOOR1-SW01.txt                access-nac             17.225   17.193    OK    OK   YES  -
+  BLDG-B-FLOOR2-SW01.txt                access-nac             60.568   60.534    OK  FAIL   YES  121
+  BLDG-C-FLOOR1-SW01.txt                access-nac             22.286   22.230    OK    OK   YES  -
+  BLDG-C-FLOOR2-SW01.txt                access-nac             53.195   53.167    OK  FAIL   YES  121
+  BLDG-FR-FLOOR1-SW01.txt               access-nac             67.715   67.637    OK  FAIL   YES  119,121
+  DATACTR-OOBSW-01.txt                  oob-server             62.612   62.577    OK  FAIL   YES  121
+  DATACTR-OOBSW-02.txt                  oob-server             58.085   58.055    OK  FAIL   YES  121
+  DATACTR-OOBSW-03.txt                  oob-server             18.833   18.805    OK    OK   YES  -
+  DATACTR-OOBSW-04.txt                  oob-server             55.629   55.597    OK  FAIL   YES  121
+  CAMPUS-ACCESS-SW03.txt                arista-distribution    17.058   17.042    OK  FAIL   YES  121
+  CAMPUS-ACCESS-SW04.txt                arista-distribution    14.061   14.043    OK  FAIL   YES  121
+  CAMPUS-DIST-SW01-original.txt         arista-distribution    67.829   67.772    OK  FAIL   YES  121
+  CAMPUS-DIST-SW01.txt                  arista-distribution    22.685   22.659    OK  FAIL   YES  121
+  CAMPUS-DIST-SW02.txt                  arista-distribution    18.851   18.836    OK  FAIL   YES  121
+
+========================================================================

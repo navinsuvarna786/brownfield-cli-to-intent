@@ -1,0 +1,290 @@
+{
+  "hostname": "BLDG-B-FLOOR2-SW01",
+  "domain_name": "campus.example.edu",
+  "system": {
+    "timezone": "CST",
+    "timezone_offset": "-6",
+    "daylight_savings": "CDT",
+    "spanning_tree_mode": "pvst",
+    "errdisable_recovery": {
+      "causes": [
+        "security-violation",
+        "gbic-invalid",
+        "psecure-violation"
+      ],
+      "interval": 100
+    },
+    "local_users": [
+      {
+        "name": "xxxxxxxx",
+        "privilege": 15
+      }
+    ],
+    "enable_secret": "need_input"
+  },
+  "management": {
+    "vrfs": [
+      {
+        "name": "Mgmt-vrf"
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "GigabitEthernet0/0",
+        "vrf": "Mgmt-vrf",
+        "ip_address": null,
+        "negotiation": "auto"
+      }
+    ],
+    "ssh": {
+      "version": 2
+    },
+    "http": {
+      "authentication": "aaa"
+    },
+    "lines": {
+      "console": {
+        "exec_timeout": "5 0",
+        "stopbits": 1
+      },
+      "vty_0_4": {
+        "access_class": "13",
+        "exec_timeout": "20 0",
+        "privilege": 15,
+        "transport_input": [
+          "ssh"
+        ]
+      },
+      "vty_5_15": {
+        "access_class": "13",
+        "exec_timeout": "20 0",
+        "privilege": 15,
+        "transport_input": [
+          "ssh"
+        ]
+      }
+    }
+  },
+  "vlans": [
+    {
+      "id": 61,
+      "name": "USER-NET"
+    },
+    {
+      "id": 62,
+      "name": "CONF-ROOM"
+    },
+    {
+      "id": 900,
+      "name": "MGMT"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "Mgmt-vrf"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "Vlan900",
+      "ip_address": "192.0.2.120",
+      "ip_mask": "255.255.255.0",
+      "ip_redirects": false
+    },
+    {
+      "name": "Port-channel1",
+      "description": "UPLINK-PC1",
+      "switchport_mode": "trunk",
+      "native_vlan": 900,
+      "allowed_vlans": [
+        61,
+        62,
+        900
+      ]
+    },
+    {
+      "name": "TenGigabitEthernet1/1/1",
+      "description": "MEMBER-PC1",
+      "channel_group": {
+        "id": 1,
+        "mode": "active"
+      }
+    }
+  ],
+  "access_interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "switchport_mode": "access",
+      "access_vlan": 61,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": "2.00 1.00",
+        "multicast_level": "2.00 1.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    }
+  ],
+  "routes": [
+    {
+      "default_gateway": "192.0.2.254"
+    }
+  ],
+  "snmp": {
+    "communities": [
+      {
+        "name": "xxxxxxxx",
+        "access": "RO",
+        "acl": "13"
+      }
+    ],
+    "location": "Building-B Floor-2",
+    "contact": "NOC",
+    "chassis_id": "BLDG-B-FLOOR2-SW01",
+    "hosts": [
+      "192.0.2.24"
+    ],
+    "version": "2c"
+  },
+  "acls": [
+    {
+      "name": "13",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.11",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "192.0.2.12",
+          "log": false
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "192.0.2.0 0.0.0.255",
+          "log": false
+        }
+      ]
+    }
+  ],
+  "aaa": {
+    "enabled": true,
+    "authentication": {
+      "login_default": "local enable"
+    },
+    "session_id": "common",
+    "tacacs_servers": [
+      {
+        "name": "tacacs-svr-01",
+        "address": "192.0.2.11",
+        "key": "need_input",
+        "timeout": 3
+      },
+      {
+        "name": "tacacs-svr-02",
+        "address": "192.0.2.12",
+        "key": "need_input",
+        "timeout": 3
+      }
+    ]
+  },
+  "logging": {
+    "hosts": [
+      "192.0.2.21",
+      "192.0.2.22",
+      "192.0.2.23"
+    ]
+  },
+  "ntp": {
+    "servers": [
+      {
+        "address": "192.0.2.11",
+        "prefer": true
+      },
+      {
+        "address": "192.0.2.12"
+      }
+    ]
+  },
+  "dns_servers": [
+    "192.0.2.50",
+    "192.0.2.60"
+  ],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "uplinks": [
+    {
+      "type": "port-channel",
+      "port_channel_id": 1,
+      "description": "UPLINK-PC1",
+      "allowed_vlans": [
+        61,
+        62,
+        900
+      ],
+      "native_vlan": 900,
+      "member_interfaces": [
+        {
+          "name": "TenGigabitEthernet1/1/1",
+          "lacp_mode": "active"
+        }
+      ]
+    }
+  ],
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": [
+      {
+        "name": "tacacs-svr-01",
+        "ip": "192.0.2.11",
+        "key": "need_input"
+      },
+      {
+        "name": "tacacs-svr-02",
+        "ip": "192.0.2.12",
+        "key": "need_input"
+      }
+    ]
+  },
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "13",
+    "location": "Building-B Floor-2",
+    "contact": "NOC",
+    "chassis_id": "BLDG-B-FLOOR2-SW01",
+    "enable_traps": true
+  },
+  "local_users": [
+    {
+      "name": "xxxxxxxx",
+      "password": "need_input",
+      "privilege": 15
+    }
+  ],
+  "logging_hosts": [
+    "192.0.2.21",
+    "192.0.2.22",
+    "192.0.2.23"
+  ],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": {
+    "name": "Mgmt-vrf",
+    "rd": "",
+    "rt_export": "",
+    "rt_import": ""
+  }
+}

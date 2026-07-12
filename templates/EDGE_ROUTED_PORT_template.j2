@@ -1,0 +1,72 @@
+{# Routed Port & Sub-Interface Configuration - Pipe delimited format for CC compatibility #}
+{# Format: name|description|switchport|vrf|ip_address|subnet_mask|mtu|shutdown|pim_sparse|dot1q_vlan|helper_addresses #}
+{# #}
+{# For parent interfaces (e.g. Ethernet23): name|description|false|||||||| #}
+{#   - Pass empty ip_address to configure as routed parent only (no switchport, no shutdown) #}
+{# For sub-interfaces (e.g. Ethernet23.11): name|desc||VRFA|172.17.10.245|255.255.255.254|9100|false|true|11| #}
+{#   - dot1q_vlan triggers encapsulation dot1Q on the sub-interface #}
+{# For standalone routed ports (e.g. Ethernet24): name|desc|false|VRFM|192.168.42.244|255.255.255.254|9100|false|true|| #}
+{#   - switchport=false means a plain routed port with no switchport + ip address #}
+{%- set interface_list = routed_interfaces.split(',') if routed_interfaces else [] %}
+{%- for interface_entry in interface_list %}
+{%- set parts = interface_entry.strip().split('|') %}
+{%- if parts|length >= 1 and parts[0].strip() %}
+{%- set interface_name = parts[0].strip() %}
+{%- set interface_desc = parts[1] if parts|length > 1 and parts[1] else '' %}
+{%- set switchport_val = parts[2] if parts|length > 2 and parts[2] else '' %}
+{%- set vrf_name = parts[3] if parts|length > 3 and parts[3] else '' %}
+{%- set ip_address = parts[4] if parts|length > 4 and parts[4] else '' %}
+{%- set subnet_mask = parts[5] if parts|length > 5 and parts[5] else '255.255.255.0' %}
+{%- set mtu_val = parts[6] if parts|length > 6 and parts[6] else '' %}
+{%- set is_shutdown = parts[7] if parts|length > 7 and parts[7] == 'true' else false %}
+{%- set pim_sparse = parts[8] if parts|length > 8 and parts[8] == 'true' else false %}
+{%- set dot1q_vlan = parts[9] if parts|length > 9 and parts[9] else '' %}
+{%- set helper_addresses = parts[10] if parts|length > 10 and parts[10] else '' %}
+{%- set is_subinterface = '.' in interface_name %}
+
+interface {{ interface_name }}
+{%- if interface_desc %}
+ description {{ interface_desc }}
+{%- endif %}
+{%- if switchport_val == 'false' or (not is_subinterface and switchport_val != 'true') %}
+ no switchport
+{%- endif %}
+{%- if dot1q_vlan %}
+ encapsulation dot1Q {{ dot1q_vlan }}
+{%- endif %}
+{%- if vrf_name %}
+{%- if is_subinterface or dot1q_vlan %}
+ vrf forwarding {{ vrf_name }}
+{%- else %}
+ vrf forwarding {{ vrf_name }}
+{%- endif %}
+{%- endif %}
+{%- if ip_address %}
+ ip address {{ ip_address }} {{ subnet_mask }}
+{%- endif %}
+{%- if mtu_val %}
+ mtu {{ mtu_val }}
+{%- endif %}
+{%- if pim_sparse %}
+ ip pim sparse-mode
+{%- endif %}
+{%- if helper_addresses %}
+{%- for helper in helper_addresses.split(';') %}
+{%- if helper.strip() %}
+ ip helper-address {{ helper.strip() }}
+{%- endif %}
+{%- endfor %}
+{%- endif %}
+{%- if ip_address %}
+{%- if is_shutdown %}
+ shutdown
+{%- else %}
+ no shutdown
+{%- endif %}
+{%- else %}
+{# Parent interface with no IP - just enable it #}
+ no shutdown
+{%- endif %}
+!
+{%- endif %}
+{%- endfor %}

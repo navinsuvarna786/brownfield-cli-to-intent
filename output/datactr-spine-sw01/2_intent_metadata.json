@@ -1,0 +1,27 @@
+[
+  {
+    "field": "domain_name",
+    "confidence": 0.9,
+    "reason": "Extracted from 'dns domain' command"
+  },
+  {
+    "field": "aaa",
+    "confidence": 1,
+    "reason": "Tacacs servers and groups configured"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 1,
+    "reason": "All interfaces parsed with mapping EthernetN->GigabitEthernet1/0/N"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.95,
+    "reason": "SNMP location, contact, ACL and VRF extracted"
+  },
+  {
+    "field": "ntp",
+    "confidence": 1,
+    "reason": "NTP servers with prefer flag extracted"
+  }
+]

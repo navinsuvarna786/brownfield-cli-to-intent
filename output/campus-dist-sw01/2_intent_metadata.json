@@ -1,0 +1,27 @@
+[
+  {
+    "field": "domain_name",
+    "confidence": 0.9,
+    "reason": "extracted from dns domain command"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "expanded identical config comments and mapped Arista Ethernet to Cisco Gi1/0/x"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "parsed tacacs group and servers with keys"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.95,
+    "reason": "extracted snmp config with vrf and ACL"
+  },
+  {
+    "field": "management",
+    "confidence": 0.95,
+    "reason": "parsed management api and ssh with vrf and protocols"
+  }
+]

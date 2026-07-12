@@ -1,0 +1,55 @@
+!
+! === NAC / 802.1X / RADIUS Configuration ===
+!
+! --- RADIUS Server Group ---
+aaa group server radius {{ radius_group_name }}
+{%- set server_list = radius_servers.split(',') if radius_servers else [] %}
+{%- for server_entry in server_list %}
+{%- set parts = server_entry.strip().split('|') %}
+{%- if parts|length >= 2 %}
+server name {{ parts[0] }}
+{%- endif %}
+{%- endfor %}
+{%- if radius_deadtime is defined and radius_deadtime %}
+deadtime {{ radius_deadtime }}
+{%- endif %}
+!
+! --- AAA Methods for 802.1X ---
+aaa authentication dot1x default group {{ radius_group_name }}
+aaa authorization network default group {{ radius_group_name }}
+aaa accounting dot1x default start-stop group {{ radius_group_name }}
+!
+! --- Global 802.1X ---
+dot1x system-auth-control
+!
+! --- RADIUS Dynamic Authorization (CoA) ---
+{%- if coa_clients is defined and coa_clients %}
+aaa server radius dynamic-author
+{%- set coa_list = coa_clients.split(',') if coa_clients else [] %}
+{%- for coa_entry in coa_list %}
+{%- set coa_parts = coa_entry.strip().split('|') %}
+{%- if coa_parts|length >= 1 %}
+client {{ coa_parts[0] }}{% if coa_parts|length >= 2 and coa_parts[1] %} server-key 7 {{ coa_parts[1] }}{% endif %}
+
+{%- endif %}
+{%- endfor %}
+port {{ coa_port | default('3799') }}
+auth-type {{ coa_auth_type | default('all') }}
+{%- endif %}
+!
+! --- RADIUS Server Definitions ---
+{%- set server_list = radius_servers.split(',') if radius_servers else [] %}
+{%- for server_entry in server_list %}
+{%- set parts = server_entry.strip().split('|') %}
+{%- if parts|length >= 2 %}
+!
+radius server {{ parts[0] }}
+address ipv4 {{ parts[1] }}{% if parts|length >= 3 and parts[2] %} auth-port {{ parts[2] }}{% endif %}{% if parts|length
+>= 4 and parts[3] %} acct-port {{ parts[3] }}{% endif %}
+
+{%- if parts|length >= 5 and parts[4] %}
+key 7 {{ parts[4] }}
+{%- endif %}
+{%- endif %}
+{%- endfor %}
+!

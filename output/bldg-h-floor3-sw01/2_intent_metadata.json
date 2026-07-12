@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Explicit config and legacy parser match for all interfaces including bulk identical configs"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "Complete AAA groups and servers parsed from config and legacy data"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "All VLANs explicitly defined in config and legacy"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.9,
+    "reason": "SNMP communities, location, contact, hosts fully extracted"
+  },
+  {
+    "field": "errdisable",
+    "confidence": 0.85,
+    "reason": "Errdisable causes and recovery interval clearly configured"
+  }
+]

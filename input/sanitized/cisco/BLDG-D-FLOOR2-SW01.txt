@@ -1,0 +1,2824 @@
+no service pad
+service timestamps debug uptime
+service timestamps log datetime localtime
+service password-encryption
+service compress-config
+no platform punt-keepalive disable-kernel-core
+!
+hostname BLDG-D-FLOOR2-SW01
+!
+vrf definition Mgmt-vrf
+ !
+ address-family ipv4
+ exit-address-family
+!
+enable secret 5 xxxxxxxx
+!
+!
+
+aaa new-model
+!
+aaa group server radius RADIUS_GROUP
+ server name radius-svr-01
+ server name radius-svr-02
+ deadtime 1
+!
+aaa group server tacacs+ Tacacs_Group
+ server name tacacs-svr-01
+ server name tacacs-svr-02
+!
+aaa authentication login default local group Tacacs_Group enable
+aaa authentication dot1x default group RADIUS_GROUP
+aaa authorization exec default group Tacacs_Group local
+aaa authorization commands 15 default group Tacacs_Group if-authenticated
+aaa authorization network default group RADIUS_GROUP
+aaa accounting dot1x default start-stop group RADIUS_GROUP
+aaa accounting exec default start-stop group Tacacs_Group
+!
+aaa server radius dynamic-author
+ client 192.0.2.31 server-key 7 xxxxxxxx
+ port 3799
+ auth-type all
+!
+aaa session-id common
+dot1x system-auth-control
+!
+clock timezone CST -6 0
+clock summer-time CDT recurring
+!
+switch 1 provision c9300-48p
+switch 2 provision c9300-48p
+switch 3 provision c9300-48p
+!
+ip domain name campus.example.edu
+ip name-server 192.0.2.50 192.0.2.60
+!
+
+vtp domain CAMPUS
+vtp mode transparent
+!
+!
+
+errdisable recovery cause security-violation
+errdisable recovery cause gbic-invalid
+errdisable recovery cause psecure-violation
+errdisable recovery interval 100
+license boot level network-advantage addon dna-advantage
+diagnostic bootup level minimal
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+
+redundancy
+ mode sso
+!
+username xxxxxxxx privilege 15 password 7 xxxxxxxx
+!
+lldp run
+!
+!
+vlan 10
+ name DATA
+!
+vlan 20
+ name VOICE
+!
+vlan 30
+ name GUEST
+!
+vlan 900
+ name MGMT
+!
+
+!
+interface GigabitEthernet0/0
+ vrf forwarding Mgmt-vrf
+ no ip address
+ negotiation auto
+!
+interface Vlan900
+ ip address 192.0.2.112 255.255.255.0
+ no ip redirects
+!
+ip default-gateway 192.0.2.254
+!
+interface Port-channel1
+ description UPLINK-PC1
+ switchport trunk native vlan 900
+ switchport trunk allowed vlan 10,20,30,900
+ switchport mode trunk
+!
+interface TenGigabitEthernet1/1/1
+ description UPLINK-MEMBER-PC1
+ channel-group 1 mode active
+!
+interface TenGigabitEthernet2/1/1
+ description UPLINK-MEMBER-PC1
+ channel-group 1 mode active
+!
+interface TenGigabitEthernet3/1/1
+ description UPLINK-MEMBER-PC1
+ channel-group 1 mode active
+!
+interface GigabitEthernet1/0/1
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/2
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/3
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/4
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/5
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/6
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/7
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/8
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/9
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/10
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/11
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/12
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/13
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/14
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/15
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/16
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/17
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/18
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/19
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/20
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/21
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/22
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/23
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/24
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/25
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/26
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/27
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/28
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/29
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/30
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/31
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/32
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/33
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/34
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/35
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/36
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/37
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/38
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/39
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/40
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/41
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/42
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/43
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/44
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/45
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/46
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/47
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet1/0/48
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/1
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/2
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/3
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/4
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/5
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/6
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/7
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/8
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/9
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/10
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/11
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/12
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/13
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/14
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/15
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/16
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/17
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/18
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/19
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/20
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/21
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/22
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/23
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/24
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/25
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/26
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/27
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/28
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/29
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/30
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/31
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/32
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/33
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/34
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/35
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/36
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/37
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/38
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/39
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/40
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/41
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/42
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/43
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/44
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/45
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/46
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/47
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet2/0/48
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/1
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/2
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/3
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/4
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/5
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/6
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/7
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/8
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/9
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/10
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/11
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/12
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/13
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/14
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/15
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/16
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/17
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/18
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/19
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/20
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/21
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/22
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/23
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/24
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/25
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/26
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/27
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/28
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/29
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/30
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/31
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/32
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/33
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/34
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/35
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/36
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/37
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/38
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/39
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/40
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/41
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/42
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/43
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/44
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/45
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/46
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/47
+ switchport access vlan 10
+ switchport mode access
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+interface GigabitEthernet3/0/48
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ authentication host-mode multi-auth
+ authentication order dot1x mab
+ authentication priority dot1x mab
+ authentication port-control auto
+ authentication periodic
+ authentication timer reauthenticate server
+ mab
+ dot1x pae authenticator
+ no logging event link-status
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+!
+
+radius server radius-svr-01
+ address ipv4 192.0.2.31 auth-port 1812 acct-port 1813
+ key 7 xxxxxxxx
+!
+radius server radius-svr-02
+ address ipv4 192.0.2.32 auth-port 1812 acct-port 1813
+ key 7 xxxxxxxx
+!
+tacacs server tacacs-svr-01
+ address ipv4 192.0.2.11
+ key 7 xxxxxxxx
+!
+tacacs server tacacs-svr-02
+ address ipv4 192.0.2.12
+ key 7 xxxxxxxx
+!
+snmp-server community xxxxxxxx RO 13
+snmp-server community xxxxxxxx RW 13
+snmp-server location Building-D Floor-2
+snmp-server contact NOC-555-0100
+snmp-server host 192.0.2.21 version 2c xxxxxxxx
+snmp-server host 192.0.2.22 version 2c xxxxxxxx
+!
+ip access-list standard 13
+ permit 192.0.2.0 0.0.0.255
+ deny   any log
+!
+logging host 192.0.2.21
+logging host 192.0.2.22
+logging host 192.0.2.23
+!
+banner motd ^C
+*************************************************************
+* Authorized access only.                                   *
+* Unauthorized use is prohibited and may be prosecuted.     *
+*************************************************************
+^C
+!
+ip ssh version 2
+no ip http server
+ip http authentication aaa
+no ip http secure-server
+!
+line con 0
+ exec-timeout 5 0
+ stopbits 1
+line vty 0 4
+ access-class 13 in
+ exec-timeout 20 0
+ privilege level 15
+ transport preferred none
+ transport input ssh
+line vty 5 15
+ access-class 13 in
+ exec-timeout 20 0
+ privilege level 15
+ transport preferred none
+ transport input ssh
+!
+ntp server 192.0.2.11 prefer
+ntp server 192.0.2.12
+!
+ip domain name campus.example.edu
+ip name-server 192.0.2.50 192.0.2.60
+!
+vtp domain CAMPUS
+vtp mode transparent
+!
+!
+
+control-plane
+ service-policy input system-cpp-policy
+!

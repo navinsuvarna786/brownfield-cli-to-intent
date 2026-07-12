@@ -1,0 +1,47 @@
+========================================================================
+  APPROACH B+ — Schema-Constrained LLM + RAG Ablation
+  Model: gpt-4.1-mini
+  Run:   2026-05-01T00:08:42.968160
+========================================================================
+
+Dataset: 17 configs
+Schema valid  : 100.0%  (17/17)
+Semantic valid: 0.0%  (0/17)
+
+EXPECTED INTERPRETATION (compare against paper Table 3):
+  Approach A (rules-only)     : semantic_valid = 44.1%
+  Approach B (zero-guardrail) : semantic_valid = 17.6%
+  Approach B+ (this run)      : semantic_valid = 0.0%
+  Approach C (full guardrails): semantic_valid = 97.1%
+
+  B--B+ gap = prompt engineering alone
+  B+--C gap = normalizer + semantic rules + retry loop
+
+BY GROUP:
+  access-nac              n= 8  schema=100.0%  semantic=0.0%  lat=26.6s
+  arista-distribution     n= 5  schema=100.0%  semantic=0.0%  lat=30.4s
+  oob-server              n= 4  schema=100.0%  semantic=0.0%  lat=25.2s
+
+RULE VIOLATIONS:
+  Rule 119: 2 configs
+  Rule 121: 17 configs
+
+PER-CONFIG:
+  BLDG-A-FLOOR1-SW01.txt                    39.4s  sch:OK  sem:FAIL  121
+  BLDG-A-FLOOR2-SW01.txt                    25.5s  sch:OK  sem:FAIL  119,121
+  BLDG-A-FLOOR3-SW01.txt                    21.8s  sch:OK  sem:FAIL  121
+  BLDG-B-FLOOR1-SW01.txt                    26.8s  sch:OK  sem:FAIL  121
+  BLDG-B-FLOOR2-SW01.txt                    16.7s  sch:OK  sem:FAIL  121
+  BLDG-C-FLOOR1-SW01.txt                    27.9s  sch:OK  sem:FAIL  121
+  BLDG-C-FLOOR2-SW01.txt                    27.7s  sch:OK  sem:FAIL  121
+  BLDG-FR-FLOOR1-SW01.txt                   26.7s  sch:OK  sem:FAIL  121
+  DATACTR-OOBSW-01.txt                      18.7s  sch:OK  sem:FAIL  119,121
+  DATACTR-OOBSW-02.txt                      40.6s  sch:OK  sem:FAIL  121
+  DATACTR-OOBSW-03.txt                      16.1s  sch:OK  sem:FAIL  121
+  DATACTR-OOBSW-04.txt                      25.4s  sch:OK  sem:FAIL  121
+  CAMPUS-ACCESS-SW03.txt                    19.9s  sch:OK  sem:FAIL  121
+  CAMPUS-ACCESS-SW04.txt                    35.6s  sch:OK  sem:FAIL  121
+  CAMPUS-DIST-SW01-original.txt             29.3s  sch:OK  sem:FAIL  121
+  CAMPUS-DIST-SW01.txt                      28.9s  sch:OK  sem:FAIL  121
+  CAMPUS-DIST-SW02.txt                      38.6s  sch:OK  sem:FAIL  121
+========================================================================

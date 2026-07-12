@@ -1,0 +1,379 @@
+{
+  "hostname": "BLDG-H-FLOOR3-SW01",
+  "domain_name": "campus.example.edu",
+  "system": {
+    "timezone": "CST",
+    "timezone_offset": "-6",
+    "daylight_savings": "CDT",
+    "spanning_tree_mode": "rapid-pvst",
+    "errdisable": {
+      "causes": [
+        "security-violation",
+        "gbic-invalid",
+        "psecure-violation"
+      ],
+      "recovery_interval": 100
+    },
+    "local_users": [
+      {
+        "name": "xxxxxxxx",
+        "privilege": 15,
+        "password": "need_input"
+      }
+    ]
+  },
+  "management": {
+    "vrfs": [
+      {
+        "name": "Mgmt-vrf"
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "GigabitEthernet0/0",
+        "vrf": "Mgmt-vrf",
+        "ip_address": null,
+        "negotiation": "auto"
+      }
+    ],
+    "ssh": {
+      "version": 2
+    },
+    "http": {
+      "authentication": "aaa"
+    }
+  },
+  "vlans": [
+    {
+      "id": 14,
+      "name": "DATA"
+    },
+    {
+      "id": 24,
+      "name": "VOICE"
+    },
+    {
+      "id": 34,
+      "name": "GUEST"
+    },
+    {
+      "id": 902,
+      "name": "MGMT"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "Mgmt-vrf"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "Vlan902",
+      "ip_address": "192.0.2.125",
+      "subnet_mask": "255.255.255.0",
+      "ip_redirects": false
+    },
+    {
+      "name": "TenGigabitEthernet1/1/1",
+      "description": "UPLINK-TRUNK",
+      "switchport_mode": "trunk",
+      "native_vlan": 902,
+      "allowed_vlans": [
+        14,
+        24,
+        34,
+        902
+      ],
+      "spanning_tree_guard": "root"
+    }
+  ],
+  "access_interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "switchport_mode": "access",
+      "access_vlan": 14,
+      "authentication": {
+        "host_mode": "multi-auth",
+        "order": [
+          "dot1x",
+          "mab"
+        ],
+        "priority": [
+          "dot1x",
+          "mab"
+        ],
+        "port_control": "auto",
+        "periodic": true,
+        "timer": "reauthenticate server"
+      },
+      "mab": true,
+      "dot1x": true,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "switchport_mode": "access",
+      "access_vlan": 14,
+      "voice_vlan": 24,
+      "authentication": {
+        "host_mode": "multi-auth",
+        "order": [
+          "dot1x",
+          "mab"
+        ],
+        "priority": [
+          "dot1x",
+          "mab"
+        ],
+        "port_control": "auto",
+        "periodic": true,
+        "timer": "reauthenticate server"
+      },
+      "mab": true,
+      "dot1x": true,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    }
+  ],
+  "routes": [
+    {
+      "default_gateway": "192.0.2.254"
+    }
+  ],
+  "snmp": {
+    "communities": [
+      {
+        "name": "xxxxxxxx",
+        "access": "RO",
+        "acl": "13"
+      },
+      {
+        "name": "xxxxxxxx",
+        "access": "RW",
+        "acl": "13"
+      }
+    ],
+    "location": "Building-H Floor-3",
+    "contact": "NOC-555-0100",
+    "hosts": [
+      "192.0.2.21",
+      "192.0.2.22"
+    ]
+  },
+  "acls": [
+    {
+      "name": "13",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.0 0.0.0.255"
+        },
+        {
+          "sequence": 20,
+          "action": "deny",
+          "source": "any",
+          "log": true
+        }
+      ]
+    }
+  ],
+  "aaa": {
+    "enabled": true,
+    "groups": [
+      {
+        "name": "RADIUS_GROUP",
+        "type": "radius",
+        "servers": [
+          "radius-svr-01",
+          "radius-svr-02"
+        ],
+        "deadtime": 1
+      },
+      {
+        "name": "Tacacs_Group",
+        "type": "tacacs+",
+        "servers": [
+          "tacacs-svr-01",
+          "tacacs-svr-02"
+        ]
+      }
+    ],
+    "authentication": {
+      "login": {
+        "default": [
+          "local",
+          "group Tacacs_Group",
+          "enable"
+        ]
+      },
+      "dot1x": {
+        "default": [
+          "group RADIUS_GROUP"
+        ]
+      }
+    },
+    "authorization": {
+      "exec": {
+        "default": [
+          "group Tacacs_Group",
+          "local"
+        ]
+      },
+      "commands 15": {
+        "default": [
+          "group Tacacs_Group",
+          "if-authenticated"
+        ]
+      },
+      "network": {
+        "default": [
+          "group RADIUS_GROUP"
+        ]
+      }
+    },
+    "accounting": {
+      "dot1x": {
+        "default": [
+          "start-stop",
+          "group RADIUS_GROUP"
+        ]
+      },
+      "exec": {
+        "default": [
+          "start-stop",
+          "group Tacacs_Group"
+        ]
+      }
+    },
+    "server radius dynamic-author": {
+      "client": "192.0.2.31",
+      "server-key": "need_input",
+      "port": 3799,
+      "auth-type": "all"
+    }
+  },
+  "logging": {
+    "hosts": [
+      "192.0.2.21",
+      "192.0.2.22",
+      "192.0.2.23"
+    ]
+  },
+  "ntp": {
+    "servers": [
+      {
+        "ip": "192.0.2.11",
+        "prefer": true
+      },
+      {
+        "ip": "192.0.2.12"
+      }
+    ]
+  },
+  "dns_servers": [
+    "192.0.2.50",
+    "192.0.2.60"
+  ],
+  "stack": {
+    "is_stack": false,
+    "member_count": 1,
+    "switches": [
+      {
+        "id": 1,
+        "privilege": 15
+      }
+    ],
+    "master_switch": 1
+  },
+  "uplinks": [
+    {
+      "type": "trunk",
+      "name": "TenGigabitEthernet1/1/1",
+      "description": "DISCOVERED-UPLINK-1",
+      "allowed_vlans": [
+        14,
+        24,
+        34,
+        902
+      ],
+      "native_vlan": 902
+    },
+    {
+      "type": "trunk",
+      "name": "TenGigabitEthernet1/1/2",
+      "description": "DISCOVERED-UPLINK-2",
+      "allowed_vlans": [
+        14,
+        24,
+        34,
+        902
+      ],
+      "native_vlan": 902
+    }
+  ],
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_group_name": "Tacacs_Group",
+    "tacacs_servers": [
+      {
+        "name": "tacacs-svr-01",
+        "ip": "192.0.2.11",
+        "key": "need_input"
+      },
+      {
+        "name": "tacacs-svr-02",
+        "ip": "192.0.2.12",
+        "key": "need_input"
+      }
+    ]
+  },
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "13",
+    "community_rw": "xxxxxxxx",
+    "acl_rw": "13",
+    "location": "Building-H Floor-3",
+    "contact": "NOC-555-0100",
+    "enable_traps": false
+  },
+  "local_users": [
+    {
+      "name": "xxxxxxxx",
+      "password": "need_input",
+      "privilege": 15
+    }
+  ],
+  "logging_hosts": [
+    "192.0.2.21",
+    "192.0.2.22",
+    "192.0.2.23"
+  ],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": {
+    "name": "Mgmt-vrf",
+    "rd": "",
+    "rt_export": "",
+    "rt_import": ""
+  }
+}

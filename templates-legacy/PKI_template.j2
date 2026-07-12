@@ -1,0 +1,22 @@
+{% for trustpoint in trustpoints %}
+crypto pki trustpoint {{ trustpoint.name }}
+{% if trustpoint.enrollment == 'selfsigned' %}
+ enrollment selfsigned
+ subject-name {{ trustpoint.subject_name }}
+{% elif trustpoint.enrollment == 'ra' %}
+ enrollment mode ra
+ enrollment terminal
+ usage ssl-client
+{% endif %}
+ revocation-check {{ trustpoint.revocation_check | default('none') }}
+{% if trustpoint.rsakeypair %}
+ rsakeypair {{ trustpoint.rsakeypair }}
+{% endif %}
+{% if trustpoint.source_interface %}
+ source interface {{ trustpoint.source_interface }}
+{% endif %}
+{% endfor %}
+
+{% for cert in certificates %}
+crypto pki certificate {{ cert }}
+{% endfor %}

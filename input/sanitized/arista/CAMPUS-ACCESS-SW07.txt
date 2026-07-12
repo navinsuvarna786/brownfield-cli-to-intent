@@ -1,0 +1,362 @@
+! Command: show running-config
+! device: CAMPUS-ACCESS-SW07 (CCS-720XP-48ZY4, EOS-4.32.1F)
+!
+no aaa root
+!
+hostname CAMPUS-ACCESS-SW07
+!
+switchport default mode routed
+!
+vlan internal order ascending range 3500 3750
+!
+vlan 110
+   name USERS
+!
+vlan 210
+   name VOICE
+!
+vlan 4061
+   name INBAND-MGMT
+!
+
+dns domain campus.example.org
+!
+snmp-server ipv4 access-list SNMP-ALLOWED vrf MDMZ
+snmp-server contact NOC-555-0100
+snmp-server location Building-C Access SW07
+snmp-server vrf MDMZ local-interface Vlan4061
+!
+interface Port-Channel500
+   description UPLINK-PC500
+   switchport mode trunk
+   switchport trunk allowed vlan 110,210,4061
+!
+interface Ethernet49
+   description UPLINK-MEMBER
+   channel-group 500 mode active
+!
+interface Ethernet50
+   description UPLINK-MEMBER
+   channel-group 500 mode active
+!
+interface Ethernet1
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet2
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet3
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet4
+   description IP-PHONE
+   switchport access vlan 110
+   switchport trunk native vlan 110
+   switchport trunk allowed vlan 110,210
+   switchport mode trunk
+   switchport
+!
+interface Ethernet5
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet6
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet7
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet8
+   description IP-PHONE
+   switchport access vlan 110
+   switchport trunk native vlan 110
+   switchport trunk allowed vlan 110,210
+   switchport mode trunk
+   switchport
+!
+interface Ethernet9
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet10
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet11
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet12
+   description IP-PHONE
+   switchport access vlan 110
+   switchport trunk native vlan 110
+   switchport trunk allowed vlan 110,210
+   switchport mode trunk
+   switchport
+!
+interface Ethernet13
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet14
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet15
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet16
+   description IP-PHONE
+   switchport access vlan 110
+   switchport trunk native vlan 110
+   switchport trunk allowed vlan 110,210
+   switchport mode trunk
+   switchport
+!
+interface Ethernet17
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet18
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet19
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet20
+   description IP-PHONE
+   switchport access vlan 110
+   switchport trunk native vlan 110
+   switchport trunk allowed vlan 110,210
+   switchport mode trunk
+   switchport
+!
+interface Ethernet21
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet22
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet23
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet24
+   description IP-PHONE
+   switchport access vlan 110
+   switchport trunk native vlan 110
+   switchport trunk allowed vlan 110,210
+   switchport mode trunk
+   switchport
+!
+interface Ethernet25
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet26
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet27
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet28
+   description IP-PHONE
+   switchport access vlan 110
+   switchport trunk native vlan 110
+   switchport trunk allowed vlan 110,210
+   switchport mode trunk
+   switchport
+!
+interface Ethernet29
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet30
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet31
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet32
+   description IP-PHONE
+   switchport access vlan 110
+   switchport trunk native vlan 110
+   switchport trunk allowed vlan 110,210
+   switchport mode trunk
+   switchport
+!
+interface Ethernet33
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet34
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet35
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet36
+   description IP-PHONE
+   switchport access vlan 110
+   switchport trunk native vlan 110
+   switchport trunk allowed vlan 110,210
+   switchport mode trunk
+   switchport
+!
+interface Ethernet37
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet38
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet39
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet40
+   description IP-PHONE
+   switchport access vlan 110
+   switchport trunk native vlan 110
+   switchport trunk allowed vlan 110,210
+   switchport mode trunk
+   switchport
+!
+interface Ethernet41
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet42
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet43
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet44
+   description IP-PHONE
+   switchport access vlan 110
+   switchport trunk native vlan 110
+   switchport trunk allowed vlan 110,210
+   switchport mode trunk
+   switchport
+!
+interface Ethernet45
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet46
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet47
+   description USER
+   switchport access vlan 110
+   switchport
+!
+interface Ethernet48
+   description IP-PHONE
+   switchport access vlan 110
+   switchport trunk native vlan 110
+   switchport trunk allowed vlan 110,210
+   switchport mode trunk
+   switchport
+!
+
+interface Vlan110
+   description USERS
+   vrf VRFA
+   ip address 198.51.100.65/24
+!
+interface Vlan210
+   description VOICE
+   vrf VRFA
+   ip address 198.51.101.65/24
+!
+interface Vlan4061
+   description INBAND-MGMT
+   vrf MDMZ
+   ip address 198.51.100.65/24
+!
+management api http-commands
+   no protocol http
+   protocol https
+   no shutdown
+   !
+   vrf MDMZ
+      no shutdown
+!
+management ssh
+   idle-timeout 20
+   authentication mode keyboard-interactive
+   vrf MDMZ
+      no shutdown
+ntp server 192.0.2.11 prefer
+ntp server 192.0.2.12
+!
+aaa group server tacacs+ TACACS_GROUP
+   server 192.0.2.11
+   server 192.0.2.12
+!
+tacacs-server host 192.0.2.11 key 7 xxxxxxxx
+tacacs-server host 192.0.2.12 key 7 xxxxxxxx
+!
+username admin privilege 15 role network-admin secret sha512 xxxxxxxx
+!
+banner login
+Authorized access only. Unauthorized use is prohibited.
+EOF
+!

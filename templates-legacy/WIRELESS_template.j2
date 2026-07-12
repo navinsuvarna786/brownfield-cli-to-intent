@@ -1,0 +1,9 @@
+{# Wireless Access Point Configuration #}
+{% if ap_config %}
+ap dot11 airtime-fairness policy-name {{ ap_config.airtime_fairness_policy | default('Default') }} {{ ap_config.airtime_fairness_value | default(0) }}
+ap group {{ ap_config.ap_group | default('default-group') }}
+
+{% for beacon_id in ap_config.ble_beacons | default([0, 1, 2, 3, 4]) %}
+ap hyperlocation ble-beacon {{ beacon_id }}
+{% endfor %}
+{% endif %}

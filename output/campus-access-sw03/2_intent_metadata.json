@@ -1,0 +1,27 @@
+[
+  {
+    "field": "domain_name",
+    "confidence": 0.9,
+    "reason": "extracted from 'dns domain' command"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "mapped EthernetX to GigabitEthernet1/0/X and expanded identical configs"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "tacacs servers and groups parsed from config"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.9,
+    "reason": "snmp-server commands with vrf and ACL"
+  },
+  {
+    "field": "ntp",
+    "confidence": 0.95,
+    "reason": "ntp servers with prefer flag parsed"
+  }
+]

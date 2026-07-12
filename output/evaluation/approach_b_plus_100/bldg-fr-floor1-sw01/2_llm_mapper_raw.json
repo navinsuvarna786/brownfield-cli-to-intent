@@ -1,0 +1,219 @@
+{
+  "hostname": "BLDG-FR-FLOOR1-SW01",
+  "domain_name": "campus.example.edu",
+  "stack_info": {
+    "is_stack": true,
+    "member_count": 3,
+    "master_switch": 1
+  },
+  "pnp_config": {
+    "pnp_vlan_id": 817,
+    "pnp_vlan_name": "FR_Management",
+    "pnp_vlan_network_add": "need_input",
+    "pnp_vlan_network_mask": "need_input",
+    "pnp_vlan_default_gateway": "need_input"
+  },
+  "vlans": [
+    {
+      "id": 104,
+      "name": "Bypass"
+    },
+    {
+      "id": 206,
+      "name": "BLDG-FR-FLOOR1-SW01"
+    },
+    {
+      "id": 209,
+      "name": "BypassStatic"
+    },
+    {
+      "id": 210,
+      "name": "FR_Public_Static"
+    },
+    {
+      "id": 304,
+      "name": "Clinical"
+    },
+    {
+      "id": 345,
+      "name": "FR_Clinical_Static"
+    },
+    {
+      "id": 817,
+      "name": "FR_Management"
+    }
+  ],
+  "acls": [
+    {
+      "name": "need_input",
+      "type": "extended",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "any",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "any",
+          "log": false
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "any",
+          "log": false
+        },
+        {
+          "sequence": 40,
+          "action": "permit",
+          "source": "any",
+          "log": false
+        },
+        {
+          "sequence": 50,
+          "action": "permit",
+          "source": "any",
+          "log": false
+        },
+        {
+          "sequence": 60,
+          "action": "permit",
+          "source": "any",
+          "log": false
+        },
+        {
+          "sequence": 70,
+          "action": "permit",
+          "source": "any",
+          "log": false
+        }
+      ]
+    }
+  ],
+  "uplinks": [
+    {
+      "type": "port-channel",
+      "name": "Port-channel10",
+      "allowed_vlans": [
+        104,
+        206,
+        209,
+        210,
+        304,
+        345,
+        817
+      ],
+      "native_vlan": 104
+    }
+  ],
+  "snmp_config": {
+    "community_ro": "need_input",
+    "acl_ro": "need_input",
+    "location": "need_input",
+    "contact": "need_input",
+    "chassis_id": "need_input",
+    "enable_traps": false
+  },
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": [
+      {
+        "name": "tacacs-svr-01",
+        "ip": "need_input",
+        "key": "need_input"
+      },
+      {
+        "name": "tacacs-svr-02",
+        "ip": "need_input",
+        "key": "need_input"
+      }
+    ],
+    "radius_servers": [
+      {
+        "name": "radius-svr-01",
+        "ip": "need_input",
+        "key": "need_input"
+      },
+      {
+        "name": "radius-svr-02",
+        "ip": "need_input",
+        "key": "need_input"
+      },
+      {
+        "name": "radius-svr-03",
+        "ip": "need_input",
+        "key": "need_input"
+      }
+    ]
+  },
+  "nac_config": {
+    "dot1x_enabled": true,
+    "radius_group_name": "need_input",
+    "radius_servers": [
+      {
+        "name": "need_input",
+        "ip": "need_input"
+      }
+    ]
+  },
+  "ntp_servers": [
+    "need_input"
+  ],
+  "dns_servers": [
+    "need_input"
+  ],
+  "stp_mode": "rapid-pvst",
+  "errdisable_config": {
+    "causes": [
+      "security-violation",
+      "gbic-invalid",
+      "psecure-violation"
+    ],
+    "recovery_interval": 100
+  },
+  "access_interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "config": {
+        "access_vlan": 209,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "config": {
+        "access_vlan": 209,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "config": {
+        "access_vlan": 209,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    }
+  ],
+  "routed_interfaces": [
+    {
+      "name": "GigabitEthernet0/0",
+      "vrf": "Mgmt-vrf",
+      "ipv4": {
+        "address": "need_input",
+        "netmask": "need_input"
+      }
+    }
+  ]
+}

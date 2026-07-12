@@ -1,0 +1,97 @@
+! Command: show running-config
+! device: DATACTR-SPINE-SW01 (DCS-7280CR3MK-32D4, EOS-4.32.1F)
+!
+no aaa root
+!
+hostname DATACTR-SPINE-SW01
+!
+switchport default mode routed
+!
+vlan internal order ascending range 3500 3750
+!
+vlan 4091
+   name INBAND-MGMT
+!
+dns domain campus.example.org
+!
+snmp-server ipv4 access-list SNMP-ALLOWED vrf MDMZ
+snmp-server contact NOC-555-0100
+snmp-server location Data Center Spine SW01
+snmp-server vrf MDMZ local-interface Vlan4091
+!
+ip routing
+ip routing vrf MDMZ
+!
+router bgp 65010
+   router-id 198.51.100.83
+   neighbor 203.0.113.34 remote-as 65011
+   neighbor 203.0.113.34 send-community
+   neighbor 203.0.113.34 maximum-routes 12000
+   neighbor 203.0.113.38 remote-as 65012
+   neighbor 203.0.113.38 send-community
+   neighbor 203.0.113.38 maximum-routes 12000
+   neighbor 203.0.113.42 remote-as 65013
+   neighbor 203.0.113.42 send-community
+   neighbor 203.0.113.42 maximum-routes 12000
+   !
+   address-family ipv4
+      neighbor default activate
+   !
+!
+interface Vlan4091
+   description INBAND-MGMT
+   vrf MDMZ
+   ip address 198.51.100.83/24
+!
+interface Loopback0
+   ip address 198.51.100.183/32
+!
+interface Ethernet1
+   description DOWNLINK-DIST-01
+   no switchport
+   ip address 203.0.113.332/30
+!
+interface Ethernet2
+   description DOWNLINK-DIST-02
+   no switchport
+   ip address 203.0.113.336/30
+!
+interface Ethernet3
+   description DOWNLINK-DIST-03
+   no switchport
+   ip address 203.0.113.340/30
+!
+interface Ethernet4
+   description DOWNLINK-DIST-04
+   no switchport
+   ip address 203.0.113.344/30
+!
+management api http-commands
+   no protocol http
+   protocol https
+   no shutdown
+   !
+   vrf MDMZ
+      no shutdown
+!
+management ssh
+   idle-timeout 20
+   authentication mode keyboard-interactive
+   vrf MDMZ
+      no shutdown
+ntp server 192.0.2.11 prefer
+ntp server 192.0.2.12
+!
+aaa group server tacacs+ TACACS_GROUP
+   server 192.0.2.11
+   server 192.0.2.12
+!
+tacacs-server host 192.0.2.11 key 7 xxxxxxxx
+tacacs-server host 192.0.2.12 key 7 xxxxxxxx
+!
+username admin privilege 15 role network-admin secret sha512 xxxxxxxx
+!
+banner login
+Authorized access only. Unauthorized use is prohibited.
+EOF
+!

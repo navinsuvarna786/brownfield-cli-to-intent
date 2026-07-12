@@ -1,0 +1,63 @@
+{
+  "hostname": "CAMPUS-SPINE-SW01",
+  "domain_name": null,
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "switches": [
+      [
+        1,
+        15
+      ]
+    ],
+    "master_switch": 1
+  },
+  "pnp_config": {
+    "pnp_vlan_id": 1,
+    "pnp_vlan_name": "default"
+  },
+  "vlans": [
+    {
+      "id": 4090,
+      "name": "INBAND-MGMT"
+    }
+  ],
+  "acls": [],
+  "uplinks": [],
+  "snmp_config": {
+    "location": "Campus Spine SW01",
+    "contact": "NOC-555-0100",
+    "enable_traps": false
+  },
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "access_interfaces": [],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "dns_servers": [],
+  "logging_hosts": [],
+  "timezone_config": {
+    "timezone": null,
+    "timezone_offset": null,
+    "dst_minutes": null
+  },
+  "daylight_savings": null,
+  "enable_secret": null,
+  "stp_mode": null,
+  "errdisable_config": {
+    "causes": []
+  },
+  "local_users": [],
+  "vrf_config": null,
+  "vtp_domain": null,
+  "vtp_mode": "transparent",
+  "has_ssh_source": false,
+  "has_snmp_source": false,
+  "has_ntp_source": false,
+  "has_tacacs_source": false,
+  "has_radius_source": false
+}

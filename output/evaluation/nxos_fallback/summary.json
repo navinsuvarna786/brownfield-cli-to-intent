@@ -1,0 +1,443 @@
+{
+  "generated_at": "2026-05-01T19:30:24.512734",
+  "total_configs": 15,
+  "total_elapsed_s": 221.6,
+  "schema_valid_rate": 1.0,
+  "semantic_valid_rate": 1.0,
+  "median_latency_ms": 14355,
+  "macro_f1": 0.217,
+  "f1_n_with_gt": 12,
+  "per_config_f1": {
+    "campus-nx-access01": {
+      "role": "access-nac",
+      "precision": 0.1448,
+      "recall": 0.1975,
+      "f1": 0.1671,
+      "object_completeness": 0.284
+    },
+    "campus-nx-access02": {
+      "role": "access-nac",
+      "precision": 0.1751,
+      "recall": 0.2246,
+      "f1": 0.1968,
+      "object_completeness": 0.3188
+    },
+    "campus-nx-access03": {
+      "role": "access-no-nac",
+      "precision": 0.1808,
+      "recall": 0.2443,
+      "f1": 0.2078,
+      "object_completeness": 0.3664
+    },
+    "campus-nx-access04": {
+      "role": "access-nac",
+      "precision": 0.1658,
+      "recall": 0.2168,
+      "f1": 0.1879,
+      "object_completeness": 0.3217
+    },
+    "campus-nx-dist01": {
+      "role": "distribution",
+      "precision": 0.1708,
+      "recall": 0.3596,
+      "f1": 0.2316,
+      "object_completeness": 0.4737
+    },
+    "campus-nx-dist02": {
+      "role": "distribution",
+      "precision": 0.1574,
+      "recall": 0.3246,
+      "f1": 0.212,
+      "object_completeness": 0.4386
+    },
+    "campus-nx-dist03": {
+      "role": "distribution-vpc",
+      "precision": 0.1765,
+      "recall": 0.3714,
+      "f1": 0.2393,
+      "object_completeness": 0.4952
+    },
+    "campus-nx-dist04": {
+      "role": "distribution-vpc",
+      "precision": 0.1789,
+      "recall": 0.3714,
+      "f1": 0.2415,
+      "object_completeness": 0.4952
+    },
+    "campus-nx-core01": {
+      "role": "core",
+      "precision": 0.1852,
+      "recall": 0.4487,
+      "f1": 0.2622,
+      "object_completeness": 0.5641
+    },
+    "campus-nx-oob01": {
+      "role": "oob-server",
+      "precision": 0.1016,
+      "recall": 0.1702,
+      "f1": 0.1272,
+      "object_completeness": 0.3723
+    },
+    "campus-nx-remote01": {
+      "role": "remote-edge",
+      "precision": 0.2168,
+      "recall": 0.31,
+      "f1": 0.2551,
+      "object_completeness": 0.42
+    },
+    "campus-nx-wan01": {
+      "role": "wan-aggregation",
+      "precision": 0.2065,
+      "recall": 0.4156,
+      "f1": 0.2759,
+      "object_completeness": 0.5455
+    }
+  },
+  "results": [
+    {
+      "config": "DATACTR-NXOS-SW01.txt",
+      "stem": "datactr-nxos-sw01",
+      "role": "oob-server",
+      "hostname_extracted": "DATACTR-NXOS-SW01",
+      "vendor_tag": "unknown",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "outcome": "auto_corrected",
+      "schema_valid": true,
+      "semantic_valid": true,
+      "rules_fired": [],
+      "validation_score": 1.0,
+      "latency_ms": 13736,
+      "has_ground_truth": false,
+      "error": null
+    },
+    {
+      "config": "DATACTR-NXOS-SW02.txt",
+      "stem": "datactr-nxos-sw02",
+      "role": "oob-server",
+      "hostname_extracted": "DATACTR-NXOS-SW02",
+      "vendor_tag": "unknown",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "outcome": "auto_corrected",
+      "schema_valid": true,
+      "semantic_valid": true,
+      "rules_fired": [],
+      "validation_score": 1.0,
+      "latency_ms": 14518,
+      "has_ground_truth": false,
+      "error": null
+    },
+    {
+      "config": "DATACTR-NXOS-SW03.txt",
+      "stem": "datactr-nxos-sw03",
+      "role": "oob-server",
+      "hostname_extracted": "DATACTR-NXOS-SW03",
+      "vendor_tag": "unknown",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "outcome": "auto_corrected",
+      "schema_valid": true,
+      "semantic_valid": true,
+      "rules_fired": [],
+      "validation_score": 1.0,
+      "latency_ms": 14355,
+      "has_ground_truth": false,
+      "error": null
+    },
+    {
+      "config": "CAMPUS-NX-ACCESS01.txt",
+      "stem": "campus-nx-access01",
+      "role": "access-nac",
+      "hostname_extracted": "CAMPUS-NX-ACCESS01",
+      "vendor_tag": "unknown",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "outcome": "auto_corrected",
+      "schema_valid": true,
+      "semantic_valid": true,
+      "rules_fired": [],
+      "validation_score": 1.0,
+      "latency_ms": 17315,
+      "has_ground_truth": true,
+      "error": null
+    },
+    {
+      "config": "CAMPUS-NX-ACCESS02.txt",
+      "stem": "campus-nx-access02",
+      "role": "access-nac",
+      "hostname_extracted": "CAMPUS-NX-ACCESS02",
+      "vendor_tag": "unknown",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "outcome": "auto_corrected",
+      "schema_valid": true,
+      "semantic_valid": true,
+      "rules_fired": [],
+      "validation_score": 1.0,
+      "latency_ms": 13986,
+      "has_ground_truth": true,
+      "error": null
+    },
+    {
+      "config": "CAMPUS-NX-ACCESS03.txt",
+      "stem": "campus-nx-access03",
+      "role": "access-no-nac",
+      "hostname_extracted": "CAMPUS-NX-ACCESS03",
+      "vendor_tag": "unknown",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "outcome": "auto_corrected",
+      "schema_valid": true,
+      "semantic_valid": true,
+      "rules_fired": [],
+      "validation_score": 1.0,
+      "latency_ms": 12907,
+      "has_ground_truth": true,
+      "error": null
+    },
+    {
+      "config": "CAMPUS-NX-ACCESS04.txt",
+      "stem": "campus-nx-access04",
+      "role": "access-nac",
+      "hostname_extracted": "CAMPUS-NX-ACCESS04",
+      "vendor_tag": "unknown",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "outcome": "auto_corrected",
+      "schema_valid": true,
+      "semantic_valid": true,
+      "rules_fired": [],
+      "validation_score": 1.0,
+      "latency_ms": 14653,
+      "has_ground_truth": true,
+      "error": null
+    },
+    {
+      "config": "CAMPUS-NX-DIST01.txt",
+      "stem": "campus-nx-dist01",
+      "role": "distribution",
+      "hostname_extracted": "CAMPUS-NX-DIST01",
+      "vendor_tag": "unknown",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "outcome": "auto_corrected",
+      "schema_valid": true,
+      "semantic_valid": true,
+      "rules_fired": [],
+      "validation_score": 1.0,
+      "latency_ms": 16594,
+      "has_ground_truth": true,
+      "error": null
+    },
+    {
+      "config": "CAMPUS-NX-DIST02.txt",
+      "stem": "campus-nx-dist02",
+      "role": "distribution",
+      "hostname_extracted": "CAMPUS-NX-DIST02",
+      "vendor_tag": "unknown",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "outcome": "no_validation_result",
+      "schema_valid": true,
+      "semantic_valid": true,
+      "rules_fired": [],
+      "validation_score": 0.0,
+      "latency_ms": 15494,
+      "has_ground_truth": true,
+      "error": null
+    },
+    {
+      "config": "CAMPUS-NX-DIST03.txt",
+      "stem": "campus-nx-dist03",
+      "role": "distribution-vpc",
+      "hostname_extracted": "CAMPUS-NX-DIST03",
+      "vendor_tag": "unknown",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "outcome": "auto_corrected",
+      "schema_valid": true,
+      "semantic_valid": true,
+      "rules_fired": [],
+      "validation_score": 1.0,
+      "latency_ms": 15650,
+      "has_ground_truth": true,
+      "error": null
+    },
+    {
+      "config": "CAMPUS-NX-DIST04.txt",
+      "stem": "campus-nx-dist04",
+      "role": "distribution-vpc",
+      "hostname_extracted": "CAMPUS-NX-DIST04",
+      "vendor_tag": "unknown",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "outcome": "auto_corrected",
+      "schema_valid": true,
+      "semantic_valid": true,
+      "rules_fired": [],
+      "validation_score": 1.0,
+      "latency_ms": 14016,
+      "has_ground_truth": true,
+      "error": null
+    },
+    {
+      "config": "CAMPUS-NX-CORE01.txt",
+      "stem": "campus-nx-core01",
+      "role": "core",
+      "hostname_extracted": "CAMPUS-NX-CORE01",
+      "vendor_tag": "unknown",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "outcome": "auto_corrected",
+      "schema_valid": true,
+      "semantic_valid": true,
+      "rules_fired": [],
+      "validation_score": 1.0,
+      "latency_ms": 12426,
+      "has_ground_truth": true,
+      "error": null
+    },
+    {
+      "config": "CAMPUS-NX-OOB01.txt",
+      "stem": "campus-nx-oob01",
+      "role": "oob-server",
+      "hostname_extracted": "CAMPUS-NX-OOB01",
+      "vendor_tag": "unknown",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "outcome": "auto_corrected",
+      "schema_valid": true,
+      "semantic_valid": true,
+      "rules_fired": [],
+      "validation_score": 1.0,
+      "latency_ms": 23365,
+      "has_ground_truth": true,
+      "error": null
+    },
+    {
+      "config": "CAMPUS-NX-REMOTE01.txt",
+      "stem": "campus-nx-remote01",
+      "role": "remote-edge",
+      "hostname_extracted": "CAMPUS-NX-REMOTE01",
+      "vendor_tag": "unknown",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "outcome": "auto_corrected",
+      "schema_valid": true,
+      "semantic_valid": true,
+      "rules_fired": [],
+      "validation_score": 1.0,
+      "latency_ms": 10900,
+      "has_ground_truth": true,
+      "error": null
+    },
+    {
+      "config": "CAMPUS-NX-WAN01.txt",
+      "stem": "campus-nx-wan01",
+      "role": "wan-aggregation",
+      "hostname_extracted": "CAMPUS-NX-WAN01",
+      "vendor_tag": "unknown",
+      "routing_path": [
+        "Legacy Parser",
+        "Intent Mapper",
+        "Schema Normalizer",
+        "Validator",
+        "Generator"
+      ],
+      "validator_iterations": 1,
+      "outcome": "auto_corrected",
+      "schema_valid": true,
+      "semantic_valid": true,
+      "rules_fired": [],
+      "validation_score": 1.0,
+      "latency_ms": 11606,
+      "has_ground_truth": true,
+      "error": null
+    }
+  ]
+}

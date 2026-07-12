@@ -1,0 +1,37 @@
+{
+  "access_interfaces": [],
+  "uplinks": [],
+  "vlans": [],
+  "acls": [],
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "snmp_config": {
+    "enable_traps": false
+  },
+  "local_users": [],
+  "logging_hosts": [
+    "need_input"
+  ],
+  "ntp_servers": [
+    "need_input"
+  ],
+  "ntp_auth_keys": [],
+  "dns_servers": [
+    "need_input"
+  ],
+  "vrf_config": null,
+  "domain_name": "need_input",
+  "timezone_config": {
+    "timezone": "need_input",
+    "timezone_offset": null,
+    "dst_minutes": null
+  },
+  "catalyst_center": {},
+  "stp_mode": "need_input",
+  "errdisable_config": {
+    "causes": [
+      "need_input"
+    ]
+  }
+}

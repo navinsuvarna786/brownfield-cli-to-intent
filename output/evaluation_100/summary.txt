@@ -1,0 +1,158 @@
+========================================================================
+  BATCH EVALUATION REPORT — Brownfield Intent Translation Pipeline
+  Run: 2026-05-01T15:05:23.071817
+========================================================================
+
+Dataset : 97 configs  (72 Cisco deterministic, 25 Arista deterministic, 0 LLM invoked)
+Errors  : 0 pipeline errors (excluded from rates below)
+
+VALIDITY RATES (over all configs):
+  Schema valid (structural YAML integrity)  : 100.0%  (97/97)
+  Semantic valid (rules 101-120, no errors) : 99.0%  (96/97)
+  Overall valid (structural + semantic)     : 100.0%  (97/97)
+  YAML output generated                     : 100.0%  (97/97)
+
+LATENCY (wall-clock, start-to-YAML-generation):
+  Mean   : 0.232 s
+  Median : 0.115 s
+  Stdev  : 0.836 s
+  Min    : 0.051 s
+  Max    : 8.329 s
+
+STAGE LATENCY BREAKDOWN (mean / median):
+  Parse + Map  : 0.014 s / 0.011 s
+  Validate     : 0.189 s / 0.073 s
+  Generate     : 0.026 s / 0.023 s
+
+BY VENDOR:
+  Cisco     n=72  schema=100.0%  semantic=98.6%  yaml=100.0%  lat=0.166s (mean)
+  Arista    n=25  schema=100.0%  semantic=100.0%  yaml=100.0%  lat=0.423s (mean)
+
+BY DEPLOYMENT GROUP:
+  access-nac              n=33  schema=100.0%  semantic=97.0%  lat=0.211s
+  arista-access           n=10  schema=100.0%  semantic=100.0%  lat=0.097s
+  arista-spine            n= 3  schema=100.0%  semantic=100.0%  lat=0.052s
+  distribution            n=18  schema=100.0%  semantic=100.0%  lat=0.556s
+  oob-server              n=28  schema=100.0%  semantic=100.0%  lat=0.135s
+  remote-edge             n= 5  schema=100.0%  semantic=100.0%  lat=0.120s
+
+SEMANTIC RULE VIOLATIONS (rules 101-120):
+  Rule ID      Configs affected   Total violations
+  --------------------------------------------------
+  119                         1                  1
+
+TEMPLATE BLOCK COVERAGE (EDGE_* template types generated):
+  EDGE_PNP_template                97/97  [####################]  100.0%
+  EDGE_SYSTEM_template             97/97  [####################]  100.0%
+  EDGE_VLAN_template               97/97  [####################]  100.0%
+  EDGE_MGMT_template               97/97  [####################]  100.0%
+  EDGE_ACL_template                73/97  [###############     ]  75.3%
+  EDGE_UPLINK_template             85/97  [#################   ]  87.6%
+  EDGE_SNMP_template               97/97  [####################]  100.0%
+  EDGE_AAA_template                74/97  [###############     ]  76.3%
+  EDGE_NAC_template                36/97  [#######             ]  37.1%
+  EDGE_ACCESS_PORT_template        88/97  [##################  ]  90.7%
+  EDGE_ROUTED_PORT_template        97/97  [####################]  100.0%
+
+PER-CONFIG DETAIL:
+  File                                  Grp                    Lat(s)   Sch   Sem  YAML  Rules fired
+  --------------------------------------------------------------------------------------------------------------
+  BLDG-A-FLOOR1-SW01.txt                access-nac              0.243    OK    OK   YES  -
+  BLDG-A-FLOOR2-SW01.txt                access-nac              0.283    OK    OK   YES  -
+  BLDG-A-FLOOR3-SW01.txt                access-nac              0.114    OK    OK   YES  -
+  BLDG-B-FLOOR1-SW01.txt                access-nac              0.100    OK    OK   YES  -
+  BLDG-B-FLOOR2-SW01.txt                access-nac              0.099    OK    OK   YES  -
+  BLDG-C-FLOOR1-SW01.txt                access-nac              0.315    OK    OK   YES  -
+  BLDG-C-FLOOR2-SW01.txt                access-nac              0.088    OK    OK   YES  -
+  BLDG-D-FLOOR1-SW01.txt                access-nac              0.212    OK    OK   YES  -
+  BLDG-D-FLOOR2-SW01.txt                access-nac              0.217    OK    OK   YES  -
+  BLDG-D-FLOOR3-SW01.txt                access-nac              0.331    OK    OK   YES  -
+  BLDG-E-FLOOR1-SW01.txt                access-nac              0.160    OK    OK   YES  -
+  BLDG-E-FLOOR2-SW01.txt                access-nac              0.159    OK    OK   YES  -
+  BLDG-E-FLOOR3-SW01.txt                access-nac              0.134    OK    OK   YES  -
+  BLDG-F-FLOOR1-SW01.txt                access-nac              0.363    OK    OK   YES  -
+  BLDG-F-FLOOR2-SW01.txt                access-nac              0.210    OK    OK   YES  -
+  BLDG-F-FLOOR3-SW01.txt                access-nac              0.160    OK    OK   YES  -
+  BLDG-FR-FLOOR1-SW01.txt               access-nac              0.452    OK  FAIL   YES  119
+  BLDG-G-FLOOR1-SW01.txt                access-nac              0.226    OK    OK   YES  -
+  BLDG-G-FLOOR2-SW01.txt                access-nac              0.161    OK    OK   YES  -
+  BLDG-G-FLOOR3-SW01.txt                access-nac              0.121    OK    OK   YES  -
+  BLDG-H-FLOOR1-SW01.txt                access-nac              0.423    OK    OK   YES  -
+  BLDG-H-FLOOR2-SW01.txt                access-nac              0.161    OK    OK   YES  -
+  BLDG-H-FLOOR3-SW01.txt                access-nac              0.110    OK    OK   YES  -
+  BLDG-J-FLOOR1-SW01.txt                access-nac              0.161    OK    OK   YES  -
+  BLDG-J-FLOOR2-SW01.txt                access-nac              0.324    OK    OK   YES  -
+  BLDG-K-FLOOR1-SW01.txt                access-nac              0.255    OK    OK   YES  -
+  BLDG-K-FLOOR2-SW01.txt                access-nac              0.227    OK    OK   YES  -
+  BLDG-L-FLOOR1-SW01.txt                access-nac              0.382    OK    OK   YES  -
+  BLDG-L-FLOOR2-SW01.txt                access-nac              0.160    OK    OK   YES  -
+  BLDG-M-FLOOR1-SW01.txt                access-nac              0.115    OK    OK   YES  -
+  BLDG-N-FLOOR1-SW01.txt                access-nac              0.101    OK    OK   YES  -
+  BLDG-P-FLOOR1-SW01.txt                access-nac              0.138    OK    OK   YES  -
+  BLDG-VA-FLOOR3-SW01.txt               access-nac              0.264    OK    OK   YES  -
+  CAMPUS-DIST-SW03.txt                  distribution            0.062    OK    OK   YES  -
+  CAMPUS-DIST-SW04.txt                  distribution            0.061    OK    OK   YES  -
+  DATACTR-OOBSW-01.txt                  oob-server              0.101    OK    OK   YES  -
+  DATACTR-OOBSW-02.txt                  oob-server              0.101    OK    OK   YES  -
+  DATACTR-OOBSW-03.txt                  oob-server              0.099    OK    OK   YES  -
+  DATACTR-OOBSW-04.txt                  oob-server              0.130    OK    OK   YES  -
+  DATACTR-OOBSW-05.txt                  oob-server              0.250    OK    OK   YES  -
+  DATACTR-OOBSW-DX01.txt                oob-server              0.113    OK    OK   YES  -
+  DATACTR-OOBSW-EA01.txt                oob-server              0.117    OK    OK   YES  -
+  DATACTR-OOBSW-EB01.txt                oob-server              0.131    OK    OK   YES  -
+  DATACTR-OOBSW-EB02.txt                oob-server              0.117    OK    OK   YES  -
+  DATACTR-OOBSW-EB03.txt                oob-server              0.111    OK    OK   YES  -
+  DATACTR-OOBSW-EB04.txt                oob-server              0.298    OK    OK   YES  -
+  DATACTR-OOBSW-EC01.txt                oob-server              0.116    OK    OK   YES  -
+  DATACTR-OOBSW-EC02.txt                oob-server              0.116    OK    OK   YES  -
+  DATACTR-OOBSW-EC03.txt                oob-server              0.116    OK    OK   YES  -
+  DATACTR-OOBSW-EF01.txt                oob-server              0.115    OK    OK   YES  -
+  DATACTR-OOBSW-EH01.txt                oob-server              0.314    OK    OK   YES  -
+  DATACTR-OOBSW-F01.txt                 oob-server              0.100    OK    OK   YES  -
+  DATACTR-OOBSW-F02.txt                 oob-server              0.100    OK    OK   YES  -
+  DATACTR-OOBSW-G01.txt                 oob-server              0.099    OK    OK   YES  -
+  DATACTR-OOBSW-G02.txt                 oob-server              0.099    OK    OK   YES  -
+  DATACTR-OOBSW-H01.txt                 oob-server              0.098    OK    OK   YES  -
+  DATACTR-OOBSW-H02.txt                 oob-server              0.260    OK    OK   YES  -
+  DATACTR-OOBSW-J01.txt                 oob-server              0.100    OK    OK   YES  -
+  DATACTR-OOBSW-J02.txt                 oob-server              0.097    OK    OK   YES  -
+  DATACTR-OOBSW-K01.txt                 oob-server              0.164    OK    OK   YES  -
+  DATACTR-OOBSW-K02.txt                 oob-server              0.138    OK    OK   YES  -
+  DIST-SW-BLDGA-01.txt                  distribution            0.115    OK    OK   YES  -
+  DIST-SW-BLDGB-01.txt                  distribution            0.256    OK    OK   YES  -
+  DIST-SW-BLDGC-01.txt                  distribution            0.064    OK    OK   YES  -
+  DIST-SW-BLDGD-01.txt                  distribution            0.064    OK    OK   YES  -
+  DIST-SW-BLDGE-01.txt                  distribution            0.065    OK    OK   YES  -
+  DIST-SW-BLDGF-01.txt                  distribution            0.065    OK    OK   YES  -
+  EDGE-SW-REMOTE-01.txt                 remote-edge             0.080    OK    OK   YES  -
+  EDGE-SW-REMOTE-02.txt                 remote-edge             0.124    OK    OK   YES  -
+  EDGE-SW-REMOTE-03.txt                 remote-edge             0.078    OK    OK   YES  -
+  EDGE-SW-REMOTE-04.txt                 remote-edge             0.242    OK    OK   YES  -
+  EDGE-SW-REMOTE-05.txt                 remote-edge             0.077    OK    OK   YES  -
+  CAMPUS-ACCESS-SW03.txt                arista-access           0.072    OK    OK   YES  -
+  CAMPUS-ACCESS-SW04.txt                arista-access           0.068    OK    OK   YES  -
+  CAMPUS-ACCESS-SW05.txt                arista-access           0.073    OK    OK   YES  -
+  CAMPUS-ACCESS-SW06.txt                arista-access           0.070    OK    OK   YES  -
+  CAMPUS-ACCESS-SW07.txt                arista-access           0.086    OK    OK   YES  -
+  CAMPUS-ACCESS-SW08.txt                arista-access           0.088    OK    OK   YES  -
+  CAMPUS-ACCESS-SW09.txt                arista-access           0.099    OK    OK   YES  -
+  CAMPUS-ACCESS-SW10.txt                arista-access           0.070    OK    OK   YES  -
+  CAMPUS-ACCESS-SW11.txt                arista-access           0.258    OK    OK   YES  -
+  CAMPUS-ACCESS-SW12.txt                arista-access           0.088    OK    OK   YES  -
+  CAMPUS-DIST-SW01-original.txt         distribution            0.170    OK    OK   YES  -
+  CAMPUS-DIST-SW01.txt                  distribution            0.074    OK    OK   YES  -
+  CAMPUS-DIST-SW02.txt                  distribution            0.073    OK    OK   YES  -
+  CAMPUS-DIST-SW03.txt                  distribution            0.075    OK    OK   YES  -
+  CAMPUS-DIST-SW04.txt                  distribution            0.075    OK    OK   YES  -
+  CAMPUS-DIST-SW05.txt                  distribution            8.329    OK    OK   YES  -
+  CAMPUS-DIST-SW06.txt                  distribution            0.234    OK    OK   YES  -
+  CAMPUS-DIST-SW07.txt                  distribution            0.078    OK    OK   YES  -
+  CAMPUS-DIST-SW08.txt                  distribution            0.075    OK    OK   YES  -
+  CAMPUS-DIST-SW09.txt                  distribution            0.080    OK    OK   YES  -
+  CAMPUS-SPINE-SW01.txt                 arista-spine            0.051    OK    OK   YES  -
+  CAMPUS-SPINE-SW02.txt                 arista-spine            0.052    OK    OK   YES  -
+  DATACTR-OOBSW-AR01.txt                oob-server              0.089    OK    OK   YES  -
+  DATACTR-OOBSW-AR02.txt                oob-server              0.087    OK    OK   YES  -
+  DATACTR-SPINE-SW01.txt                arista-spine            0.053    OK    OK   YES  -
+
+========================================================================

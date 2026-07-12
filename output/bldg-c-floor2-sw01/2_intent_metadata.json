@@ -1,0 +1,27 @@
+[
+  {
+    "field": "enable_secret",
+    "confidence": 0.9,
+    "reason": "Encrypted value present, key needed"
+  },
+  {
+    "field": "local_users.password",
+    "confidence": 0.9,
+    "reason": "Encrypted password present, key needed"
+  },
+  {
+    "field": "aaa.servers.radius_dynamic_author.server_key",
+    "confidence": 0.9,
+    "reason": "Encrypted key present, key needed"
+  },
+  {
+    "field": "aaa.groups.Tacacs_Group.servers.key",
+    "confidence": 0.9,
+    "reason": "Encrypted key present, key needed"
+  },
+  {
+    "field": "aaa.groups.RADIUS_GROUP.servers.key",
+    "confidence": 0.9,
+    "reason": "Encrypted key present, key needed"
+  }
+]

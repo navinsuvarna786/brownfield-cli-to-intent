@@ -1,0 +1,607 @@
+{
+  "hostname": "DIST-SW-BLDGB-01",
+  "domain_name": "campus.example.edu",
+  "system": {
+    "timezone": "CST",
+    "timezone_offset": "-6",
+    "daylight_savings": "CDT",
+    "spanning_tree_mode": "rapid-pvst",
+    "errdisable_recovery": {
+      "causes": [
+        "security-violation",
+        "gbic-invalid",
+        "psecure-violation"
+      ],
+      "interval": 100
+    },
+    "local_users": [
+      {
+        "username": "xxxxxxxx",
+        "privilege": 15,
+        "password": "need_input"
+      }
+    ],
+    "enable_secret": "need_input"
+  },
+  "management": {
+    "vrf": "Mgmt-vrf",
+    "interfaces": [
+      {
+        "name": "GigabitEthernet0/0",
+        "vrf": "Mgmt-vrf",
+        "ip_address": null
+      }
+    ],
+    "ssh": {
+      "version": 2
+    },
+    "http": {
+      "authentication": "aaa"
+    }
+  },
+  "vlans": [
+    {
+      "id": 50,
+      "name": "RESEARCH"
+    },
+    {
+      "id": 60,
+      "name": "LAB"
+    },
+    {
+      "id": 70,
+      "name": "VOICE"
+    },
+    {
+      "id": 900,
+      "name": "MGMT"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "Mgmt-vrf"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "Vlan900",
+      "ip_address": "192.0.2.201",
+      "subnet_mask": "255.255.255.0",
+      "ip_redirects": false
+    },
+    {
+      "name": "Port-channel10",
+      "description": "UPLINK-PC10",
+      "switchport_mode": "trunk",
+      "native_vlan": 900,
+      "allowed_vlans": [
+        50,
+        60,
+        70,
+        900
+      ]
+    },
+    {
+      "name": "TenGigabitEthernet1/1/1",
+      "description": "MEMBER-PC10",
+      "channel_group": {
+        "id": 10,
+        "mode": "active"
+      }
+    }
+  ],
+  "access_interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/11",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/12",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/13",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/14",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/15",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/16",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/17",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/18",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/19",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/20",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/21",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/22",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/23",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/24",
+      "switchport_mode": "access",
+      "access_vlan": 50,
+      "logging_event_link_status": false,
+      "storm_control": {
+        "broadcast_level": 2.0,
+        "multicast_level": 2.0
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    }
+  ],
+  "routes": [
+    {
+      "destination": "0.0.0.0",
+      "mask": "0.0.0.0",
+      "next_hop": "192.0.2.254"
+    }
+  ],
+  "snmp": {
+    "communities": [
+      {
+        "name": "xxxxxxxx",
+        "access": "RO",
+        "acl": "13"
+      }
+    ],
+    "location": "Distribution Building-B",
+    "contact": "NOC",
+    "chassis_id": "DIST-SW-BLDGB-01",
+    "hosts": [
+      "192.0.2.24"
+    ],
+    "version": "2c"
+  },
+  "acls": [
+    {
+      "name": "13",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.11",
+          "wildcard_mask": null,
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "192.0.2.12",
+          "wildcard_mask": null,
+          "log": false
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "192.0.2.0",
+          "wildcard_mask": "0.0.0.255",
+          "log": false
+        }
+      ]
+    }
+  ],
+  "aaa": {
+    "enabled": true,
+    "authentication": {
+      "login": {
+        "default": [
+          "local",
+          "enable"
+        ]
+      }
+    },
+    "tacacs_servers": [
+      {
+        "name": "tacacs-svr-01",
+        "address": "192.0.2.11",
+        "key": "need_input",
+        "timeout": 3
+      },
+      {
+        "name": "tacacs-svr-02",
+        "address": "192.0.2.12",
+        "key": "need_input",
+        "timeout": 3
+      }
+    ]
+  },
+  "logging": {
+    "hosts": [
+      "192.0.2.21",
+      "192.0.2.22",
+      "192.0.2.23"
+    ]
+  },
+  "ntp": {
+    "servers": [
+      {
+        "address": "192.0.2.11",
+        "prefer": true
+      },
+      {
+        "address": "192.0.2.12"
+      }
+    ]
+  },
+  "dns_servers": [
+    "192.0.2.50",
+    "192.0.2.60"
+  ],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "switches": [
+      [
+        1,
+        15
+      ]
+    ],
+    "master_switch": 1
+  },
+  "uplinks": [
+    {
+      "type": "port-channel",
+      "port_channel_id": 10,
+      "description": "UPLINK-PC10",
+      "allowed_vlans": [
+        50,
+        60,
+        70,
+        900
+      ],
+      "native_vlan": 900,
+      "member_interfaces": [
+        {
+          "name": "TenGigabitEthernet1/1/1",
+          "lacp_mode": "active"
+        }
+      ]
+    }
+  ],
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": [
+      {
+        "name": "tacacs-svr-01",
+        "ip": "192.0.2.11",
+        "key": "need_input"
+      },
+      {
+        "name": "tacacs-svr-02",
+        "ip": "192.0.2.12",
+        "key": "need_input"
+      }
+    ]
+  },
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "13",
+    "location": "Distribution Building-B",
+    "contact": "NOC",
+    "chassis_id": "DIST-SW-BLDGB-01",
+    "enable_traps": true
+  },
+  "local_users": [
+    {
+      "name": "xxxxxxxx",
+      "password": "need_input",
+      "privilege": 15
+    }
+  ],
+  "logging_hosts": [
+    "192.0.2.21",
+    "192.0.2.22",
+    "192.0.2.23"
+  ],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": {
+    "name": "Mgmt-vrf",
+    "rd": "",
+    "rt_export": "",
+    "rt_import": ""
+  }
+}

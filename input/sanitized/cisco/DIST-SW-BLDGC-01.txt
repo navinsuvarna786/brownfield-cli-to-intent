@@ -1,0 +1,240 @@
+no service pad
+service timestamps debug uptime
+service timestamps log datetime localtime
+service password-encryption
+service compress-config
+no platform punt-keepalive disable-kernel-core
+!
+hostname DIST-SW-BLDGC-01
+!
+vrf definition Mgmt-vrf
+ !
+ address-family ipv4
+ exit-address-family
+!
+enable secret 5 xxxxxxxx
+!
+!
+
+aaa new-model
+!
+aaa group server radius RADIUS_GROUP
+ server name radius-svr-01
+ server name radius-svr-02
+ deadtime 1
+!
+aaa group server tacacs+ Tacacs_Group
+ server name tacacs-svr-01
+ server name tacacs-svr-02
+!
+aaa authentication login default local group Tacacs_Group enable
+aaa authentication dot1x default group RADIUS_GROUP
+aaa authorization exec default group Tacacs_Group local
+aaa authorization commands 15 default group Tacacs_Group if-authenticated
+aaa authorization network default group RADIUS_GROUP
+aaa accounting dot1x default start-stop group RADIUS_GROUP
+aaa accounting exec default start-stop group Tacacs_Group
+!
+aaa server radius dynamic-author
+ client 192.0.2.31 server-key 7 xxxxxxxx
+ port 3799
+ auth-type all
+!
+aaa session-id common
+dot1x system-auth-control
+!
+clock timezone CST -6 0
+clock summer-time CDT recurring
+!
+switch 1 provision c9300-24p
+switch 2 provision c9300-24p
+!
+ip routing
+!
+ip domain name campus.example.edu
+ip name-server 192.0.2.50 192.0.2.60
+!
+
+vtp domain CAMPUS
+vtp mode transparent
+!
+!
+
+errdisable recovery cause security-violation
+errdisable recovery cause gbic-invalid
+errdisable recovery cause psecure-violation
+errdisable recovery interval 100
+license boot level network-advantage addon dna-advantage
+diagnostic bootup level minimal
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+
+redundancy
+ mode sso
+!
+username xxxxxxxx privilege 15 password 7 xxxxxxxx
+!
+lldp run
+!
+!
+vlan 10
+ name DATA
+!
+vlan 20
+ name VOICE
+!
+vlan 30
+ name GUEST
+!
+vlan 40
+ name IOT
+!
+vlan 900
+ name MGMT
+!
+
+!
+interface GigabitEthernet0/0
+ vrf forwarding Mgmt-vrf
+ no ip address
+ negotiation auto
+!
+interface Vlan900
+ ip address 192.0.2.201 255.255.255.0
+ no ip redirects
+!
+interface Vlan10
+ description DATA
+ ip address 192.0.2.201 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+ standby version 2
+ standby 0 ip 192.0.2.1
+ standby 0 priority 110
+ standby 0 preempt
+!
+interface Vlan20
+ description VOICE
+ ip address 192.0.2.202 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+ standby version 2
+ standby 0 ip 192.0.2.65
+ standby 0 priority 110
+ standby 0 preempt
+!
+interface Vlan30
+ description GUEST
+ ip address 192.0.2.203 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+ standby version 2
+ standby 0 ip 192.0.2.129
+ standby 0 priority 110
+ standby 0 preempt
+!
+interface Vlan40
+ description IOT
+ ip address 192.0.2.204 255.255.255.0
+ no ip redirects
+ no ip proxy-arp
+ standby version 2
+ standby 0 ip 192.0.2.193
+ standby 0 priority 110
+ standby 0 preempt
+!
+
+ip default-gateway 192.0.2.254
+!
+interface Port-channel10
+ description UPLINK-CORE-PC10
+ switchport trunk native vlan 900
+ switchport trunk allowed vlan 10,20,30,40,900,900
+ switchport mode trunk
+!
+interface TenGigabitEthernet1/1/1
+ description UPLINK-CORE-MEMBER
+ channel-group 10 mode active
+!
+interface TenGigabitEthernet2/1/1
+ description UPLINK-CORE-MEMBER
+ channel-group 10 mode active
+!
+interface Port-channel11
+ description DOWNLINK-ACCESS-PC11
+ switchport trunk native vlan 900
+ switchport trunk allowed vlan 10,20,30,40,900
+ switchport mode trunk
+!
+interface TenGigabitEthernet1/1/2
+ description DOWNLINK-ACCESS-MEMBER
+ channel-group 11 mode active
+!
+interface Port-channel12
+ description DOWNLINK-ACCESS-PC12
+ switchport trunk native vlan 900
+ switchport trunk allowed vlan 10,20,30,40,900
+ switchport mode trunk
+!
+interface TenGigabitEthernet2/1/2
+ description DOWNLINK-ACCESS-MEMBER
+ channel-group 12 mode active
+!
+snmp-server community xxxxxxxx RO 13
+snmp-server community xxxxxxxx RW 13
+snmp-server location Campus Distribution Building-C
+snmp-server contact NOC-555-0100
+snmp-server host 192.0.2.21 version 2c xxxxxxxx
+snmp-server host 192.0.2.22 version 2c xxxxxxxx
+!
+ip access-list standard 13
+ permit 192.0.2.0 0.0.0.255
+ deny   any log
+!
+logging host 192.0.2.21
+logging host 192.0.2.22
+logging host 192.0.2.23
+!
+banner motd ^C
+*************************************************************
+* Authorized access only.                                   *
+* Unauthorized use is prohibited and may be prosecuted.     *
+*************************************************************
+^C
+!
+ip ssh version 2
+no ip http server
+ip http authentication aaa
+no ip http secure-server
+!
+line con 0
+ exec-timeout 5 0
+ stopbits 1
+line vty 0 4
+ access-class 13 in
+ exec-timeout 20 0
+ privilege level 15
+ transport preferred none
+ transport input ssh
+line vty 5 15
+ access-class 13 in
+ exec-timeout 20 0
+ privilege level 15
+ transport preferred none
+ transport input ssh
+!
+ntp server 192.0.2.11 prefer
+ntp server 192.0.2.12
+!
+ip domain name campus.example.edu
+ip name-server 192.0.2.50 192.0.2.60
+!
+vtp domain CAMPUS
+vtp mode transparent
+!
+!
+
+control-plane
+ service-policy input system-cpp-policy
+!

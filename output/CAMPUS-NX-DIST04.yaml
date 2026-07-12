@@ -1,0 +1,145 @@
+catalyst_center:
+  inventory:
+    devices:
+    - name: CAMPUS-NX-DIST04
+      fqdn_name: CAMPUS-NX-DIST04.campus.example.edu
+      device_ip: need_input
+      pid: C9300-24P
+      serial_number: TBD-MIGRATION
+      state: PNP
+      device_role: ACCESS
+      site: need_input
+      onboarding_template:
+        name: EDGE_PNP_template
+        variables:
+        - name: device_host_name
+          value: CAMPUS-NX-DIST04
+        - name: domain_name
+          value: campus.example.edu
+        - name: pnp_vlan_id
+          value: '1'
+        - name: pnp_vlan_name
+          value: MGMT
+        - name: pnp_vlan_network_add
+          value: need_input
+        - name: pnp_vlan_network_mask
+          value: 255.255.255.0
+        - name: pnp_vlan_default_gateway
+          value: need_input
+        - name: pnp_interface
+          value: GigabitEthernet1/0/1
+        - name: snmp_community_ro
+          value: xxxxxxxx
+        - name: log_server
+          value: need_input
+        - name: is_stack
+          value: 'false'
+        - name: stack_members
+          value: '1'
+      dayn_templates:
+        regular:
+        - name: EDGE_SYSTEM_template
+          variables:
+          - name: enable_secret
+            value: need_input
+          - name: hostname
+            value: CAMPUS-NX-DIST04
+          - name: domain_name
+            value: campus.example.edu
+          - name: timezone
+            value: need_input
+          - name: timezone_offset
+            value: need_input
+          - name: daylight_savings_name
+            value: need_input
+          - name: dns_servers
+            value: |
+              192.0.2.15,192.0.2.16
+          - name: ntp_servers
+            value: |
+              192.0.2.11|prefer,192.0.2.12
+          - name: license_level
+            value: network-advantage
+          - name: stp_mode
+            value: rapid-pvst
+          - name: ntp_authenticate
+            value: 'false'
+          - name: ntp_master
+            value: 'false'
+          - name: logging_servers
+            value: |
+              need_input
+          - name: log_severity_level
+            value: informational
+          - name: errdisable_causes
+            value: |
+              need_input
+          - name: local_users
+            value: |
+              admin:need_input
+          redeploy_template: ON_CHANGE
+        - name: EDGE_VLAN_template
+          variables:
+          - name: vlans
+            value: 1|VLAN_0001,100|USERS,200|VOICE,400|SERVERS,900|MGMT,999|VPC-PEER
+          - name: vtp_domain
+            value: CWAN
+          - name: vtp_mode
+            value: transparent
+          redeploy_template: ON_CHANGE
+        - name: EDGE_MGMT_template
+          variables:
+          - name: enable_management
+            value: 'false'
+          - name: http_server
+            value: 'true'
+          - name: https_server
+            value: 'true'
+          - name: mgmt_interface_type
+            value: vlan
+          - name: mgmt_vlan_id
+            value: '1'
+          - name: mgmt_ip_address
+            value: need_input
+          - name: mgmt_subnet_mask
+            value: 255.255.255.0
+          - name: mgmt_default_gateway
+            value: need_input
+          - name: mgmt_vlan_name
+            value: MGMT
+          redeploy_template: ON_CHANGE
+        - name: EDGE_ACL_template
+          variables:
+          - name: standard_acls
+            value: |
+              SNMP-ALLOWED|10|permit|host 192.0.2.11||false,
+              SNMP-ALLOWED|20|permit|host 192.0.2.12||false,
+              SNMP-ALLOWED|30|permit|host 192.0.2.0/24||false,
+              SNMP-ALLOWED|40|deny|any||false
+          - name: extended_acls
+            value: ''
+          redeploy_template: ON_CHANGE
+        - name: EDGE_SNMP_template
+          variables:
+          - name: snmp_community_ro
+            value: xxxxxxxx
+          - name: snmp_community_rw
+            value: need_input
+          - name: snmp_location
+            value: Campus-Distribution-VPC-Secondary
+          - name: snmp_contact
+            value: NOC-555-0100
+          - name: snmp_acl_ro
+            value: SNMP-ALLOWED
+          - name: enable_traps
+            value: 'true'
+          redeploy_template: ON_CHANGE
+        - name: EDGE_ROUTED_PORT_template
+          variables:
+          - name: routed_interfaces
+            value: |
+              Vlan100|USERS-SVI|false||10.200.1.3|255.255.255.0||false|false||,
+              Vlan200|VOICE-SVI|false||10.200.2.3|255.255.255.0||false|false||,
+              Vlan400|SERVERS-SVI|false||10.200.4.3|255.255.255.0||false|false||,
+              Vlan900|MGMT-SVI|false||192.0.2.141|255.255.255.0||false|false||
+          redeploy_template: ON_CHANGE

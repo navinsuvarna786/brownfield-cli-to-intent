@@ -1,0 +1,27 @@
+[
+  {
+    "field": "local_users.password",
+    "confidence": 0,
+    "reason": "password encrypted, not extracted"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": 0,
+    "reason": "secret encrypted, not extracted"
+  },
+  {
+    "field": "aaa.tacacs_servers",
+    "confidence": 1,
+    "reason": "no tacacs servers configured"
+  },
+  {
+    "field": "interfaces.GigabitEthernet0/0.ip_address",
+    "confidence": 1,
+    "reason": "no IP address configured"
+  },
+  {
+    "field": "snmp.enable_traps",
+    "confidence": 0,
+    "reason": "not explicitly configured"
+  }
+]

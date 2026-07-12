@@ -1,0 +1,97 @@
+! Synthetic stress test config 1: Unknown vendor (NX-OS-like syntax)
+! Purpose: exercise the LLM fallback path (source_vendor=unknown)
+! Expected routing: llm_parser -> llm_mapper -> normalizer -> validator -> generator
+!
+version 9.3(10)
+hostname STRESS-UNKNOWN-VENDOR-SW01
+
+feature dot1x
+feature lldp
+feature lacp
+feature vpc
+
+ip domain-name campus.example.edu
+
+vlan 10
+  name DATA
+vlan 20
+  name VOICE
+vlan 30
+  name GUEST
+vlan 900
+  name MGMT
+
+spanning-tree mode rapid-pvst
+
+aaa group server tacacs+ TACACS_GROUP
+  server-private 192.0.2.11 key 0 need_input
+  server-private 192.0.2.12 key 0 need_input
+
+aaa authentication login default group TACACS_GROUP local
+aaa authorization exec default group TACACS_GROUP local
+aaa accounting exec default start-stop group TACACS_GROUP
+
+tacacs-server host 192.0.2.11 key need_input
+tacacs-server host 192.0.2.12 key need_input
+
+ip name-server 192.0.2.50
+ip name-server 192.0.2.60
+
+ntp server 192.0.2.11 prefer
+ntp server 192.0.2.12
+
+logging server 192.0.2.21
+logging server 192.0.2.22
+
+snmp-server community xxxxxxxx ro 13
+snmp-server location Building-Stress Floor-1 IDF
+snmp-server contact NOC
+snmp-server enable traps
+
+ip access-list standard 13
+  permit 192.0.2.11/32
+  permit 192.0.2.12/32
+  permit 192.0.2.0/24
+
+clock timezone CST -6 0
+clock summer-time CDT recurring
+
+username xxxxxxxx privilege 15 password 0 need_input
+
+interface port-channel10
+  description UPLINK-PC10
+  switchport mode trunk
+  switchport trunk allowed vlan 10,20,30,900
+  switchport trunk native vlan 900
+
+interface Ethernet1/1
+  description Uplink-to-Dist
+  channel-group 10 mode active
+
+interface Ethernet1/2
+  description Uplink-to-Dist
+  channel-group 10 mode active
+
+interface Ethernet1/3
+  description ACCESS-PORT
+  switchport access vlan 10
+  switchport mode access
+  spanning-tree portfast
+  spanning-tree bpduguard enable
+  dot1x pae authenticator
+  mab
+  storm-control broadcast level 2.00 1.00
+
+interface Vlan900
+  description MGMT-SVI
+  ip address 192.0.2.201/24
+  no shutdown
+
+ip default-gateway 192.0.2.254
+
+banner motd C
+*************************************************************
+* Authorized access only.                                   *
+* Unauthorized use is prohibited and may be prosecuted.     *
+*************************************************************
+C

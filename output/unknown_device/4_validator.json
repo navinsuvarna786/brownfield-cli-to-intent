@@ -1,0 +1,11 @@
+{
+  "valid": false,
+  "score": 0.8,
+  "issues": [
+    {
+      "field": "hostname",
+      "message": "Hostname is missing",
+      "severity": "error"
+    }
+  ]
+}

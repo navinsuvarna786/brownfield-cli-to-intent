@@ -1,0 +1,133 @@
+! Synthetic stress test config 4: Valid Cisco IOS-XE missing NTP and DNS only
+! Purpose: exercise Rule 121 auto-correction (inserts need_input placeholders)
+! Defects injected:
+!   - NTP servers omitted (rule 121: ntp_servers=['need_input'])
+!   - DNS servers omitted (rule 121: dns_servers=['need_input'])
+! Expected routing: parser -> cisco_mapper -> normalizer -> validator
+!   validator: _auto_correct_intent() fires rule 121 for ntp+dns -> corrected intent passes
+!   Output: YAML with ntp_servers: [need_input], dns_servers: [need_input]
+!
+version 17.09.05
+hostname STRESS-AUTOCORRECT-SW01
+
+ip domain name campus.example.edu
+
+vlan 10
+ name DATA
+vlan 20
+ name VOICE
+vlan 900
+ name MGMT
+
+spanning-tree mode rapid-pvst
+
+errdisable recovery cause security-violation
+errdisable recovery cause psecure-violation
+errdisable recovery interval 100
+
+aaa new-model
+aaa group server tacacs+ TACACS_GROUP
+ server name tacacs-svr-01
+ server name tacacs-svr-02
+aaa authentication login default group TACACS_GROUP local
+aaa authorization exec default group TACACS_GROUP local if-authenticated
+aaa accounting exec default start-stop group TACACS_GROUP
+
+tacacs server tacacs-svr-01
+ address ipv4 192.0.2.11
+ key 7 need_input
+tacacs server tacacs-svr-02
+ address ipv4 192.0.2.12
+ key 7 need_input
+
+! NTP intentionally omitted — triggers rule 121
+! DNS intentionally omitted — triggers rule 121
+
+snmp-server community xxxxxxxx RO 13
+snmp-server location Building-Stress Floor-4 IDF
+snmp-server contact NOC
+snmp-server chassis-id STRESS-AUTOCORRECT-SW01
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+
+ip access-list standard 13
+ 10 permit 192.0.2.11
+ 20 permit 192.0.2.12
+ 30 permit 192.0.2.0 0.0.0.255
+
+clock timezone CST -6 0
+clock summer-time CDT recurring
+
+username xxxxxxxx privilege 15 secret 5 need_input
+enable secret 5 need_input
+
+vtp domain CAMPUS
+vtp mode transparent
+
+interface Port-channel10
+ description UPLINK-PC10
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,900
+ switchport trunk native vlan 900
+
+interface TenGigabitEthernet1/1/1
+ description Uplink-to-Dist
+ channel-group 10 mode active
+
+interface GigabitEthernet1/0/1
+ description ACCESS-DATA
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ authentication port-control auto
+ dot1x pae authenticator
+ mab
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+
+interface GigabitEthernet1/0/2
+ description ACCESS-VOICE
+ switchport access vlan 10
+ switchport voice vlan 20
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ authentication port-control auto
+ dot1x pae authenticator
+ mab
+ storm-control broadcast level 2.00 1.00
+ storm-control multicast level 2.00 1.00
+
+interface Vlan900
+ description MGMT-SVI
+ ip address 192.0.2.204 255.255.255.0
+ no shutdown
+
+ip default-gateway 192.0.2.254
+
+logging host 192.0.2.21
+logging host 192.0.2.22
+
+dot1x system-auth-control
+
+aaa group server radius RADIUS_GROUP
+ server name radius-svr-01
+ deadtime 1
+aaa authentication dot1x default group RADIUS_GROUP
+aaa authorization network default group RADIUS_GROUP
+
+radius server radius-svr-01
+ address ipv4 192.0.2.31 auth-port 1645 acct-port 1646
+ key 7 xxxxxxxx
+
+aaa server radius dynamic-author
+ client 192.0.2.31 server-key 7 xxxxxxxx
+ port 3799
+ auth-type all
+
+banner motd C
+*************************************************************
+* Authorized access only.                                   *
+* Unauthorized use is prohibited and may be prosecuted.     *
+*************************************************************
+C

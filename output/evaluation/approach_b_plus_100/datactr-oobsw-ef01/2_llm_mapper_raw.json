@@ -1,0 +1,485 @@
+{
+  "hostname": "DATACTR-OOBSW-EF01",
+  "domain_name": "campus.example.edu",
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "pnp_config": {
+    "pnp_vlan_id": 236,
+    "pnp_vlan_name": "OOB-mgmt",
+    "pnp_vlan_network_add": "need_input",
+    "pnp_vlan_network_mask": "need_input",
+    "pnp_vlan_default_gateway": "need_input"
+  },
+  "vlans": [
+    {
+      "id": 230,
+      "name": "OOB_PDU_KVM"
+    },
+    {
+      "id": 236,
+      "name": "OOB-mgmt"
+    },
+    {
+      "id": 440,
+      "name": "need_input"
+    },
+    {
+      "id": 501,
+      "name": "need_input"
+    },
+    {
+      "id": 506,
+      "name": "need_input"
+    },
+    {
+      "id": 507,
+      "name": "need_input"
+    },
+    {
+      "id": 514,
+      "name": "need_input"
+    },
+    {
+      "id": 534,
+      "name": "need_input"
+    },
+    {
+      "id": 538,
+      "name": "need_input"
+    },
+    {
+      "id": 570,
+      "name": "need_input"
+    },
+    {
+      "id": 571,
+      "name": "need_input"
+    },
+    {
+      "id": 572,
+      "name": "need_input"
+    },
+    {
+      "id": 573,
+      "name": "need_input"
+    },
+    {
+      "id": 578,
+      "name": "need_input"
+    },
+    {
+      "id": 579,
+      "name": "need_input"
+    },
+    {
+      "id": 585,
+      "name": "need_input"
+    },
+    {
+      "id": 586,
+      "name": "need_input"
+    },
+    {
+      "id": 587,
+      "name": "need_input"
+    },
+    {
+      "id": 588,
+      "name": "need_input"
+    },
+    {
+      "id": 589,
+      "name": "need_input"
+    },
+    {
+      "id": 590,
+      "name": "need_input"
+    },
+    {
+      "id": 701,
+      "name": "need_input"
+    },
+    {
+      "id": 702,
+      "name": "need_input"
+    },
+    {
+      "id": 703,
+      "name": "need_input"
+    },
+    {
+      "id": 704,
+      "name": "need_input"
+    },
+    {
+      "id": 705,
+      "name": "need_input"
+    },
+    {
+      "id": 706,
+      "name": "need_input"
+    },
+    {
+      "id": 707,
+      "name": "need_input"
+    },
+    {
+      "id": 708,
+      "name": "need_input"
+    },
+    {
+      "id": 709,
+      "name": "need_input"
+    },
+    {
+      "id": 710,
+      "name": "need_input"
+    },
+    {
+      "id": 711,
+      "name": "need_input"
+    },
+    {
+      "id": 712,
+      "name": "OOBSVR-vlan-712"
+    },
+    {
+      "id": 713,
+      "name": "OOBSVR-vlan-713"
+    },
+    {
+      "id": 714,
+      "name": "OOBSVR-vlan-714"
+    },
+    {
+      "id": 715,
+      "name": "OOBSVR-vlan-715"
+    },
+    {
+      "id": 716,
+      "name": "OOBSVR-vlan-716"
+    },
+    {
+      "id": 717,
+      "name": "OOBSVR-vlan-717"
+    },
+    {
+      "id": 718,
+      "name": "OOBSVR-vlan-718"
+    },
+    {
+      "id": 719,
+      "name": "OOBSVR-vlan-719"
+    },
+    {
+      "id": 720,
+      "name": "OOBSVR-vlan-720"
+    },
+    {
+      "id": 721,
+      "name": "OOBSVR-vlan-721"
+    },
+    {
+      "id": 722,
+      "name": "OOBSVR-vlan-722"
+    },
+    {
+      "id": 723,
+      "name": "OOBSVR-vlan-723"
+    },
+    {
+      "id": 724,
+      "name": "OOBSVR-vlan-724"
+    },
+    {
+      "id": 725,
+      "name": "OOBSVR-vlan-725"
+    },
+    {
+      "id": 726,
+      "name": "OOBSVR-vlan-726"
+    },
+    {
+      "id": 727,
+      "name": "OOBSVR-vlan-727"
+    },
+    {
+      "id": 728,
+      "name": "OOBSVR-vlan-728"
+    },
+    {
+      "id": 729,
+      "name": "OOBSVR-vlan-729"
+    },
+    {
+      "id": 730,
+      "name": "OOBSVR-vlan-730"
+    },
+    {
+      "id": 731,
+      "name": "OOBSVR-vlan-731"
+    },
+    {
+      "id": 732,
+      "name": "OOBSVR-vlan-732"
+    },
+    {
+      "id": 733,
+      "name": "OOBSVR-vlan-733"
+    },
+    {
+      "id": 734,
+      "name": "OOBSVR-vlan-734"
+    },
+    {
+      "id": 735,
+      "name": "OOBSVR-vlan-735"
+    },
+    {
+      "id": 736,
+      "name": "need_input"
+    },
+    {
+      "id": 737,
+      "name": "need_input"
+    },
+    {
+      "id": 738,
+      "name": "need_input"
+    },
+    {
+      "id": 739,
+      "name": "need_input"
+    },
+    {
+      "id": 740,
+      "name": "OOBSVR-vlan-740"
+    },
+    {
+      "id": 741,
+      "name": "OOBSVR-vlan-741"
+    },
+    {
+      "id": 742,
+      "name": "OOBSVR-vlan-742"
+    },
+    {
+      "id": 743,
+      "name": "OOBSVR-vlan-743"
+    },
+    {
+      "id": 744,
+      "name": "OOBSVR-vlan-744"
+    },
+    {
+      "id": 745,
+      "name": "need_input"
+    },
+    {
+      "id": 746,
+      "name": "OOBSVR-vlan-746"
+    },
+    {
+      "id": 747,
+      "name": "OOBSVR-vlan-747"
+    },
+    {
+      "id": 748,
+      "name": "OOBSVR-vlan-748"
+    },
+    {
+      "id": 749,
+      "name": "need_input"
+    },
+    {
+      "id": 750,
+      "name": "OOBSVR-vlan-750"
+    },
+    {
+      "id": 752,
+      "name": "OOBSVR-vlan-752"
+    },
+    {
+      "id": 753,
+      "name": "OOBSVR-vlan-753"
+    },
+    {
+      "id": 754,
+      "name": "need_input"
+    },
+    {
+      "id": 755,
+      "name": "need_input"
+    },
+    {
+      "id": 756,
+      "name": "need_input"
+    },
+    {
+      "id": 1100,
+      "name": "OOBSVR-vlan-1100"
+    },
+    {
+      "id": 1102,
+      "name": "OOBSVR-vlan-1102"
+    },
+    {
+      "id": 1103,
+      "name": "OOBSVR-vlan-1103"
+    },
+    {
+      "id": 1104,
+      "name": "need_input"
+    },
+    {
+      "id": 1106,
+      "name": "need_input"
+    },
+    {
+      "id": 1107,
+      "name": "need_input"
+    },
+    {
+      "id": 1164,
+      "name": "OOBSVR-vlan-1164"
+    },
+    {
+      "id": 1165,
+      "name": "need_input"
+    },
+    {
+      "id": 3069,
+      "name": "Native"
+    }
+  ],
+  "acls": [
+    {
+      "name": "need_input",
+      "type": "need_input",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "need_input",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "need_input",
+          "log": false
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "need_input",
+          "log": false
+        }
+      ]
+    }
+  ],
+  "uplinks": [
+    {
+      "type": "need_input",
+      "name": "need_input",
+      "allowed_vlans": [
+        1103
+      ],
+      "native_vlan": 507
+    }
+  ],
+  "snmp_config": {
+    "community_ro": "need_input",
+    "acl_ro": "need_input",
+    "location": "need_input",
+    "contact": "need_input",
+    "chassis_id": "need_input",
+    "enable_traps": false
+  },
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": [
+      {
+        "name": "need_input",
+        "ip": "need_input",
+        "key": "need_input"
+      }
+    ],
+    "radius_servers": [
+      {
+        "name": "need_input",
+        "ip": "need_input",
+        "key": "need_input"
+      }
+    ]
+  },
+  "nac_config": {
+    "dot1x_enabled": false,
+    "radius_group_name": "need_input",
+    "radius_servers": [
+      {
+        "name": "need_input",
+        "ip": "need_input"
+      }
+    ]
+  },
+  "ntp_servers": [
+    "need_input"
+  ],
+  "dns_servers": [
+    "need_input"
+  ],
+  "stp_mode": "rapid-pvst",
+  "errdisable_config": {
+    "causes": [
+      "udld",
+      "bpduguard",
+      "security-violation",
+      "channel-misconfig",
+      "pagp-flap",
+      "dtp-flap",
+      "link-flap",
+      "sfp-config-mismatch",
+      "gbic-invalid",
+      "l2ptguard",
+      "psecure-violation",
+      "port-mode-failure",
+      "dhcp-rate-limit",
+      "pppoe-ia-rate-limit",
+      "mac-limit",
+      "storm-control",
+      "inline-power",
+      "arp-inspection",
+      "link-monitor-failure",
+      "oam-remote-failure",
+      "loopback",
+      "psp"
+    ],
+    "recovery_interval": 100
+  },
+  "access_interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "config": {
+        "access_vlan": 718,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    }
+  ],
+  "routed_interfaces": [
+    {
+      "name": "GigabitEthernet0/0",
+      "vrf": "Mgmt-vrf",
+      "ipv4": {
+        "address": "need_input",
+        "netmask": "need_input"
+      }
+    }
+  ]
+}

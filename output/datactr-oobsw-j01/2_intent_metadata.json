@@ -1,0 +1,27 @@
+[
+  {
+    "field": "local_users.password",
+    "confidence": 0,
+    "reason": "password encrypted, not extracted"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": 0,
+    "reason": "secret encrypted, not extracted"
+  },
+  {
+    "field": "snmp.community",
+    "confidence": 0.9,
+    "reason": "community string redacted"
+  },
+  {
+    "field": "aaa.tacacs_servers",
+    "confidence": 0.8,
+    "reason": "no tacacs servers configured"
+  },
+  {
+    "field": "interfaces.GigabitEthernet0/0.ip_address",
+    "confidence": 0.7,
+    "reason": "interface has no IP address configured"
+  }
+]

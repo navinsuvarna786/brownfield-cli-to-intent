@@ -1,0 +1,199 @@
+!Command: show running-config
+!Time: Sat May  1 00:00:00 2026
+version 10.3(4a)
+hostname DATACTR-NXOS-SW03
+!
+feature lldp
+feature telnet
+feature ssh
+feature nxapi
+!
+username admin password 7 xxxxxxxx role network-admin
+!
+vrf context management
+  ip route 0.0.0.0/0 192.0.2.254
+!
+vlan 1,1000,1001,1002
+vlan 1000
+  name SERVER-1000
+vlan 1001
+  name SERVER-1001
+vlan 1002
+  name SERVER-1002
+
+!
+interface mgmt0
+  vrf member management
+  ip address 198.51.100.92/24
+!
+interface Ethernet1/25
+  description UPLINK-TRUNK
+  switchport
+  switchport mode trunk
+  switchport trunk allowed vlan 1000,1001,1002
+  no shutdown
+!
+interface Ethernet1/26
+  description UPLINK-TRUNK
+  switchport
+  switchport mode trunk
+  switchport trunk allowed vlan 1000,1001,1002
+  no shutdown
+!
+interface Ethernet1/1
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1001
+  no shutdown
+!
+interface Ethernet1/2
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1002
+  no shutdown
+!
+interface Ethernet1/3
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1000
+  no shutdown
+!
+interface Ethernet1/4
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1001
+  no shutdown
+!
+interface Ethernet1/5
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1002
+  no shutdown
+!
+interface Ethernet1/6
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1000
+  no shutdown
+!
+interface Ethernet1/7
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1001
+  no shutdown
+!
+interface Ethernet1/8
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1002
+  no shutdown
+!
+interface Ethernet1/9
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1000
+  no shutdown
+!
+interface Ethernet1/10
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1001
+  no shutdown
+!
+interface Ethernet1/11
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1002
+  no shutdown
+!
+interface Ethernet1/12
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1000
+  no shutdown
+!
+interface Ethernet1/13
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1001
+  no shutdown
+!
+interface Ethernet1/14
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1002
+  no shutdown
+!
+interface Ethernet1/15
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1000
+  no shutdown
+!
+interface Ethernet1/16
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1001
+  no shutdown
+!
+interface Ethernet1/17
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1002
+  no shutdown
+!
+interface Ethernet1/18
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1000
+  no shutdown
+!
+interface Ethernet1/19
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1001
+  no shutdown
+!
+interface Ethernet1/20
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1002
+  no shutdown
+!
+interface Ethernet1/21
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1000
+  no shutdown
+!
+interface Ethernet1/22
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1001
+  no shutdown
+!
+interface Ethernet1/23
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1002
+  no shutdown
+!
+interface Ethernet1/24
+  description SERVER-PORT
+  switchport
+  switchport access vlan 1000
+  no shutdown
+!
+
+ntp server 192.0.2.11
+ntp server 192.0.2.12
+!
+snmp-server community xxxxxxxx group network-operator
+snmp-server host 192.0.2.21 traps version 2c xxxxxxxx
+!
+ip domain-name campus.example.edu
+ip name-server 192.0.2.50
+!
+line vty
+  exec-timeout 20
+!

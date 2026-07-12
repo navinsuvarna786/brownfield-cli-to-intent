@@ -1,0 +1,99 @@
+{
+  "hostname": "DATACTR-NXOS-SW01",
+  "domain_name": "campus.example.edu",
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "switches": [
+      [
+        1,
+        15
+      ]
+    ],
+    "master_switch": 1
+  },
+  "pnp_config": {
+    "pnp_vlan_id": 1,
+    "pnp_vlan_name": "default"
+  },
+  "vlans": [
+    {
+      "id": 1,
+      "name": "VLAN_0001"
+    },
+    {
+      "id": 800,
+      "name": "VLAN_0800"
+    },
+    {
+      "id": 801,
+      "name": "VLAN_0801"
+    },
+    {
+      "id": 802,
+      "name": "VLAN_0802"
+    },
+    {
+      "id": 803,
+      "name": "VLAN_0803"
+    },
+    {
+      "id": 800,
+      "name": "SERVER-800"
+    },
+    {
+      "id": 801,
+      "name": "SERVER-801"
+    },
+    {
+      "id": 802,
+      "name": "SERVER-802"
+    },
+    {
+      "id": 803,
+      "name": "SERVER-803"
+    }
+  ],
+  "acls": [],
+  "uplinks": [],
+  "snmp_config": {
+    "enable_traps": false
+  },
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "access_interfaces": [],
+  "ntp_servers": [
+    "192.0.2.11"
+  ],
+  "ntp_auth_keys": [],
+  "dns_servers": [
+    "192.0.2.50"
+  ],
+  "logging_hosts": [],
+  "timezone_config": {
+    "timezone": null,
+    "timezone_offset": null,
+    "dst_minutes": null
+  },
+  "daylight_savings": null,
+  "enable_secret": null,
+  "stp_mode": null,
+  "errdisable_config": {
+    "causes": []
+  },
+  "local_users": [
+    {
+      "name": "admin",
+      "password": "need_input"
+    }
+  ],
+  "vrf_config": null,
+  "vtp_domain": null,
+  "vtp_mode": "transparent",
+  "has_ssh_source": false,
+  "has_snmp_source": false,
+  "has_ntp_source": false,
+  "has_tacacs_source": false,
+  "has_radius_source": false
+}

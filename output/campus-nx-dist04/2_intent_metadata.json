@@ -1,0 +1,27 @@
+[
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "AAA config partially from legacy and device config"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Mapped Arista Ethernet1/x to GigabitEthernet1/0/x for Catalyst 9300"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "VLANs from device config and legacy match"
+  },
+  {
+    "field": "snmp",
+    "confidence": 1,
+    "reason": "SNMP config fully extracted"
+  },
+  {
+    "field": "routes",
+    "confidence": 1,
+    "reason": "Static routes from VRF management extracted"
+  }
+]

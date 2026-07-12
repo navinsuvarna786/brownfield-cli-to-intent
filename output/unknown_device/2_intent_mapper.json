@@ -1,0 +1,18 @@
+{
+  "access_interfaces": [],
+  "uplinks": [],
+  "vlans": [],
+  "acls": [],
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "snmp_config": {
+    "enable_traps": false
+  },
+  "local_users": [],
+  "logging_hosts": [],
+  "ntp_servers": [],
+  "ntp_auth_keys": [],
+  "dns_servers": [],
+  "vrf_config": null
+}

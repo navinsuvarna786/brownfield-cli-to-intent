@@ -1,0 +1,347 @@
+{
+  "hostname": "CAMPUS-ACCESS-SW05",
+  "domain_name": "campus.example.org",
+  "timezone_config": {},
+  "stp_mode": "rapid-pvst",
+  "dns_servers": [
+    "need_input"
+  ],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "logging_hosts": [
+    "need_input"
+  ],
+  "snmp_config": {
+    "location": "Building-A Access SW05",
+    "contact": "NOC-555-0100",
+    "enable_traps": false,
+    "acl_ro": "SNMP-ALLOWED"
+  },
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": [
+      {
+        "name": "192.0.2.11",
+        "ip": "192.0.2.11",
+        "key": "xxxxxxxx"
+      },
+      {
+        "name": "192.0.2.12",
+        "ip": "192.0.2.12",
+        "key": "xxxxxxxx"
+      }
+    ],
+    "tacacs_group_name": "TACACS_GROUP"
+  },
+  "local_users": [
+    {
+      "name": "admin",
+      "password": "xxxxxxxx"
+    }
+  ],
+  "enable_secret": "",
+  "errdisable_config": {
+    "causes": [
+      "need_input"
+    ]
+  },
+  "vlans": [
+    {
+      "id": 100,
+      "name": "USERS"
+    },
+    {
+      "id": 200,
+      "name": "VOICE"
+    },
+    {
+      "id": 4060,
+      "name": "INBAND-MGMT"
+    }
+  ],
+  "vrfs": [],
+  "acls": [],
+  "management": {
+    "http_https": {
+      "enabled": true,
+      "https_enabled": true,
+      "shutdown": false
+    },
+    "ssh": {
+      "enabled": true,
+      "idle_timeout": 20
+    }
+  },
+  "banners": {
+    "login": "Authorized access only. Unauthorized use is prohibited."
+  },
+  "uplinks": [],
+  "access_interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/11",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/13",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/14",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/15",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/17",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/18",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/19",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/21",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/22",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/23",
+      "config": {
+        "description": "USER",
+        "access_vlan": 100,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    }
+  ],
+  "routed_interfaces": [
+    {
+      "name": "Vlan100",
+      "description": "USERS",
+      "vrf": "VRFA",
+      "ipv4": {
+        "address": "198.51.100.63",
+        "netmask": "255.255.255.0"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false,
+      "dot1q_vlan": null
+    },
+    {
+      "name": "Vlan200",
+      "description": "VOICE",
+      "vrf": "VRFA",
+      "ipv4": {
+        "address": "198.51.101.63",
+        "netmask": "255.255.255.0"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false,
+      "dot1q_vlan": null
+    },
+    {
+      "name": "Vlan4060",
+      "description": "INBAND-MGMT",
+      "vrf": "MDMZ",
+      "ipv4": {
+        "address": "198.51.100.63",
+        "netmask": "255.255.255.0"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false,
+      "dot1q_vlan": null
+    }
+  ],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1
+  },
+  "pnp_config": {},
+  "vrf_config": {},
+  "catalyst_center": {}
+}

@@ -1,0 +1,72 @@
+! Synthetic stress test config 3: Cisco IOS-XE with missing critical fields
+! Purpose: exercise the Cisco retry path (cisco_mapper_retry -> llm_mapper with feedback)
+! Defects injected:
+!   - hostname intentionally omitted (validator error: hostname missing)
+!   - VLANs missing (no vlan database)
+!   - NTP missing (rule 121 fires)
+!   - DNS missing (rule 121 fires)
+! Expected routing: parser -> cisco_mapper -> normalizer -> validator [FAIL hostname]
+!   -> retry: cisco_mapper_retry -> llm_mapper (feedback injected) -> normalizer -> validator
+!
+version 17.09.05
+
+! hostname deliberately omitted to trigger validator error
+ip domain name campus.example.edu
+
+! No vlan database — parser returns empty vlans list
+
+spanning-tree mode rapid-pvst
+
+aaa new-model
+aaa group server tacacs+ TACACS_GROUP
+ server name tacacs-svr-01
+aaa authentication login default group TACACS_GROUP local
+aaa authorization exec default group TACACS_GROUP local if-authenticated
+
+tacacs server tacacs-svr-01
+ address ipv4 192.0.2.11
+ key 7 need_input
+
+snmp-server community xxxxxxxx RO 13
+snmp-server location Building-Stress Floor-3 IDF
+snmp-server contact NOC
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+
+ip access-list standard 13
+ 10 permit 192.0.2.11
+ 20 permit 192.0.2.0 0.0.0.255
+
+! NTP intentionally omitted
+! ip name-server intentionally omitted
+
+clock timezone CST -6 0
+clock summer-time CDT recurring
+
+username xxxxxxxx privilege 15 secret 5 need_input
+
+interface Port-channel10
+ description UPLINK-PC10
+ switchport mode trunk
+ switchport trunk allowed vlan 900
+ switchport trunk native vlan 900
+
+interface TenGigabitEthernet1/1/1
+ description Uplink-to-Dist
+ channel-group 10 mode active
+
+interface GigabitEthernet1/0/1
+ description ACCESS-DATA
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+
+interface Vlan900
+ description MGMT-SVI
+ ip address 192.0.2.203 255.255.255.0
+ no shutdown
+
+ip default-gateway 192.0.2.254
+
+logging host 192.0.2.21
+logging host 192.0.2.22

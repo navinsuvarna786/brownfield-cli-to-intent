@@ -1,0 +1,27 @@
+[
+  {
+    "field": "local_users.password",
+    "confidence": 0.9,
+    "reason": "password encrypted, key not extracted"
+  },
+  {
+    "field": "aaa.tacacs_servers.key",
+    "confidence": 0.9,
+    "reason": "key encrypted, not extracted"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": 0.9,
+    "reason": "secret encrypted, not extracted"
+  },
+  {
+    "field": "interfaces.description",
+    "confidence": 0.95,
+    "reason": "description partially inferred from legacy parser"
+  },
+  {
+    "field": "interfaces.channel_group.mode",
+    "confidence": 0.95,
+    "reason": "LACP mode inferred from config"
+  }
+]

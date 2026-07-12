@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Expanded identical config comments for multiple interfaces"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "Parsed multiple AAA groups and server details from config and legacy parser"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "Direct VLAN definitions from config"
+  },
+  {
+    "field": "stack",
+    "confidence": 0.9,
+    "reason": "Stack info from legacy parser"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.9,
+    "reason": "SNMP communities and hosts from config and legacy parser"
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "field": "vlans",
+    "confidence": 0.95,
+    "reason": "Parsed all VLANs including ranges and names from config and legacy parser"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.9,
+    "reason": "Extracted all interfaces including identical config groups and mapped names to Catalyst 9300 format"
+  },
+  {
+    "field": "acls",
+    "confidence": 0.95,
+    "reason": "Extracted full ACL entries with sequences and actions"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "Extracted AAA config including tacacs servers with encrypted keys"
+  },
+  {
+    "field": "management",
+    "confidence": 0.9,
+    "reason": "Extracted management VRF, HTTP, SSH, logging hosts and interface configs"
+  }
+]

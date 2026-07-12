@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces_access_bulk",
+    "confidence": "high",
+    "reason": "Identical config for 48 interfaces GigabitEthernet1/0/1-48 expanded from comment"
+  },
+  {
+    "field": "aaa.tacacs_servers.key",
+    "confidence": "medium",
+    "reason": "Key redacted in config, placeholder used"
+  },
+  {
+    "field": "local_users.password",
+    "confidence": "medium",
+    "reason": "Password redacted in config, placeholder used"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": "medium",
+    "reason": "Enable secret redacted, placeholder used"
+  },
+  {
+    "field": "interfaces_access",
+    "confidence": "high",
+    "reason": "Extracted from explicit interface config GigabitEthernet1/0/1"
+  }
+]

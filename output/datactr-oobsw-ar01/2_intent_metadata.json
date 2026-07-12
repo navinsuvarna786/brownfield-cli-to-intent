@@ -1,0 +1,27 @@
+[
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "AAA config present but 'no aaa root' disables default AAA"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Expanded identical config comments to individual interfaces with mapped names"
+  },
+  {
+    "field": "management",
+    "confidence": 0.95,
+    "reason": "Management VRF and HTTPS/SSH config extracted"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.9,
+    "reason": "SNMP ACL, location, contact, VRF and local interface extracted"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "All VLANs with IDs and names extracted from config"
+  }
+]

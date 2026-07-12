@@ -1,0 +1,217 @@
+catalyst_center:
+  inventory:
+    devices:
+    - name: DATACTR-OOBSW-EC03
+      fqdn_name: DATACTR-OOBSW-EC03.campus.example.edu
+      device_ip: 192.0.2.134
+      pid: C9300-48P
+      serial_number: TBD-MIGRATION
+      state: PNP
+      device_role: ACCESS
+      site: need_input
+      onboarding_template:
+        name: EDGE_PNP_template
+        variables:
+        - name: device_host_name
+          value: DATACTR-OOBSW-EC03
+        - name: domain_name
+          value: campus.example.edu
+        - name: pnp_vlan_id
+          value: '236'
+        - name: pnp_vlan_name
+          value: OOB-mgmt
+        - name: pnp_vlan_network_add
+          value: 192.0.2.134
+        - name: pnp_vlan_network_mask
+          value: 255.255.255.0
+        - name: pnp_vlan_default_gateway
+          value: 192.0.2.254
+        - name: pnp_interface
+          value: GigabitEthernet1/0/1
+        - name: snmp_community_ro
+          value: xxxxxxxx
+        - name: log_server
+          value: 192.0.2.21
+        - name: is_stack
+          value: 'false'
+        - name: stack_members
+          value: '1'
+      dayn_templates:
+        regular:
+        - name: EDGE_SYSTEM_template
+          variables:
+          - name: enable_secret
+            value: need_input
+          - name: hostname
+            value: DATACTR-OOBSW-EC03
+          - name: domain_name
+            value: campus.example.edu
+          - name: timezone
+            value: CDT
+          - name: timezone_offset
+            value: '-6'
+          - name: daylight_savings_name
+            value: CDT
+          - name: dns_servers
+            value: need_input
+          - name: ntp_servers
+            value: |
+              192.0.2.11|prefer,192.0.2.12
+          - name: license_level
+            value: network-advantage
+          - name: stp_mode
+            value: rapid-pvst
+          - name: ntp_authenticate
+            value: 'false'
+          - name: ntp_master
+            value: 'false'
+          - name: logging_servers
+            value: |
+              192.0.2.21,192.0.2.22,192.0.2.25,192.0.2.24
+          - name: log_severity_level
+            value: informational
+          - name: errdisable_causes
+            value: |
+              udld,bpduguard,security-violation,channel-misconfig,pagp-flap,dtp-flap,link-flap,sfp-config-mismatch,gbic-invalid,l2ptguard,psecure-violation,port-mode-failure,dhcp-rate-limit,pppoe-ia-rate-limit,mac-limit,storm-control,inline-power,arp-inspection,link-monitor-failure,oam-remote-failure,loopback,psp
+          - name: recovery_interval
+            value: '100'
+          - name: local_users
+            value: |
+              xxxxxxxx:need_input
+          redeploy_template: ON_CHANGE
+        - name: EDGE_VLAN_template
+          variables:
+          - name: vlans
+            value: 230|OOB_PDU_KVM,236|OOB-mgmt,440|VLAN_0440,501|VLAN_0501,506|VLAN_0506,507|VLAN_0507,514|VLAN_0514,534|VLAN_0534,538|VLAN_0538,570|VLAN_0570,571|VLAN_0571,572|VLAN_0572,573|VLAN_0573,578|VLAN_0578,579|VLAN_0579,585|VLAN_0585,586|VLAN_0586,587|VLAN_0587,588|VLAN_0588,589|VLAN_0589,590|VLAN_0590,701|VLAN_0701,702|VLAN_0702,703|VLAN_0703,704|VLAN_0704,705|VLAN_0705,706|VLAN_0706,707|VLAN_0707,708|VLAN_0708,709|VLAN_0709,710|VLAN_0710,711|VLAN_0711,712|OOBSVR-vlan-712,713|OOBSVR-vlan-713,714|OOBSVR-vlan-714,715|OOBSVR-vlan-715,716|OOBSVR-vlan-716,717|OOBSVR-vlan-717,718|OOBSVR-vlan-718,719|OOBSVR-vlan-719,720|OOBSVR-vlan-720,721|OOBSVR-vlan-721,722|OOBSVR-vlan-722,723|OOBSVR-vlan-723,724|OOBSVR-vlan-724,725|OOBSVR-vlan-725,726|OOBSVR-vlan-726,727|OOBSVR-vlan-727,728|OOBSVR-vlan-728,729|OOBSVR-vlan-729,730|OOBSVR-vlan-730,731|OOBSVR-vlan-731,732|OOBSVR-vlan-732,733|OOBSVR-vlan-733,734|OOBSVR-vlan-734,735|OOBSVR-vlan-735,736|VLAN_0736,737|VLAN_0737,738|VLAN_0738,739|VLAN_0739,740|OOBSVR-vlan-740,741|OOBSVR-vlan-741,742|OOBSVR-vlan-742,743|OOBSVR-vlan-743,744|OOBSVR-vlan-744,745|VLAN_0745,746|OOBSVR-vlan-746,747|OOBSVR-vlan-747,748|OOBSVR-vlan-748,749|VLAN_0749,750|OOBSVR-vlan-750,752|OOBSVR-vlan-752,753|OOBSVR-vlan-753,754|VLAN_0754,755|VLAN_0755,756|VLAN_0756,1100|OOBSVR-vlan-1100,1102|OOBSVR-vlan-1102,1103|OOBSVR-vlan-1103,1104|VLAN_1104,1106|VLAN_1106,1107|VLAN_1107,1164|OOBSVR-vlan-1164,1165|VLAN_1165,3069|Native
+          - name: vtp_domain
+            value: CAMPUS
+          - name: vtp_mode
+            value: transparent
+          redeploy_template: ON_CHANGE
+        - name: EDGE_MGMT_template
+          variables:
+          - name: enable_management
+            value: 'true'
+          - name: http_server
+            value: 'true'
+          - name: https_server
+            value: 'true'
+          - name: mgmt_vrf_config
+            value: |
+              Mgmt-vrf|||
+          - name: mgmt_interface_type
+            value: vlan
+          - name: mgmt_vlan_id
+            value: '236'
+          - name: mgmt_ip_address
+            value: 192.0.2.134
+          - name: mgmt_subnet_mask
+            value: 255.255.255.0
+          - name: mgmt_default_gateway
+            value: 192.0.2.254
+          - name: mgmt_vlan_name
+            value: OOB-mgmt
+          redeploy_template: ON_CHANGE
+        - name: EDGE_ACL_template
+          variables:
+          - name: standard_acls
+            value: |
+              13|10|permit|host 192.0.2.11||false,
+              13|20|permit|host 192.0.2.25||false,
+              13|30|permit|192.0.2.0|0.0.0.255|false
+          - name: extended_acls
+            value: |
+              111|10|permit|ip|192.0.2.0 0.0.0.255||any||false,
+              111|20|permit|ip|192.0.2.192 0.0.0.127||any||false,
+              111|30|permit|ip|host 192.0.2.11||any||false,
+              111|40|permit|ip|host 192.0.2.25||any||false,
+              111|50|permit|ip|host 192.0.2.51||any||false,
+              111|60|permit|ip|host 192.0.2.53||any||false,
+              111|70|permit|ip|host 192.0.2.54||any||false,
+              111|80|permit|ip|host 192.0.2.55||any||false,
+              111|90|permit|ip|host 192.0.2.52||any||false
+          redeploy_template: ON_CHANGE
+        - name: EDGE_UPLINK_template
+          variables:
+          - name: uplinks
+            value: |
+              port-channel||DATACTR-OOBSW-EC03|1|230,236,440,501,506,507,514,534,538,570,571,572,573,578|3069|true||TenGigabitEthernet1/1/1:active:PORT-CHANNEL MEMBER;TenGigabitEthernet1/1/2:active:PORT-CHANNEL MEMBER
+          redeploy_template: ON_CHANGE
+        - name: EDGE_SNMP_template
+          variables:
+          - name: snmp_community_ro
+            value: xxxxxxxx
+          - name: snmp_community_rw
+            value: need_input
+          - name: snmp_location
+            value: DATACTR-OOBSW-EC03
+          - name: snmp_contact
+            value: NOC
+          - name: chassis_id
+            value: DATACTR-OOBSW-EC03
+          - name: snmp_acl_ro
+            value: '13'
+          - name: enable_traps
+            value: 'true'
+          redeploy_template: ON_CHANGE
+        - name: EDGE_AAA_template
+          variables:
+          - name: tacacs_group_name
+            value: need_input
+          - name: tacacs_servers
+            value: |
+              tacacs-svr-01|192.0.2.11|need_input,tacacs-svr-02|192.0.2.12|need_input
+          redeploy_template: ON_CHANGE
+        - name: EDGE_ACCESS_PORT_template
+          variables:
+          - name: access_interfaces
+            value: |
+              GigabitEthernet1/0/1|SWMSBBCAPAPPRD1|725||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/2|SWMSVIRTAPPPRD1|723||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/3|SWMSVIRTDBPRD1|723||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/4|OOBSVR|723||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/5|OOBSVR|704||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/6|SWMSDWDBDEV5|720||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/7|SWMSDWDBPRD9|720||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/8|OOBSVR|712||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/9|SWMSEPICCLPRD5|737||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/10|OOBSVR|1||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/11|OOBSVR|1||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/12|OOBSVR|1||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/13|OOBSVR|1||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/14|OOBSVR|1||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/15|OOBSVR|1||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/16|OOBSVR|1||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/17|MX7K Chassis MGMT|1100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/18|MX7K Chassis MGMT|1100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/19|OOBSVR|1100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/20|OOBSVR|1100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/21|SWXIO9|713||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/22|SWXIO9|713||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/23|SWXIO6|713||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/24|SWXIO6|713||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/25|SWXIO5|713||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/26|SWXIO5|713||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/27|swvserp01 idrac|1164||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/28|swvserp02 idrac|1164||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/29|swvserp03 idrac|1164||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/30|swvsvna120 idrac|1100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/31|swvsvna120 idrac|1103||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/32|swvsvna121 idrac|1100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/33|swvsvna121 idrac|1103||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/34|swvsvna122 idrac|1100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/35|swvsvna122 idrac|1103||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/36|swvsvna123 idrac|1100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/37|swvsvna123 idrac|1103||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/38|OOBSVR|1||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/39|Swchassis107_cmc1|1100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/40|Swchassis107_cmc2|1100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/41|OOBSVR|1103||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/42|OOBSVR|1103||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/43|OOBSVR|1103||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/44|swchassis108_mgmt1|1100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/45|KVM_OR_PDU|230||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/46|swchassis108_mgmt2|1100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/47|KVM_OR_PDU|230||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/48|KVM_OR_PDU|230||false|2|restrict|true|true|true|false||
+          redeploy_template: ON_CHANGE

@@ -1,0 +1,460 @@
+{
+  "hostname": "CAMPUS-NX-DIST01",
+  "domain_name": "campus.example.edu",
+  "system": {
+    "spanning_tree": {
+      "mode": "rapid-pvst",
+      "vlans": [
+        100,
+        200,
+        300,
+        777,
+        900
+      ],
+      "priority": 4096
+    },
+    "local_users": [
+      {
+        "name": "admin",
+        "password": "xxxxxxx",
+        "role": "network-admin"
+      }
+    ]
+  },
+  "management": {
+    "interfaces": [
+      {
+        "name": "Management1",
+        "vrf": "management",
+        "ip_address": "192.0.2.130/24"
+      }
+    ],
+    "vrfs": [
+      {
+        "name": "management"
+      }
+    ],
+    "ssh": {
+      "enabled": true
+    },
+    "logging": {
+      "hosts": [
+        "192.0.2.17",
+        "192.0.2.18"
+      ]
+    }
+  },
+  "vlans": [
+    {
+      "id": 1,
+      "name": "VLAN_0001"
+    },
+    {
+      "id": 100,
+      "name": "USERS"
+    },
+    {
+      "id": 200,
+      "name": "VOICE"
+    },
+    {
+      "id": 300,
+      "name": "IOT"
+    },
+    {
+      "id": 777,
+      "name": "AP-MGMT"
+    },
+    {
+      "id": 900,
+      "name": "MGMT"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "management"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "Port-channel10",
+      "description": "UPLINK-TO-CORE",
+      "mode": "trunk",
+      "trunk_allowed_vlans": [
+        100,
+        200,
+        300,
+        777,
+        900
+      ],
+      "spanning_tree_port_type": "network",
+      "shutdown": false
+    },
+    {
+      "name": "Port-channel20",
+      "description": "DOWNLINK-TRUNK-ACCESS01",
+      "mode": "trunk",
+      "trunk_allowed_vlans": [
+        100,
+        200,
+        300,
+        777,
+        900
+      ],
+      "spanning_tree_port_type": "network",
+      "shutdown": false
+    },
+    {
+      "name": "Port-channel21",
+      "description": "DOWNLINK-TRUNK-ACCESS02",
+      "mode": "trunk",
+      "trunk_allowed_vlans": [
+        100,
+        200,
+        300,
+        777,
+        900
+      ],
+      "spanning_tree_port_type": "network",
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/1",
+      "description": "UPLINK-CORE-01-MEMBER",
+      "channel_group": {
+        "id": 10,
+        "mode": "active"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "description": "UPLINK-CORE-02-MEMBER",
+      "channel_group": {
+        "id": 10,
+        "mode": "active"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "description": "ACCESS01-DOWNLINK-1",
+      "channel_group": {
+        "id": 20,
+        "mode": "active"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "description": "ACCESS01-DOWNLINK-2",
+      "channel_group": {
+        "id": 20,
+        "mode": "active"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "description": "ACCESS02-DOWNLINK-1",
+      "channel_group": {
+        "id": 21,
+        "mode": "active"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "description": "ACCESS02-DOWNLINK-2",
+      "channel_group": {
+        "id": 21,
+        "mode": "active"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "Vlan100",
+      "description": "USERS-SVI",
+      "ip_address": "10.100.1.2/24",
+      "hsrp": {
+        "version": 2,
+        "group": 100,
+        "ip": "10.100.1.1",
+        "priority": 110,
+        "preempt": true
+      },
+      "shutdown": false
+    },
+    {
+      "name": "Vlan200",
+      "description": "VOICE-SVI",
+      "ip_address": "10.100.2.2/24",
+      "hsrp": {
+        "version": 2,
+        "group": 200,
+        "ip": "10.100.2.1",
+        "priority": 110,
+        "preempt": true
+      },
+      "shutdown": false
+    },
+    {
+      "name": "Vlan300",
+      "description": "IOT-SVI",
+      "ip_address": "10.100.3.2/24",
+      "hsrp": {
+        "version": 2,
+        "group": 300,
+        "ip": "10.100.3.1",
+        "priority": 110,
+        "preempt": true
+      },
+      "shutdown": false
+    },
+    {
+      "name": "Vlan777",
+      "description": "AP-MGMT-SVI",
+      "ip_address": "10.100.4.2/24",
+      "hsrp": {
+        "version": 2,
+        "group": 777,
+        "ip": "10.100.4.1",
+        "priority": 110,
+        "preempt": true
+      },
+      "shutdown": false
+    },
+    {
+      "name": "Vlan900",
+      "description": "MGMT-SVI",
+      "ip_address": "192.0.2.130/24",
+      "shutdown": false
+    }
+  ],
+  "routes": [
+    {
+      "prefix": "0.0.0.0/0",
+      "next_hop": "10.100.1.254"
+    },
+    {
+      "prefix": "0.0.0.0/0",
+      "next_hop": "192.0.2.254",
+      "vrf": "management"
+    }
+  ],
+  "snmp": {
+    "communities": [
+      {
+        "name": "xxxxxxxx",
+        "access": "ro",
+        "acl": "SNMP-ALLOWED"
+      }
+    ],
+    "location": "Campus-Distribution-Building-A",
+    "contact": "NOC-555-0100",
+    "traps_enabled": true
+  },
+  "acls": [
+    {
+      "name": "SNMP-ALLOWED",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.11",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "192.0.2.12",
+          "log": false
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "192.0.2.0/24",
+          "log": false
+        },
+        {
+          "sequence": 40,
+          "action": "deny",
+          "source": "any",
+          "log": false
+        }
+      ]
+    }
+  ],
+  "aaa": {
+    "tacacs_servers": [
+      {
+        "host": "192.0.2.11",
+        "key": "xxxxxxx"
+      },
+      {
+        "host": "192.0.2.12",
+        "key": "xxxxxxx"
+      }
+    ],
+    "groups": [
+      {
+        "name": "TACACS_GROUP",
+        "servers": [
+          "192.0.2.11",
+          "192.0.2.12"
+        ]
+      }
+    ],
+    "authentication": {
+      "login": {
+        "default": [
+          "TACACS_GROUP",
+          "local"
+        ]
+      }
+    },
+    "authorization": {
+      "exec": {
+        "default": [
+          "TACACS_GROUP",
+          "local"
+        ]
+      }
+    },
+    "accounting": {
+      "exec": {
+        "default": [
+          "TACACS_GROUP"
+        ]
+      }
+    }
+  },
+  "logging": {
+    "hosts": [
+      "192.0.2.17",
+      "192.0.2.18"
+    ]
+  },
+  "ntp": {
+    "servers": [
+      {
+        "address": "192.0.2.11",
+        "prefer": true
+      },
+      {
+        "address": "192.0.2.12"
+      }
+    ]
+  },
+  "dns_servers": [
+    "192.0.2.15",
+    "192.0.2.16"
+  ],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "access_interfaces": [],
+  "uplinks": [],
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "SNMP-ALLOWED",
+    "location": "Campus-Distribution-Building-A",
+    "contact": "NOC-555-0100",
+    "enable_traps": true
+  },
+  "local_users": [
+    {
+      "name": "admin",
+      "password": "need_input"
+    }
+  ],
+  "logging_hosts": [
+    "need_input"
+  ],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": null,
+  "timezone_config": {
+    "timezone": "need_input",
+    "timezone_offset": null,
+    "dst_minutes": null
+  },
+  "stp_mode": "rapid-pvst",
+  "routed_interfaces": [
+    {
+      "name": "Vlan100",
+      "description": "USERS-SVI",
+      "vrf": "",
+      "ipv4": {
+        "address": "10.100.1.2",
+        "netmask": "255.255.255.0"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false
+    },
+    {
+      "name": "Vlan200",
+      "description": "VOICE-SVI",
+      "vrf": "",
+      "ipv4": {
+        "address": "10.100.2.2",
+        "netmask": "255.255.255.0"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false
+    },
+    {
+      "name": "Vlan300",
+      "description": "IOT-SVI",
+      "vrf": "",
+      "ipv4": {
+        "address": "10.100.3.2",
+        "netmask": "255.255.255.0"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false
+    },
+    {
+      "name": "Vlan777",
+      "description": "AP-MGMT-SVI",
+      "vrf": "",
+      "ipv4": {
+        "address": "10.100.4.2",
+        "netmask": "255.255.255.0"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false
+    },
+    {
+      "name": "Vlan900",
+      "description": "MGMT-SVI",
+      "vrf": "",
+      "ipv4": {
+        "address": "192.0.2.130",
+        "netmask": "255.255.255.0"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false
+    }
+  ],
+  "catalyst_center": {},
+  "errdisable_config": {
+    "causes": [
+      "need_input"
+    ]
+  }
+}

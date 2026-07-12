@@ -1,0 +1,232 @@
+! Command: show running-config
+! device: CAMPUS-DIST-SW08 (DCS-7050CX3-32S, EOS-4.30.5M)
+!
+no aaa root
+!
+hostname CAMPUS-DIST-SW08
+!
+switchport default mode routed
+!
+vlan internal order ascending range 3500 3750
+!
+vlan 120
+   name USERS
+!
+vlan 220
+   name VOICE
+!
+vlan 320
+   name GUEST
+!
+vlan 420
+   name IOT
+!
+vlan 4062
+   name INBAND-MGMT
+!
+vlan 4094
+   name MLAG-PEER
+!
+
+dns domain campus.example.org
+!
+snmp-server ipv4 access-list SNMP-ALLOWED vrf MDMZ
+snmp-server contact NOC-555-0100
+snmp-server location Campus Distribution SW08
+snmp-server vrf MDMZ local-interface Vlan4062
+!
+interface Port-Channel999
+   description MLAG-PEER-LINK
+   switchport mode trunk
+   switchport trunk allowed vlan all
+!
+interface Ethernet31
+   description MLAG-PEER-LINK-MEMBER
+   channel-group 999 mode active
+!
+interface Ethernet32
+   description MLAG-PEER-LINK-MEMBER
+   channel-group 999 mode active
+!
+mlag configuration
+   domain-id CAMPUS-MLAG
+   local-interface Vlan4094
+   peer-address 169.254.0.9
+   peer-link Port-Channel999
+!
+interface Vlan4094
+   description MLAG-PEER
+   ip address 169.254.0.10/30
+!
+interface Port-Channel2003
+   description UPLINK-PC2003
+   switchport mode trunk
+   switchport trunk allowed vlan 120,220,320,420,4062
+!
+interface Ethernet29
+   description UPLINK-MEMBER
+   channel-group 2003 mode active
+!
+interface Ethernet30
+   description UPLINK-MEMBER
+   channel-group 2003 mode active
+!
+interface Ethernet1
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet2
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet3
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet4
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet5
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet6
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet7
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet8
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet9
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet10
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet11
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet12
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet13
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet14
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet15
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet16
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet17
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet18
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet19
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+interface Ethernet20
+   description DOWNLINK-ACCESS
+   switchport access vlan 120
+   switchport
+!
+
+interface Vlan120
+   description USERS
+   vrf VRFA
+   ip address 198.51.100.76/24
+   ip virtual-router address 198.51.100.1
+!
+interface Vlan220
+   description VOICE
+   vrf VRFA
+   ip address 198.51.101.76/24
+   ip virtual-router address 198.51.101.1
+!
+interface Vlan320
+   description GUEST
+   vrf VRFA
+   ip address 198.51.102.76/24
+   ip virtual-router address 198.51.102.1
+!
+interface Vlan420
+   description IOT
+   vrf VRFA
+   ip address 198.51.103.76/24
+   ip virtual-router address 198.51.103.1
+!
+interface Vlan4062
+   description INBAND-MGMT
+   vrf MDMZ
+   ip address 198.51.100.76/24
+!
+management api http-commands
+   no protocol http
+   protocol https
+   no shutdown
+   !
+   vrf MDMZ
+      no shutdown
+!
+management ssh
+   idle-timeout 20
+   authentication mode keyboard-interactive
+   vrf MDMZ
+      no shutdown
+ntp server 192.0.2.11 prefer
+ntp server 192.0.2.12
+!
+aaa group server tacacs+ TACACS_GROUP
+   server 192.0.2.11
+   server 192.0.2.12
+!
+tacacs-server host 192.0.2.11 key 7 xxxxxxxx
+tacacs-server host 192.0.2.12 key 7 xxxxxxxx
+!
+username admin privilege 15 role network-admin secret sha512 xxxxxxxx
+!
+banner login
+Authorized access only. Unauthorized use is prohibited.
+EOF
+!

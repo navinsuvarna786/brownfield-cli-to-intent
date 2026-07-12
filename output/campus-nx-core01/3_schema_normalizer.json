@@ -1,0 +1,373 @@
+{
+  "hostname": "CAMPUS-NX-CORE01",
+  "domain_name": "campus.example.edu",
+  "system": {
+    "spanning_tree_mode": "rapid-pvst",
+    "local_users": [
+      {
+        "name": "admin",
+        "password": "xxxxxxx",
+        "role": "network-admin"
+      }
+    ]
+  },
+  "management": {
+    "interfaces": [
+      {
+        "name": "GigabitEthernet1/0/0",
+        "description": "mgmt0",
+        "vrf": "management",
+        "ip_address": "192.0.2.150/24"
+      }
+    ]
+  },
+  "vlans": [
+    {
+      "id": 1,
+      "name": "VLAN_0001"
+    },
+    {
+      "id": 900,
+      "name": "MGMT"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "management"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "Port-channel10",
+      "description": "DOWNLINK-DIST01",
+      "switchport": false,
+      "ip_address": "10.0.10.1/30",
+      "ospf_network": "point-to-point",
+      "shutdown": false
+    },
+    {
+      "name": "Port-channel11",
+      "description": "DOWNLINK-DIST02",
+      "switchport": false,
+      "ip_address": "10.0.11.1/30",
+      "ospf_network": "point-to-point",
+      "shutdown": false
+    },
+    {
+      "name": "Port-channel12",
+      "description": "DOWNLINK-DIST03-VPC",
+      "switchport": false,
+      "ip_address": "10.0.12.1/30",
+      "ospf_network": "point-to-point",
+      "shutdown": false
+    },
+    {
+      "name": "Port-channel20",
+      "description": "UPLINK-WAN-ROUTER",
+      "switchport": false,
+      "ip_address": "203.0.113.2/30",
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/1",
+      "description": "DOWNLINK-DIST01-1",
+      "channel_group": {
+        "id": 10,
+        "mode": "active"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "description": "DOWNLINK-DIST01-2",
+      "channel_group": {
+        "id": 10,
+        "mode": "active"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "description": "DOWNLINK-DIST02-1",
+      "channel_group": {
+        "id": 11,
+        "mode": "active"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "description": "DOWNLINK-DIST02-2",
+      "channel_group": {
+        "id": 11,
+        "mode": "active"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "description": "DOWNLINK-DIST03-VPC-1",
+      "channel_group": {
+        "id": 12,
+        "mode": "active"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "description": "DOWNLINK-DIST03-VPC-2",
+      "channel_group": {
+        "id": 12,
+        "mode": "active"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "description": "WAN-UPLINK-1",
+      "channel_group": {
+        "id": 20,
+        "mode": "active"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "description": "WAN-UPLINK-2",
+      "channel_group": {
+        "id": 20,
+        "mode": "active"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "Vlan900",
+      "description": "MGMT-SVI",
+      "ip_address": "192.0.2.150/24",
+      "shutdown": false
+    }
+  ],
+  "routes": [
+    {
+      "vrf": "management",
+      "prefix": "0.0.0.0/0",
+      "next_hop": "192.0.2.254"
+    }
+  ],
+  "snmp": {
+    "communities": [
+      {
+        "name": "xxxxxxxx",
+        "access": "ro",
+        "acl": "SNMP-ALLOWED"
+      }
+    ],
+    "location": "Campus-Core-Switch-Room",
+    "contact": "NOC-555-0100",
+    "enable_traps": true
+  },
+  "acls": [
+    {
+      "name": "SNMP-ALLOWED",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.11",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "192.0.2.12",
+          "log": false
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "192.0.2.0/24",
+          "log": false
+        },
+        {
+          "sequence": 40,
+          "action": "deny",
+          "source": "any",
+          "log": false
+        }
+      ]
+    }
+  ],
+  "aaa": {
+    "tacacs_servers": [
+      {
+        "host": "192.0.2.11",
+        "key": "xxxxxxx"
+      },
+      {
+        "host": "192.0.2.12",
+        "key": "xxxxxxx"
+      }
+    ],
+    "groups": [
+      {
+        "name": "TACACS_GROUP",
+        "servers": [
+          "192.0.2.11",
+          "192.0.2.12"
+        ]
+      }
+    ],
+    "authentication": {
+      "login": {
+        "default": [
+          "TACACS_GROUP",
+          "local"
+        ]
+      }
+    },
+    "authorization": {
+      "exec": {
+        "default": [
+          "TACACS_GROUP",
+          "local"
+        ]
+      }
+    },
+    "accounting": {
+      "exec": {
+        "default": [
+          "start-stop",
+          "TACACS_GROUP"
+        ]
+      }
+    }
+  },
+  "logging": {
+    "hosts": [
+      "192.0.2.17",
+      "192.0.2.18"
+    ]
+  },
+  "ntp": {
+    "servers": [
+      {
+        "address": "192.0.2.11",
+        "prefer": true
+      },
+      {
+        "address": "192.0.2.12"
+      }
+    ]
+  },
+  "dns_servers": [
+    "192.0.2.15",
+    "192.0.2.16"
+  ],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "access_interfaces": [],
+  "uplinks": [],
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "SNMP-ALLOWED",
+    "location": "Campus-Core-Switch-Room",
+    "contact": "NOC-555-0100",
+    "enable_traps": true
+  },
+  "local_users": [
+    {
+      "name": "admin",
+      "password": "need_input"
+    }
+  ],
+  "logging_hosts": [
+    "need_input"
+  ],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": null,
+  "timezone_config": {
+    "timezone": "need_input",
+    "timezone_offset": null,
+    "dst_minutes": null
+  },
+  "routed_interfaces": [
+    {
+      "name": "Port-channel10",
+      "description": "DOWNLINK-DIST01",
+      "vrf": "",
+      "ipv4": {
+        "address": "10.0.10.1",
+        "netmask": "255.255.255.252"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false
+    },
+    {
+      "name": "Port-channel11",
+      "description": "DOWNLINK-DIST02",
+      "vrf": "",
+      "ipv4": {
+        "address": "10.0.11.1",
+        "netmask": "255.255.255.252"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false
+    },
+    {
+      "name": "Port-channel12",
+      "description": "DOWNLINK-DIST03-VPC",
+      "vrf": "",
+      "ipv4": {
+        "address": "10.0.12.1",
+        "netmask": "255.255.255.252"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false
+    },
+    {
+      "name": "Port-channel20",
+      "description": "UPLINK-WAN-ROUTER",
+      "vrf": "",
+      "ipv4": {
+        "address": "203.0.113.2",
+        "netmask": "255.255.255.252"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false
+    },
+    {
+      "name": "Vlan900",
+      "description": "MGMT-SVI",
+      "vrf": "",
+      "ipv4": {
+        "address": "192.0.2.150",
+        "netmask": "255.255.255.0"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false
+    }
+  ],
+  "catalyst_center": {},
+  "stp_mode": "need_input",
+  "errdisable_config": {
+    "causes": [
+      "need_input"
+    ]
+  }
+}

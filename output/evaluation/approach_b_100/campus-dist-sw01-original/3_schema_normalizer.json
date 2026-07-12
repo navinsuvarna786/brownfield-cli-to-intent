@@ -1,0 +1,1234 @@
+{
+  "hostname": "CAMPUS-DIST-SW01",
+  "domain_name": "campus.example.org",
+  "system": {
+    "timezone": "EST5EDT",
+    "spanning_tree": {
+      "mode": "mstp",
+      "mst_pvst_border": true,
+      "mst_priority": 4096,
+      "excluded_vlans": [
+        4094
+      ]
+    },
+    "errdisable": {
+      "recovery_interval": 30
+    },
+    "banners": [
+      "***************************************************************************",
+      "*  This device is the property of the NYC Fire Department.                *",
+      "*  This system is for the use of authorized users only.                   *",
+      "*  Individuals using this computer system without authority,              *",
+      "*  or in excess of their authority, are subject to having all of their    *",
+      "*  activities on this system monitored and recorded by system personnel.  *",
+      "***************************************************************************"
+    ]
+  },
+  "management": {
+    "interfaces": [
+      {
+        "name": "Management1",
+        "description": "OOB_MANAGEMENT",
+        "shutdown": false,
+        "vrf": "MGMT",
+        "ip_address": "192.168.42.245/31"
+      }
+    ],
+    "vrfs": [
+      "MDMZ",
+      "MGMT"
+    ],
+    "http_https": {
+      "https": {
+        "enabled": true,
+        "ssl_profile": "SSL-SECURITY-POLICY"
+      }
+    },
+    "ssh": {
+      "enabled": true,
+      "access_groups": [
+        {
+          "acl": "SSH-ACCESS",
+          "vrf": "MGMT"
+        },
+        {
+          "acl": "SSH-ACCESS",
+          "vrf": "MDMZ"
+        }
+      ],
+      "idle_timeout": 10,
+      "connection_per_host": 12
+    }
+  },
+  "vlans": [
+    {
+      "id": 100,
+      "name": "VRFA_USER"
+    },
+    {
+      "id": 110,
+      "name": "VRFA_VEEDEROOT"
+    },
+    {
+      "id": 130,
+      "name": "VRFA_PRINTER"
+    },
+    {
+      "id": 150,
+      "name": "VRFE_SECURITY_CAMERA"
+    },
+    {
+      "id": 210,
+      "name": "VRFA_ISTAR"
+    },
+    {
+      "id": 230,
+      "name": "VRFA_CITYTIME"
+    },
+    {
+      "id": 777,
+      "name": "VRFA_WIRELESS"
+    },
+    {
+      "id": 3000,
+      "name": "MDMZ_MGMT_UPS"
+    },
+    {
+      "id": 4060,
+      "name": "MDMZ_INBAND_MGMT"
+    },
+    {
+      "id": 4085,
+      "name": "MLAG_L3_VRF_VRFA"
+    },
+    {
+      "id": 4086,
+      "name": "MLAG_L3_VRF_VRFB"
+    },
+    {
+      "id": 4087,
+      "name": "MLAG_L3_VRF_VRFC"
+    },
+    {
+      "id": 4088,
+      "name": "MLAG_L3_VRF_VRFD"
+    },
+    {
+      "id": 4089,
+      "name": "MLAG_L3_VRF_VRFE"
+    },
+    {
+      "id": 4090,
+      "name": "MLAG_L3_VRF_VRFM"
+    },
+    {
+      "id": 4091,
+      "name": "MLAG_L3_VRF_VRFT"
+    },
+    {
+      "id": 4092,
+      "name": "MLAG_L3_VRF_MDMZ"
+    },
+    {
+      "id": 4094,
+      "name": "MLAG"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "MDMZ",
+      "description": "OOB_MANAGEMENT"
+    },
+    {
+      "name": "MGMT",
+      "description": "OOB-mgmt-via-RDMZ-FW"
+    },
+    {
+      "name": "VRFA",
+      "description": "USER_PRINTERS"
+    },
+    {
+      "name": "VRFB",
+      "description": "VOIP"
+    },
+    {
+      "name": "VRFC",
+      "description": "VOICE_ALARM"
+    },
+    {
+      "name": "VRFD",
+      "description": "AAT"
+    },
+    {
+      "name": "VRFE",
+      "description": "VRFE_SECURITY"
+    },
+    {
+      "name": "VRFM",
+      "description": "INBAND_MGMT"
+    },
+    {
+      "name": "VRFT",
+      "description": "Test_VRF__CE_only"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "description": "PRINTER",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 130,
+      "sflow": true,
+      "storm_control": "all level 10",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "description": "PRINTER",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 130,
+      "sflow": true,
+      "storm_control": "all level 10",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "description": "USER",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 100,
+      "sflow": true,
+      "storm_control": "all level 10",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "description": "USER",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 100,
+      "sflow": true,
+      "storm_control": "all level 10",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "description": "USER",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 100,
+      "sflow": true,
+      "storm_control": "all level 10",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "description": "USER",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 100,
+      "sflow": true,
+      "storm_control": "all level 10",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "description": "USER",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 100,
+      "sflow": true,
+      "storm_control": "all level 10",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "description": "USER",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 100,
+      "sflow": true,
+      "storm_control": "all level 10",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "description": "USER",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 100,
+      "sflow": true,
+      "storm_control": "all level 10",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "description": "USER",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 100,
+      "sflow": true,
+      "storm_control": "all level 10",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/11",
+      "description": "UPS Monitor Port",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 3000,
+      "sflow": true,
+      "storm_control": "all level 10",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/12",
+      "description": "UPS Monitor Port",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 3000,
+      "sflow": true,
+      "storm_control": "all level 10",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/13",
+      "description": "UPS Monitor Port",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 3000,
+      "sflow": true,
+      "storm_control": "all level 10",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/14",
+      "description": "UPS Monitor Port",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 3000,
+      "sflow": true,
+      "storm_control": "all level 10",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/15",
+      "description": "VEEDROOT",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 110,
+      "sflow": true,
+      "storm_control": "all level 10",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/16",
+      "description": "ISTAR-PANEL",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 210,
+      "sflow": true,
+      "storm_control": "all level 10",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/17",
+      "description": "MERAKI-AP",
+      "shutdown": false,
+      "switchport_mode": "trunk",
+      "native_vlan": 777,
+      "poe": {
+        "reboot_action": "maintain",
+        "link_down_action": "maintain",
+        "shutdown_action": "power-off"
+      },
+      "sflow": true,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/18",
+      "description": "MERAKI-AP",
+      "shutdown": false,
+      "switchport_mode": "trunk",
+      "native_vlan": 777,
+      "poe": {
+        "reboot_action": "maintain",
+        "link_down_action": "maintain",
+        "shutdown_action": "power-off"
+      },
+      "sflow": true,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/19",
+      "description": "CAMERA",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 150,
+      "sflow": true
+    },
+    {
+      "name": "GigabitEthernet1/0/20",
+      "description": "CAMERA",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 150,
+      "poe": {
+        "reboot_action": "maintain",
+        "link_down_action": "maintain",
+        "shutdown_action": "power-off"
+      },
+      "sflow": true,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/21",
+      "description": "CAMERA",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 150,
+      "poe": {
+        "reboot_action": "maintain",
+        "link_down_action": "maintain",
+        "shutdown_action": "power-off"
+      },
+      "sflow": true,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/22",
+      "description": "CityTime",
+      "shutdown": false,
+      "switchport_mode": "access",
+      "access_vlan": 230,
+      "sflow": true
+    },
+    {
+      "name": "GigabitEthernet1/0/23",
+      "shutdown": false,
+      "switchport_mode": "routed"
+    },
+    {
+      "name": "GigabitEthernet1/0/23.11",
+      "description": "VRFA-VELOCLOUD-EDGE1-LAN5",
+      "mtu": 9100,
+      "encapsulation": "dot1q 11",
+      "vrf": "VRFA",
+      "ip_address": "192.0.2.12/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/23.12",
+      "description": "VRFB-VELOCLOUD-EDGE1-LAN5",
+      "mtu": 9100,
+      "encapsulation": "dot1q 12",
+      "vrf": "VRFB",
+      "ip_address": "192.0.2.13/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/23.13",
+      "description": "VRFC-VELOCLOUD-EDGE1-LAN5",
+      "mtu": 9100,
+      "encapsulation": "dot1q 13",
+      "vrf": "VRFC",
+      "ip_address": "192.0.2.14/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/23.14",
+      "description": "VRFD-VELOCLOUD-EDGE1-LAN5",
+      "mtu": 9100,
+      "encapsulation": "dot1q 14",
+      "vrf": "VRFD",
+      "ip_address": "192.0.2.15/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/23.15",
+      "description": "VRFE-VELOCLOUD-EDGE1-LAN5",
+      "mtu": 9100,
+      "encapsulation": "dot1q 15",
+      "vrf": "VRFE",
+      "ip_address": "192.0.2.16/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/23.16",
+      "description": "VRFM-VELOCLOUD-EDGE1-LAN5",
+      "mtu": 9100,
+      "encapsulation": "dot1q 16",
+      "vrf": "VRFM",
+      "ip_address": "192.0.2.17/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/23.17",
+      "description": "VRFT-DC-VELOCLOUD-EDGE1-LAN5",
+      "mtu": 9100,
+      "encapsulation": "dot1q 17",
+      "vrf": "VRFT",
+      "ip_address": "192.0.2.18/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/23.18",
+      "description": "VRFT-CE-VELOCLOUD-EDGE1-LAN5",
+      "mtu": 9100,
+      "encapsulation": "dot1q 18",
+      "vrf": "VRFT",
+      "ip_address": "192.0.2.19/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/24",
+      "description": "VRFM-PEER-CE-Ma1-MGMT",
+      "shutdown": false,
+      "mtu": 9100,
+      "switchport_mode": "routed",
+      "vrf": "VRFM",
+      "ip_address": "192.168.42.244/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/25.11",
+      "description": "VRFA-MNCO-FD-PE1-Eth3/31/1",
+      "mtu": 9100,
+      "encapsulation": "dot1q 11",
+      "vrf": "VRFA",
+      "ip_address": "192.0.2.20/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/25.12",
+      "description": "VRFB-MNCO-FD-PE1-Eth3/31/1",
+      "mtu": 9100,
+      "encapsulation": "dot1q 12",
+      "vrf": "VRFB",
+      "ip_address": "192.0.2.21/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/25.13",
+      "description": "VRFC-MNCO-FD-PE1-Eth3/31/1",
+      "mtu": 9100,
+      "encapsulation": "dot1q 13",
+      "vrf": "VRFC",
+      "ip_address": "192.0.2.22/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/25.14",
+      "description": "VRFD-MNCO-FD-PE1-Eth3/31/1",
+      "mtu": 9100,
+      "encapsulation": "dot1q 14",
+      "vrf": "VRFD",
+      "ip_address": "192.0.2.23/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/25.15",
+      "description": "VRFE-MNCO-FD-PE1-Eth3/31/1",
+      "mtu": 9100,
+      "encapsulation": "dot1q 15",
+      "vrf": "VRFE",
+      "ip_address": "192.0.2.24/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/25.16",
+      "description": "VRFM-MNCO-FD-PE1-Eth3/31/1",
+      "mtu": 9100,
+      "encapsulation": "dot1q 16",
+      "vrf": "VRFM",
+      "ip_address": "192.0.2.25/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/25.17",
+      "description": "VRFT-DC-MNCO-FD-PE1-Eth3/31/1",
+      "mtu": 9100,
+      "encapsulation": "dot1q 17",
+      "vrf": "VRFT",
+      "ip_address": "192.0.2.26/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/25.18",
+      "description": "VRFT-CE-MNCO-FD-PE1-Eth3/31/1",
+      "mtu": 9100,
+      "encapsulation": "dot1q 18",
+      "vrf": "VRFT",
+      "ip_address": "192.0.2.27/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/25.20",
+      "description": "MDMZ-MNCO-FD-PE1-Eth3/31/1",
+      "mtu": 9100,
+      "encapsulation": "dot1q 20",
+      "vrf": "MDMZ",
+      "ip_address": "192.0.2.28/31"
+    },
+    {
+      "name": "GigabitEthernet1/0/26",
+      "shutdown": true,
+      "switchport_mode": "routed"
+    },
+    {
+      "name": "GigabitEthernet1/0/27",
+      "description": "MLAG_CAMPUS-DIST-SW02_Ethernet27",
+      "shutdown": false,
+      "switchport_mode": "routed",
+      "channel_group": {
+        "id": 2000,
+        "mode": "active"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/28",
+      "description": "MLAG_CAMPUS-DIST-SW02_Ethernet28",
+      "shutdown": false,
+      "switchport_mode": "routed",
+      "channel_group": {
+        "id": 2000,
+        "mode": "active"
+      }
+    },
+    {
+      "name": "Loopback0",
+      "shutdown": true
+    },
+    {
+      "name": "Loopback10",
+      "description": "Sflow source interface",
+      "ip_address": "192.0.2.29/32"
+    }
+  ],
+  "port_channels": [
+    {
+      "name": "Port-Channel2000",
+      "description": "MLAG_CAMPUS-DIST-SW02_Port-Channel2000",
+      "switchport_mode": "trunk",
+      "trunk_group": "MLAG"
+    }
+  ],
+  "routes": [
+    {
+      "vrf": "MGMT",
+      "prefix": "0.0.0.0/0",
+      "next_hop": "192.168.42.244"
+    }
+  ],
+  "snmp": {
+    "communities": [],
+    "location": "Campus Distribution Building-A",
+    "contact": "555-0100",
+    "enable_traps": true,
+    "hosts": [
+      {
+        "ip": "198.51.100.20",
+        "vrf": "MDMZ",
+        "version": 3,
+        "privacy": "FIN0UserT24"
+      },
+      {
+        "ip": "198.51.100.21",
+        "vrf": "MDMZ",
+        "version": 3,
+        "privacy": "FIN0UserT24"
+      }
+    ],
+    "acl": "SNMP-ALLOWED",
+    "local_interface": "Vlan4060"
+  },
+  "acls": [
+    {
+      "name": "API-ACCESS",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 5,
+          "action": "remark",
+          "source": "ACL to restrict access to switch API to CVP"
+        },
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "host 198.51.100.11"
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "host 198.51.100.12"
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "host 198.51.100.13"
+        },
+        {
+          "sequence": 40,
+          "action": "permit",
+          "source": "host 192.0.2.34"
+        },
+        {
+          "sequence": 45,
+          "action": "remark",
+          "source": "AVD-VM-PSAC1"
+        },
+        {
+          "sequence": 50,
+          "action": "permit",
+          "source": "host 192.0.2.35"
+        },
+        {
+          "sequence": 55,
+          "action": "remark",
+          "source": "AVD-VM-PSAC2"
+        },
+        {
+          "sequence": 60,
+          "action": "permit",
+          "source": "host 192.0.2.36"
+        },
+        {
+          "sequence": 65,
+          "action": "remark",
+          "source": "ARISTA-WORKSTATION"
+        },
+        {
+          "sequence": 1000,
+          "action": "deny",
+          "source": "any"
+        }
+      ]
+    },
+    {
+      "name": "SNMP-ALLOWED",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 5,
+          "action": "remark",
+          "source": "ACL to restrict SNMP access"
+        },
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "host 192.0.2.37"
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "host 192.0.2.38"
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "host 198.51.100.20"
+        },
+        {
+          "sequence": 40,
+          "action": "permit",
+          "source": "host 198.51.100.21"
+        },
+        {
+          "sequence": 50,
+          "action": "permit",
+          "source": "host 192.0.2.39"
+        },
+        {
+          "sequence": 60,
+          "action": "permit",
+          "source": "host 192.0.2.40"
+        },
+        {
+          "sequence": 70,
+          "action": "permit",
+          "source": "host 192.0.2.41"
+        },
+        {
+          "sequence": 80,
+          "action": "permit",
+          "source": "host 198.51.100.21"
+        },
+        {
+          "sequence": 90,
+          "action": "permit",
+          "source": "host 192.168.114.80"
+        },
+        {
+          "sequence": 100,
+          "action": "permit",
+          "source": "host 192.168.114.64"
+        },
+        {
+          "sequence": 110,
+          "action": "permit",
+          "source": "host 192.0.2.42"
+        },
+        {
+          "sequence": 120,
+          "action": "permit",
+          "source": "host 198.51.100.11"
+        },
+        {
+          "sequence": 130,
+          "action": "permit",
+          "source": "host 198.51.100.12"
+        },
+        {
+          "sequence": 140,
+          "action": "permit",
+          "source": "host 198.51.100.13"
+        },
+        {
+          "sequence": 210,
+          "action": "permit",
+          "source": "host 192.168.79.3"
+        },
+        {
+          "sequence": 220,
+          "action": "permit",
+          "source": "host 192.168.87.3"
+        },
+        {
+          "sequence": 230,
+          "action": "permit",
+          "source": "host 192.168.95.3"
+        },
+        {
+          "sequence": 240,
+          "action": "permit",
+          "source": "host 192.168.71.3"
+        },
+        {
+          "sequence": 250,
+          "action": "permit",
+          "source": "host 192.0.2.43"
+        },
+        {
+          "sequence": 260,
+          "action": "permit",
+          "source": "host 192.0.2.44"
+        },
+        {
+          "sequence": 270,
+          "action": "permit",
+          "source": "host 192.0.2.45"
+        },
+        {
+          "sequence": 280,
+          "action": "permit",
+          "source": "host 192.0.2.46"
+        },
+        {
+          "sequence": 290,
+          "action": "permit",
+          "source": "host 192.0.2.47"
+        },
+        {
+          "sequence": 300,
+          "action": "permit",
+          "source": "host 192.0.2.48"
+        },
+        {
+          "sequence": 310,
+          "action": "permit",
+          "source": "host 192.0.2.49"
+        },
+        {
+          "sequence": 320,
+          "action": "permit",
+          "source": "host 192.0.2.50"
+        },
+        {
+          "sequence": 330,
+          "action": "permit",
+          "source": "host 192.0.2.51"
+        },
+        {
+          "sequence": 340,
+          "action": "permit",
+          "source": "host 192.0.2.52"
+        },
+        {
+          "sequence": 350,
+          "action": "permit",
+          "source": "host 192.0.2.53"
+        },
+        {
+          "sequence": 360,
+          "action": "permit",
+          "source": "host 192.0.2.54"
+        },
+        {
+          "sequence": 1000,
+          "action": "deny",
+          "source": "any",
+          "log": true
+        }
+      ]
+    },
+    {
+      "name": "SSH-ACCESS",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 5,
+          "action": "remark",
+          "source": "ACL to restrict SSH access"
+        },
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.55/24"
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "192.0.2.56/27"
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "host 192.0.2.37"
+        },
+        {
+          "sequence": 40,
+          "action": "permit",
+          "source": "host 192.0.2.38"
+        },
+        {
+          "sequence": 50,
+          "action": "permit",
+          "source": "host 198.51.100.20"
+        },
+        {
+          "sequence": 60,
+          "action": "permit",
+          "source": "host 192.0.2.39"
+        },
+        {
+          "sequence": 70,
+          "action": "permit",
+          "source": "host 192.0.2.40"
+        },
+        {
+          "sequence": 80,
+          "action": "permit",
+          "source": "host 192.0.2.41"
+        },
+        {
+          "sequence": 100,
+          "action": "permit",
+          "source": "host 198.51.100.11"
+        },
+        {
+          "sequence": 110,
+          "action": "permit",
+          "source": "host 198.51.100.12"
+        },
+        {
+          "sequence": 120,
+          "action": "permit",
+          "source": "host 198.51.100.13"
+        },
+        {
+          "sequence": 130,
+          "action": "permit",
+          "source": "host 192.0.2.36"
+        },
+        {
+          "sequence": 131,
+          "action": "remark",
+          "source": "ARISTA-WORKSTATION"
+        },
+        {
+          "sequence": 132,
+          "action": "permit",
+          "source": "host 192.0.2.34"
+        },
+        {
+          "sequence": 133,
+          "action": "remark",
+          "source": "AVD-VM-PSAC1"
+        },
+        {
+          "sequence": 134,
+          "action": "permit",
+          "source": "host 192.0.2.35"
+        },
+        {
+          "sequence": 135,
+          "action": "remark",
+          "source": "AVD-VM-PSAC2"
+        },
+        {
+          "sequence": 140,
+          "action": "permit",
+          "source": "192.168.15.0/24"
+        },
+        {
+          "sequence": 150,
+          "action": "remark",
+          "source": "VRFM Uplinks"
+        },
+        {
+          "sequence": 151,
+          "action": "permit",
+          "source": "192.0.2.57/19"
+        },
+        {
+          "sequence": 160,
+          "action": "remark",
+          "source": "MDMZ Uplinks"
+        },
+        {
+          "sequence": 161,
+          "action": "permit",
+          "source": "192.0.2.58/19"
+        },
+        {
+          "sequence": 170,
+          "action": "remark",
+          "source": "Ma1-Et48 VRFM"
+        },
+        {
+          "sequence": 171,
+          "action": "permit",
+          "source": "192.168.32.0/20"
+        },
+        {
+          "sequence": 172,
+          "action": "permit",
+          "source": "192.168.48.0/22"
+        },
+        {
+          "sequence": 180,
+          "action": "remark",
+          "source": "Campus Mgmt Vlan4060 MDMZ"
+        },
+        {
+          "sequence": 181,
+          "action": "permit",
+          "source": "192.0.2.59/24"
+        },
+        {
+          "sequence": 182,
+          "action": "permit",
+          "source": "192.0.2.60/24"
+        },
+        {
+          "sequence": 183,
+          "action": "permit",
+          "source": "198.51.102.0/24"
+        },
+        {
+          "sequence": 184,
+          "action": "permit",
+          "source": "192.0.2.61/28"
+        },
+        {
+          "sequence": 185,
+          "action": "permit",
+          "source": "192.0.2.62/24"
+        },
+        {
+          "sequence": 186,
+          "action": "permit",
+          "source": "192.0.2.63/24"
+        },
+        {
+          "sequence": 187,
+          "action": "permit",
+          "source": "192.0.2.64/27"
+        },
+        {
+          "sequence": 188,
+          "action": "permit",
+          "source": "host 192.0.2.65"
+        },
+        {
+          "sequence": 189,
+          "action": "permit",
+          "source": "host 192.0.2.66"
+        },
+        {
+          "sequence": 1000,
+          "action": "deny",
+          "source": "any"
+        }
+      ]
+    }
+  ],
+  "aaa": {
+    "tacacs_servers": [
+      {
+        "host": "192.0.2.10",
+        "vrf": "MDMZ",
+        "key": "7 14313B2503243E2E373C18303B"
+      },
+      {
+        "host": "192.0.2.11",
+        "vrf": "MDMZ",
+        "key": "7 00223A280B7B1F031C35674B10"
+      }
+    ],
+    "groups": [
+      {
+        "name": "TACACS_Servers",
+        "servers": [
+          "192.0.2.10",
+          "192.0.2.11"
+        ],
+        "vrf": "MDMZ"
+      }
+    ],
+    "authentication": {
+      "login_default": [
+        "tacacs+",
+        "local"
+      ],
+      "login_console": [
+        "tacacs+",
+        "local"
+      ],
+      "enable_default": "none"
+    },
+    "authorization": {
+      "serial_console": true,
+      "exec_default": [
+        "tacacs+",
+        "local"
+      ],
+      "commands_all_default": [
+        "tacacs+",
+        "local"
+      ]
+    },
+    "accounting": {
+      "exec_default": "start-stop",
+      "system_default": "start-stop",
+      "commands_all_default": "start-stop",
+      "group": "tacacs+"
+    }
+  },
+  "logging": {
+    "buffered": {
+      "size": 1000000
+    },
+    "console": {
+      "level": "critical"
+    },
+    "hosts": [
+      {
+        "ip": "192.0.2.6",
+        "vrf": "MDMZ",
+        "source_interface": "Vlan4060"
+      }
+    ]
+  },
+  "ntp": {
+    "servers": [
+      {
+        "ip": "192.0.2.69",
+        "vrf": "MDMZ"
+      },
+      {
+        "ip": "192.0.2.70",
+        "vrf": "MDMZ",
+        "prefer": true
+      },
+      {
+        "ip": "192.0.2.71",
+        "vrf": "MDMZ"
+      }
+    ],
+    "local_interface": {
+      "vrf": "MDMZ",
+      "interface": "Vlan4060"
+    }
+  },
+  "dns_servers": [
+    "192.0.2.7",
+    "192.0.2.8",
+    "192.0.2.9"
+  ],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "switches": [
+      [
+        1,
+        15
+      ]
+    ],
+    "master_switch": 1
+  },
+  "access_interfaces": [],
+  "uplinks": [],
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "snmp_config": {
+    "location": "Campus Distribution Building-A",
+    "contact": "555-0100",
+    "enable_traps": true
+  },
+  "local_users": [],
+  "logging_hosts": [],
+  "ntp_servers": [
+    "vrf",
+    "vrf",
+    "vrf|prefer"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": null
+}

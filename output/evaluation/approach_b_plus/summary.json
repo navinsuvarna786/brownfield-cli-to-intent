@@ -1,0 +1,44 @@
+{
+  "approach": "B+",
+  "description": "Schema-constrained LLM + RAG; no normalizer, no validator, no retry",
+  "model": "gpt-4.1-mini",
+  "run_timestamp": "2026-05-01T00:08:42.968160",
+  "n_total": 17,
+  "schema_valid_rate": 1.0,
+  "semantic_valid_rate": 0.0,
+  "latency": {
+    "mean_s": 27.377,
+    "median_s": 26.808,
+    "stdev_s": 7.622,
+    "min_s": 16.12,
+    "max_s": 40.59
+  },
+  "llm_latency": {
+    "mean_s": 27.319,
+    "median_s": 26.795
+  },
+  "rule_violations": {
+    "119": 2,
+    "121": 17
+  },
+  "by_group": {
+    "access-nac": {
+      "n": 8,
+      "schema_valid_rate": 1.0,
+      "semantic_valid_rate": 0.0,
+      "mean_latency_s": 26.553
+    },
+    "arista-distribution": {
+      "n": 5,
+      "schema_valid_rate": 1.0,
+      "semantic_valid_rate": 0.0,
+      "mean_latency_s": 30.443
+    },
+    "oob-server": {
+      "n": 4,
+      "schema_valid_rate": 1.0,
+      "semantic_valid_rate": 0.0,
+      "mean_latency_s": 25.193
+    }
+  }
+}

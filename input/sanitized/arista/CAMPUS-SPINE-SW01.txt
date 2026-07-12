@@ -1,0 +1,100 @@
+! Command: show running-config
+! device: CAMPUS-SPINE-SW01 (DCS-7280CR3K-96TX, EOS-4.32.1F)
+!
+no aaa root
+!
+hostname CAMPUS-SPINE-SW01
+!
+switchport default mode routed
+!
+vlan internal order ascending range 3500 3750
+!
+vlan 4090
+   name INBAND-MGMT
+!
+dns domain campus.example.org
+!
+snmp-server ipv4 access-list SNMP-ALLOWED vrf MDMZ
+snmp-server contact NOC-555-0100
+snmp-server location Campus Spine SW01
+snmp-server vrf MDMZ local-interface Vlan4090
+!
+ip routing
+ip routing vrf MDMZ
+!
+router bgp 65001
+   router-id 198.51.100.81
+   neighbor 203.0.113.2 remote-as 65002
+   neighbor 203.0.113.2 send-community
+   neighbor 203.0.113.2 maximum-routes 12000
+   neighbor 203.0.113.6 remote-as 65003
+   neighbor 203.0.113.6 send-community
+   neighbor 203.0.113.6 maximum-routes 12000
+   neighbor 203.0.113.10 remote-as 65004
+   neighbor 203.0.113.10 send-community
+   neighbor 203.0.113.10 maximum-routes 12000
+   neighbor 203.0.113.14 remote-as 65005
+   neighbor 203.0.113.14 send-community
+   neighbor 203.0.113.14 maximum-routes 12000
+   !
+   address-family ipv4
+      neighbor default activate
+   !
+!
+interface Vlan4090
+   description INBAND-MGMT
+   vrf MDMZ
+   ip address 198.51.100.81/24
+!
+interface Loopback0
+   ip address 198.51.100.181/32
+!
+interface Ethernet1
+   description DOWNLINK-DIST-01
+   no switchport
+   ip address 203.0.113.324/30
+!
+interface Ethernet2
+   description DOWNLINK-DIST-02
+   no switchport
+   ip address 203.0.113.328/30
+!
+interface Ethernet3
+   description DOWNLINK-DIST-03
+   no switchport
+   ip address 203.0.113.332/30
+!
+interface Ethernet4
+   description DOWNLINK-DIST-04
+   no switchport
+   ip address 203.0.113.336/30
+!
+management api http-commands
+   no protocol http
+   protocol https
+   no shutdown
+   !
+   vrf MDMZ
+      no shutdown
+!
+management ssh
+   idle-timeout 20
+   authentication mode keyboard-interactive
+   vrf MDMZ
+      no shutdown
+ntp server 192.0.2.11 prefer
+ntp server 192.0.2.12
+!
+aaa group server tacacs+ TACACS_GROUP
+   server 192.0.2.11
+   server 192.0.2.12
+!
+tacacs-server host 192.0.2.11 key 7 xxxxxxxx
+tacacs-server host 192.0.2.12 key 7 xxxxxxxx
+!
+username admin privilege 15 role network-admin secret sha512 xxxxxxxx
+!
+banner login
+Authorized access only. Unauthorized use is prohibited.
+EOF
+!

@@ -1,0 +1,27 @@
+[
+  {
+    "field": "local_users",
+    "confidence": 0.95,
+    "reason": "passwords redacted for security"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": 0.95,
+    "reason": "password redacted for security"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.99,
+    "reason": "expanded identical config for multiple interfaces"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.98,
+    "reason": "community names redacted"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "no tacacs servers configured"
+  }
+]

@@ -1,0 +1,331 @@
+{
+  "hostname": "STRESS-AUTOCORRECT-SW01",
+  "domain_name": "campus.example.edu",
+  "system": {
+    "timezone": "CST",
+    "timezone_offset": "-6",
+    "daylight_savings": "CDT",
+    "spanning_tree_mode": "rapid-pvst",
+    "errdisable": {
+      "causes": [
+        "security-violation",
+        "psecure-violation"
+      ],
+      "recovery_interval": 100
+    },
+    "local_users": [
+      {
+        "username": "xxxxxxxx",
+        "privilege": 15,
+        "secret": "need_input"
+      }
+    ],
+    "banners": [
+      "*************************************************************",
+      "* Authorized access only.                                   *",
+      "* Unauthorized use is prohibited and may be prosecuted.     *",
+      "*************************************************************"
+    ]
+  },
+  "management": {
+    "vlans": [
+      {
+        "id": 900,
+        "name": "MGMT"
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Vlan900",
+        "description": "MGMT-SVI",
+        "ip_address": "192.0.2.204",
+        "ip_mask": "255.255.255.0",
+        "shutdown": false
+      }
+    ],
+    "default_gateway": "192.0.2.254"
+  },
+  "vlans": [
+    {
+      "id": 10,
+      "name": "DATA"
+    },
+    {
+      "id": 20,
+      "name": "VOICE"
+    },
+    {
+      "id": 900,
+      "name": "MGMT"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "Port-channel10",
+      "description": "UPLINK-PC10",
+      "mode": "trunk",
+      "allowed_vlans": [
+        10,
+        20,
+        900
+      ],
+      "native_vlan": 900
+    },
+    {
+      "name": "TenGigabitEthernet1/1/1",
+      "description": "Uplink-to-Dist",
+      "channel_group": {
+        "id": 10,
+        "mode": "active"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/1",
+      "description": "ACCESS-DATA",
+      "mode": "access",
+      "access_vlan": 10,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      },
+      "authentication": {
+        "port_control": "auto",
+        "dot1x_pae": "authenticator",
+        "mab": true
+      },
+      "storm_control": {
+        "broadcast": "2.00 1.00",
+        "multicast": "2.00 1.00"
+      },
+      "shutdown": false
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "description": "ACCESS-VOICE",
+      "mode": "access",
+      "access_vlan": 10,
+      "voice_vlan": 20,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      },
+      "authentication": {
+        "port_control": "auto",
+        "dot1x_pae": "authenticator",
+        "mab": true
+      },
+      "storm_control": {
+        "broadcast": "2.00 1.00",
+        "multicast": "2.00 1.00"
+      },
+      "shutdown": false
+    }
+  ],
+  "acls": [
+    {
+      "name": "13",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.11"
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "192.0.2.12"
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "192.0.2.0",
+          "wildcard": "0.0.0.255"
+        }
+      ]
+    }
+  ],
+  "aaa": {
+    "enabled": true,
+    "groups": [
+      {
+        "name": "TACACS_GROUP",
+        "type": "tacacs+",
+        "servers": [
+          {
+            "name": "tacacs-svr-01",
+            "ip": "192.0.2.11",
+            "key": "need_input"
+          },
+          {
+            "name": "tacacs-svr-02",
+            "ip": "192.0.2.12",
+            "key": "need_input"
+          }
+        ]
+      },
+      {
+        "name": "RADIUS_GROUP",
+        "type": "radius",
+        "servers": [
+          {
+            "name": "radius-svr-01",
+            "ip": "192.0.2.31",
+            "auth_port": 1645,
+            "acct_port": 1646,
+            "key": "xxxxxxxx"
+          }
+        ]
+      }
+    ],
+    "authentication": {
+      "login": {
+        "default": [
+          "TACACS_GROUP",
+          "local"
+        ]
+      },
+      "dot1x": {
+        "default": [
+          "RADIUS_GROUP"
+        ]
+      }
+    },
+    "authorization": {
+      "exec": {
+        "default": [
+          "TACACS_GROUP",
+          "local"
+        ]
+      },
+      "network": {
+        "default": [
+          "RADIUS_GROUP"
+        ]
+      }
+    },
+    "accounting": {
+      "exec": {
+        "default": "TACACS_GROUP"
+      }
+    },
+    "dynamic_author": {
+      "radius": {
+        "client": "192.0.2.31",
+        "server_key": "xxxxxxxx",
+        "port": 3799,
+        "auth_type": "all"
+      }
+    }
+  },
+  "snmp": {
+    "communities": [
+      {
+        "name": "xxxxxxxx",
+        "access": "RO",
+        "acl": "13"
+      }
+    ],
+    "location": "Building-Stress Floor-4 IDF",
+    "contact": "NOC",
+    "chassis_id": "STRESS-AUTOCORRECT-SW01",
+    "enable_traps": true
+  },
+  "logging": {
+    "hosts": [
+      "192.0.2.21",
+      "192.0.2.22"
+    ]
+  },
+  "access_interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "switch": 1,
+      "module": 0,
+      "port": 1,
+      "config": {
+        "description": "ACCESS-DATA",
+        "access_vlan": 10,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "switch": 1,
+      "module": 0,
+      "port": 2,
+      "config": {
+        "description": "ACCESS-VOICE",
+        "access_vlan": 10,
+        "shutdown": false,
+        "voice_vlan": 20,
+        "portfast": true,
+        "bpduguard": true,
+        "nac_enable": true,
+        "mab": true,
+        "dot1x": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    }
+  ],
+  "uplinks": [
+    {
+      "type": "port-channel",
+      "port_channel_id": 10,
+      "description": "UPLINK-PC10",
+      "allowed_vlans": [
+        10,
+        20,
+        900
+      ],
+      "native_vlan": 900,
+      "member_interfaces": [
+        {
+          "name": "TenGigabitEthernet1/1/1",
+          "lacp_mode": "active"
+        }
+      ]
+    }
+  ],
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_group_name": "TACACS_GROUP",
+    "tacacs_servers": [
+      {
+        "name": "tacacs-svr-01",
+        "ip": "192.0.2.11",
+        "key": "need_input"
+      },
+      {
+        "name": "tacacs-svr-02",
+        "ip": "192.0.2.12",
+        "key": "need_input"
+      }
+    ]
+  },
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "13",
+    "location": "Building-Stress Floor-4 IDF",
+    "contact": "NOC",
+    "chassis_id": "STRESS-AUTOCORRECT-SW01",
+    "enable_traps": true
+  },
+  "local_users": [],
+  "logging_hosts": [
+    "192.0.2.21",
+    "192.0.2.22"
+  ],
+  "ntp_servers": [],
+  "ntp_auth_keys": [],
+  "dns_servers": [],
+  "vrf_config": null
+}

@@ -1,0 +1,25 @@
+{# QoS Class Maps #}
+{% for class_map in qos_class_maps %}
+class-map match-any {{ class_map.name }}
+{% if class_map.description %}
+  description {{ class_map.description }}
+{% endif %}
+{% endfor %}
+
+{# QoS Policy Maps #}
+{% for policy_map in qos_policy_maps %}
+policy-map {{ policy_map.name }}
+{% for class in policy_map.classes %}
+ class {{ class.name }}
+{% if class.police_rate %}
+  police rate {{ class.police_rate }} pps
+{% endif %}
+{% if class.bandwidth_ratio %}
+  bandwidth remaining ratio {{ class.bandwidth_ratio }}
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+{# Apply Service Policy to Control Plane #}
+control-plane
+ service-policy input {{ control_plane_policy | default('system-cpp-policy') }}

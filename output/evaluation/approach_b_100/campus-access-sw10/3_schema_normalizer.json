@@ -1,0 +1,326 @@
+{
+  "hostname": "CAMPUS-ACCESS-SW10",
+  "domain_name": "campus.example.org",
+  "system": {
+    "local_users": [
+      {
+        "username": "admin",
+        "privilege": 15,
+        "role": "network-admin",
+        "secret_type": "sha512"
+      }
+    ]
+  },
+  "management": {
+    "api_http_commands": {
+      "protocol_https": true,
+      "no_protocol_http": true,
+      "shutdown": false,
+      "vrf": "MDMZ"
+    },
+    "ssh": {
+      "idle_timeout": 20,
+      "authentication_mode": "keyboard-interactive",
+      "vrf": "MDMZ"
+    }
+  },
+  "vlans": [
+    {
+      "id": 120,
+      "name": "USERS"
+    },
+    {
+      "id": 220,
+      "name": "VOICE"
+    },
+    {
+      "id": 320,
+      "name": "IOT"
+    },
+    {
+      "id": 4062,
+      "name": "INBAND-MGMT"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "MDMZ"
+    },
+    {
+      "name": "VRFA"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "GigabitEthernet1/0/25",
+      "description": "UPLINK",
+      "switchport_mode": "trunk",
+      "switchport_trunk_allowed_vlans": [
+        120,
+        220,
+        320,
+        4062
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0/1",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/11",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/13",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/14",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/15",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/17",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/18",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/19",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/21",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/22",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/23",
+      "description": "USER",
+      "switchport_access_vlan": 120,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "description": "IP-PHONE",
+      "switchport_access_vlan": 120,
+      "switchport_trunk_native_vlan": 120,
+      "switchport_trunk_allowed_vlans": [
+        120,
+        220
+      ],
+      "switchport_mode": "trunk",
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "description": "IP-PHONE",
+      "switchport_access_vlan": 120,
+      "switchport_trunk_native_vlan": 120,
+      "switchport_trunk_allowed_vlans": [
+        120,
+        220
+      ],
+      "switchport_mode": "trunk",
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/12",
+      "description": "IP-PHONE",
+      "switchport_access_vlan": 120,
+      "switchport_trunk_native_vlan": 120,
+      "switchport_trunk_allowed_vlans": [
+        120,
+        220
+      ],
+      "switchport_mode": "trunk",
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/16",
+      "description": "IP-PHONE",
+      "switchport_access_vlan": 120,
+      "switchport_trunk_native_vlan": 120,
+      "switchport_trunk_allowed_vlans": [
+        120,
+        220
+      ],
+      "switchport_mode": "trunk",
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/20",
+      "description": "IP-PHONE",
+      "switchport_access_vlan": 120,
+      "switchport_trunk_native_vlan": 120,
+      "switchport_trunk_allowed_vlans": [
+        120,
+        220
+      ],
+      "switchport_mode": "trunk",
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/24",
+      "description": "IP-PHONE",
+      "switchport_access_vlan": 120,
+      "switchport_trunk_native_vlan": 120,
+      "switchport_trunk_allowed_vlans": [
+        120,
+        220
+      ],
+      "switchport_mode": "trunk",
+      "switchport": true
+    },
+    {
+      "name": "Vlan120",
+      "description": "USERS",
+      "vrf": "VRFA",
+      "ip_address": "198.51.100.68/24"
+    },
+    {
+      "name": "Vlan220",
+      "description": "VOICE",
+      "vrf": "VRFA",
+      "ip_address": "198.51.101.68/24"
+    },
+    {
+      "name": "Vlan320",
+      "description": "IOT",
+      "vrf": "VRFA",
+      "ip_address": "198.51.102.68/24"
+    },
+    {
+      "name": "Vlan4062",
+      "description": "INBAND-MGMT",
+      "vrf": "MDMZ",
+      "ip_address": "198.51.100.68/24"
+    }
+  ],
+  "snmp": {
+    "communities": [],
+    "location": "Building-F Access SW10",
+    "contact": "NOC-555-0100",
+    "traps_enabled": false,
+    "acl": "SNMP-ALLOWED",
+    "vrf": "MDMZ",
+    "local_interface": "Vlan4062"
+  },
+  "aaa": {
+    "tacacs_servers": [
+      "192.0.2.11",
+      "192.0.2.12"
+    ],
+    "groups": [
+      {
+        "name": "TACACS_GROUP",
+        "servers": [
+          "192.0.2.11",
+          "192.0.2.12"
+        ]
+      }
+    ]
+  },
+  "ntp": {
+    "servers": [
+      "192.0.2.11",
+      "192.0.2.12"
+    ],
+    "prefer": "192.0.2.11"
+  },
+  "dns_servers": [],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "access_interfaces": [],
+  "uplinks": [],
+  "acls": [],
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "snmp_config": {
+    "location": "Building-F Access SW10",
+    "contact": "NOC-555-0100",
+    "enable_traps": false
+  },
+  "local_users": [],
+  "logging_hosts": [],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": null
+}

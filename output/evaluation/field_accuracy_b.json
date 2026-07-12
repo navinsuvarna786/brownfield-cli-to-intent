@@ -1,0 +1,244 @@
+{
+  "run_timestamp": "2026-04-28T20:57:19.509810",
+  "ground_truth_dir": "ground_truth",
+  "predictions_dir": "output/evaluation/approach_b",
+  "subset": "input/subset_17.txt",
+  "overall": {
+    "n_evaluated": 17,
+    "n_missing_gt": 0,
+    "macro_f1": 0.5116,
+    "macro_precision": 0.5064,
+    "macro_recall": 0.5431,
+    "mean_object_completeness": 0.5224
+  },
+  "by_group": {
+    "access-nac": {
+      "n": 8,
+      "macro_f1": 0.6984,
+      "macro_precision": 0.6955,
+      "macro_recall": 0.7393,
+      "mean_object_completeness": 0.5376
+    },
+    "arista-distribution": {
+      "n": 5,
+      "macro_f1": 0.1556,
+      "macro_precision": 0.1639,
+      "macro_recall": 0.1493,
+      "mean_object_completeness": 0.476
+    },
+    "oob-server": {
+      "n": 4,
+      "macro_f1": 0.5831,
+      "macro_precision": 0.5565,
+      "macro_recall": 0.643,
+      "mean_object_completeness": 0.55
+    }
+  },
+  "per_config": [
+    {
+      "f1": 0.8745,
+      "precision": 0.9208,
+      "recall": 0.8325,
+      "object_completeness": 0.4194,
+      "gt_pairs": 2054,
+      "pred_pairs": 1857,
+      "tp": 1710,
+      "pred_source": "output/evaluation/approach_b/bldg-a-floor1-sw01/3_schema_normalizer.json",
+      "stem": "BLDG-A-FLOOR1-SW01",
+      "group": "access-nac"
+    },
+    {
+      "f1": 0.8284,
+      "precision": 0.8311,
+      "recall": 0.8258,
+      "object_completeness": 0.4194,
+      "gt_pairs": 1412,
+      "pred_pairs": 1403,
+      "tp": 1166,
+      "pred_source": "output/evaluation/approach_b/bldg-a-floor2-sw01/3_schema_normalizer.json",
+      "stem": "BLDG-A-FLOOR2-SW01",
+      "group": "access-nac"
+    },
+    {
+      "f1": 0.5189,
+      "precision": 0.3835,
+      "recall": 0.8023,
+      "object_completeness": 0.4194,
+      "gt_pairs": 769,
+      "pred_pairs": 1609,
+      "tp": 617,
+      "pred_source": "output/evaluation/approach_b/bldg-a-floor3-sw01/3_schema_normalizer.json",
+      "stem": "BLDG-A-FLOOR3-SW01",
+      "group": "access-nac"
+    },
+    {
+      "f1": 0.9001,
+      "precision": 0.9979,
+      "recall": 0.8198,
+      "object_completeness": 0.9,
+      "gt_pairs": 577,
+      "pred_pairs": 474,
+      "tp": 473,
+      "pred_source": "output/evaluation/approach_b/bldg-b-floor1-sw01/3_schema_normalizer.json",
+      "stem": "BLDG-B-FLOOR1-SW01",
+      "group": "access-nac"
+    },
+    {
+      "f1": 0.1907,
+      "precision": 0.2048,
+      "recall": 0.1783,
+      "object_completeness": 0.4333,
+      "gt_pairs": 572,
+      "pred_pairs": 498,
+      "tp": 102,
+      "pred_source": "output/evaluation/approach_b/bldg-b-floor2-sw01/3_schema_normalizer.json",
+      "stem": "BLDG-B-FLOOR2-SW01",
+      "group": "access-nac"
+    },
+    {
+      "f1": 0.9164,
+      "precision": 0.9992,
+      "recall": 0.8463,
+      "object_completeness": 0.871,
+      "gt_pairs": 1412,
+      "pred_pairs": 1196,
+      "tp": 1195,
+      "pred_source": "output/evaluation/approach_b/bldg-c-floor1-sw01/3_schema_normalizer.json",
+      "stem": "BLDG-C-FLOOR1-SW01",
+      "group": "access-nac"
+    },
+    {
+      "f1": 0.5322,
+      "precision": 0.4039,
+      "recall": 0.78,
+      "object_completeness": 0.4516,
+      "gt_pairs": 450,
+      "pred_pairs": 869,
+      "tp": 351,
+      "pred_source": "output/evaluation/approach_b/bldg-c-floor2-sw01/3_schema_normalizer.json",
+      "stem": "BLDG-C-FLOOR2-SW01",
+      "group": "access-nac"
+    },
+    {
+      "f1": 0.8258,
+      "precision": 0.8225,
+      "recall": 0.8291,
+      "object_completeness": 0.3871,
+      "gt_pairs": 2101,
+      "pred_pairs": 2118,
+      "tp": 1742,
+      "pred_source": "output/evaluation/approach_b/bldg-fr-floor1-sw01/3_schema_normalizer.json",
+      "stem": "BLDG-FR-FLOOR1-SW01",
+      "group": "access-nac"
+    },
+    {
+      "f1": 0.6092,
+      "precision": 0.5016,
+      "recall": 0.7755,
+      "object_completeness": 0.4333,
+      "gt_pairs": 597,
+      "pred_pairs": 923,
+      "tp": 463,
+      "pred_source": "output/evaluation/approach_b/datactr-oobsw-01/3_schema_normalizer.json",
+      "stem": "DATACTR-OOBSW-01",
+      "group": "oob-server"
+    },
+    {
+      "f1": 0.613,
+      "precision": 0.5067,
+      "recall": 0.7759,
+      "object_completeness": 0.4333,
+      "gt_pairs": 589,
+      "pred_pairs": 902,
+      "tp": 457,
+      "pred_source": "output/evaluation/approach_b/datactr-oobsw-02/3_schema_normalizer.json",
+      "stem": "DATACTR-OOBSW-02",
+      "group": "oob-server"
+    },
+    {
+      "f1": 0.9023,
+      "precision": 0.9979,
+      "recall": 0.8234,
+      "object_completeness": 0.9,
+      "gt_pairs": 589,
+      "pred_pairs": 486,
+      "tp": 485,
+      "pred_source": "output/evaluation/approach_b/datactr-oobsw-03/3_schema_normalizer.json",
+      "stem": "DATACTR-OOBSW-03",
+      "group": "oob-server"
+    },
+    {
+      "f1": 0.208,
+      "precision": 0.2199,
+      "recall": 0.1973,
+      "object_completeness": 0.4333,
+      "gt_pairs": 583,
+      "pred_pairs": 523,
+      "tp": 115,
+      "pred_source": "output/evaluation/approach_b/datactr-oobsw-04/3_schema_normalizer.json",
+      "stem": "DATACTR-OOBSW-04",
+      "group": "oob-server"
+    },
+    {
+      "f1": 0.0979,
+      "precision": 0.092,
+      "recall": 0.1046,
+      "object_completeness": 0.4706,
+      "gt_pairs": 153,
+      "pred_pairs": 174,
+      "tp": 16,
+      "pred_source": "output/evaluation/approach_b/campus-access-sw03/3_schema_normalizer.json",
+      "stem": "CAMPUS-ACCESS-SW03",
+      "group": "arista-distribution"
+    },
+    {
+      "f1": 0.1104,
+      "precision": 0.1232,
+      "recall": 0.1,
+      "object_completeness": 0.4706,
+      "gt_pairs": 170,
+      "pred_pairs": 138,
+      "tp": 17,
+      "pred_source": "output/evaluation/approach_b/campus-access-sw04/3_schema_normalizer.json",
+      "stem": "CAMPUS-ACCESS-SW04",
+      "group": "arista-distribution"
+    },
+    {
+      "f1": 0.3711,
+      "precision": 0.3974,
+      "recall": 0.348,
+      "object_completeness": 0.55,
+      "gt_pairs": 862,
+      "pred_pairs": 755,
+      "tp": 300,
+      "pred_source": "output/evaluation/approach_b/campus-dist-sw01-original/3_schema_normalizer.json",
+      "stem": "CAMPUS-DIST-SW01-original",
+      "group": "arista-distribution"
+    },
+    {
+      "f1": 0.1008,
+      "precision": 0.0952,
+      "recall": 0.107,
+      "object_completeness": 0.4444,
+      "gt_pairs": 187,
+      "pred_pairs": 210,
+      "tp": 20,
+      "pred_source": "output/evaluation/approach_b/campus-dist-sw01/3_schema_normalizer.json",
+      "stem": "CAMPUS-DIST-SW01",
+      "group": "arista-distribution"
+    },
+    {
+      "f1": 0.0977,
+      "precision": 0.1118,
+      "recall": 0.0868,
+      "object_completeness": 0.4444,
+      "gt_pairs": 219,
+      "pred_pairs": 170,
+      "tp": 19,
+      "pred_source": "output/evaluation/approach_b/campus-dist-sw02/3_schema_normalizer.json",
+      "stem": "CAMPUS-DIST-SW02",
+      "group": "arista-distribution"
+    }
+  ],
+  "missing_ground_truth": []
+}

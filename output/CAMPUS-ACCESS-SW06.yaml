@@ -1,0 +1,113 @@
+catalyst_center:
+  inventory:
+    devices:
+    - name: CAMPUS-ACCESS-SW06
+      fqdn_name: CAMPUS-ACCESS-SW06.campus.example.org
+      device_ip: need_input
+      pid: C9300-24P
+      serial_number: TBD-MIGRATION
+      state: PNP
+      device_role: ACCESS
+      site: need_input
+      onboarding_template:
+        name: EDGE_PNP_template
+        variables:
+        - name: device_host_name
+          value: CAMPUS-ACCESS-SW06
+        - name: domain_name
+          value: campus.example.org
+        - name: pnp_vlan_id
+          value: '1'
+        - name: pnp_vlan_name
+          value: MGMT
+        - name: pnp_vlan_network_add
+          value: need_input
+        - name: pnp_vlan_network_mask
+          value: 255.255.255.0
+        - name: pnp_vlan_default_gateway
+          value: need_input
+        - name: pnp_interface
+          value: GigabitEthernet1/0/1
+        - name: snmp_community_ro
+          value: need_input
+        - name: log_server
+          value: 192.168.1.100
+        - name: is_stack
+          value: 'false'
+        - name: stack_members
+          value: '1'
+      dayn_templates:
+        regular:
+        - name: EDGE_SYSTEM_template
+          variables:
+          - name: enable_secret
+            value: need_input
+          - name: hostname
+            value: CAMPUS-ACCESS-SW06
+          - name: domain_name
+            value: campus.example.org
+          - name: timezone
+            value: need_input
+          - name: timezone_offset
+            value: need_input
+          - name: daylight_savings_name
+            value: need_input
+          - name: dns_servers
+            value: need_input
+          - name: ntp_servers
+            value: |
+              192.0.2.11|prefer,192.0.2.12
+          - name: license_level
+            value: network-advantage
+          - name: stp_mode
+            value: rapid-pvst
+          - name: ntp_authenticate
+            value: 'false'
+          - name: ntp_master
+            value: 'false'
+          - name: log_severity_level
+            value: informational
+          redeploy_template: ON_CHANGE
+        - name: EDGE_VLAN_template
+          variables:
+          - name: vlans
+            value: 100|USERS,200|VOICE,300|IOT,4060|INBAND-MGMT
+          - name: vtp_domain
+            value: CWAN
+          - name: vtp_mode
+            value: transparent
+          redeploy_template: ON_CHANGE
+        - name: EDGE_MGMT_template
+          variables:
+          - name: enable_management
+            value: 'false'
+          - name: http_server
+            value: 'true'
+          - name: https_server
+            value: 'true'
+          - name: mgmt_interface_type
+            value: vlan
+          - name: mgmt_vlan_id
+            value: '1'
+          - name: mgmt_ip_address
+            value: need_input
+          - name: mgmt_subnet_mask
+            value: 255.255.255.0
+          - name: mgmt_default_gateway
+            value: need_input
+          - name: mgmt_vlan_name
+            value: MGMT
+          redeploy_template: ON_CHANGE
+        - name: EDGE_SNMP_template
+          variables:
+          - name: snmp_community_ro
+            value: need_input
+          - name: snmp_community_rw
+            value: need_input
+          - name: snmp_location
+            value: Building-B Access SW06
+          - name: snmp_contact
+            value: NOC-555-0100
+          - name: enable_traps
+            value: 'false'
+          redeploy_template: ON_CHANGE

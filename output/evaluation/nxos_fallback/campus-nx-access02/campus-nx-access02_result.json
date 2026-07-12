@@ -1,0 +1,23 @@
+{
+  "config": "CAMPUS-NX-ACCESS02.txt",
+  "stem": "campus-nx-access02",
+  "role": "access-nac",
+  "hostname_extracted": "CAMPUS-NX-ACCESS02",
+  "vendor_tag": "unknown",
+  "routing_path": [
+    "Legacy Parser",
+    "Intent Mapper",
+    "Schema Normalizer",
+    "Validator",
+    "Generator"
+  ],
+  "validator_iterations": 1,
+  "outcome": "auto_corrected",
+  "schema_valid": true,
+  "semantic_valid": true,
+  "rules_fired": [],
+  "validation_score": 1.0,
+  "latency_ms": 13986,
+  "has_ground_truth": true,
+  "error": null
+}

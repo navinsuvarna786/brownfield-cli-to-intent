@@ -1,0 +1,430 @@
+{
+  "hostname": "EDGE-SW-REMOTE-05",
+  "domain_name": "campus.example.edu",
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "switches": [
+      [
+        1,
+        15
+      ]
+    ],
+    "master_switch": 1
+  },
+  "pnp_config": {
+    "pnp_vlan_id": 903,
+    "pnp_vlan_name": "MGMT",
+    "pnp_vlan_network_add": "192.0.2.215",
+    "pnp_vlan_network_mask": "255.255.255.0",
+    "pnp_vlan_default_gateway": "192.0.2.254"
+  },
+  "vlans": [
+    {
+      "id": 18,
+      "name": "DATA"
+    },
+    {
+      "id": 903,
+      "name": "MGMT"
+    }
+  ],
+  "acls": [
+    {
+      "name": "13",
+      "type": "standard",
+      "entries": [
+        {
+          "action": "permit",
+          "source": "192.0.2.0 0.0.0.255",
+          "log": false,
+          "sequence": 10
+        },
+        {
+          "action": "deny",
+          "source": "any",
+          "log": true,
+          "sequence": 20
+        }
+      ],
+      "is_numbered": false
+    }
+  ],
+  "uplinks": [
+    {
+      "type": "trunk",
+      "name": "TenGigabitEthernet1/1/1",
+      "description": "DISCOVERED-UPLINK-1",
+      "allowed_vlans": [
+        18,
+        903
+      ],
+      "native_vlan": 903
+    },
+    {
+      "type": "trunk",
+      "name": "TenGigabitEthernet1/1/2",
+      "description": "DISCOVERED-UPLINK-2",
+      "allowed_vlans": [
+        18,
+        903
+      ],
+      "native_vlan": 903
+    }
+  ],
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "13",
+    "community_rw": "xxxxxxxx",
+    "acl_rw": "13",
+    "location": "Remote Edge Site-5",
+    "contact": "NOC-555-0100",
+    "enable_traps": false
+  },
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": []
+  },
+  "access_interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "switch": 1,
+      "module": 0,
+      "port": 1,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "switch": 1,
+      "module": 0,
+      "port": 2,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "switch": 1,
+      "module": 0,
+      "port": 3,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "switch": 1,
+      "module": 0,
+      "port": 4,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "switch": 1,
+      "module": 0,
+      "port": 5,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "switch": 1,
+      "module": 0,
+      "port": 6,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "switch": 1,
+      "module": 0,
+      "port": 7,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "switch": 1,
+      "module": 0,
+      "port": 8,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "switch": 1,
+      "module": 0,
+      "port": 9,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "switch": 1,
+      "module": 0,
+      "port": 10,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/11",
+      "switch": 1,
+      "module": 0,
+      "port": 11,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/12",
+      "switch": 1,
+      "module": 0,
+      "port": 12,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/13",
+      "switch": 1,
+      "module": 0,
+      "port": 13,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/14",
+      "switch": 1,
+      "module": 0,
+      "port": 14,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/15",
+      "switch": 1,
+      "module": 0,
+      "port": 15,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/16",
+      "switch": 1,
+      "module": 0,
+      "port": 16,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/17",
+      "switch": 1,
+      "module": 0,
+      "port": 17,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/18",
+      "switch": 1,
+      "module": 0,
+      "port": 18,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/19",
+      "switch": 1,
+      "module": 0,
+      "port": 19,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/20",
+      "switch": 1,
+      "module": 0,
+      "port": 20,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/21",
+      "switch": 1,
+      "module": 0,
+      "port": 21,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/22",
+      "switch": 1,
+      "module": 0,
+      "port": 22,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/23",
+      "switch": 1,
+      "module": 0,
+      "port": 23,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/24",
+      "switch": 1,
+      "module": 0,
+      "port": 24,
+      "config": {
+        "access_vlan": 18,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    }
+  ],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "dns_servers": [
+    "192.0.2.50",
+    "192.0.2.60",
+    "192.0.2.50",
+    "192.0.2.60"
+  ],
+  "logging_hosts": [
+    "192.0.2.21",
+    "192.0.2.22",
+    "192.0.2.23"
+  ],
+  "timezone_config": {
+    "timezone": "CST",
+    "timezone_offset": "-6",
+    "dst_minutes": "0"
+  },
+  "daylight_savings": "CDT",
+  "enable_secret": "need_input",
+  "stp_mode": "rapid-pvst",
+  "errdisable_config": {
+    "causes": [
+      "security-violation",
+      "gbic-invalid",
+      "psecure-violation"
+    ],
+    "recovery_interval": 100
+  },
+  "local_users": [
+    {
+      "name": "xxxxxxxx",
+      "password": "need_input",
+      "privilege": 15
+    }
+  ],
+  "vrf_config": {
+    "name": "Mgmt-vrf",
+    "rd": "",
+    "rt_export": "",
+    "rt_import": ""
+  },
+  "vtp_domain": "CAMPUS",
+  "vtp_mode": "transparent",
+  "has_ssh_source": false,
+  "has_snmp_source": false,
+  "has_ntp_source": false,
+  "has_tacacs_source": false,
+  "has_radius_source": false
+}

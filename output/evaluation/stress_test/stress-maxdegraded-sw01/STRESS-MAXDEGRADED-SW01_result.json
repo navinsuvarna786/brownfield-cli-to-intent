@@ -1,0 +1,27 @@
+{
+  "config": "STRESS-MAXDEGRADED-SW01",
+  "vendor_tag": "unknown",
+  "hostname_extracted": "unknown",
+  "routing_path": [
+    "Legacy Parser",
+    "Intent Mapper",
+    "Schema Normalizer",
+    "Validator",
+    "Intent Mapper",
+    "Schema Normalizer",
+    "Validator",
+    "Intent Mapper",
+    "Schema Normalizer",
+    "Validator"
+  ],
+  "validator_iterations": 3,
+  "auto_corrections": [],
+  "outcome": "escalated_abort",
+  "valid": false,
+  "validation_score": 0.8,
+  "issues_flagged": [
+    "[error] hostname: Hostname is missing"
+  ],
+  "latency_ms": 10554,
+  "error": null
+}

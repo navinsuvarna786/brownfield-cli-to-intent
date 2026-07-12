@@ -1,0 +1,27 @@
+[
+  {
+    "field": "domain_name",
+    "confidence": 0.9,
+    "reason": "Extracted from 'dns domain' command"
+  },
+  {
+    "field": "local_users",
+    "confidence": 1,
+    "reason": "Parsed username admin with privilege and secret"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 1,
+    "reason": "Expanded identical config for Ethernet interfaces to GigabitEthernet1/0/x"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.95,
+    "reason": "Extracted SNMP location, contact, ACL, VRF, local interface"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "Parsed tacacs servers and groups from config"
+  }
+]

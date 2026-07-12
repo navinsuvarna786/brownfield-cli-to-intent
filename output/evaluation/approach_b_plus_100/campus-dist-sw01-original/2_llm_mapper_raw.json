@@ -1,0 +1,331 @@
+{
+  "hostname": "CAMPUS-DIST-SW01",
+  "domain_name": "campus.example.org",
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "pnp_config": {
+    "pnp_vlan_id": 1,
+    "pnp_vlan_name": "default",
+    "pnp_vlan_network_add": "need_input",
+    "pnp_vlan_network_mask": "need_input",
+    "pnp_vlan_default_gateway": "need_input"
+  },
+  "vlans": [
+    {
+      "id": 100,
+      "name": "VRFA_USER"
+    },
+    {
+      "id": 110,
+      "name": "VRFA_VEEDEROOT"
+    },
+    {
+      "id": 130,
+      "name": "VRFA_PRINTER"
+    },
+    {
+      "id": 150,
+      "name": "VRFE_SECURITY_CAMERA"
+    },
+    {
+      "id": 210,
+      "name": "VRFA_ISTAR"
+    },
+    {
+      "id": 230,
+      "name": "VRFA_CITYTIME"
+    },
+    {
+      "id": 777,
+      "name": "VRFA_WIRELESS"
+    },
+    {
+      "id": 3000,
+      "name": "MDMZ_MGMT_UPS"
+    },
+    {
+      "id": 4060,
+      "name": "MDMZ_INBAND_MGMT"
+    },
+    {
+      "id": 4085,
+      "name": "MLAG_L3_VRF_VRFA"
+    },
+    {
+      "id": 4086,
+      "name": "MLAG_L3_VRF_VRFB"
+    },
+    {
+      "id": 4087,
+      "name": "MLAG_L3_VRF_VRFC"
+    },
+    {
+      "id": 4088,
+      "name": "MLAG_L3_VRF_VRFD"
+    },
+    {
+      "id": 4089,
+      "name": "MLAG_L3_VRF_VRFE"
+    },
+    {
+      "id": 4090,
+      "name": "MLAG_L3_VRF_VRFM"
+    },
+    {
+      "id": 4091,
+      "name": "MLAG_L3_VRF_VRFT"
+    },
+    {
+      "id": 4092,
+      "name": "MLAG_L3_VRF_MDMZ"
+    },
+    {
+      "id": 4094,
+      "name": "MLAG"
+    }
+  ],
+  "acls": [
+    {
+      "name": "API-ACCESS",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "host 198.51.100.11",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "host 198.51.100.12",
+          "log": false
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "host 198.51.100.13",
+          "log": false
+        },
+        {
+          "sequence": 40,
+          "action": "permit",
+          "source": "host 192.0.2.34",
+          "log": false
+        },
+        {
+          "sequence": 50,
+          "action": "permit",
+          "source": "host 192.0.2.35",
+          "log": false
+        },
+        {
+          "sequence": 60,
+          "action": "permit",
+          "source": "host 192.0.2.36",
+          "log": false
+        },
+        {
+          "sequence": 1000,
+          "action": "deny",
+          "source": "any",
+          "log": false
+        }
+      ]
+    },
+    {
+      "name": "SNMP-ALLOWED",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "host 192.0.2.37",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "host 192.0.2.38",
+          "log": false
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "host 198.51.100.20",
+          "log": false
+        },
+        {
+          "sequence": 40,
+          "action": "permit",
+          "source": "host 198.51.100.21",
+          "log": false
+        },
+        {
+          "sequence": 1000,
+          "action": "deny",
+          "source": "any",
+          "log": true
+        }
+      ]
+    }
+  ],
+  "uplinks": [
+    {
+      "type": "port-channel",
+      "name": "Port-Channel2000",
+      "allowed_vlans": [],
+      "native_vlan": 1
+    }
+  ],
+  "snmp_config": {
+    "community_ro": "need_input",
+    "acl_ro": "SNMP-ALLOWED",
+    "location": "Campus Distribution Building-A",
+    "contact": "555-0100",
+    "chassis_id": "need_input",
+    "enable_traps": true
+  },
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": [
+      {
+        "name": "TACACS_Servers",
+        "ip": "192.0.2.10",
+        "key": "need_input"
+      },
+      {
+        "name": "TACACS_Servers",
+        "ip": "192.0.2.11",
+        "key": "need_input"
+      }
+    ],
+    "radius_servers": []
+  },
+  "nac_config": {
+    "dot1x_enabled": false,
+    "radius_group_name": "need_input",
+    "radius_servers": []
+  },
+  "ntp_servers": [
+    "need_input"
+  ],
+  "dns_servers": [
+    "192.0.2.7",
+    "192.0.2.8",
+    "192.0.2.9"
+  ],
+  "stp_mode": "pvst",
+  "errdisable_config": {
+    "causes": [
+      "need_input"
+    ],
+    "recovery_interval": 30
+  },
+  "access_interfaces": [
+    {
+      "name": "Ethernet1",
+      "config": {
+        "access_vlan": 130,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet2",
+      "config": {
+        "access_vlan": 130,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet3",
+      "config": {
+        "access_vlan": 100,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet4",
+      "config": {
+        "access_vlan": 100,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet5",
+      "config": {
+        "access_vlan": 100,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet6",
+      "config": {
+        "access_vlan": 100,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet7",
+      "config": {
+        "access_vlan": 100,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet8",
+      "config": {
+        "access_vlan": 100,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet9",
+      "config": {
+        "access_vlan": 100,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet10",
+      "config": {
+        "access_vlan": 100,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    }
+  ],
+  "routed_interfaces": []
+}

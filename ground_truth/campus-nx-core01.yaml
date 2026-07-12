@@ -1,0 +1,101 @@
+# Ground truth — NX-OS LLM fallback evaluation
+# Source: input/sanitized/nxos/CAMPUS-NX-CORE01.txt
+# Role: core/spine (L3 only, no access ports) | Platform: NX-OS 10.3(3)F
+# REVIEW: every field verified against raw CLI source
+---
+hostname: CAMPUS-NX-CORE01
+domain_name: campus.example.edu
+stp_mode: rapid-pvst
+dns_servers:
+- 192.0.2.15
+- 192.0.2.16
+ntp_servers:
+- 192.0.2.11|prefer
+- 192.0.2.12
+logging_hosts:
+- 192.0.2.17
+- 192.0.2.18
+errdisable_config:
+  causes:
+  - need_input
+stack_info:
+  is_stack: false
+  member_count: 1
+  switches:
+  - - 1
+    - 24
+  master_switch: 1
+pnp_config:
+  pnp_vlan_id: 900
+  pnp_vlan_name: MGMT
+  pnp_vlan_network_add: 192.0.2.150
+  pnp_vlan_network_mask: 255.255.255.0
+  pnp_vlan_default_gateway: 192.0.2.254
+vlans:
+- id: 900
+  name: MGMT
+acls:
+- name: SNMP-ALLOWED
+  type: standard
+  entries:
+  - action: permit
+    source: 192.0.2.11
+    log: false
+    sequence: 10
+  - action: permit
+    source: 192.0.2.12
+    log: false
+    sequence: 20
+  - action: permit
+    source: 192.0.2.0 0.0.0.255
+    log: false
+    sequence: 30
+  - action: deny
+    source: any
+    log: false
+    sequence: 40
+  is_numbered: false
+uplinks:
+- type: routed-port-channel
+  port_channel_id: 20
+  description: UPLINK-WAN-ROUTER
+  ip_address: 203.0.113.2
+  prefix_length: 30
+  member_interfaces:
+  - name: Ethernet1/7
+    lacp_mode: active
+  - name: Ethernet1/8
+    lacp_mode: active
+snmp_config:
+  community_ro: xxxxxxxx
+  acl_ro: SNMP-ALLOWED
+  location: Campus-Core-Switch-Room
+  contact: NOC-555-0100
+  chassis_id: CAMPUS-NX-CORE01
+  enable_traps: true
+aaa_config:
+  aaa_enabled: true
+  tacacs_group_name: TACACS_GROUP
+  tacacs_servers:
+  - name: tacacs-svr-01
+    ip: 192.0.2.11
+    key: need_input
+  - name: tacacs-svr-02
+    ip: 192.0.2.12
+    key: need_input
+  dot1x_enabled: false
+banners:
+  login: AUTHORIZED ACCESS ONLY. Core infrastructure device. Unauthorized access prosecuted.
+routed_interfaces:
+- name: port-channel10
+  description: DOWNLINK-DIST01
+  ip_address: 10.0.10.1
+  prefix_length: 30
+- name: port-channel11
+  description: DOWNLINK-DIST02
+  ip_address: 10.0.11.1
+  prefix_length: 30
+- name: port-channel12
+  description: DOWNLINK-DIST03-VPC
+  ip_address: 10.0.12.1
+  prefix_length: 30

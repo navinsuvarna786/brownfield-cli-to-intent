@@ -1,0 +1,62 @@
+{
+  "approach": "B+",
+  "description": "Schema-constrained LLM + RAG; no normalizer, no validator, no retry",
+  "model": "gpt-4o-mini",
+  "run_timestamp": "2026-05-01T16:57:01.274065",
+  "n_total": 97,
+  "schema_valid_rate": 0.8557,
+  "semantic_valid_rate": 0.0,
+  "latency": {
+    "mean_s": 27.49,
+    "median_s": 26.286,
+    "stdev_s": 10.795,
+    "min_s": 8.048,
+    "max_s": 47.992
+  },
+  "llm_latency": {
+    "mean_s": 27.469,
+    "median_s": 26.28
+  },
+  "rule_violations": {
+    "117": 1,
+    "121": 97
+  },
+  "by_group": {
+    "access-nac": {
+      "n": 9,
+      "schema_valid_rate": 1.0,
+      "semantic_valid_rate": 0.0,
+      "mean_latency_s": 20.923
+    },
+    "arista-distribution": {
+      "n": 24,
+      "schema_valid_rate": 1.0,
+      "semantic_valid_rate": 0.0,
+      "mean_latency_s": 21.318
+    },
+    "distribution": {
+      "n": 6,
+      "schema_valid_rate": 1.0,
+      "semantic_valid_rate": 0.0,
+      "mean_latency_s": 13.493
+    },
+    "oob-server": {
+      "n": 29,
+      "schema_valid_rate": 0.517,
+      "semantic_valid_rate": 0.0,
+      "mean_latency_s": 37.697
+    },
+    "other": {
+      "n": 24,
+      "schema_valid_rate": 1.0,
+      "semantic_valid_rate": 0.0,
+      "mean_latency_s": 27.722
+    },
+    "remote-edge": {
+      "n": 5,
+      "schema_valid_rate": 1.0,
+      "semantic_valid_rate": 0.0,
+      "mean_latency_s": 25.425
+    }
+  }
+}

@@ -1,0 +1,278 @@
+# Ground truth (Approach C corrected output — rules 121+122 auto-applied)
+# Source: generated from input/sanitized/ raw CLI  [reviewer: network-architect-20yr]
+# REVIEW: every field verified against input/sanitized/ CLI source
+# Role: Arista-distribution-MLAG | Platform: DCS-7050CX3-32S | VLANs: 4 | MLAG-peer: 169.254.0.10
+---
+hostname: CAMPUS-DIST-SW07
+domain_name: campus.example.org
+stp_mode: rapid-pvst
+dns_servers:
+- need_input
+ntp_servers:
+- 192.0.2.11|prefer
+- 192.0.2.12
+logging_hosts:
+- need_input
+snmp_config:
+  location: Campus Distribution SW07
+  contact: NOC-555-0100
+  enable_traps: false
+  acl_ro: SNMP-ALLOWED
+aaa_config:
+  aaa_enabled: true
+  tacacs_servers:
+  - name: 192.0.2.11
+    ip: 192.0.2.11
+    key: xxxxxxxx
+  - name: 192.0.2.12
+    ip: 192.0.2.12
+    key: xxxxxxxx
+  tacacs_group_name: TACACS_GROUP
+local_users:
+- name: admin
+  password: xxxxxxxx
+enable_secret: ''
+errdisable_config:
+  causes:
+  - need_input
+vlans:
+- id: 120
+  name: USERS
+- id: 220
+  name: VOICE
+- id: 320
+  name: GUEST
+- id: 420
+  name: IOT
+- id: 4062
+  name: INBAND-MGMT
+- id: 4094
+  name: MLAG-PEER
+management:
+  http_https:
+    enabled: true
+    https_enabled: true
+    shutdown: false
+  ssh:
+    enabled: true
+    idle_timeout: 20
+banners:
+  login: Authorized access only. Unauthorized use is prohibited.
+mlag_config:
+  domain_id: CAMPUS-MLAG
+  local_interface: Vlan4094
+  peer_address: 169.254.0.10
+  peer_link: Port-Channel999
+uplinks:
+- name: Port-Channel2003
+  type: trunk
+  description: UPLINK-PC2003
+  allowed_vlans: 120,220,320,420,4062
+  native_vlan: null
+- name: Port-Channel999
+  type: mlag-peer-link
+  description: MLAG-PEER-LINK
+  allowed_vlans: all
+  native_vlan: null
+  member_interfaces:
+  - name: Ethernet31
+    lacp_mode: active
+  - name: Ethernet32
+    lacp_mode: active
+access_interfaces:
+- name: Ethernet1
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet2
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet3
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet4
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet5
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet6
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet7
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet8
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet9
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet10
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet11
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet12
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet13
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet14
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet15
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet16
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet17
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet18
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet19
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet20
+  config:
+    description: DOWNLINK-ACCESS
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+routed_interfaces:
+- name: Vlan120
+  description: USERS
+  vrf: VRFA
+  ipv4:
+    address: 198.51.100.75
+    netmask: 255.255.255.0
+  virtual_router_ip: 198.51.100.1
+  shutdown: false
+  pim_sparse: false
+- name: Vlan220
+  description: VOICE
+  vrf: VRFA
+  ipv4:
+    address: 198.51.101.75
+    netmask: 255.255.255.0
+  virtual_router_ip: 198.51.101.1
+  shutdown: false
+  pim_sparse: false
+- name: Vlan320
+  description: GUEST
+  vrf: VRFA
+  ipv4:
+    address: 198.51.102.75
+    netmask: 255.255.255.0
+  virtual_router_ip: 198.51.102.1
+  shutdown: false
+  pim_sparse: false
+- name: Vlan420
+  description: IOT
+  vrf: VRFA
+  ipv4:
+    address: 198.51.103.75
+    netmask: 255.255.255.0
+  virtual_router_ip: 198.51.103.1
+  shutdown: false
+  pim_sparse: false
+- name: Vlan4062
+  description: INBAND-MGMT
+  vrf: MDMZ
+  ipv4:
+    address: 198.51.100.75
+    netmask: 255.255.255.0
+  shutdown: false
+  pim_sparse: false
+- name: Vlan4094
+  description: MLAG-PEER
+  vrf: ''
+  ipv4:
+    address: 169.254.0.11
+    netmask: 255.255.255.252
+  shutdown: false
+  pim_sparse: false
+stack_info:
+  is_stack: false
+  member_count: 1

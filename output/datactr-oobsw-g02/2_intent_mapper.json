@@ -1,0 +1,955 @@
+{
+  "hostname": "DATACTR-OOBSW-G02",
+  "domain_name": "campus.example.edu",
+  "system": {
+    "timezone": "CST",
+    "timezone_offset": "-6",
+    "daylight_savings": "CDT",
+    "spanning_tree_mode": "rapid-pvst",
+    "errdisable_recovery": {
+      "causes": [
+        "security-violation",
+        "gbic-invalid",
+        "psecure-violation"
+      ],
+      "interval": 100
+    },
+    "local_users": [
+      {
+        "name": "xxxxxxxx",
+        "privilege": 15
+      }
+    ],
+    "banners": [
+      "*************************************************************",
+      "* Authorized access only.                                   *",
+      "* Unauthorized use is prohibited and may be prosecuted.     *",
+      "*************************************************************"
+    ]
+  },
+  "management": {
+    "vrfs": [
+      {
+        "name": "Mgmt-vrf"
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "GigabitEthernet0/0",
+        "vrf": "Mgmt-vrf",
+        "ip_address": null,
+        "negotiation_auto": true
+      }
+    ],
+    "ssh": {
+      "version": 2
+    },
+    "http": {
+      "authentication": "aaa"
+    },
+    "lines": {
+      "console": {
+        "exec_timeout": "5 0",
+        "stopbits": 1
+      },
+      "vty_0_4": {
+        "access_class": "13",
+        "exec_timeout": "20 0",
+        "privilege": 15,
+        "transport_input": [
+          "ssh"
+        ],
+        "transport_preferred": "none"
+      },
+      "vty_5_15": {
+        "access_class": "13",
+        "exec_timeout": "20 0",
+        "privilege": 15,
+        "transport_input": [
+          "ssh"
+        ],
+        "transport_preferred": "none"
+      }
+    }
+  },
+  "vlans": [
+    {
+      "id": 230,
+      "name": "OOB-MGMT"
+    },
+    {
+      "id": 3070,
+      "name": "Native"
+    },
+    {
+      "id": 628,
+      "name": "SERVER-VLAN-628"
+    },
+    {
+      "id": 629,
+      "name": "SERVER-VLAN-629"
+    },
+    {
+      "id": 630,
+      "name": "SERVER-VLAN-630"
+    },
+    {
+      "id": 631,
+      "name": "SERVER-VLAN-631"
+    },
+    {
+      "id": 632,
+      "name": "SERVER-VLAN-632"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "Mgmt-vrf"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "Vlan3070",
+      "ip_address": "192.0.2.144",
+      "subnet_mask": "255.255.255.0",
+      "ip_redirects": false
+    },
+    {
+      "name": "Port-channel1",
+      "description": "UPLINK-OOB-PC1",
+      "switchport_mode": "trunk",
+      "native_vlan": 3070,
+      "allowed_vlans": [
+        230,
+        628,
+        629,
+        630,
+        631,
+        632,
+        3070
+      ]
+    },
+    {
+      "name": "TenGigabitEthernet1/1/1",
+      "description": "UPLINK-MEMBER-PC1",
+      "channel_group": {
+        "id": 1,
+        "mode": "active"
+      }
+    }
+  ],
+  "access_interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "switchport_mode": "access",
+      "access_vlan": 629,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "switchport_mode": "access",
+      "access_vlan": 630,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "switchport_mode": "access",
+      "access_vlan": 631,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "switchport_mode": "access",
+      "access_vlan": 632,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "switchport_mode": "access",
+      "access_vlan": 628,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "switchport_mode": "access",
+      "access_vlan": 629,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "switchport_mode": "access",
+      "access_vlan": 630,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "switchport_mode": "access",
+      "access_vlan": 631,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "switchport_mode": "access",
+      "access_vlan": 632,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "switchport_mode": "access",
+      "access_vlan": 628,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/11",
+      "switchport_mode": "access",
+      "access_vlan": 629,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/12",
+      "switchport_mode": "access",
+      "access_vlan": 630,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/13",
+      "switchport_mode": "access",
+      "access_vlan": 631,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/14",
+      "switchport_mode": "access",
+      "access_vlan": 632,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/15",
+      "switchport_mode": "access",
+      "access_vlan": 628,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/16",
+      "switchport_mode": "access",
+      "access_vlan": 629,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/17",
+      "switchport_mode": "access",
+      "access_vlan": 630,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/18",
+      "switchport_mode": "access",
+      "access_vlan": 631,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/19",
+      "switchport_mode": "access",
+      "access_vlan": 632,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/20",
+      "switchport_mode": "access",
+      "access_vlan": 628,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/21",
+      "switchport_mode": "access",
+      "access_vlan": 629,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/22",
+      "switchport_mode": "access",
+      "access_vlan": 630,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/23",
+      "switchport_mode": "access",
+      "access_vlan": 631,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/24",
+      "switchport_mode": "access",
+      "access_vlan": 632,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/25",
+      "switchport_mode": "access",
+      "access_vlan": 628,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/26",
+      "switchport_mode": "access",
+      "access_vlan": 629,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/27",
+      "switchport_mode": "access",
+      "access_vlan": 630,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/28",
+      "switchport_mode": "access",
+      "access_vlan": 631,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/29",
+      "switchport_mode": "access",
+      "access_vlan": 632,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/30",
+      "switchport_mode": "access",
+      "access_vlan": 628,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/31",
+      "switchport_mode": "access",
+      "access_vlan": 629,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/32",
+      "switchport_mode": "access",
+      "access_vlan": 630,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/33",
+      "switchport_mode": "access",
+      "access_vlan": 631,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/34",
+      "switchport_mode": "access",
+      "access_vlan": 632,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/35",
+      "switchport_mode": "access",
+      "access_vlan": 628,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/36",
+      "switchport_mode": "access",
+      "access_vlan": 629,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/37",
+      "switchport_mode": "access",
+      "access_vlan": 630,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/38",
+      "switchport_mode": "access",
+      "access_vlan": 631,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/39",
+      "switchport_mode": "access",
+      "access_vlan": 632,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/40",
+      "switchport_mode": "access",
+      "access_vlan": 628,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/41",
+      "switchport_mode": "access",
+      "access_vlan": 629,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/42",
+      "switchport_mode": "access",
+      "access_vlan": 630,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/43",
+      "switchport_mode": "access",
+      "access_vlan": 631,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/44",
+      "switchport_mode": "access",
+      "access_vlan": 632,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/45",
+      "switchport_mode": "access",
+      "access_vlan": 628,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/46",
+      "switchport_mode": "access",
+      "access_vlan": 629,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/47",
+      "switchport_mode": "access",
+      "access_vlan": 630,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/48",
+      "switchport_mode": "access",
+      "access_vlan": 631,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00",
+        "multicast_level": "2.00"
+      },
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    }
+  ],
+  "routes": [
+    {
+      "default_gateway": "192.0.2.254"
+    }
+  ],
+  "snmp": {
+    "communities": [
+      {
+        "name": "xxxxxxxx",
+        "access": "RO",
+        "acl": "13"
+      },
+      {
+        "name": "xxxxxxxx",
+        "access": "RW",
+        "acl": "13"
+      }
+    ],
+    "location": "DC OOB Switch G02",
+    "contact": "NOC-555-0100",
+    "hosts": [
+      "192.0.2.21",
+      "192.0.2.22"
+    ],
+    "version": "2c"
+  },
+  "acls": [
+    {
+      "name": "13",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.0",
+          "wildcard": "0.0.0.255",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "deny",
+          "source": "any",
+          "log": true
+        }
+      ]
+    }
+  ],
+  "aaa": {
+    "enabled": true,
+    "authentication": {
+      "login_default": "local enable"
+    },
+    "tacacs_servers": []
+  },
+  "logging": {
+    "hosts": [
+      "192.0.2.21",
+      "192.0.2.22",
+      "192.0.2.23"
+    ]
+  },
+  "ntp": {
+    "servers": [
+      {
+        "address": "192.0.2.11",
+        "prefer": true
+      },
+      {
+        "address": "192.0.2.12"
+      }
+    ]
+  },
+  "dns_servers": [
+    "192.0.2.50",
+    "192.0.2.60"
+  ],
+  "stack": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "uplinks": [
+    {
+      "type": "port-channel",
+      "port_channel_id": 1,
+      "description": "UPLINK-OOB-PC1",
+      "allowed_vlans": [
+        230,
+        628,
+        629,
+        630,
+        631,
+        632,
+        3070
+      ],
+      "native_vlan": 3070,
+      "member_interfaces": [
+        {
+          "name": "TenGigabitEthernet1/1/1",
+          "lacp_mode": "active"
+        }
+      ]
+    }
+  ],
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": []
+  },
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "13",
+    "community_rw": "xxxxxxxx",
+    "acl_rw": "13",
+    "location": "DC OOB Switch G02",
+    "contact": "NOC-555-0100",
+    "enable_traps": false
+  },
+  "local_users": [
+    {
+      "name": "xxxxxxxx",
+      "password": "need_input",
+      "privilege": 15
+    }
+  ],
+  "logging_hosts": [
+    "192.0.2.21",
+    "192.0.2.22",
+    "192.0.2.23"
+  ],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": {
+    "name": "Mgmt-vrf",
+    "rd": "",
+    "rt_export": "",
+    "rt_import": ""
+  }
+}

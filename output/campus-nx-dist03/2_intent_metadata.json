@@ -1,0 +1,32 @@
+[
+  {
+    "field": "aaa",
+    "confidence": 0.95,
+    "reason": "AAA config parsed from tacacs-server and aaa group commands"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.98,
+    "reason": "Interfaces mapped from NX Ethernet1/x to Catalyst GigabitEthernet1/0/x"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "VLANs extracted from config and legacy parser"
+  },
+  {
+    "field": "acls",
+    "confidence": 1,
+    "reason": "ACL entries fully extracted from config and legacy parser"
+  },
+  {
+    "field": "snmp",
+    "confidence": 1,
+    "reason": "SNMP community, location, contact, traps extracted"
+  },
+  {
+    "field": "hostname",
+    "confidence": 1,
+    "reason": "Hostname from config and legacy parser"
+  }
+]

@@ -1,0 +1,44 @@
+! Synthetic stress test config 5: Severely degraded / ambiguous config
+! Purpose: exhaust all retries and trigger the escalation/abort path
+! Defects injected:
+!   - No hostname
+!   - No VLANs
+!   - No NTP, DNS, logging
+!   - No SNMP
+!   - No AAA/TACACS (only a partial, unparseable line)
+!   - Corrupt interface blocks (mixed indentation)
+!   - Unknown vendor tagged (forces LLM path with no deterministic baseline)
+! Expected routing: llm_parser -> llm_mapper -> normalizer -> validator [FAIL]
+!   -> retry_llm (iter 1) -> validator [FAIL]
+!   -> retry_llm (iter 2) -> validator [FAIL]
+!   -> abort -> reporter (6_report.md with explicit field issues)
+!
+version ???
+ ! hostname deliberately absent
+ip domain??
+
+! Corrupt VLAN block (no content)
+vlan
+!
+
+! Partial AAA — unparseable
+aaa????
+ server BROKEN
+
+! No NTP, DNS, SNMP, logging
+
+interface Gi1/0/1
+switchport access vlan 99
+  portfast
+shutdown
+
+interface Gi1/0/2
+   switchport mode trunk
+ native vlan 1
+      shutdown
+
+! Completely empty interface block
+interface Port-channel??
+!
+
+ip route 0.0.0.0 0.0.0.0 ???

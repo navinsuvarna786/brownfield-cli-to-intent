@@ -1,0 +1,11 @@
+ipv6 mld snooping
+device-tracking tracking
+
+{% for policy in device_tracking_policies %}
+device-tracking policy {{ policy.name }}
+ limit address-count {{ policy.max_addresses | default(10) }}
+{% if policy.no_udp | default(true) %}
+ no protocol udp
+{% endif %}
+ tracking enable
+{% endfor %}

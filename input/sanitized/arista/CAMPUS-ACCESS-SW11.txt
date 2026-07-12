@@ -1,0 +1,216 @@
+! Command: show running-config
+! device: CAMPUS-ACCESS-SW11 (CCS-720XP-24ZY4, EOS-4.31.3M)
+!
+no aaa root
+!
+hostname CAMPUS-ACCESS-SW11
+!
+switchport default mode routed
+!
+vlan internal order ascending range 3500 3750
+!
+vlan 130
+   name USERS
+!
+vlan 230
+   name VOICE
+!
+vlan 4063
+   name INBAND-MGMT
+!
+
+dns domain campus.example.org
+!
+snmp-server ipv4 access-list SNMP-ALLOWED vrf MDMZ
+snmp-server contact NOC-555-0100
+snmp-server location Building-G Access SW11
+snmp-server vrf MDMZ local-interface Vlan4063
+!
+interface Ethernet25
+   description UPLINK
+   switchport mode trunk
+   switchport trunk allowed vlan 130,230,4063
+!
+interface Ethernet1
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet2
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet3
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet4
+   description IP-PHONE
+   switchport access vlan 130
+   switchport trunk native vlan 130
+   switchport trunk allowed vlan 130,230
+   switchport mode trunk
+   switchport
+!
+interface Ethernet5
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet6
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet7
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet8
+   description IP-PHONE
+   switchport access vlan 130
+   switchport trunk native vlan 130
+   switchport trunk allowed vlan 130,230
+   switchport mode trunk
+   switchport
+!
+interface Ethernet9
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet10
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet11
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet12
+   description IP-PHONE
+   switchport access vlan 130
+   switchport trunk native vlan 130
+   switchport trunk allowed vlan 130,230
+   switchport mode trunk
+   switchport
+!
+interface Ethernet13
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet14
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet15
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet16
+   description IP-PHONE
+   switchport access vlan 130
+   switchport trunk native vlan 130
+   switchport trunk allowed vlan 130,230
+   switchport mode trunk
+   switchport
+!
+interface Ethernet17
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet18
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet19
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet20
+   description IP-PHONE
+   switchport access vlan 130
+   switchport trunk native vlan 130
+   switchport trunk allowed vlan 130,230
+   switchport mode trunk
+   switchport
+!
+interface Ethernet21
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet22
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet23
+   description USER
+   switchport access vlan 130
+   switchport
+!
+interface Ethernet24
+   description IP-PHONE
+   switchport access vlan 130
+   switchport trunk native vlan 130
+   switchport trunk allowed vlan 130,230
+   switchport mode trunk
+   switchport
+!
+
+interface Vlan130
+   description USERS
+   vrf VRFA
+   ip address 198.51.100.69/24
+!
+interface Vlan230
+   description VOICE
+   vrf VRFA
+   ip address 198.51.101.69/24
+!
+interface Vlan4063
+   description INBAND-MGMT
+   vrf MDMZ
+   ip address 198.51.100.69/24
+!
+management api http-commands
+   no protocol http
+   protocol https
+   no shutdown
+   !
+   vrf MDMZ
+      no shutdown
+!
+management ssh
+   idle-timeout 20
+   authentication mode keyboard-interactive
+   vrf MDMZ
+      no shutdown
+ntp server 192.0.2.11 prefer
+ntp server 192.0.2.12
+!
+aaa group server tacacs+ TACACS_GROUP
+   server 192.0.2.11
+   server 192.0.2.12
+!
+tacacs-server host 192.0.2.11 key 7 xxxxxxxx
+tacacs-server host 192.0.2.12 key 7 xxxxxxxx
+!
+username admin privilege 15 role network-admin secret sha512 xxxxxxxx
+!
+banner login
+Authorized access only. Unauthorized use is prohibited.
+EOF
+!

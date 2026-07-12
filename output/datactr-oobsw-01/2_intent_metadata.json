@@ -1,0 +1,27 @@
+[
+  {
+    "field": "local_users",
+    "confidence": 0.95,
+    "reason": "Password encrypted, exact value redacted"
+  },
+  {
+    "field": "aaa.tacacs_servers.key",
+    "confidence": 0.9,
+    "reason": "Key present but redacted for security"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": 0.9,
+    "reason": "Encrypted secret, value redacted"
+  },
+  {
+    "field": "interfaces.access_interfaces",
+    "confidence": 0.98,
+    "reason": "Expanded identical config for 48 interfaces, sample shown"
+  },
+  {
+    "field": "dns_servers",
+    "confidence": 1,
+    "reason": "Extracted from multiple ip name-server entries"
+  }
+]

@@ -1,0 +1,168 @@
+!Command: show running-config
+!Running configuration last done at: Thu Jan  2 00:00:00 2026
+!Time: Thu Jan  2 00:00:00 2026
+version 10.3(3)F
+hostname CAMPUS-NX-DIST03
+!
+feature lldp
+feature lacp
+feature interface-vlan
+feature hsrp
+feature vpc
+feature ssh
+!
+username admin password 7 xxxxxxxx role network-admin
+!
+ip access-list standard SNMP-ALLOWED
+  10 permit 192.0.2.11
+  20 permit 192.0.2.12
+  30 permit 192.0.2.0/24
+  40 deny any
+!
+vrf context management
+  ip route 0.0.0.0/0 192.0.2.254
+!
+vpc domain 1
+  peer-keepalive destination 192.0.2.141 source 192.0.2.140
+  peer-switch
+  peer-gateway
+  auto-recovery
+!
+vlan 1
+vlan 100
+  name USERS
+vlan 200
+  name VOICE
+vlan 400
+  name SERVERS
+vlan 900
+  name MGMT
+vlan 999
+  name VPC-PEER
+!
+interface mgmt0
+  vrf member management
+  ip address 192.0.2.140/24
+!
+interface port-channel1
+  description VPC-PEER-LINK
+  switchport
+  switchport mode trunk
+  switchport trunk allowed vlan 1,100,200,400,900,999
+  spanning-tree port type network
+  vpc peer-link
+  no shutdown
+!
+interface port-channel10
+  description UPLINK-CORE-VPC
+  switchport
+  switchport mode trunk
+  switchport trunk allowed vlan 100,200,400,900
+  vpc 10
+  no shutdown
+!
+interface port-channel20
+  description DOWNLINK-ACCESS01-VPC
+  switchport
+  switchport mode trunk
+  switchport trunk allowed vlan 100,200,400,900
+  vpc 20
+  no shutdown
+!
+interface Ethernet1/1
+  description VPC-PEER-LINK-MEMBER-1
+  channel-group 1 mode active
+  no shutdown
+!
+interface Ethernet1/2
+  description VPC-PEER-LINK-MEMBER-2
+  channel-group 1 mode active
+  no shutdown
+!
+interface Ethernet1/3
+  description UPLINK-CORE-1
+  channel-group 10 mode active
+  no shutdown
+!
+interface Ethernet1/4
+  description UPLINK-CORE-2
+  channel-group 10 mode active
+  no shutdown
+!
+interface Ethernet1/5
+  description ACCESS01-DOWNLINK
+  channel-group 20 mode active
+  no shutdown
+!
+interface Ethernet1/6
+  description ACCESS01-DOWNLINK
+  channel-group 20 mode active
+  no shutdown
+!
+interface Vlan100
+  description USERS-SVI
+  ip address 10.200.1.2/24
+  hsrp version 2
+  hsrp 100 ip 10.200.1.1
+  hsrp 100 priority 110
+  hsrp 100 preempt
+  no shutdown
+!
+interface Vlan200
+  description VOICE-SVI
+  ip address 10.200.2.2/24
+  hsrp version 2
+  hsrp 200 ip 10.200.2.1
+  hsrp 200 priority 110
+  hsrp 200 preempt
+  no shutdown
+!
+interface Vlan400
+  description SERVERS-SVI
+  ip address 10.200.4.2/24
+  hsrp version 2
+  hsrp 400 ip 10.200.4.1
+  hsrp 400 priority 110
+  hsrp 400 preempt
+  no shutdown
+!
+interface Vlan900
+  description MGMT-SVI
+  ip address 192.0.2.140/24
+  no shutdown
+!
+spanning-tree mode rapid-pvst
+spanning-tree vlan 100,200,400,900 priority 4096
+!
+tacacs-server host 192.0.2.11 key 7 xxxxxxxx
+tacacs-server host 192.0.2.12 key 7 xxxxxxxx
+!
+aaa group server tacacs+ TACACS_GROUP
+  server 192.0.2.11
+  server 192.0.2.12
+!
+aaa authentication login default group TACACS_GROUP local
+aaa authorization exec default group TACACS_GROUP local
+aaa accounting exec default start-stop group TACACS_GROUP
+!
+snmp-server community xxxxxxxx ro SNMP-ALLOWED
+snmp-server location Campus-Distribution-VPC-Primary
+snmp-server contact NOC-555-0100
+snmp-server enable traps
+!
+ntp server 192.0.2.11 prefer
+ntp server 192.0.2.12
+!
+ip name-server 192.0.2.15
+ip name-server 192.0.2.16
+!
+ip domain-name campus.example.edu
+!
+logging server 192.0.2.17
+logging server 192.0.2.18
+!
+banner motd @
+Authorized access only. All activities monitored.
+@
+!
+end

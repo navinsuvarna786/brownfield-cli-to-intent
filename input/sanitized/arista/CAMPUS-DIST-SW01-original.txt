@@ -1,0 +1,2010 @@
+! Command: show running-config
+! device: CAMPUS-DIST-SW01 (CCS-720XP-24ZY4, EOS-4.31.3M)
+!
+! boot system flash:/EOS-4.31.3M.swi
+!
+no aaa root
+!
+cdp
+   receive
+!
+alias IDMZ cli vrf IDMZ
+alias MDMZ cli vrf MDMZ
+alias SDMZ cli vrf SDMZ
+alias serr show interface counter error | nz
+alias sharp show ip arp
+alias sib show ip bgp
+alias sibs show ip bgp summary
+alias siib show ip int brief
+alias sint show interface counter | nz
+alias sir show ip route
+alias smac show mac address-table dynamic
+alias smacip show bgp evpn
+alias spo show port-channel %1 detail all
+alias sq show interface counter queue | nz
+alias sr show interface counter rate | nz
+alias VRFA cli vrf VRFA
+alias VRFB cli vrf VRFB
+alias VRFC cli vrf VRFC
+alias VRFD cli vrf VRFD
+alias VRFE cli vrf VRFE
+alias VRFM cli vrf VRFM
+alias VRFT cli vrf VRFT
+!
+daemon TerminAttr
+   exec /usr/bin/TerminAttr -cvaddr=198.51.100.11:9910,198.51.100.12:9910,198.51.100.13:9910 -cvauth=token,/tmp/token -cvvrf=MDMZ -disableaaa -smashexcludes=ale,flexCounter,hardware,kni,pulse,strata -taillogs -cvsourceintf=Vlan4060
+   no shutdown
+!
+dhcp server vrf MDMZ
+   lease time ipv4 1 days 0 hours 0 minutes
+   tftp server file ipv4 http://198.51.100.11/ztp/bootstrap
+   !
+   subnet 198.51.102.64/28
+      range 198.51.102.75 198.51.102.76
+      name ZTP_for_access_switches
+      default-gateway 198.51.102.65
+!
+dhcp server vrf VRFA
+   lease time ipv4 1 days 0 hours 0 minutes
+   dns domain name ipv4 campus.example.org
+   !
+   subnet 198.51.100.0/24
+      range 198.51.100.31 198.51.100.253
+      name Vlan100-Users
+      dns server 198.51.100.4 198.51.100.5
+      default-gateway 198.51.100.1
+   !
+   subnet 198.51.101.48/28
+      range 198.51.101.53 198.51.101.62
+      name Vlan777-MERAKI-AP-MGMT
+      dns server 8.8.8.8
+      default-gateway 198.51.101.49
+!
+switchport default mode routed
+!
+vlan internal order ascending range 3500 3750
+!
+errdisable recovery interval 30
+!
+load-interval default 30
+!
+transceiver qsfp default-mode 4x10G
+!
+interface defaults
+   mtu 9214
+   !
+   ethernet
+      shutdown
+!
+service routing protocols model multi-agent
+!
+queue-monitor length
+!
+logging buffered 1000000
+logging console critical
+no logging monitor
+logging synchronous level critical
+logging vrf MDMZ host 192.0.2.6
+logging format timestamp high-resolution
+logging vrf MDMZ source-interface Vlan4060
+!
+hostname CAMPUS-DIST-SW01
+ip name-server vrf MDMZ 192.0.2.7
+ip name-server vrf MDMZ 192.0.2.8
+ip name-server vrf MDMZ 192.0.2.9
+dns domain campus.example.org
+!
+sflow destination 127.0.0.1
+sflow source-interface Loopback10
+sflow extension bgp
+sflow run
+!
+snmp-server ipv4 access-list SNMP-ALLOWED vrf MDMZ
+snmp-server engineID local aabbccddeeff00112233
+snmp-server contact 555-0100
+snmp-server location Campus Distribution Building-A
+snmp-server vrf MDMZ local-interface Vlan4060
+snmp-server view snmp .1 included
+snmp-server group FINORO v3 priv read snmp
+snmp-server group FINORW v3 priv read snmp write snmp
+snmp-server group network-operator v3 priv read snmp
+snmp-server user ARM1SUserT23 network-operator v3 localized aabbccddeeff00112233 auth sha REDACTED priv aes REDACTED
+snmp-server user FIN0UserT23 FINORO v3 localized aabbccddeeff00112233 auth sha256 REDACTED priv aes256 REDACTED
+snmp-server user FIN0UserT24 FINORW v3 localized aabbccddeeff00112233 auth sha256 REDACTED priv aes256 REDACTED
+snmp-server host 198.51.100.20 vrf MDMZ version 3 priv FIN0UserT24
+snmp-server host 198.51.100.21 vrf MDMZ version 3 priv FIN0UserT24
+snmp-server enable traps
+snmp-server enable traps bgp backward-transition
+snmp-server enable traps bgp established
+no snmp-server enable traps bridge arista-mac-age
+no snmp-server enable traps bridge arista-mac-learn
+no snmp-server enable traps bridge arista-mac-move
+snmp-server enable traps capacity arista-hardware-utilization-alert
+snmp-server enable traps entity arista-ent-sensor-alarm
+snmp-server enable traps entity ent-config-change
+snmp-server enable traps entity ent-state-oper-disabled
+snmp-server enable traps entity ent-state-oper-enabled
+snmp-server enable traps entity ent-state-oper interfaces
+snmp-server enable traps lldp rem-tables-change
+no snmp-server enable traps msdp backward-transition
+no snmp-server enable traps msdp established
+no snmp-server enable traps pim neighbor-loss
+snmp-server enable traps snmp authentication
+snmp-server enable traps snmp link-down
+snmp-server enable traps snmp link-up
+no snmp-server vrf default
+snmp-server vrf MDMZ
+!
+spanning-tree mode mstp
+no spanning-tree vlan-id 4094
+spanning-tree mst pvst border
+spanning-tree mst 0 priority 4096
+!
+logging event flowcontrol received syslog disabled
+!
+service unsupported-transceiver XYZ fe352866
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+clock timezone EST5EDT
+!
+vlan 100
+   name VRFA_USER
+!
+vlan 110
+   name VRFA_VEEDEROOT
+!
+vlan 130
+   name VRFA_PRINTER
+!
+vlan 150
+   name VRFE_SECURITY_CAMERA
+!
+vlan 210
+   name VRFA_ISTAR
+!
+vlan 230
+   name VRFA_CITYTIME
+!
+vlan 777
+   name VRFA_WIRELESS
+!
+vlan 3000
+   name MDMZ_MGMT_UPS
+!
+vlan 4060
+   name MDMZ_INBAND_MGMT
+!
+vlan 4085
+   name MLAG_L3_VRF_VRFA
+   trunk group MLAG
+!
+vlan 4086
+   name MLAG_L3_VRF_VRFB
+   trunk group MLAG
+!
+vlan 4087
+   name MLAG_L3_VRF_VRFC
+   trunk group MLAG
+!
+vlan 4088
+   name MLAG_L3_VRF_VRFD
+   trunk group MLAG
+!
+vlan 4089
+   name MLAG_L3_VRF_VRFE
+   trunk group MLAG
+!
+vlan 4090
+   name MLAG_L3_VRF_VRFM
+   trunk group MLAG
+!
+vlan 4091
+   name MLAG_L3_VRF_VRFT
+   trunk group MLAG
+!
+vlan 4092
+   name MLAG_L3_VRF_MDMZ
+   trunk group MLAG
+!
+vlan 4094
+   name MLAG
+   trunk group MLAG
+!
+vrf instance MDMZ
+   description OOB_MANAGEMENT
+!
+vrf instance MGMT
+   description OOB-mgmt-via-RDMZ-FW
+!
+vrf instance VRFA
+   description USER_PRINTERS
+!
+vrf instance VRFB
+   description VOIP
+!
+vrf instance VRFC
+   description VOICE_ALARM
+!
+vrf instance VRFD
+   description AAT
+!
+vrf instance VRFE
+   description VRFE_SECURITY
+!
+vrf instance VRFM
+   description INBAND_MGMT
+!
+vrf instance VRFT
+   description Test_VRF__CE_only
+!
+queue-monitor streaming
+   no shutdown
+!
+banner login
+***************************************************************************
+*  This device is the property of the NYC Fire Department.                *
+*  This system is for the use of authorized users only.                   *
+*  Individuals using this computer system without authority,              *
+*  or in excess of their authority, are subject to having all of their    *
+*  activities on this system monitored and recorded by system personnel.  *
+*                                                                         *
+*  In the course of monitoring individuals improperly using this          *
+*  system, or in the course of system maintenance, the activities         *
+*  of authorized users may also be monitored.                             *
+*                                                                         *
+*  Anyone using this system expressly consents to such monitoring         *
+*  and is advised that if such monitoring reveals possible                *
+*  evidence of criminal activity, system personnel may provide the        *
+*  evidence of such monitoring to law enforcement officials.              *
+***************************************************************************
+EOF
+banner motd
+***************************************************************************
+*  This device is the property of the NYC Fire Department.                *
+*  This system is for the use of authorized users only.                   *
+*  Individuals using this computer system without authority,              *
+*  or in excess of their authority, are subject to having all of their    *
+*  activities on this system monitored and recorded by system personnel.  *
+*                                                                         *
+*  In the course of monitoring individuals improperly using this          *
+*  system, or in the course of system maintenance, the activities         *
+*  of authorized users may also be monitored.                             *
+*                                                                         *
+*  Anyone using this system expressly consents to such monitoring         *
+*  and is advised that if such monitoring reveals possible                *
+*  evidence of criminal activity, system personnel may provide the        *
+*  evidence of such monitoring to law enforcement officials.              *
+***************************************************************************
+EOF
+!
+management api http-commands
+   protocol https ssl profile SSL-SECURITY-POLICY
+   no shutdown
+   !
+   vrf MDMZ
+      no shutdown
+      ip access-group API-ACCESS
+   !
+   vrf MGMT
+      no shutdown
+      ip access-group API-ACCESS
+!
+management console
+   idle-timeout 10
+!
+management security
+   password minimum length 8
+   password encryption-key common
+   !
+   ssl profile SSL-SECURITY-POLICY
+      tls versions 1.2
+      cipher-list ECDHE:ECDSA:AES256:GCM:SHA384:ECDHE:RSA:AES256:GCM:SHA384:ECDHE:RSA:AES256:SHA384:ECDHE:ECDSA:AES256:SHA384
+      certificate CAMPUS-DIST-SW01.crt key CAMPUS-DIST-SW01.key
+!
+tacacs-server host 192.0.2.10 vrf MDMZ key 7 xxxxxxxx
+tacacs-server host 192.0.2.11 vrf MDMZ key 7 xxxxxxxx
+!
+aaa group server tacacs+ TACACS_Servers
+   server 192.0.2.10 vrf MDMZ
+   server 192.0.2.11 vrf MDMZ
+!
+aaa authentication login default group tacacs+ local
+aaa authentication login console group tacacs+ local
+aaa authentication enable default none
+aaa authorization serial-console
+aaa authorization exec default group tacacs+ local
+aaa authorization commands all default group tacacs+ local
+aaa accounting exec default start-stop group tacacs+
+aaa accounting system default start-stop group tacacs+
+aaa accounting commands all default start-stop group tacacs+
+!
+interface Port-Channel2000
+   description MLAG_CAMPUS-DIST-SW02_Port-Channel2000
+   switchport mode trunk
+   switchport trunk group MLAG
+   switchport
+!
+interface Ethernet1
+   description PRINTER
+   no shutdown
+   switchport access vlan 130
+   switchport
+   sflow enable
+   storm-control all level 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet2
+   description PRINTER
+   no shutdown
+   switchport access vlan 130
+   switchport
+   sflow enable
+   storm-control all level 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet3
+   description USER
+   no shutdown
+   switchport access vlan 100
+   switchport
+   sflow enable
+   storm-control all level 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet4
+   description USER
+   no shutdown
+   switchport access vlan 100
+   switchport
+   sflow enable
+   storm-control all level 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet5
+   description USER
+   no shutdown
+   switchport access vlan 100
+   switchport
+   sflow enable
+   storm-control all level 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet6
+   description USER
+   no shutdown
+   switchport access vlan 100
+   switchport
+   sflow enable
+   storm-control all level 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet7
+   description USER
+   no shutdown
+   switchport access vlan 100
+   switchport
+   sflow enable
+   storm-control all level 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet8
+   description USER
+   no shutdown
+   switchport access vlan 100
+   switchport
+   sflow enable
+   storm-control all level 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet9
+   description USER
+   no shutdown
+   switchport access vlan 100
+   switchport
+   sflow enable
+   storm-control all level 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet10
+   description USER
+   no shutdown
+   switchport access vlan 100
+   switchport
+   sflow enable
+   storm-control all level 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet11
+   description UPS Monitor Port
+   no shutdown
+   switchport access vlan 3000
+   switchport
+   sflow enable
+   storm-control all level 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet12
+   description UPS Monitor Port
+   no shutdown
+   switchport access vlan 3000
+   switchport
+   sflow enable
+   storm-control all level 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet13
+   description UPS Monitor Port
+   no shutdown
+   switchport access vlan 3000
+   switchport
+   sflow enable
+   storm-control all level 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet14
+   description UPS Monitor Port
+   no shutdown
+   switchport access vlan 3000
+   switchport
+   sflow enable
+   storm-control all level 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet15
+   description VEEDROOT
+   no shutdown
+   switchport access vlan 110
+   switchport
+   sflow enable
+   storm-control all level 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet16
+   description ISTAR-PANEL
+   no shutdown
+   switchport access vlan 210
+   switchport
+   sflow enable
+   storm-control all level 10
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet17
+   description MERAKI-AP
+   no shutdown
+   switchport trunk native vlan 777
+   switchport mode trunk
+   switchport
+   poe reboot action maintain
+   poe link down action maintain
+   poe shutdown action power-off
+   sflow enable
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet18
+   description MERAKI-AP
+   no shutdown
+   switchport trunk native vlan 777
+   switchport mode trunk
+   switchport
+   poe reboot action maintain
+   poe link down action maintain
+   poe shutdown action power-off
+   sflow enable
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet19
+   description CAMERA
+   no shutdown
+   switchport access vlan 150
+   switchport
+   sflow enable
+!
+interface Ethernet20
+   description CAMERA
+   no shutdown
+   switchport access vlan 150
+   switchport
+   poe reboot action maintain
+   poe link down action maintain
+   poe shutdown action power-off
+   sflow enable
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet21
+   description CAMERA
+   no shutdown
+   switchport access vlan 150
+   switchport
+   poe reboot action maintain
+   poe link down action maintain
+   poe shutdown action power-off
+   sflow enable
+   spanning-tree portfast
+   spanning-tree bpduguard enable
+!
+interface Ethernet22
+   description CityTime
+   no shutdown
+   switchport access vlan 230
+   switchport
+   sflow enable
+!
+interface Ethernet23
+   no shutdown
+   no switchport
+!
+interface Ethernet23.11
+   description VRFA-VELOCLOUD-EDGE1-LAN5
+   mtu 9100
+   encapsulation dot1q vlan 11
+   vrf VRFA
+   ip address 192.0.2.12/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet23.12
+   description VRFB-VELOCLOUD-EDGE1-LAN5
+   mtu 9100
+   encapsulation dot1q vlan 12
+   vrf VRFB
+   ip address 192.0.2.13/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet23.13
+   description VRFC-VELOCLOUD-EDGE1-LAN5
+   mtu 9100
+   encapsulation dot1q vlan 13
+   vrf VRFC
+   ip address 192.0.2.14/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet23.14
+   description VRFD-VELOCLOUD-EDGE1-LAN5
+   mtu 9100
+   encapsulation dot1q vlan 14
+   vrf VRFD
+   ip address 192.0.2.15/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet23.15
+   description VRFE-VELOCLOUD-EDGE1-LAN5
+   mtu 9100
+   encapsulation dot1q vlan 15
+   vrf VRFE
+   ip address 192.0.2.16/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet23.16
+   description VRFM-VELOCLOUD-EDGE1-LAN5
+   mtu 9100
+   encapsulation dot1q vlan 16
+   vrf VRFM
+   ip address 192.0.2.17/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet23.17
+   description VRFT-DC-VELOCLOUD-EDGE1-LAN5
+   mtu 9100
+   encapsulation dot1q vlan 17
+   vrf VRFT
+   ip address 192.0.2.18/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet23.18
+   description VRFT-CE-VELOCLOUD-EDGE1-LAN5
+   mtu 9100
+   encapsulation dot1q vlan 18
+   vrf VRFT
+   ip address 192.0.2.19/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet24
+   description VRFM-PEER-CE-Ma1-MGMT
+   no shutdown
+   mtu 9100
+   no switchport
+   vrf VRFM
+   ip address 192.168.42.244/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet25
+   no shutdown
+   no switchport
+!
+interface Ethernet25.11
+   description VRFA-MNCO-FD-PE1-Eth3/31/1
+   mtu 9100
+   encapsulation dot1q vlan 11
+   vrf VRFA
+   ip address 192.0.2.20/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet25.12
+   description VRFB-MNCO-FD-PE1-Eth3/31/1
+   mtu 9100
+   encapsulation dot1q vlan 12
+   vrf VRFB
+   ip address 192.0.2.21/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet25.13
+   description VRFC-MNCO-FD-PE1-Eth3/31/1
+   mtu 9100
+   encapsulation dot1q vlan 13
+   vrf VRFC
+   ip address 192.0.2.22/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet25.14
+   description VRFD-MNCO-FD-PE1-Eth3/31/1
+   mtu 9100
+   encapsulation dot1q vlan 14
+   vrf VRFD
+   ip address 192.0.2.23/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet25.15
+   description VRFE-MNCO-FD-PE1-Eth3/31/1
+   mtu 9100
+   encapsulation dot1q vlan 15
+   vrf VRFE
+   ip address 192.0.2.24/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet25.16
+   description VRFM-MNCO-FD-PE1-Eth3/31/1
+   mtu 9100
+   encapsulation dot1q vlan 16
+   vrf VRFM
+   ip address 192.0.2.25/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet25.17
+   description VRFT-DC-MNCO-FD-PE1-Eth3/31/1
+   mtu 9100
+   encapsulation dot1q vlan 17
+   vrf VRFT
+   ip address 192.0.2.26/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet25.18
+   description VRFT-CE-MNCO-FD-PE1-Eth3/31/1
+   mtu 9100
+   encapsulation dot1q vlan 18
+   vrf VRFT
+   ip address 192.0.2.27/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet25.20
+   description MDMZ-MNCO-FD-PE1-Eth3/31/1
+   mtu 9100
+   encapsulation dot1q vlan 20
+   vrf MDMZ
+   ip address 192.0.2.28/31
+   pim ipv4 sparse-mode
+!
+interface Ethernet26
+   shutdown
+   no switchport
+!
+interface Ethernet27
+   description MLAG_CAMPUS-DIST-SW02_Ethernet27
+   no shutdown
+   no switchport
+   channel-group 2000 mode active
+!
+interface Ethernet28
+   description MLAG_CAMPUS-DIST-SW02_Ethernet28
+   no shutdown
+   no switchport
+   channel-group 2000 mode active
+!
+interface Loopback0
+   shutdown
+!
+interface Loopback10
+   description Sflow source interface
+   ip address 192.0.2.29/32
+!
+interface Management1
+   description OOB_MANAGEMENT
+   no shutdown
+   vrf MGMT
+   ip address 192.168.42.245/31
+!
+interface Vlan100
+   description VRFA_USER
+   mtu 9100
+   vrf VRFA
+   ip address 198.51.100.2/24
+   dhcp server ipv4
+   pim ipv4 sparse-mode
+   ip virtual-router address 198.51.100.1
+!
+interface Vlan110
+   description VRFA_VEEDEROOT
+   mtu 9100
+   vrf VRFA
+   ip address 198.51.101.34/29
+   pim ipv4 sparse-mode
+   ip virtual-router address 198.51.101.33
+!
+interface Vlan130
+   description VRFA_PRINTER
+   mtu 9100
+   vrf VRFA
+   ip address 198.51.101.66/28
+   pim ipv4 sparse-mode
+   ip virtual-router address 198.51.101.65
+!
+interface Vlan150
+   description VRFE_SECURITY_CAMERA
+   mtu 9100
+   vrf VRFE
+   ip address 192.0.2.30/24
+   pim ipv4 sparse-mode
+   ip virtual-router address 192.0.2.31
+!
+interface Vlan210
+   description VRFA_ISTAR
+   mtu 9100
+   vrf VRFA
+   ip address 198.51.101.82/28
+   pim ipv4 sparse-mode
+   ip virtual-router address 198.51.101.81
+!
+interface Vlan230
+   description VRFA_CITYTIME
+   mtu 9100
+   vrf VRFA
+   ip address 192.0.2.32/29
+   pim ipv4 sparse-mode
+   ip virtual-router address 192.0.2.33
+!
+interface Vlan777
+   description VRFA_WIRELESS
+   mtu 9100
+   vrf VRFA
+   ip address 198.51.101.50/28
+   dhcp server ipv4
+   pim ipv4 sparse-mode
+   ip virtual-router address 198.51.101.49
+!
+interface Vlan3000
+   description MDMZ_MGMT_UPS
+   shutdown
+   mtu 9100
+   vrf MDMZ
+   ip address 198.51.101.98/27
+   pim ipv4 sparse-mode
+   ip virtual-router address 198.51.101.97
+!
+interface Vlan4060
+   description MDMZ_INBAND_MGMT
+   mtu 9100
+   no autostate
+   vrf MDMZ
+   ip address 198.51.102.66/28
+   dhcp server ipv4
+   pim ipv4 sparse-mode
+   ip virtual-router address 198.51.102.65
+!
+interface Vlan4085
+   description MLAG_L3_VRF_VRFA
+   mtu 9100
+   vrf VRFA
+   ip address 198.51.103.246/31
+   pim ipv4 sparse-mode
+!
+interface Vlan4086
+   description MLAG_L3_VRF_VRFB
+   mtu 9100
+   vrf VRFB
+   ip address 198.51.103.246/31
+   pim ipv4 sparse-mode
+!
+interface Vlan4087
+   description MLAG_L3_VRF_VRFC
+   mtu 9100
+   vrf VRFC
+   ip address 198.51.103.246/31
+   pim ipv4 sparse-mode
+!
+interface Vlan4088
+   description MLAG_L3_VRF_VRFD
+   mtu 9100
+   vrf VRFD
+   ip address 198.51.103.246/31
+   pim ipv4 sparse-mode
+!
+interface Vlan4089
+   description MLAG_L3_VRF_VRFE
+   mtu 9100
+   vrf VRFE
+   ip address 198.51.103.246/31
+   pim ipv4 sparse-mode
+!
+interface Vlan4090
+   description MLAG_L3_VRF_VRFM
+   mtu 9100
+   vrf VRFM
+   ip address 198.51.103.246/31
+!
+interface Vlan4091
+   description MLAG_L3_VRF_VRFT
+   mtu 9100
+   vrf VRFT
+   ip address 198.51.103.246/31
+   pim ipv4 sparse-mode
+!
+interface Vlan4092
+   description MLAG_L3_VRF_MDMZ
+   mtu 9100
+   vrf MDMZ
+   ip address 198.51.103.246/31
+!
+interface Vlan4094
+   description MLAG
+   mtu 9100
+   no autostate
+   ip address 198.51.103.244/31
+!
+ip virtual-router mac-address 00:1c:73:00:dc:01
+!
+ip access-list standard API-ACCESS
+   5 remark ACL to restrict access to switch API to CVP
+   10 permit host 198.51.100.11
+   20 permit host 198.51.100.12
+   30 permit host 198.51.100.13
+   40 permit host 192.0.2.34
+   45 remark AVD-VM-PSAC1
+   50 permit host 192.0.2.35
+   55 remark AVD-VM-PSAC2
+   60 permit host 192.0.2.36
+   65 remark ARISTA-WORKSTATION
+   1000 deny any
+!
+ip access-list standard SNMP-ALLOWED
+   5 remark ACL to restrict SNMP access
+   10 permit host 192.0.2.37
+   20 permit host 192.0.2.38
+   30 permit host 198.51.100.20
+   40 permit host 198.51.100.21
+   50 permit host 192.0.2.39
+   60 permit host 192.0.2.40
+   70 permit host 192.0.2.41
+   80 permit host 198.51.100.21
+   90 permit host 192.168.114.80
+   100 permit host 192.168.114.64
+   110 permit host 192.0.2.42
+   120 permit host 198.51.100.11
+   130 permit host 198.51.100.12
+   140 permit host 198.51.100.13
+   210 permit host 192.168.79.3
+   220 permit host 192.168.87.3
+   230 permit host 192.168.95.3
+   240 permit host 192.168.71.3
+   250 permit host 192.0.2.43
+   260 permit host 192.0.2.44
+   270 permit host 192.0.2.45
+   280 permit host 192.0.2.46
+   290 permit host 192.0.2.47
+   300 permit host 192.0.2.48
+   310 permit host 192.0.2.49
+   320 permit host 192.0.2.50
+   330 permit host 192.0.2.51
+   340 permit host 192.0.2.52
+   350 permit host 192.0.2.53
+   360 permit host 192.0.2.54
+   1000 deny any log
+!
+ip access-list standard SSH-ACCESS
+   5 remark ACL to restrict SSH access
+   10 permit 192.0.2.55/24
+   20 permit 192.0.2.56/27
+   30 permit host 192.0.2.37
+   40 permit host 192.0.2.38
+   50 permit host 198.51.100.20
+   60 permit host 192.0.2.39
+   70 permit host 192.0.2.40
+   80 permit host 192.0.2.41
+   100 permit host 198.51.100.11
+   110 permit host 198.51.100.12
+   120 permit host 198.51.100.13
+   130 permit host 192.0.2.36
+   131 remark ARISTA-WORKSTATION
+   132 permit host 192.0.2.34
+   133 remark AVD-VM-PSAC1
+   134 permit host 192.0.2.35
+   135 remark AVD-VM-PSAC2
+   140 permit 192.168.15.0/24
+   150 remark VRFM Uplinks
+   151 permit 192.0.2.57/19
+   160 remark MDMZ Uplinks
+   161 permit 192.0.2.58/19
+   170 remark Ma1-Et48 VRFM
+   171 permit 192.168.32.0/20
+   172 permit 192.168.48.0/22
+   180 remark Campus Mgmt Vlan4060 MDMZ
+   181 permit 192.0.2.59/24
+   182 permit 192.0.2.60/24
+   183 permit 198.51.102.0/24
+   184 permit 192.0.2.61/28
+   185 permit 192.0.2.62/24
+   186 permit 192.0.2.63/24
+   187 permit 192.0.2.64/27
+   188 permit host 192.0.2.65
+   189 permit host 192.0.2.66
+   1000 deny any
+!
+ip routing
+ip routing vrf MDMZ
+no ip routing vrf MGMT
+ip routing vrf VRFA
+ip routing vrf VRFB
+ip routing vrf VRFC
+ip routing vrf VRFD
+ip routing vrf VRFE
+ip routing vrf VRFM
+ip routing vrf VRFT
+!
+ip community-list 11MT-ACI-IDMZ permit 100:3001
+ip community-list 11MT-APN-SDMZ permit 100:511
+ip community-list 11MT-CAD permit 100:611
+ip community-list 11MT-CADMAP permit 100:612
+ip community-list 11MT-CITYNET permit 100:711
+ip community-list 11MT-IDMZ-ROUTES permit 100:3002
+ip community-list 11MT-OCI-ASH permit 100:9000
+ip community-list 11MT-OCI-PHX permit 100:9001
+ip community-list 11MT-PSN permit 100:911
+ip community-list 11MT-RP permit 100:80
+ip community-list 11MT-SDE permit 100:811
+ip community-list 11MT-SUMMARY permit 100:999
+ip community-list 11MT-VDI-F5 permit 100:3005
+ip community-list 11MT-VELO permit 100:70
+ip community-list 9MT-MDMZ permit 9000:20
+ip community-list 9MT-ROUTES-EDIS permit 100:10
+ip community-list 9MT-VRFA permit 9000:11
+ip community-list 9MT-VRFB permit 9000:12
+ip community-list 9MT-VRFC permit 9000:13
+ip community-list 9MT-VRFD permit 9000:14
+ip community-list 9MT-VRFE permit 9000:15
+ip community-list 9MT-VRFM permit 9000:16
+ip community-list 9MT-VRFT-CE permit 9000:18
+ip community-list 9MT-VRFT-DC permit 9000:17
+ip community-list BK-MDMZ permit 3000:20
+ip community-list BK-VRFA permit 3000:11
+ip community-list BK-VRFB permit 3000:12
+ip community-list BK-VRFC permit 3000:13
+ip community-list BK-VRFD permit 3000:14
+ip community-list BK-VRFE permit 3000:15
+ip community-list BK-VRFM permit 3000:16
+ip community-list BK-VRFT-CE permit 3000:18
+ip community-list BK-VRFT-DC permit 3000:17
+ip community-list BKCO-ERS permit 3000:66
+ip community-list BKCO-ROUTES permit 3000:111
+ip community-list BKCO-VA permit 3000:46
+ip community-list BX-MDMZ permit 2000:20
+ip community-list BX-VRFA permit 2000:11
+ip community-list BX-VRFB permit 2000:12
+ip community-list BX-VRFC permit 2000:13
+ip community-list BX-VRFD permit 2000:14
+ip community-list BX-VRFE permit 2000:15
+ip community-list BX-VRFM permit 2000:16
+ip community-list BX-VRFT-CE permit 2000:18
+ip community-list BX-VRFT-DC permit 2000:17
+ip community-list BXCO-ERS permit 2000:66
+ip community-list BXCO-ROUTES permit 2000:111
+ip community-list BXCO-VA permit 2000:46
+ip community-list CITYNET-0365 permit 12076:5100
+ip community-list regexp CITYNET-0365 permit 12076:50[1-5]0
+ip community-list Legacy-RDMZ-Routes permit 100:7000
+ip community-list MN-MDMZ permit 1000:20
+ip community-list MN-VRFA permit 1000:11
+ip community-list MN-VRFB permit 1000:12
+ip community-list MN-VRFC permit 1000:13
+ip community-list MN-VRFD permit 1000:14
+ip community-list MN-VRFE permit 1000:15
+ip community-list MN-VRFM permit 1000:16
+ip community-list MN-VRFT-CE permit 1000:18
+ip community-list MN-VRFT-DC permit 1000:17
+ip community-list MNCO-ERS permit 1000:66
+ip community-list MNCO-ROUTES permit 1000:111
+ip community-list MNCO-VA permit 1000:46
+ip community-list NJDR-APN-SDMZ permit 300:511
+ip community-list NJDR-ARISTA-IDMZ permit 300:3000
+ip community-list NJDR-ARISTA-SDMZ permit 300:4000
+ip community-list NJDR-CITYNET permit 300:711
+ip community-list NJDR-IDMZ-F5 permit 300:3005
+ip community-list NJDR-IDMZ-ROUTES permit 300:3002
+ip community-list NJDR-OCI-ASH permit 300:9000
+ip community-list NJDR-OCI-PHX permit 300:9001
+ip community-list NJDR-SUMMARY permit 300:999
+ip community-list PSAC2-ARISTA-IDMZ permit 200:3000
+ip community-list PSAC2-ARISTA-SDMZ permit 200:4000
+ip community-list PSAC2-CAD permit 200:611
+ip community-list PSAC2-CADMAP permit 200:612
+ip community-list PSAC2-IDMZ-F5 permit 200:3005
+ip community-list PSAC2-IDMZ-ROUTES permit 200:3002
+ip community-list PSAC2-LAN-SUMMARY permit 200:4
+ip community-list PSAC2-NICE permit 200:7
+ip community-list PSAC2-PSN permit 200:911
+ip community-list PSAC2-RP permit 200:80
+ip community-list PSAC2-SUMMARY permit 200:999
+ip community-list PSAC2-VM-TELEMETRY-MGMT permit 200:5
+ip community-list QN-MDMZ permit 4000:20
+ip community-list QN-VRFA permit 4000:11
+ip community-list QN-VRFB permit 4000:12
+ip community-list QN-VRFC permit 4000:13
+ip community-list QN-VRFD permit 4000:14
+ip community-list QN-VRFE permit 4000:15
+ip community-list QN-VRFM permit 4000:16
+ip community-list QN-VRFT-CE permit 4000:18
+ip community-list QN-VRFT-DC permit 4000:17
+ip community-list QNCO-ERS permit 4000:66
+ip community-list QNCO-ROUTES permit 4000:111
+ip community-list QNCO-VA permit 4000:46
+ip community-list SI-MDMZ permit 5000:20
+ip community-list SI-VRFA permit 5000:11
+ip community-list SI-VRFB permit 5000:12
+ip community-list SI-VRFC permit 5000:13
+ip community-list SI-VRFD permit 5000:14
+ip community-list SI-VRFE permit 5000:15
+ip community-list SI-VRFM permit 5000:16
+ip community-list SI-VRFT-CE permit 5000:18
+ip community-list SI-VRFT-DC permit 5000:17
+ip community-list SICO-ERS permit 5000:66
+ip community-list SICO-VA-Subnet permit 5000:46
+!
+ip prefix-list DEFAULT-ROUTE
+   seq 10 permit 0.0.0.0/0
+!
+ip prefix-list DENY-ALL
+   seq 10 permit 0.0.0.0/0 le 32
+!
+ip prefix-list ORACLE-SUPPORT-SUBNETS
+   seq 10 permit 203.0.113.0/26
+   seq 20 permit 203.0.113.64/26
+   seq 30 permit 203.0.113.128/26
+   seq 40 permit 203.0.113.13/32
+   seq 50 permit 203.0.113.14/32
+   seq 60 permit 203.0.113.169/32
+   seq 70 permit 203.0.113.1/32
+!
+ip prefix-list RFC-1918
+   seq 10 permit 192.0.2.67/8
+   seq 20 permit 192.0.2.68/12
+   seq 30 permit 192.168.0.0/16
+!
+mlag configuration
+   domain-id CAMPUS-DIST
+   local-interface Vlan4094
+   peer-address 198.51.103.245
+   peer-link Port-Channel2000
+   reload-delay mlag 300
+   reload-delay non-mlag 330
+!
+ip route vrf MGMT 0.0.0.0/0 192.168.42.244
+!
+ntp local-interface vrf MDMZ Vlan4060
+ntp server vrf MDMZ 192.0.2.69
+ntp server vrf MDMZ 192.0.2.70
+ntp server vrf MDMZ 192.0.2.71 prefer
+!
+route-map DENY-ALL deny 10
+   match ip address prefix-list DENY-ALL
+!
+route-map MDMZ-CE-TO-PE permit 10
+   match community MN-MDMZ
+!
+route-map MDMZ-CONNECTED permit 10
+   match interface Vlan4060
+   set community community-list MN-MDMZ
+!
+route-map MDMZ-CONNECTED permit 20
+   match interface Vlan3000
+   set community community-list MN-MDMZ
+!
+route-map MDMZ-PE-TO-CE permit 10
+   description Accept MDMZ-routes
+   match ip address prefix-list RFC-1918
+!
+route-map VRFA-CE-TO-PE permit 10
+   match community MN-VRFA
+!
+route-map VRFA-CE-TO-VELO permit 10
+   match community MN-VRFA
+   set as-path prepend auto auto auto auto
+!
+route-map VRFA-CONNECTED permit 10
+   match interface Vlan100
+   set community community-list MN-VRFA
+!
+route-map VRFA-CONNECTED permit 11
+   match interface Vlan130
+   set community community-list MN-VRFA
+!
+route-map VRFA-CONNECTED permit 12
+   match interface Vlan200
+   set community community-list MN-VRFA
+!
+route-map VRFA-CONNECTED permit 13
+   match interface Vlan210
+   set community community-list MN-VRFA
+!
+route-map VRFA-CONNECTED permit 14
+   match interface Vlan230
+   set community community-list MN-VRFA
+!
+route-map VRFA-CONNECTED permit 15
+   match interface Vlan110
+   set community community-list MN-VRFA
+!
+route-map VRFA-CONNECTED permit 77
+   match interface Vlan777
+   set community community-list MN-VRFA
+!
+route-map VRFA-PE-TO-CE permit 10
+   description Accept default-route
+   match ip address prefix-list DEFAULT-ROUTE
+!
+route-map VRFA-PE-TO-CE permit 20
+   match ip address prefix-list RFC-1918
+!
+route-map VRFA-PE-TO-CE permit 30
+   match community 11MT-PSN
+!
+route-map VRFA-PE-TO-CE permit 31
+   match community PSAC2-PSN
+!
+route-map VRFA-PE-TO-CE permit 40
+   match community 11MT-SDE
+!
+route-map VRFA-PE-TO-CE permit 50
+   match community 11MT-SUMMARY
+!
+route-map VRFA-PE-TO-CE permit 51
+   match community PSAC2-SUMMARY
+!
+route-map VRFA-PE-TO-CE permit 52
+   match community NJDR-SUMMARY
+!
+route-map VRFA-PE-TO-CE permit 60
+   match community PSAC2-LAN-SUMMARY
+!
+route-map VRFA-PE-TO-CE permit 62
+   match community PSAC2-NICE
+!
+route-map VRFA-PE-TO-CE permit 72
+   match community PSAC2-CAD
+!
+route-map VRFA-PE-TO-CE permit 73
+   match community PSAC2-CADMAP
+!
+route-map VRFA-PE-TO-CE permit 80
+   match community 11MT-OCI-ASH
+!
+route-map VRFA-PE-TO-CE permit 81
+   match community 11MT-OCI-PHX
+!
+route-map VRFA-PE-TO-CE permit 82
+   match community NJDR-OCI-ASH
+!
+route-map VRFA-PE-TO-CE permit 83
+   match community NJDR-OCI-PHX
+!
+route-map VRFA-PE-TO-CE permit 100
+   match community 11MT-RP
+!
+route-map VRFA-PE-TO-CE permit 101
+   match community PSAC2-RP
+!
+route-map VRFA-PE-TO-CE permit 110
+   match ip address prefix-list ORACLE-SUPPORT-SUBNETS
+!
+route-map VRFA-VELO-TO-CE permit 20
+   match ip address prefix-list RFC-1918
+   set as-path prepend auto auto auto auto
+!
+route-map VRFB-CE-TO-PE permit 10
+   match community MN-VRFB
+!
+route-map VRFB-CE-TO-VELO permit 10
+   match community MN-VRFB
+   set as-path prepend auto auto auto auto
+!
+route-map VRFB-CONNECTED deny 10
+   match ip address prefix-list DENY-ALL
+   set community community-list MN-VRFB
+!
+route-map VRFB-PE-TO-CE permit 10
+   description Accept default-route
+   match ip address prefix-list DEFAULT-ROUTE
+!
+route-map VRFB-PE-TO-CE permit 20
+   match ip address prefix-list RFC-1918
+!
+route-map VRFB-PE-TO-CE permit 30
+   match community 11MT-PSN
+!
+route-map VRFB-PE-TO-CE permit 31
+   match community PSAC2-PSN
+!
+route-map VRFB-PE-TO-CE permit 40
+   match community 11MT-SDE
+!
+route-map VRFB-PE-TO-CE permit 50
+   match community 11MT-SUMMARY
+!
+route-map VRFB-PE-TO-CE permit 51
+   match community PSAC2-SUMMARY
+!
+route-map VRFB-PE-TO-CE permit 52
+   match community NJDR-SUMMARY
+!
+route-map VRFB-PE-TO-CE permit 60
+   match community PSAC2-LAN-SUMMARY
+!
+route-map VRFB-PE-TO-CE permit 62
+   match community PSAC2-NICE
+!
+route-map VRFB-PE-TO-CE permit 72
+   match community PSAC2-CAD
+!
+route-map VRFB-PE-TO-CE permit 73
+   match community PSAC2-CADMAP
+!
+route-map VRFB-PE-TO-CE permit 80
+   match community 11MT-OCI-ASH
+!
+route-map VRFB-PE-TO-CE permit 81
+   match community 11MT-OCI-PHX
+!
+route-map VRFB-PE-TO-CE permit 82
+   match community NJDR-OCI-ASH
+!
+route-map VRFB-PE-TO-CE permit 83
+   match community NJDR-OCI-PHX
+!
+route-map VRFB-PE-TO-CE permit 100
+   match community 11MT-RP
+!
+route-map VRFB-PE-TO-CE permit 101
+   match community PSAC2-RP
+!
+route-map VRFB-PE-TO-CE permit 110
+   match ip address prefix-list ORACLE-SUPPORT-SUBNETS
+!
+route-map VRFB-VELO-TO-CE permit 20
+   match ip address prefix-list RFC-1918
+   set as-path prepend auto auto auto auto
+!
+route-map VRFC-CE-TO-PE permit 10
+   match community MN-VRFC
+!
+route-map VRFC-CE-TO-VELO permit 10
+   match community MN-VRFC
+   set as-path prepend auto auto auto auto
+!
+route-map VRFC-CONNECTED deny 10
+   match ip address prefix-list DENY-ALL
+   set community community-list MN-VRFC
+!
+route-map VRFC-PE-TO-CE permit 10
+   description Accept default-route
+   match ip address prefix-list DEFAULT-ROUTE
+!
+route-map VRFC-PE-TO-CE permit 20
+   match ip address prefix-list RFC-1918
+!
+route-map VRFC-PE-TO-CE permit 30
+   match community 11MT-PSN
+!
+route-map VRFC-PE-TO-CE permit 31
+   match community PSAC2-PSN
+!
+route-map VRFC-PE-TO-CE permit 40
+   match community 11MT-SDE
+!
+route-map VRFC-PE-TO-CE permit 50
+   match community 11MT-SUMMARY
+!
+route-map VRFC-PE-TO-CE permit 51
+   match community PSAC2-SUMMARY
+!
+route-map VRFC-PE-TO-CE permit 52
+   match community NJDR-SUMMARY
+!
+route-map VRFC-PE-TO-CE permit 60
+   match community PSAC2-LAN-SUMMARY
+!
+route-map VRFC-PE-TO-CE permit 62
+   match community PSAC2-NICE
+!
+route-map VRFC-PE-TO-CE permit 72
+   match community PSAC2-CAD
+!
+route-map VRFC-PE-TO-CE permit 73
+   match community PSAC2-CADMAP
+!
+route-map VRFC-PE-TO-CE permit 80
+   match community 11MT-OCI-ASH
+!
+route-map VRFC-PE-TO-CE permit 81
+   match community 11MT-OCI-PHX
+!
+route-map VRFC-PE-TO-CE permit 82
+   match community NJDR-OCI-ASH
+!
+route-map VRFC-PE-TO-CE permit 83
+   match community NJDR-OCI-PHX
+!
+route-map VRFC-PE-TO-CE permit 100
+   match community 11MT-RP
+!
+route-map VRFC-PE-TO-CE permit 101
+   match community PSAC2-RP
+!
+route-map VRFC-PE-TO-CE permit 110
+   match ip address prefix-list ORACLE-SUPPORT-SUBNETS
+!
+route-map VRFC-VELO-TO-CE permit 20
+   match ip address prefix-list RFC-1918
+   set as-path prepend auto auto auto auto
+!
+route-map VRFD-CE-TO-PE permit 10
+   match community MN-VRFD
+!
+route-map VRFD-CE-TO-VELO permit 10
+   match community MN-VRFD
+   set as-path prepend auto auto auto auto
+!
+route-map VRFD-CONNECTED deny 10
+   match ip address prefix-list DENY-ALL
+   set community community-list MN-VRFD
+!
+route-map VRFD-PE-TO-CE permit 10
+   description Accept default-route
+   match ip address prefix-list DEFAULT-ROUTE
+!
+route-map VRFD-PE-TO-CE permit 20
+   match ip address prefix-list RFC-1918
+!
+route-map VRFD-PE-TO-CE permit 30
+   match community 11MT-PSN
+!
+route-map VRFD-PE-TO-CE permit 31
+   match community PSAC2-PSN
+!
+route-map VRFD-PE-TO-CE permit 40
+   match community 11MT-SDE
+!
+route-map VRFD-PE-TO-CE permit 50
+   match community 11MT-SUMMARY
+!
+route-map VRFD-PE-TO-CE permit 51
+   match community PSAC2-SUMMARY
+!
+route-map VRFD-PE-TO-CE permit 52
+   match community NJDR-SUMMARY
+!
+route-map VRFD-PE-TO-CE permit 60
+   match community PSAC2-LAN-SUMMARY
+!
+route-map VRFD-PE-TO-CE permit 62
+   match community PSAC2-NICE
+!
+route-map VRFD-PE-TO-CE permit 72
+   match community PSAC2-CAD
+!
+route-map VRFD-PE-TO-CE permit 73
+   match community PSAC2-CADMAP
+!
+route-map VRFD-PE-TO-CE permit 80
+   match community 11MT-OCI-ASH
+!
+route-map VRFD-PE-TO-CE permit 81
+   match community 11MT-OCI-PHX
+!
+route-map VRFD-PE-TO-CE permit 82
+   match community NJDR-OCI-ASH
+!
+route-map VRFD-PE-TO-CE permit 83
+   match community NJDR-OCI-PHX
+!
+route-map VRFD-PE-TO-CE permit 100
+   match community 11MT-RP
+!
+route-map VRFD-PE-TO-CE permit 101
+   match community PSAC2-RP
+!
+route-map VRFD-PE-TO-CE permit 110
+   match ip address prefix-list ORACLE-SUPPORT-SUBNETS
+!
+route-map VRFD-VELO-TO-CE permit 20
+   match ip address prefix-list RFC-1918
+   set as-path prepend auto auto auto auto
+!
+route-map VRFE-CE-TO-PE permit 10
+   match community MN-VRFE
+!
+route-map VRFE-CE-TO-VELO permit 10
+   match community MN-VRFE
+   set as-path prepend auto auto auto auto
+!
+route-map VRFE-CONNECTED permit 10
+   match interface Vlan150
+   set community community-list MN-VRFE
+!
+route-map VRFE-PE-TO-CE permit 10
+   description Accept default-route
+   match ip address prefix-list DEFAULT-ROUTE
+!
+route-map VRFE-PE-TO-CE permit 20
+   match ip address prefix-list RFC-1918
+!
+route-map VRFE-PE-TO-CE permit 30
+   match community 11MT-PSN
+!
+route-map VRFE-PE-TO-CE permit 31
+   match community PSAC2-PSN
+!
+route-map VRFE-PE-TO-CE permit 40
+   match community 11MT-SDE
+!
+route-map VRFE-PE-TO-CE permit 50
+   match community 11MT-SUMMARY
+!
+route-map VRFE-PE-TO-CE permit 51
+   match community PSAC2-SUMMARY
+!
+route-map VRFE-PE-TO-CE permit 52
+   match community NJDR-SUMMARY
+!
+route-map VRFE-PE-TO-CE permit 60
+   match community PSAC2-LAN-SUMMARY
+!
+route-map VRFE-PE-TO-CE permit 62
+   match community PSAC2-NICE
+!
+route-map VRFE-PE-TO-CE permit 72
+   match community PSAC2-CAD
+!
+route-map VRFE-PE-TO-CE permit 73
+   match community PSAC2-CADMAP
+!
+route-map VRFE-PE-TO-CE permit 80
+   match community 11MT-OCI-ASH
+!
+route-map VRFE-PE-TO-CE permit 81
+   match community 11MT-OCI-PHX
+!
+route-map VRFE-PE-TO-CE permit 82
+   match community NJDR-OCI-ASH
+!
+route-map VRFE-PE-TO-CE permit 83
+   match community NJDR-OCI-PHX
+!
+route-map VRFE-PE-TO-CE permit 100
+   match community 11MT-RP
+!
+route-map VRFE-PE-TO-CE permit 101
+   match community PSAC2-RP
+!
+route-map VRFE-PE-TO-CE permit 110
+   match ip address prefix-list ORACLE-SUPPORT-SUBNETS
+!
+route-map VRFE-VELO-TO-CE permit 20
+   match ip address prefix-list RFC-1918
+   set as-path prepend auto auto auto auto
+!
+route-map VRFM-CE-TO-PE permit 10
+   match community MN-VRFM
+!
+route-map VRFM-CE-TO-VELO permit 10
+   match community MN-VRFM
+   set as-path prepend auto auto auto auto
+!
+route-map VRFM-CONNECTED permit 10
+   match interface Ethernet24
+   set community community-list MN-VRFM
+!
+route-map VRFM-PE-TO-CE permit 10
+   description Accept default-route
+   match ip address prefix-list DEFAULT-ROUTE
+!
+route-map VRFM-PE-TO-CE permit 20
+   match ip address prefix-list RFC-1918
+!
+route-map VRFM-PE-TO-CE permit 30
+   match community 11MT-PSN
+!
+route-map VRFM-PE-TO-CE permit 31
+   match community PSAC2-PSN
+!
+route-map VRFM-PE-TO-CE permit 40
+   match community 11MT-SDE
+!
+route-map VRFM-PE-TO-CE permit 50
+   match community 11MT-SUMMARY
+!
+route-map VRFM-PE-TO-CE permit 51
+   match community PSAC2-SUMMARY
+!
+route-map VRFM-PE-TO-CE permit 52
+   match community NJDR-SUMMARY
+!
+route-map VRFM-PE-TO-CE permit 60
+   match community PSAC2-LAN-SUMMARY
+!
+route-map VRFM-PE-TO-CE permit 62
+   match community PSAC2-NICE
+!
+route-map VRFM-PE-TO-CE permit 72
+   match community PSAC2-CAD
+!
+route-map VRFM-PE-TO-CE permit 73
+   match community PSAC2-CADMAP
+!
+route-map VRFM-PE-TO-CE permit 80
+   match community 11MT-OCI-ASH
+!
+route-map VRFM-PE-TO-CE permit 81
+   match community 11MT-OCI-PHX
+!
+route-map VRFM-PE-TO-CE permit 82
+   match community NJDR-OCI-ASH
+!
+route-map VRFM-PE-TO-CE permit 83
+   match community NJDR-OCI-PHX
+!
+route-map VRFM-PE-TO-CE permit 100
+   match community 11MT-RP
+!
+route-map VRFM-PE-TO-CE permit 101
+   match community PSAC2-RP
+!
+route-map VRFM-PE-TO-CE permit 110
+   match ip address prefix-list ORACLE-SUPPORT-SUBNETS
+!
+route-map VRFM-VELO-TO-CE permit 20
+   match ip address prefix-list RFC-1918
+   set as-path prepend auto auto auto auto
+!
+route-map VRFT-CE-CE-TO-PE permit 10
+   match community MN-VRFT-CE
+!
+route-map VRFT-CE-CE-TO-VELO permit 10
+   match community MN-VRFT-CE
+   set as-path prepend auto auto auto auto
+!
+route-map VRFT-CONNECTED deny 10
+   match ip address prefix-list DENY-ALL
+   set community community-list MN-VRFT-CE
+!
+route-map VRFT-DC-PE-TO-CE permit 10
+   description Accept default-route
+   match ip address prefix-list DEFAULT-ROUTE
+!
+route-map VRFT-DC-PE-TO-CE permit 20
+   match ip address prefix-list RFC-1918
+!
+route-map VRFT-DC-PE-TO-CE permit 30
+   match community 11MT-PSN
+!
+route-map VRFT-DC-PE-TO-CE permit 31
+   match community PSAC2-PSN
+!
+route-map VRFT-DC-PE-TO-CE permit 40
+   match community 11MT-SDE
+!
+route-map VRFT-DC-PE-TO-CE permit 50
+   match community 11MT-SUMMARY
+!
+route-map VRFT-DC-PE-TO-CE permit 51
+   match community PSAC2-SUMMARY
+!
+route-map VRFT-DC-PE-TO-CE permit 52
+   match community NJDR-SUMMARY
+!
+route-map VRFT-DC-PE-TO-CE permit 60
+   match community PSAC2-LAN-SUMMARY
+!
+route-map VRFT-DC-PE-TO-CE permit 62
+   match community PSAC2-NICE
+!
+route-map VRFT-DC-PE-TO-CE permit 72
+   match community PSAC2-CAD
+!
+route-map VRFT-DC-PE-TO-CE permit 73
+   match community PSAC2-CADMAP
+!
+route-map VRFT-DC-PE-TO-CE permit 80
+   match community 11MT-OCI-ASH
+!
+route-map VRFT-DC-PE-TO-CE permit 81
+   match community 11MT-OCI-PHX
+!
+route-map VRFT-DC-PE-TO-CE permit 82
+   match community NJDR-OCI-ASH
+!
+route-map VRFT-DC-PE-TO-CE permit 83
+   match community NJDR-OCI-PHX
+!
+route-map VRFT-DC-PE-TO-CE permit 100
+   match community 11MT-RP
+!
+route-map VRFT-DC-PE-TO-CE permit 101
+   match community PSAC2-RP
+!
+route-map VRFT-DC-PE-TO-CE permit 110
+   match ip address prefix-list ORACLE-SUPPORT-SUBNETS
+!
+route-map VRFT-DC-VELO-TO-CE permit 20
+   match ip address prefix-list RFC-1918
+   set as-path prepend auto auto auto auto
+!
+router bgp 4200070190
+   update wait-for-convergence
+   update wait-install
+   no bgp default ipv4-unicast
+   timers bgp 5 15
+   distance bgp 20 200 200
+   graceful-restart restart-time 300
+   graceful-restart
+   maximum-paths 128
+   neighbor default send-community
+   neighbor MDMZ-MPLS peer group
+   neighbor MDMZ-MPLS remote-as 64999
+   neighbor MDMZ-MPLS bfd
+   neighbor MDMZ-MPLS route-map MDMZ-PE-TO-CE in
+   neighbor MDMZ-MPLS route-map MDMZ-CE-TO-PE out
+   neighbor MDMZ-MPLS password 7 $1c$ZnyUh8OLtiIry2MD50tjYw==
+   neighbor MDMZ-MPLS maximum-routes 0
+   neighbor MLAG-IPv4-VRFS-PEER peer group
+   neighbor MLAG-IPv4-VRFS-PEER remote-as 4200070190
+   neighbor MLAG-IPv4-VRFS-PEER next-hop-self
+   neighbor MLAG-IPv4-VRFS-PEER bfd
+   neighbor MLAG-IPv4-VRFS-PEER description CAMPUS-DIST-SW02
+   neighbor MLAG-IPv4-VRFS-PEER password 7 $1c$k9sSgvne7GkOBePRzeSerw==
+   neighbor MLAG-IPv4-VRFS-PEER send-community
+   neighbor MLAG-IPv4-VRFS-PEER maximum-routes 12000
+   neighbor VRFA-MPLS peer group
+   neighbor VRFA-MPLS remote-as 64999
+   neighbor VRFA-MPLS bfd
+   neighbor VRFA-MPLS route-map VRFA-PE-TO-CE in
+   neighbor VRFA-MPLS route-map VRFA-CE-TO-PE out
+   neighbor VRFA-MPLS password 7 $1c$ug34b9K3RqRsmtSAk603DA==
+   neighbor VRFA-MPLS maximum-routes 0
+   neighbor VRFA-VELOCLOUD peer group
+   neighbor VRFA-VELOCLOUD remote-as 4200071190
+   neighbor VRFA-VELOCLOUD bfd
+   neighbor VRFA-VELOCLOUD timers 5 15
+   neighbor VRFA-VELOCLOUD route-map VRFA-VELO-TO-CE in
+   neighbor VRFA-VELOCLOUD route-map VRFA-CE-TO-VELO out
+   neighbor VRFA-VELOCLOUD password 7 $1c$ug34b9K3RqRsmtSAk603DA==
+   neighbor VRFA-VELOCLOUD send-community
+   neighbor VRFA-VELOCLOUD maximum-routes 0
+   neighbor VRFB-MPLS peer group
+   neighbor VRFB-MPLS remote-as 64999
+   neighbor VRFB-MPLS bfd
+   neighbor VRFB-MPLS route-map VRFB-PE-TO-CE in
+   neighbor VRFB-MPLS route-map VRFB-CE-TO-PE out
+   neighbor VRFB-MPLS password 7 $1c$xZTqgDvqo0D1BLi7xKy50g==
+   neighbor VRFB-MPLS maximum-routes 0
+   neighbor VRFB-VELOCLOUD peer group
+   neighbor VRFB-VELOCLOUD remote-as 4200071190
+   neighbor VRFB-VELOCLOUD bfd
+   neighbor VRFB-VELOCLOUD timers 5 15
+   neighbor VRFB-VELOCLOUD route-map VRFB-VELO-TO-CE in
+   neighbor VRFB-VELOCLOUD route-map VRFB-CE-TO-VELO out
+   neighbor VRFB-VELOCLOUD password 7 $1c$xZTqgDvqo0D1BLi7xKy50g==
+   neighbor VRFB-VELOCLOUD send-community
+   neighbor VRFB-VELOCLOUD maximum-routes 0
+   neighbor VRFC-MPLS peer group
+   neighbor VRFC-MPLS remote-as 64999
+   neighbor VRFC-MPLS bfd
+   neighbor VRFC-MPLS route-map VRFC-PE-TO-CE in
+   neighbor VRFC-MPLS route-map VRFC-CE-TO-PE out
+   neighbor VRFC-MPLS password 7 $1c$uc9i8nb8Bu5ftcX4RUwHgg==
+   neighbor VRFC-MPLS maximum-routes 0
+   neighbor VRFC-VELOCLOUD peer group
+   neighbor VRFC-VELOCLOUD remote-as 4200071190
+   neighbor VRFC-VELOCLOUD bfd
+   neighbor VRFC-VELOCLOUD timers 5 15
+   neighbor VRFC-VELOCLOUD route-map VRFC-VELO-TO-CE in
+   neighbor VRFC-VELOCLOUD route-map VRFC-CE-TO-VELO out
+   neighbor VRFC-VELOCLOUD password 7 $1c$uc9i8nb8Bu5ftcX4RUwHgg==
+   neighbor VRFC-VELOCLOUD send-community
+   neighbor VRFC-VELOCLOUD maximum-routes 0
+   neighbor VRFD-MPLS peer group
+   neighbor VRFD-MPLS remote-as 64999
+   neighbor VRFD-MPLS bfd
+   neighbor VRFD-MPLS route-map VRFD-PE-TO-CE in
+   neighbor VRFD-MPLS route-map VRFD-CE-TO-PE out
+   neighbor VRFD-MPLS password 7 $1c$/g23cGPXH0eHX912o7/t0A==
+   neighbor VRFD-MPLS maximum-routes 0
+   neighbor VRFD-VELOCLOUD peer group
+   neighbor VRFD-VELOCLOUD remote-as 4200071190
+   neighbor VRFD-VELOCLOUD bfd
+   neighbor VRFD-VELOCLOUD timers 5 15
+   neighbor VRFD-VELOCLOUD route-map VRFD-VELO-TO-CE in
+   neighbor VRFD-VELOCLOUD route-map VRFD-CE-TO-VELO out
+   neighbor VRFD-VELOCLOUD password 7 $1c$/g23cGPXH0eHX912o7/t0A==
+   neighbor VRFD-VELOCLOUD send-community
+   neighbor VRFD-VELOCLOUD maximum-routes 0
+   neighbor VRFE-MPLS peer group
+   neighbor VRFE-MPLS remote-as 64999
+   neighbor VRFE-MPLS bfd
+   neighbor VRFE-MPLS route-map VRFE-PE-TO-CE in
+   neighbor VRFE-MPLS route-map VRFE-CE-TO-PE out
+   neighbor VRFE-MPLS password 7 $1c$ByczRs8jCk9VdSSaTLRUmw==
+   neighbor VRFE-MPLS maximum-routes 0
+   neighbor VRFE-VELOCLOUD peer group
+   neighbor VRFE-VELOCLOUD remote-as 4200071190
+   neighbor VRFE-VELOCLOUD bfd
+   neighbor VRFE-VELOCLOUD timers 5 15
+   neighbor VRFE-VELOCLOUD route-map VRFE-VELO-TO-CE in
+   neighbor VRFE-VELOCLOUD route-map VRFE-CE-TO-VELO out
+   neighbor VRFE-VELOCLOUD password 7 $1c$ByczRs8jCk9VdSSaTLRUmw==
+   neighbor VRFE-VELOCLOUD send-community
+   neighbor VRFE-VELOCLOUD maximum-routes 0
+   neighbor VRFM-MPLS peer group
+   neighbor VRFM-MPLS remote-as 64999
+   neighbor VRFM-MPLS bfd
+   neighbor VRFM-MPLS route-map VRFM-PE-TO-CE in
+   neighbor VRFM-MPLS route-map VRFM-CE-TO-PE out
+   neighbor VRFM-MPLS password 7 $1c$hXbVIlUZIUrbMlpfpr0dZw==
+   neighbor VRFM-MPLS maximum-routes 0
+   neighbor VRFM-VELOCLOUD peer group
+   neighbor VRFM-VELOCLOUD remote-as 4200071190
+   neighbor VRFM-VELOCLOUD bfd
+   neighbor VRFM-VELOCLOUD timers 5 15
+   neighbor VRFM-VELOCLOUD route-map VRFM-VELO-TO-CE in
+   neighbor VRFM-VELOCLOUD route-map VRFM-CE-TO-VELO out
+   neighbor VRFM-VELOCLOUD password 7 $1c$hXbVIlUZIUrbMlpfpr0dZw==
+   neighbor VRFM-VELOCLOUD send-community
+   neighbor VRFM-VELOCLOUD maximum-routes 0
+   neighbor VRFT-CE-MPLS peer group
+   neighbor VRFT-CE-MPLS remote-as 64999
+   neighbor VRFT-CE-MPLS bfd
+   neighbor VRFT-CE-MPLS route-map DENY-ALL in
+   neighbor VRFT-CE-MPLS route-map VRFT-CE-CE-TO-PE out
+   neighbor VRFT-CE-MPLS password 7 $1c$ifBKDg9HRdGlINqBTTsebQ==
+   neighbor VRFT-CE-MPLS maximum-routes 0
+   neighbor VRFT-CE-VELOCLOUD peer group
+   neighbor VRFT-CE-VELOCLOUD remote-as 4200071190
+   neighbor VRFT-CE-VELOCLOUD bfd
+   neighbor VRFT-CE-VELOCLOUD timers 5 15
+   neighbor VRFT-CE-VELOCLOUD route-map DENY-ALL in
+   neighbor VRFT-CE-VELOCLOUD route-map VRFT-CE-CE-TO-VELO out
+   neighbor VRFT-CE-VELOCLOUD password 7 $1c$ifBKDg9HRdGlINqBTTsebQ==
+   neighbor VRFT-CE-VELOCLOUD send-community
+   neighbor VRFT-CE-VELOCLOUD maximum-routes 0
+   neighbor VRFT-DC-MPLS peer group
+   neighbor VRFT-DC-MPLS remote-as 64999
+   neighbor VRFT-DC-MPLS bfd
+   neighbor VRFT-DC-MPLS route-map VRFT-DC-PE-TO-CE in
+   neighbor VRFT-DC-MPLS route-map DENY-ALL out
+   neighbor VRFT-DC-MPLS password 7 $1c$ifBKDg9HRdGlINqBTTsebQ==
+   neighbor VRFT-DC-MPLS maximum-routes 0
+   neighbor VRFT-DC-VELOCLOUD peer group
+   neighbor VRFT-DC-VELOCLOUD remote-as 4200071190
+   neighbor VRFT-DC-VELOCLOUD bfd
+   neighbor VRFT-DC-VELOCLOUD timers 5 15
+   neighbor VRFT-DC-VELOCLOUD route-map VRFT-DC-VELO-TO-CE in
+   neighbor VRFT-DC-VELOCLOUD route-map DENY-ALL out
+   neighbor VRFT-DC-VELOCLOUD password 7 $1c$ifBKDg9HRdGlINqBTTsebQ==
+   neighbor VRFT-DC-VELOCLOUD send-community
+   neighbor VRFT-DC-VELOCLOUD maximum-routes 0
+   !
+   address-family ipv4
+      neighbor MLAG-IPv4-VRFS-PEER activate
+   !
+   vrf MDMZ
+      update wait-install
+      neighbor 192.0.2.72 peer group MDMZ-MPLS
+      neighbor 192.0.2.72 description MNCO-FD-PE1_MDMZ
+      neighbor 198.51.103.247 peer group MLAG-IPv4-VRFS-PEER
+      neighbor 198.51.103.247 description CAMPUS-DIST-SW02_Vlan4092
+      redistribute connected route-map MDMZ-CONNECTED
+      !
+      address-family ipv4
+         neighbor 192.0.2.72 activate
+   !
+   vrf VRFA
+      update wait-install
+      neighbor 192.0.2.73 peer group VRFA-VELOCLOUD
+      neighbor 192.0.2.73 description VELOCLOUD-EDGE1-LAN5_VRFA
+      neighbor 192.0.2.74 peer group VRFA-MPLS
+      neighbor 192.0.2.74 description MNCO-FD-PE1_VRFA
+      neighbor 198.51.103.247 peer group MLAG-IPv4-VRFS-PEER
+      neighbor 198.51.103.247 description CAMPUS-DIST-SW02_Vlan4085
+      redistribute connected route-map VRFA-CONNECTED
+      !
+      address-family ipv4
+         neighbor 192.0.2.73 activate
+         neighbor 192.0.2.74 activate
+   !
+   vrf VRFB
+      update wait-install
+      neighbor 192.0.2.75 peer group VRFB-VELOCLOUD
+      neighbor 192.0.2.75 description VELOCLOUD-EDGE1-LAN5_VRFB
+      neighbor 192.0.2.76 peer group VRFB-MPLS
+      neighbor 192.0.2.76 description MNCO-FD-PE1_VRFB
+      neighbor 198.51.103.247 peer group MLAG-IPv4-VRFS-PEER
+      neighbor 198.51.103.247 description CAMPUS-DIST-SW02_Vlan4086
+      redistribute connected route-map VRFB-CONNECTED
+      !
+      address-family ipv4
+         neighbor 192.0.2.75 activate
+         neighbor 192.0.2.76 activate
+   !
+   vrf VRFC
+      update wait-install
+      neighbor 192.0.2.77 peer group VRFC-VELOCLOUD
+      neighbor 192.0.2.77 description VELOCLOUD-EDGE1-LAN5_VRFC
+      neighbor 192.0.2.78 peer group VRFC-MPLS
+      neighbor 192.0.2.78 description MNCO-FD-PE1_VRFC
+      neighbor 198.51.103.247 peer group MLAG-IPv4-VRFS-PEER
+      neighbor 198.51.103.247 description CAMPUS-DIST-SW02_Vlan4087
+      redistribute connected route-map VRFC-CONNECTED
+      !
+      address-family ipv4
+         neighbor 192.0.2.77 activate
+         neighbor 192.0.2.78 activate
+   !
+   vrf VRFD
+      update wait-install
+      neighbor 192.0.2.79 peer group VRFD-VELOCLOUD
+      neighbor 192.0.2.79 description VELOCLOUD-EDGE1-LAN5_VRFD
+      neighbor 192.0.2.80 peer group VRFD-MPLS
+      neighbor 192.0.2.80 description MNCO-FD-PE1_VRFD
+      neighbor 198.51.103.247 peer group MLAG-IPv4-VRFS-PEER
+      neighbor 198.51.103.247 description CAMPUS-DIST-SW02_Vlan4088
+      redistribute connected route-map VRFD-CONNECTED
+      !
+      address-family ipv4
+         neighbor 192.0.2.79 activate
+         neighbor 192.0.2.80 activate
+   !
+   vrf VRFE
+      update wait-install
+      neighbor 192.0.2.81 peer group VRFE-VELOCLOUD
+      neighbor 192.0.2.81 description VELOCLOUD-EDGE1-LAN5_VRFE
+      neighbor 192.0.2.82 peer group VRFE-MPLS
+      neighbor 192.0.2.82 description MNCO-FD-PE1_VRFE
+      neighbor 198.51.103.247 peer group MLAG-IPv4-VRFS-PEER
+      neighbor 198.51.103.247 description CAMPUS-DIST-SW02_Vlan4089
+      redistribute connected route-map VRFE-CONNECTED
+      !
+      address-family ipv4
+         neighbor 192.0.2.81 activate
+         neighbor 192.0.2.82 activate
+   !
+   vrf VRFM
+      update wait-install
+      neighbor 192.0.2.83 peer group VRFM-VELOCLOUD
+      neighbor 192.0.2.83 description VELOCLOUD-EDGE1-LAN5_VRFM
+      neighbor 192.0.2.84 peer group VRFM-MPLS
+      neighbor 192.0.2.84 description MNCO-FD-PE1_VRFM
+      neighbor 198.51.103.247 peer group MLAG-IPv4-VRFS-PEER
+      neighbor 198.51.103.247 description CAMPUS-DIST-SW02_Vlan4090
+      redistribute connected route-map VRFM-CONNECTED
+      !
+      address-family ipv4
+         neighbor 192.0.2.83 activate
+         neighbor 192.0.2.84 activate
+   !
+   vrf VRFT
+      update wait-install
+      neighbor 192.0.2.85 peer group VRFT-DC-VELOCLOUD
+      neighbor 192.0.2.85 description VELOCLOUD-EDGE1-LAN5_VRFT-DC
+      neighbor 192.0.2.86 peer group VRFT-CE-VELOCLOUD
+      neighbor 192.0.2.86 description VELOCLOUD-EDGE1-LAN5_VRFT-CE
+      neighbor 192.0.2.87 peer group VRFT-DC-MPLS
+      neighbor 192.0.2.87 description MNCO-FD-PE1_VRFT-DC
+      neighbor 192.0.2.88 peer group VRFT-CE-MPLS
+      neighbor 192.0.2.88 description MNCO-FD-PE1_VRFT-CE
+      neighbor 198.51.103.247 peer group MLAG-IPv4-VRFS-PEER
+      neighbor 198.51.103.247 description CAMPUS-DIST-SW02_Vlan4091
+      redistribute connected route-map VRFT-CONNECTED
+      !
+      address-family ipv4
+         neighbor 192.0.2.85 activate
+         neighbor 192.0.2.86 activate
+         neighbor 192.0.2.87 activate
+         neighbor 192.0.2.88 activate
+!
+router general
+   router-id ipv4 198.51.102.66
+!
+router multicast
+   ipv4
+      routing
+   !
+   vrf VRFA
+      ipv4
+         routing
+   !
+   vrf VRFB
+      ipv4
+         routing
+   !
+   vrf VRFC
+      ipv4
+         routing
+   !
+   vrf VRFD
+      ipv4
+         routing
+   !
+   vrf VRFE
+      ipv4
+         routing
+   !
+   vrf VRFT
+      ipv4
+         routing
+!
+router pim sparse-mode
+   vrf VRFA
+      ipv4
+         rp address 192.0.2.89
+   !
+   vrf VRFB
+      ipv4
+         rp address 192.0.2.89
+   !
+   vrf VRFC
+      ipv4
+         rp address 192.0.2.89
+   !
+   vrf VRFD
+      ipv4
+         rp address 192.0.2.89
+   !
+   vrf VRFE
+      ipv4
+         rp address 192.0.2.89
+   !
+   vrf VRFT
+      ipv4
+         rp address 192.0.2.89
+!
+ip tacacs vrf MDMZ source-interface Vlan4060
+!
+management ssh
+   ip access-group SSH-ACCESS vrf MGMT in
+   ip access-group SSH-ACCESS vrf MDMZ in
+   idle-timeout 10
+   connection per-host 12
+   !
+   vrf MDMZ
+      no shutdown
+   !
+   vrf MGMT
+      no shutdown
+!
+end

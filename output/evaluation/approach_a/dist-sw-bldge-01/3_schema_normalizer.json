@@ -1,0 +1,215 @@
+{
+  "hostname": "DIST-SW-BLDGE-01",
+  "domain_name": "campus.example.edu",
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "switches": [
+      [
+        1,
+        15
+      ]
+    ],
+    "master_switch": 1
+  },
+  "pnp_config": {
+    "pnp_vlan_id": 900,
+    "pnp_vlan_name": "MGMT",
+    "pnp_vlan_network_add": "192.0.2.221",
+    "pnp_vlan_network_mask": "255.255.255.0",
+    "pnp_vlan_default_gateway": "192.0.2.254"
+  },
+  "vlans": [
+    {
+      "id": 12,
+      "name": "DATA"
+    },
+    {
+      "id": 22,
+      "name": "VOICE"
+    },
+    {
+      "id": 32,
+      "name": "GUEST"
+    },
+    {
+      "id": 900,
+      "name": "MGMT"
+    }
+  ],
+  "acls": [
+    {
+      "name": "13",
+      "type": "standard",
+      "entries": [
+        {
+          "action": "permit",
+          "source": "192.0.2.0 0.0.0.255",
+          "log": false,
+          "sequence": 10
+        },
+        {
+          "action": "deny",
+          "source": "any",
+          "log": true,
+          "sequence": 20
+        }
+      ],
+      "is_numbered": false
+    }
+  ],
+  "uplinks": [
+    {
+      "type": "port-channel",
+      "port_channel_id": 30,
+      "description": "UPLINK-CORE-PC30",
+      "allowed_vlans": [
+        12,
+        22,
+        32,
+        900,
+        900
+      ],
+      "native_vlan": 900,
+      "member_interfaces": []
+    },
+    {
+      "type": "port-channel",
+      "port_channel_id": 31,
+      "description": "DOWNLINK-ACCESS-PC31",
+      "allowed_vlans": [
+        12,
+        22,
+        32,
+        900
+      ],
+      "native_vlan": 900,
+      "member_interfaces": []
+    }
+  ],
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "13",
+    "community_rw": "xxxxxxxx",
+    "acl_rw": "13",
+    "location": "Campus Distribution Building-E",
+    "contact": "NOC-555-0100",
+    "enable_traps": false
+  },
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_group_name": "Tacacs_Group",
+    "tacacs_servers": []
+  },
+  "access_interfaces": [],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "dns_servers": [
+    "192.0.2.50",
+    "192.0.2.60",
+    "192.0.2.50",
+    "192.0.2.60"
+  ],
+  "logging_hosts": [
+    "192.0.2.21",
+    "192.0.2.22",
+    "192.0.2.23"
+  ],
+  "timezone_config": {
+    "timezone": "CST",
+    "timezone_offset": "-6",
+    "dst_minutes": "0"
+  },
+  "daylight_savings": "CDT",
+  "enable_secret": "need_input",
+  "stp_mode": "rapid-pvst",
+  "errdisable_config": {
+    "causes": [
+      "security-violation",
+      "gbic-invalid",
+      "psecure-violation"
+    ],
+    "recovery_interval": 100
+  },
+  "local_users": [
+    {
+      "name": "xxxxxxxx",
+      "password": "need_input",
+      "privilege": 15
+    }
+  ],
+  "vrf_config": [
+    {
+      "name": "Mgmt-vrf",
+      "rd": "",
+      "rt_export": "",
+      "rt_import": ""
+    }
+  ],
+  "vtp_domain": "CAMPUS",
+  "vtp_mode": "transparent",
+  "has_ssh_source": false,
+  "has_snmp_source": false,
+  "has_ntp_source": false,
+  "has_tacacs_source": false,
+  "has_radius_source": false,
+  "routed_interfaces": [
+    {
+      "name": "Vlan900",
+      "description": "Vlan900",
+      "ip_address": "192.0.2.221",
+      "subnet_mask": "255.255.255.0",
+      "vrf": "",
+      "shutdown": false,
+      "ip_helper_addresses": []
+    },
+    {
+      "name": "Vlan12",
+      "description": "DATA",
+      "ip_address": "192.0.2.221",
+      "subnet_mask": "255.255.255.0",
+      "vrf": "",
+      "shutdown": false,
+      "ip_helper_addresses": []
+    },
+    {
+      "name": "Vlan22",
+      "description": "VOICE",
+      "ip_address": "192.0.2.222",
+      "subnet_mask": "255.255.255.0",
+      "vrf": "",
+      "shutdown": false,
+      "ip_helper_addresses": []
+    },
+    {
+      "name": "Vlan32",
+      "description": "GUEST",
+      "ip_address": "192.0.2.223",
+      "subnet_mask": "255.255.255.0",
+      "vrf": "",
+      "shutdown": false,
+      "ip_helper_addresses": []
+    }
+  ],
+  "default_gateway": "192.0.2.254",
+  "banners": {
+    "motd": "C\n*************************************************************\n* Authorized access only.                                   *\n* Unauthorized use is prohibited and may be prosecuted.     *\n*************************************************************"
+  },
+  "nac_config": {
+    "radius_group_name": "RADIUS_GROUP",
+    "radius_deadtime": "1",
+    "dot1x_enabled": true,
+    "radius_servers": [],
+    "coa_clients": [
+      {
+        "ip": "192.0.2.31",
+        "key": "xxxxxxxx"
+      }
+    ],
+    "coa_port": "3799",
+    "coa_auth_type": "all"
+  }
+}

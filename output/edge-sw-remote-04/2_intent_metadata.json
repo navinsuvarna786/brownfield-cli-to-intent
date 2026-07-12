@@ -1,0 +1,27 @@
+[
+  {
+    "field": "enable_secret",
+    "confidence": 0.9,
+    "reason": "redacted for security"
+  },
+  {
+    "field": "local_users.password",
+    "confidence": 0.9,
+    "reason": "redacted for security"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 1,
+    "reason": "parsed from config and legacy parser, including expanded identical config for 24 interfaces"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "extracted from config and legacy parser"
+  },
+  {
+    "field": "aaa.tacacs_servers",
+    "confidence": 0.8,
+    "reason": "no tacacs servers configured, empty list"
+  }
+]

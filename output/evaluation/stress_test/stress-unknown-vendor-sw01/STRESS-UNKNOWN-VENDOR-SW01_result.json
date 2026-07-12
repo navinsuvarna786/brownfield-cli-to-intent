@@ -1,0 +1,24 @@
+{
+  "config": "STRESS-UNKNOWN-VENDOR-SW01",
+  "vendor_tag": "unknown",
+  "hostname_extracted": "STRESS-UNKNOWN-VENDOR-SW01",
+  "routing_path": [
+    "Legacy Parser",
+    "Intent Mapper",
+    "Schema Normalizer",
+    "Validator",
+    "Generator"
+  ],
+  "validator_iterations": 1,
+  "auto_corrections": [
+    "rule121: stp_mode='need_input'",
+    "rule121: logging_hosts=['need_input']",
+    "rule121: errdisable_config.causes=['need_input']"
+  ],
+  "outcome": "passed_first_try",
+  "valid": true,
+  "validation_score": 1.0,
+  "issues_flagged": [],
+  "latency_ms": 15177,
+  "error": null
+}

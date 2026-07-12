@@ -1,0 +1,313 @@
+{
+  "hostname": "DATACTR-OOBSW-01",
+  "domain_name": "campus.example.edu",
+  "system": {
+    "timezone": "CST",
+    "timezone_offset": "-6",
+    "daylight_savings": "CDT",
+    "spanning_tree_mode": "rapid-pvst",
+    "errdisable": {
+      "causes": [
+        "security-violation",
+        "gbic-invalid",
+        "psecure-violation"
+      ],
+      "recovery_interval": 100
+    },
+    "local_users": [
+      {
+        "name": "xxxxxxxx",
+        "privilege": 15
+      }
+    ]
+  },
+  "management": {
+    "vrf": "Mgmt-vrf",
+    "ssh": {
+      "version": 2
+    },
+    "http": {
+      "authentication": "aaa"
+    },
+    "lines": {
+      "console": {
+        "exec_timeout": "5 0",
+        "stopbits": 1
+      },
+      "vty_0_4": {
+        "access_class": "13",
+        "exec_timeout": "20 0",
+        "privilege": 15,
+        "transport_input": [
+          "ssh"
+        ]
+      },
+      "vty_5_15": {
+        "access_class": "13",
+        "exec_timeout": "20 0",
+        "privilege": 15,
+        "transport_input": [
+          "ssh"
+        ]
+      }
+    }
+  },
+  "vlans": [
+    {
+      "id": 230,
+      "name": "OOB-PDU"
+    },
+    {
+      "id": 236,
+      "name": "OOB-MGMT"
+    },
+    {
+      "id": 712,
+      "name": "SERVER-VLAN-712"
+    },
+    {
+      "id": 713,
+      "name": "SERVER-VLAN-713"
+    },
+    {
+      "id": 714,
+      "name": "SERVER-VLAN-714"
+    },
+    {
+      "id": 715,
+      "name": "SERVER-VLAN-715"
+    },
+    {
+      "id": 716,
+      "name": "SERVER-VLAN-716"
+    },
+    {
+      "id": 3069,
+      "name": "Native"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "Mgmt-vrf"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "GigabitEthernet0/0",
+      "vrf": "Mgmt-vrf",
+      "negotiation_auto": true
+    },
+    {
+      "name": "Vlan236",
+      "ip_address": "192.0.2.136",
+      "ip_mask": "255.255.255.0",
+      "ip_redirects": false
+    },
+    {
+      "name": "TenGigabitEthernet1/1/1",
+      "description": "UPLINK-TRUNK",
+      "switchport_mode": "trunk",
+      "trunk_native_vlan": 3069,
+      "trunk_allowed_vlans": [
+        230,
+        236,
+        712,
+        713,
+        714,
+        715,
+        716,
+        3069
+      ],
+      "spanning_tree_guard": "root"
+    }
+  ],
+  "access_interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "switchport_mode": "access",
+      "access_vlan": 230,
+      "no_logging_event_link_status": true,
+      "storm_control": {
+        "broadcast_level": "2.00 1.00",
+        "multicast_level": "2.00 1.00"
+      },
+      "spanning_tree_portfast": true,
+      "spanning_tree_bpduguard": true
+    }
+  ],
+  "routes": {
+    "default_gateway": "192.0.2.254"
+  },
+  "snmp": {
+    "communities": [
+      {
+        "community": "xxxxxxxx",
+        "access": "RO",
+        "acl": "13"
+      }
+    ],
+    "location": "Data-Center-01 OOB-Switch",
+    "contact": "NOC",
+    "chassis_id": "DATACTR-OOBSW-01",
+    "hosts": [
+      {
+        "ip": "192.0.2.24",
+        "version": "2c",
+        "community": "xxxxxxxx"
+      }
+    ]
+  },
+  "acls": [
+    {
+      "name": "13",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.11",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "192.0.2.12",
+          "log": false
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "192.0.2.0 0.0.0.255",
+          "log": false
+        }
+      ]
+    }
+  ],
+  "aaa": {
+    "enabled": true,
+    "authentication": {
+      "login_default": "local enable"
+    },
+    "tacacs_servers": [
+      {
+        "name": "tacacs-svr-01",
+        "address": "192.0.2.11",
+        "key": "xxxxxxx",
+        "timeout": 3
+      },
+      {
+        "name": "tacacs-svr-02",
+        "address": "192.0.2.12",
+        "key": "xxxxxxx",
+        "timeout": 3
+      }
+    ]
+  },
+  "logging": {
+    "hosts": [
+      "192.0.2.21",
+      "192.0.2.22",
+      "192.0.2.23"
+    ]
+  },
+  "ntp": {
+    "servers": [
+      {
+        "address": "192.0.2.11",
+        "prefer": true
+      },
+      {
+        "address": "192.0.2.12"
+      }
+    ]
+  },
+  "dns_servers": [
+    "192.0.2.50",
+    "192.0.2.60"
+  ],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "uplinks": [
+    {
+      "type": "trunk",
+      "name": "TenGigabitEthernet1/1/1",
+      "description": "DISCOVERED-UPLINK-1",
+      "allowed_vlans": [
+        230,
+        236,
+        712,
+        713,
+        714,
+        715,
+        716,
+        3069
+      ],
+      "native_vlan": 3069
+    },
+    {
+      "type": "trunk",
+      "name": "TenGigabitEthernet1/1/2",
+      "description": "DISCOVERED-UPLINK-2",
+      "allowed_vlans": [
+        230,
+        236,
+        712,
+        713,
+        714,
+        715,
+        716,
+        3069
+      ],
+      "native_vlan": 3069
+    }
+  ],
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": [
+      {
+        "name": "tacacs-svr-01",
+        "ip": "192.0.2.11",
+        "key": "need_input"
+      },
+      {
+        "name": "tacacs-svr-02",
+        "ip": "192.0.2.12",
+        "key": "need_input"
+      }
+    ]
+  },
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "13",
+    "location": "Data-Center-01 OOB-Switch",
+    "contact": "NOC",
+    "chassis_id": "DATACTR-OOBSW-01",
+    "enable_traps": true
+  },
+  "local_users": [
+    {
+      "name": "xxxxxxxx",
+      "password": "need_input",
+      "privilege": 15
+    }
+  ],
+  "logging_hosts": [
+    "192.0.2.21",
+    "192.0.2.22",
+    "192.0.2.23"
+  ],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": {
+    "name": "Mgmt-vrf",
+    "rd": "",
+    "rt_export": "",
+    "rt_import": ""
+  }
+}

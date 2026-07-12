@@ -1,0 +1,283 @@
+catalyst_center:
+  inventory:
+    devices:
+    - name: CAMPUS-DIST-SW01
+      fqdn_name: CAMPUS-DIST-SW01.campus.example.org
+      device_ip: need_input
+      pid: C9300-48P
+      serial_number: TBD-MIGRATION
+      state: PNP
+      device_role: ACCESS
+      site: need_input
+      onboarding_template:
+        name: EDGE_PNP_template
+        variables:
+        - name: device_host_name
+          value: CAMPUS-DIST-SW01
+        - name: domain_name
+          value: campus.example.org
+        - name: pnp_vlan_id
+          value: '1'
+        - name: pnp_vlan_name
+          value: MGMT
+        - name: pnp_vlan_network_add
+          value: need_input
+        - name: pnp_vlan_network_mask
+          value: 255.255.255.0
+        - name: pnp_vlan_default_gateway
+          value: need_input
+        - name: pnp_interface
+          value: GigabitEthernet1/0/1
+        - name: snmp_community_ro
+          value: need_input
+        - name: log_server
+          value: 192.0.2.6
+        - name: is_stack
+          value: 'false'
+        - name: stack_members
+          value: '1'
+      dayn_templates:
+        regular:
+        - name: EDGE_SYSTEM_template
+          variables:
+          - name: enable_secret
+            value: need_input
+          - name: hostname
+            value: CAMPUS-DIST-SW01
+          - name: domain_name
+            value: campus.example.org
+          - name: timezone
+            value: EST5EDT
+          - name: timezone_offset
+            value: need_input
+          - name: daylight_savings_name
+            value: need_input
+          - name: dns_servers
+            value: |
+              192.0.2.7,192.0.2.8,192.0.2.9
+          - name: ntp_servers
+            value: |
+              192.0.2.69,192.0.2.70,192.0.2.71|prefer
+          - name: license_level
+            value: network-advantage
+          - name: stp_mode
+            value: mstp
+          - name: ntp_authenticate
+            value: 'false'
+          - name: ntp_master
+            value: 'false'
+          - name: logging_servers
+            value: |
+              192.0.2.6
+          - name: log_severity_level
+            value: informational
+          - name: errdisable_causes
+            value: |
+              need_input
+          - name: recovery_interval
+            value: '30'
+          redeploy_template: ON_CHANGE
+        - name: EDGE_VLAN_template
+          variables:
+          - name: vlans
+            value: 100|VRFA_USER,110|VRFA_VEEDEROOT,130|VRFA_PRINTER,150|VRFE_SECURITY_CAMERA,210|VRFA_ISTAR,230|VRFA_CITYTIME,777|VRFA_WIRELESS,3000|MDMZ_MGMT_UPS,4060|MDMZ_INBAND_MGMT,4085|MLAG_L3_VRF_VRFA,4086|MLAG_L3_VRF_VRFB,4087|MLAG_L3_VRF_VRFC,4088|MLAG_L3_VRF_VRFD,4089|MLAG_L3_VRF_VRFE,4090|MLAG_L3_VRF_VRFM,4091|MLAG_L3_VRF_VRFT,4092|MLAG_L3_VRF_MDMZ,4094|MLAG
+          - name: vtp_domain
+            value: CWAN
+          - name: vtp_mode
+            value: transparent
+          redeploy_template: ON_CHANGE
+        - name: EDGE_MGMT_template
+          variables:
+          - name: enable_management
+            value: 'false'
+          - name: http_server
+            value: 'true'
+          - name: https_server
+            value: 'true'
+          - name: mgmt_interface_type
+            value: vlan
+          - name: mgmt_vlan_id
+            value: '1'
+          - name: mgmt_ip_address
+            value: need_input
+          - name: mgmt_subnet_mask
+            value: 255.255.255.0
+          - name: mgmt_default_gateway
+            value: need_input
+          - name: mgmt_vlan_name
+            value: MGMT
+          redeploy_template: ON_CHANGE
+        - name: EDGE_ACL_template
+          variables:
+          - name: standard_acls
+            value: |
+              API-ACCESS|10|permit|host|198.51.100.11|false,
+              API-ACCESS|20|permit|host|198.51.100.12|false,
+              API-ACCESS|30|permit|host|198.51.100.13|false,
+              API-ACCESS|40|permit|host|192.0.2.34|false,
+              API-ACCESS|50|permit|host|192.0.2.35|false,
+              API-ACCESS|60|permit|host|192.0.2.36|false,
+              API-ACCESS|1000|deny|any||false,
+              SNMP-ALLOWED|10|permit|host|192.0.2.37|false,
+              SNMP-ALLOWED|20|permit|host|192.0.2.38|false,
+              SNMP-ALLOWED|30|permit|host|198.51.100.20|false,
+              SNMP-ALLOWED|40|permit|host|198.51.100.21|false,
+              SNMP-ALLOWED|50|permit|host|192.0.2.39|false,
+              SNMP-ALLOWED|60|permit|host|192.0.2.40|false,
+              SNMP-ALLOWED|70|permit|host|192.0.2.41|false,
+              SNMP-ALLOWED|80|permit|host|198.51.100.21|false,
+              SNMP-ALLOWED|90|permit|host|192.168.114.80|false,
+              SNMP-ALLOWED|100|permit|host|192.168.114.64|false,
+              SNMP-ALLOWED|110|permit|host|192.0.2.42|false,
+              SNMP-ALLOWED|120|permit|host|198.51.100.11|false,
+              SNMP-ALLOWED|130|permit|host|198.51.100.12|false,
+              SNMP-ALLOWED|140|permit|host|198.51.100.13|false,
+              SNMP-ALLOWED|210|permit|host|192.168.79.3|false,
+              SNMP-ALLOWED|220|permit|host|192.168.87.3|false,
+              SNMP-ALLOWED|230|permit|host|192.168.95.3|false,
+              SNMP-ALLOWED|240|permit|host|192.168.71.3|false,
+              SNMP-ALLOWED|250|permit|host|192.0.2.43|false,
+              SNMP-ALLOWED|260|permit|host|192.0.2.44|false,
+              SNMP-ALLOWED|270|permit|host|192.0.2.45|false,
+              SNMP-ALLOWED|280|permit|host|192.0.2.46|false,
+              SNMP-ALLOWED|290|permit|host|192.0.2.47|false,
+              SNMP-ALLOWED|300|permit|host|192.0.2.48|false,
+              SNMP-ALLOWED|310|permit|host|192.0.2.49|false,
+              SNMP-ALLOWED|320|permit|host|192.0.2.50|false,
+              SNMP-ALLOWED|330|permit|host|192.0.2.51|false,
+              SNMP-ALLOWED|340|permit|host|192.0.2.52|false,
+              SNMP-ALLOWED|350|permit|host|192.0.2.53|false,
+              SNMP-ALLOWED|360|permit|host|192.0.2.54|false,
+              SNMP-ALLOWED|1000|deny|any||true,
+              SSH-ACCESS|10|permit|host 192.0.2.55/24||false,
+              SSH-ACCESS|20|permit|host 192.0.2.56/27||false,
+              SSH-ACCESS|30|permit|host|192.0.2.37|false,
+              SSH-ACCESS|40|permit|host|192.0.2.38|false,
+              SSH-ACCESS|50|permit|host|198.51.100.20|false,
+              SSH-ACCESS|60|permit|host|192.0.2.39|false,
+              SSH-ACCESS|70|permit|host|192.0.2.40|false,
+              SSH-ACCESS|80|permit|host|192.0.2.41|false,
+              SSH-ACCESS|100|permit|host|198.51.100.11|false,
+              SSH-ACCESS|110|permit|host|198.51.100.12|false,
+              SSH-ACCESS|120|permit|host|198.51.100.13|false,
+              SSH-ACCESS|130|permit|host|192.0.2.36|false,
+              SSH-ACCESS|132|permit|host|192.0.2.34|false,
+              SSH-ACCESS|134|permit|host|192.0.2.35|false,
+              SSH-ACCESS|140|permit|host 192.168.15.0/24||false,
+              SSH-ACCESS|151|permit|host 192.0.2.57/19||false,
+              SSH-ACCESS|161|permit|host 192.0.2.58/19||false,
+              SSH-ACCESS|171|permit|host 192.168.32.0/20||false,
+              SSH-ACCESS|172|permit|host 192.168.48.0/22||false,
+              SSH-ACCESS|181|permit|host 192.0.2.59/24||false,
+              SSH-ACCESS|182|permit|host 192.0.2.60/24||false,
+              SSH-ACCESS|183|permit|host 198.51.102.0/24||false,
+              SSH-ACCESS|184|permit|host 192.0.2.61/28||false,
+              SSH-ACCESS|185|permit|host 192.0.2.62/24||false,
+              SSH-ACCESS|186|permit|host 192.0.2.63/24||false,
+              SSH-ACCESS|187|permit|host 192.0.2.64/27||false,
+              SSH-ACCESS|188|permit|host|192.0.2.65|false,
+              SSH-ACCESS|189|permit|host|192.0.2.66|false,
+              SSH-ACCESS|1000|deny|any||false
+          - name: extended_acls
+            value: ''
+          redeploy_template: ON_CHANGE
+        - name: EDGE_UPLINK_template
+          variables:
+          - name: uplinks
+            value: |
+              trunk|Port-Channel2000|MLAG_CAMPUS-DIST-SW02_Port-Channel2000||||true||
+          redeploy_template: ON_CHANGE
+        - name: EDGE_SNMP_template
+          variables:
+          - name: snmp_community_ro
+            value: need_input
+          - name: snmp_community_rw
+            value: need_input
+          - name: snmp_location
+            value: Campus Distribution Building-A
+          - name: snmp_contact
+            value: 555-0100
+          - name: snmp_acl_ro
+            value: SNMP-ALLOWED
+          - name: enable_traps
+            value: 'true'
+          redeploy_template: ON_CHANGE
+        - name: EDGE_AAA_template
+          variables:
+          - name: tacacs_group_name
+            value: TACACS_Servers
+          - name: tacacs_servers
+            value: |
+              192.0.2.10|192.0.2.10|xxxxxxxx,192.0.2.11|192.0.2.11|xxxxxxxx
+          redeploy_template: ON_CHANGE
+        - name: EDGE_ACCESS_PORT_template
+          variables:
+          - name: access_interfaces
+            value: |
+              GigabitEthernet1/0/1|PRINTER|130||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/2|PRINTER|130||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/3|USER|100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/4|USER|100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/5|USER|100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/6|USER|100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/7|USER|100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/8|USER|100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/9|USER|100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/10|USER|100||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/11|UPS Monitor Port|3000||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/12|UPS Monitor Port|3000||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/13|UPS Monitor Port|3000||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/14|UPS Monitor Port|3000||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/15|VEEDROOT|110||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/16|ISTAR-PANEL|210||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/19|CAMERA|150||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/20|CAMERA|150||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/21|CAMERA|150||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/22|CityTime|230||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/23|Access Port|1||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/25|Access Port|1||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/26|Access Port|1||false|2|restrict|false|true|true|false||,
+              GigabitEthernet1/0/27|MLAG_CAMPUS-DIST-SW02_Ethernet27|1||false|2|restrict|true|true|true|false||,
+              GigabitEthernet1/0/28|MLAG_CAMPUS-DIST-SW02_Ethernet28|1||false|2|restrict|true|true|true|false||
+          redeploy_template: ON_CHANGE
+        - name: EDGE_ROUTED_PORT_template
+          variables:
+          - name: routed_interfaces
+            value: |
+              GigabitEthernet1/0/23.11|VRFA-VELOCLOUD-EDGE1-LAN5||VRFA|192.0.2.12|255.255.255.254|9100|false|true|11|,
+              GigabitEthernet1/0/23.12|VRFB-VELOCLOUD-EDGE1-LAN5||VRFB|192.0.2.13|255.255.255.254|9100|false|true|12|,
+              GigabitEthernet1/0/23.13|VRFC-VELOCLOUD-EDGE1-LAN5||VRFC|192.0.2.14|255.255.255.254|9100|false|true|13|,
+              GigabitEthernet1/0/23.14|VRFD-VELOCLOUD-EDGE1-LAN5||VRFD|192.0.2.15|255.255.255.254|9100|false|true|14|,
+              GigabitEthernet1/0/23.15|VRFE-VELOCLOUD-EDGE1-LAN5||VRFE|192.0.2.16|255.255.255.254|9100|false|true|15|,
+              GigabitEthernet1/0/23.16|VRFM-VELOCLOUD-EDGE1-LAN5||VRFM|192.0.2.17|255.255.255.254|9100|false|true|16|,
+              GigabitEthernet1/0/23.17|VRFT-DC-VELOCLOUD-EDGE1-LAN5||VRFT|192.0.2.18|255.255.255.254|9100|false|true|17|,
+              GigabitEthernet1/0/23.18|VRFT-CE-VELOCLOUD-EDGE1-LAN5||VRFT|192.0.2.19|255.255.255.254|9100|false|true|18|,
+              GigabitEthernet1/0/25.11|VRFA-MNCO-FD-PE1-Eth3/31/1||VRFA|192.0.2.20|255.255.255.254|9100|false|true|11|,
+              GigabitEthernet1/0/25.12|VRFB-MNCO-FD-PE1-Eth3/31/1||VRFB|192.0.2.21|255.255.255.254|9100|false|true|12|,
+              GigabitEthernet1/0/25.13|VRFC-MNCO-FD-PE1-Eth3/31/1||VRFC|192.0.2.22|255.255.255.254|9100|false|true|13|,
+              GigabitEthernet1/0/25.14|VRFD-MNCO-FD-PE1-Eth3/31/1||VRFD|192.0.2.23|255.255.255.254|9100|false|true|14|,
+              GigabitEthernet1/0/25.15|VRFE-MNCO-FD-PE1-Eth3/31/1||VRFE|192.0.2.24|255.255.255.254|9100|false|true|15|,
+              GigabitEthernet1/0/25.16|VRFM-MNCO-FD-PE1-Eth3/31/1||VRFM|192.0.2.25|255.255.255.254|9100|false|true|16|,
+              GigabitEthernet1/0/25.17|VRFT-DC-MNCO-FD-PE1-Eth3/31/1||VRFT|192.0.2.26|255.255.255.254|9100|false|true|17|,
+              GigabitEthernet1/0/25.18|VRFT-CE-MNCO-FD-PE1-Eth3/31/1||VRFT|192.0.2.27|255.255.255.254|9100|false|true|18|,
+              GigabitEthernet1/0/25.20|MDMZ-MNCO-FD-PE1-Eth3/31/1||MDMZ|192.0.2.28|255.255.255.254|9100|false|true|20|,
+              Loopback10|Sflow source interface|false||192.0.2.29|255.255.255.255||false|false||,
+              Vlan100|VRFA_USER|false|VRFA|198.51.100.2|255.255.255.0|9100|false|true||,
+              Vlan110|VRFA_VEEDEROOT|false|VRFA|198.51.101.34|255.255.255.248|9100|false|true||,
+              Vlan130|VRFA_PRINTER|false|VRFA|198.51.101.66|255.255.255.240|9100|false|true||,
+              Vlan150|VRFE_SECURITY_CAMERA|false|VRFE|192.0.2.30|255.255.255.0|9100|false|true||,
+              Vlan210|VRFA_ISTAR|false|VRFA|198.51.101.82|255.255.255.240|9100|false|true||,
+              Vlan230|VRFA_CITYTIME|false|VRFA|192.0.2.32|255.255.255.248|9100|false|true||,
+              Vlan777|VRFA_WIRELESS|false|VRFA|198.51.101.50|255.255.255.240|9100|false|true||,
+              Vlan3000|MDMZ_MGMT_UPS|false|MDMZ|198.51.101.98|255.255.255.224|9100|true|true||,
+              Vlan4060|MDMZ_INBAND_MGMT|false|MDMZ|198.51.102.66|255.255.255.240|9100|false|true||,
+              Vlan4085|MLAG_L3_VRF_VRFA|false|VRFA|198.51.103.246|255.255.255.254|9100|false|true||,
+              Vlan4086|MLAG_L3_VRF_VRFB|false|VRFB|198.51.103.246|255.255.255.254|9100|false|true||,
+              Vlan4087|MLAG_L3_VRF_VRFC|false|VRFC|198.51.103.246|255.255.255.254|9100|false|true||,
+              Vlan4088|MLAG_L3_VRF_VRFD|false|VRFD|198.51.103.246|255.255.255.254|9100|false|true||,
+              Vlan4089|MLAG_L3_VRF_VRFE|false|VRFE|198.51.103.246|255.255.255.254|9100|false|true||,
+              Vlan4090|MLAG_L3_VRF_VRFM|false|VRFM|198.51.103.246|255.255.255.254|9100|false|false||,
+              Vlan4091|MLAG_L3_VRF_VRFT|false|VRFT|198.51.103.246|255.255.255.254|9100|false|true||,
+              Vlan4092|MLAG_L3_VRF_MDMZ|false|MDMZ|198.51.103.246|255.255.255.254|9100|false|false||,
+              Vlan4094|MLAG|false||198.51.103.244|255.255.255.254|9100|false|false||
+          redeploy_template: ON_CHANGE

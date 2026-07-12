@@ -1,0 +1,26 @@
+{
+  "config": "STRESS-DEGRADED-CISCO-SW01",
+  "vendor_tag": "cisco",
+  "hostname_extracted": "unknown",
+  "routing_path": [
+    "Legacy Parser",
+    "Cisco Mapper",
+    "Intent Mapper",
+    "Schema Normalizer",
+    "Validator",
+    "Cisco Mapper",
+    "Intent Mapper",
+    "Schema Normalizer",
+    "Validator"
+  ],
+  "validator_iterations": 2,
+  "auto_corrections": [],
+  "outcome": "escalated_abort",
+  "valid": false,
+  "validation_score": 0.8,
+  "issues_flagged": [
+    "[error] hostname: Hostname is missing"
+  ],
+  "latency_ms": 25386,
+  "error": null
+}

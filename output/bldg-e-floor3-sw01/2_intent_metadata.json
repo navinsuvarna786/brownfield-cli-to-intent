@@ -1,0 +1,27 @@
+[
+  {
+    "field": "local_users",
+    "confidence": 0.95,
+    "reason": "passwords obfuscated, inferred from config"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": 0.95,
+    "reason": "password obfuscated, inferred from config"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.98,
+    "reason": "explicit AAA groups and servers configured"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.99,
+    "reason": "explicit interface configs and identical config comments parsed"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.97,
+    "reason": "snmp-server community and hosts configured"
+  }
+]

@@ -1,0 +1,485 @@
+{
+  "hostname": "CAMPUS-DIST-SW08",
+  "domain_name": "campus.example.org",
+  "timezone_config": {},
+  "stp_mode": "rapid-pvst",
+  "dns_servers": [
+    "need_input"
+  ],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "logging_hosts": [
+    "need_input"
+  ],
+  "snmp_config": {
+    "location": "Campus Distribution SW08",
+    "contact": "NOC-555-0100",
+    "enable_traps": false,
+    "acl_ro": "SNMP-ALLOWED"
+  },
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": [
+      {
+        "name": "192.0.2.11",
+        "ip": "192.0.2.11",
+        "key": "xxxxxxxx"
+      },
+      {
+        "name": "192.0.2.12",
+        "ip": "192.0.2.12",
+        "key": "xxxxxxxx"
+      }
+    ],
+    "tacacs_group_name": "TACACS_GROUP"
+  },
+  "local_users": [
+    {
+      "name": "admin",
+      "password": "xxxxxxxx"
+    }
+  ],
+  "enable_secret": "",
+  "errdisable_config": {
+    "causes": [
+      "need_input"
+    ]
+  },
+  "vlans": [
+    {
+      "id": 120,
+      "name": "USERS"
+    },
+    {
+      "id": 220,
+      "name": "VOICE"
+    },
+    {
+      "id": 320,
+      "name": "GUEST"
+    },
+    {
+      "id": 420,
+      "name": "IOT"
+    },
+    {
+      "id": 4062,
+      "name": "INBAND-MGMT"
+    },
+    {
+      "id": 4094,
+      "name": "MLAG-PEER"
+    }
+  ],
+  "vrfs": [],
+  "acls": [],
+  "management": {
+    "http_https": {
+      "enabled": true,
+      "https_enabled": true,
+      "shutdown": false
+    },
+    "ssh": {
+      "enabled": true,
+      "idle_timeout": 20
+    }
+  },
+  "banners": {
+    "login": "Authorized access only. Unauthorized use is prohibited."
+  },
+  "uplinks": [
+    {
+      "name": "Port-Channel999",
+      "type": "trunk",
+      "description": "MLAG-PEER-LINK",
+      "allowed_vlans": "all",
+      "native_vlan": ""
+    },
+    {
+      "name": "Port-Channel2003",
+      "type": "trunk",
+      "description": "UPLINK-PC2003",
+      "allowed_vlans": "120,220,320,420,4062",
+      "native_vlan": ""
+    }
+  ],
+  "access_interfaces": [
+    {
+      "name": "GigabitEthernet1/0/31",
+      "config": {
+        "description": "MLAG-PEER-LINK-MEMBER",
+        "access_vlan": 1,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/32",
+      "config": {
+        "description": "MLAG-PEER-LINK-MEMBER",
+        "access_vlan": 1,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/29",
+      "config": {
+        "description": "UPLINK-MEMBER",
+        "access_vlan": 1,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/30",
+      "config": {
+        "description": "UPLINK-MEMBER",
+        "access_vlan": 1,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/1",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/11",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/12",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/13",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/14",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/15",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/16",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/17",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/18",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/19",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    },
+    {
+      "name": "GigabitEthernet1/0/20",
+      "config": {
+        "description": "DOWNLINK-ACCESS",
+        "access_vlan": 120,
+        "voice_vlan": null,
+        "shutdown": true,
+        "portfast": true,
+        "bpduguard": true
+      },
+      "nac": {}
+    }
+  ],
+  "routed_interfaces": [
+    {
+      "name": "Vlan4094",
+      "description": "MLAG-PEER",
+      "vrf": "",
+      "ipv4": {
+        "address": "169.254.0.10",
+        "netmask": "255.255.255.252"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false,
+      "dot1q_vlan": null
+    },
+    {
+      "name": "Vlan120",
+      "description": "USERS",
+      "vrf": "VRFA",
+      "ipv4": {
+        "address": "198.51.100.76",
+        "netmask": "255.255.255.0"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false,
+      "dot1q_vlan": null
+    },
+    {
+      "name": "Vlan220",
+      "description": "VOICE",
+      "vrf": "VRFA",
+      "ipv4": {
+        "address": "198.51.101.76",
+        "netmask": "255.255.255.0"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false,
+      "dot1q_vlan": null
+    },
+    {
+      "name": "Vlan320",
+      "description": "GUEST",
+      "vrf": "VRFA",
+      "ipv4": {
+        "address": "198.51.102.76",
+        "netmask": "255.255.255.0"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false,
+      "dot1q_vlan": null
+    },
+    {
+      "name": "Vlan420",
+      "description": "IOT",
+      "vrf": "VRFA",
+      "ipv4": {
+        "address": "198.51.103.76",
+        "netmask": "255.255.255.0"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false,
+      "dot1q_vlan": null
+    },
+    {
+      "name": "Vlan4062",
+      "description": "INBAND-MGMT",
+      "vrf": "MDMZ",
+      "ipv4": {
+        "address": "198.51.100.76",
+        "netmask": "255.255.255.0"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false,
+      "dot1q_vlan": null
+    }
+  ],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1
+  },
+  "pnp_config": {},
+  "vrf_config": {},
+  "catalyst_center": {}
+}

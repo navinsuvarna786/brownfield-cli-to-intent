@@ -1,0 +1,27 @@
+[
+  {
+    "field": "aaa.tacacs_servers",
+    "confidence": 0.9,
+    "reason": "Tacacs servers listed by name but IPs not resolved"
+  },
+  {
+    "field": "local_users.password",
+    "confidence": 0.8,
+    "reason": "Password encrypted, exact value masked"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": 0.8,
+    "reason": "Enable secret encrypted, exact value masked"
+  },
+  {
+    "field": "snmp.communities",
+    "confidence": 0.95,
+    "reason": "SNMP communities extracted from config and legacy parser"
+  },
+  {
+    "field": "interfaces.allowed_vlans",
+    "confidence": 0.95,
+    "reason": "Allowed VLANs deduplicated and mapped from config"
+  }
+]

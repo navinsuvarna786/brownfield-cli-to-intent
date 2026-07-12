@@ -1,0 +1,344 @@
+[
+  {
+    "file": "BLDG-A-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "access-nac",
+    "approach": "B+",
+    "total_elapsed_s": 39.3521,
+    "stage_times": {
+      "parse_s": 0.0324,
+      "rag_s": 0.7609,
+      "llm_s": 38.5588
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "llm_invoked": true,
+    "model": "gpt-4.1-mini",
+    "parse_error": false
+  },
+  {
+    "file": "BLDG-A-FLOOR2-SW01.txt",
+    "vendor": "cisco",
+    "group": "access-nac",
+    "approach": "B+",
+    "total_elapsed_s": 25.5226,
+    "stage_times": {
+      "parse_s": 0.0198,
+      "rag_s": 0.0,
+      "llm_s": 25.5028
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "119",
+      "121"
+    ],
+    "llm_invoked": true,
+    "model": "gpt-4.1-mini",
+    "parse_error": false
+  },
+  {
+    "file": "BLDG-A-FLOOR3-SW01.txt",
+    "vendor": "cisco",
+    "group": "access-nac",
+    "approach": "B+",
+    "total_elapsed_s": 21.812,
+    "stage_times": {
+      "parse_s": 0.012,
+      "rag_s": 0.0,
+      "llm_s": 21.8
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "llm_invoked": true,
+    "model": "gpt-4.1-mini",
+    "parse_error": false
+  },
+  {
+    "file": "BLDG-B-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "access-nac",
+    "approach": "B+",
+    "total_elapsed_s": 26.8083,
+    "stage_times": {
+      "parse_s": 0.0135,
+      "rag_s": 0.0,
+      "llm_s": 26.7948
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "llm_invoked": true,
+    "model": "gpt-4.1-mini",
+    "parse_error": false
+  },
+  {
+    "file": "BLDG-B-FLOOR2-SW01.txt",
+    "vendor": "cisco",
+    "group": "access-nac",
+    "approach": "B+",
+    "total_elapsed_s": 16.722,
+    "stage_times": {
+      "parse_s": 0.0112,
+      "rag_s": 0.0,
+      "llm_s": 16.7108
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "llm_invoked": true,
+    "model": "gpt-4.1-mini",
+    "parse_error": false
+  },
+  {
+    "file": "BLDG-C-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "access-nac",
+    "approach": "B+",
+    "total_elapsed_s": 27.8853,
+    "stage_times": {
+      "parse_s": 0.0212,
+      "rag_s": 0.0,
+      "llm_s": 27.8641
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "llm_invoked": true,
+    "model": "gpt-4.1-mini",
+    "parse_error": false
+  },
+  {
+    "file": "BLDG-C-FLOOR2-SW01.txt",
+    "vendor": "cisco",
+    "group": "access-nac",
+    "approach": "B+",
+    "total_elapsed_s": 27.6667,
+    "stage_times": {
+      "parse_s": 0.0067,
+      "rag_s": 0.0,
+      "llm_s": 27.66
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "llm_invoked": true,
+    "model": "gpt-4.1-mini",
+    "parse_error": false
+  },
+  {
+    "file": "BLDG-FR-FLOOR1-SW01.txt",
+    "vendor": "cisco",
+    "group": "access-nac",
+    "approach": "B+",
+    "total_elapsed_s": 26.6542,
+    "stage_times": {
+      "parse_s": 0.0324,
+      "rag_s": 0.0,
+      "llm_s": 26.6218
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "llm_invoked": true,
+    "model": "gpt-4.1-mini",
+    "parse_error": false
+  },
+  {
+    "file": "DATACTR-OOBSW-01.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "approach": "B+",
+    "total_elapsed_s": 18.6931,
+    "stage_times": {
+      "parse_s": 0.007,
+      "rag_s": 0.0,
+      "llm_s": 18.6861
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "119",
+      "121"
+    ],
+    "llm_invoked": true,
+    "model": "gpt-4.1-mini",
+    "parse_error": false
+  },
+  {
+    "file": "DATACTR-OOBSW-02.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "approach": "B+",
+    "total_elapsed_s": 40.5903,
+    "stage_times": {
+      "parse_s": 0.0089,
+      "rag_s": 0.0,
+      "llm_s": 40.5814
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "llm_invoked": true,
+    "model": "gpt-4.1-mini",
+    "parse_error": false
+  },
+  {
+    "file": "DATACTR-OOBSW-03.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "approach": "B+",
+    "total_elapsed_s": 16.1197,
+    "stage_times": {
+      "parse_s": 0.0118,
+      "rag_s": 0.0001,
+      "llm_s": 16.1078
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "llm_invoked": true,
+    "model": "gpt-4.1-mini",
+    "parse_error": false
+  },
+  {
+    "file": "DATACTR-OOBSW-04.txt",
+    "vendor": "cisco",
+    "group": "oob-server",
+    "approach": "B+",
+    "total_elapsed_s": 25.3673,
+    "stage_times": {
+      "parse_s": 0.0105,
+      "rag_s": 0.0001,
+      "llm_s": 25.3567
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "llm_invoked": true,
+    "model": "gpt-4.1-mini",
+    "parse_error": false
+  },
+  {
+    "file": "CAMPUS-ACCESS-SW03.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "approach": "B+",
+    "total_elapsed_s": 19.8511,
+    "stage_times": {
+      "parse_s": 0.0042,
+      "rag_s": 0.0,
+      "llm_s": 19.8469
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "llm_invoked": true,
+    "model": "gpt-4.1-mini",
+    "parse_error": false
+  },
+  {
+    "file": "CAMPUS-ACCESS-SW04.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "approach": "B+",
+    "total_elapsed_s": 35.5955,
+    "stage_times": {
+      "parse_s": 0.0036,
+      "rag_s": 0.0,
+      "llm_s": 35.5919
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "llm_invoked": true,
+    "model": "gpt-4.1-mini",
+    "parse_error": false
+  },
+  {
+    "file": "CAMPUS-DIST-SW01-original.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "approach": "B+",
+    "total_elapsed_s": 29.2898,
+    "stage_times": {
+      "parse_s": 0.0179,
+      "rag_s": 0.0,
+      "llm_s": 29.2719
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "llm_invoked": true,
+    "model": "gpt-4.1-mini",
+    "parse_error": false
+  },
+  {
+    "file": "CAMPUS-DIST-SW01.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "approach": "B+",
+    "total_elapsed_s": 28.8669,
+    "stage_times": {
+      "parse_s": 0.0052,
+      "rag_s": 0.0001,
+      "llm_s": 28.8616
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "llm_invoked": true,
+    "model": "gpt-4.1-mini",
+    "parse_error": false
+  },
+  {
+    "file": "CAMPUS-DIST-SW02.txt",
+    "vendor": "arista",
+    "group": "arista-distribution",
+    "approach": "B+",
+    "total_elapsed_s": 38.6121,
+    "stage_times": {
+      "parse_s": 0.0031,
+      "rag_s": 0.0,
+      "llm_s": 38.609
+    },
+    "schema_valid": true,
+    "semantic_valid": false,
+    "rules_fired": [
+      "121"
+    ],
+    "llm_invoked": true,
+    "model": "gpt-4.1-mini",
+    "parse_error": false
+  }
+]

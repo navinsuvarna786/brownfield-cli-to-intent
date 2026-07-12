@@ -1,0 +1,2083 @@
+{
+  "hostname": "DATACTR-OOBSW-EA01",
+  "domain_name": "campus.example.edu",
+  "system": {
+    "timezone": "CDT -6 0",
+    "spanning_tree": {
+      "mode": "rapid-pvst",
+      "extend_system_id": true
+    },
+    "errdisable_recovery": {
+      "causes": [
+        "udld",
+        "bpduguard",
+        "security-violation",
+        "channel-misconfig",
+        "pagp-flap",
+        "dtp-flap",
+        "link-flap",
+        "sfp-config-mismatch",
+        "gbic-invalid",
+        "l2ptguard",
+        "psecure-violation",
+        "port-mode-failure",
+        "dhcp-rate-limit",
+        "pppoe-ia-rate-limit",
+        "mac-limit",
+        "storm-control",
+        "inline-power",
+        "arp-inspection",
+        "link-monitor-failure",
+        "oam-remote-failure",
+        "loopback",
+        "psp"
+      ],
+      "interval": 100
+    },
+    "local_users": [
+      {
+        "username": "xxxxxxx",
+        "password_encrypted": true
+      }
+    ],
+    "banners": [
+      "Unauthorized use of this Campus Network Operations system may subject you to criminal prosecution or disciplinary action. Use of this system, authorized or unauthorized, constitutes consent to monitoring of this system."
+    ]
+  },
+  "management": {
+    "interfaces": [
+      {
+        "name": "GigabitEthernet0/0",
+        "vrf": "Mgmt-vrf",
+        "shutdown": true,
+        "negotiation": "auto"
+      }
+    ],
+    "vrfs": [
+      {
+        "name": "Mgmt-vrf"
+      }
+    ],
+    "http": {
+      "authentication": "aaa",
+      "client_proxy": {
+        "server": "192.0.2.1",
+        "port": 3128
+      }
+    },
+    "ssh": {
+      "version": 2
+    },
+    "logging": {
+      "hosts": [
+        "192.0.2.21",
+        "192.0.2.22",
+        "192.0.2.25",
+        "192.0.2.24"
+      ]
+    }
+  },
+  "vlans": [
+    {
+      "id": 230,
+      "name": "OOB_PDU_KVM"
+    },
+    {
+      "id": 236,
+      "name": "OOB-mgmt"
+    },
+    {
+      "id": 440
+    },
+    {
+      "id": 501
+    },
+    {
+      "id": 506
+    },
+    {
+      "id": 507
+    },
+    {
+      "id": 514
+    },
+    {
+      "id": 534
+    },
+    {
+      "id": 538
+    },
+    {
+      "id": 570
+    },
+    {
+      "id": 571
+    },
+    {
+      "id": 572
+    },
+    {
+      "id": 573
+    },
+    {
+      "id": 578
+    },
+    {
+      "id": 579
+    },
+    {
+      "id": 585
+    },
+    {
+      "id": 586
+    },
+    {
+      "id": 587
+    },
+    {
+      "id": 588
+    },
+    {
+      "id": 589
+    },
+    {
+      "id": 590
+    },
+    {
+      "id": 701
+    },
+    {
+      "id": 702
+    },
+    {
+      "id": 703
+    },
+    {
+      "id": 704
+    },
+    {
+      "id": 705
+    },
+    {
+      "id": 706
+    },
+    {
+      "id": 707
+    },
+    {
+      "id": 708
+    },
+    {
+      "id": 709
+    },
+    {
+      "id": 710
+    },
+    {
+      "id": 711
+    },
+    {
+      "id": 712,
+      "name": "OOBSVR-vlan-712"
+    },
+    {
+      "id": 713,
+      "name": "OOBSVR-vlan-713"
+    },
+    {
+      "id": 714,
+      "name": "OOBSVR-vlan-714"
+    },
+    {
+      "id": 715,
+      "name": "OOBSVR-vlan-715"
+    },
+    {
+      "id": 716,
+      "name": "OOBSVR-vlan-716"
+    },
+    {
+      "id": 717,
+      "name": "OOBSVR-vlan-717"
+    },
+    {
+      "id": 718,
+      "name": "OOBSVR-vlan-718"
+    },
+    {
+      "id": 719,
+      "name": "OOBSVR-vlan-719"
+    },
+    {
+      "id": 720,
+      "name": "OOBSVR-vlan-720"
+    },
+    {
+      "id": 721,
+      "name": "OOBSVR-vlan-721"
+    },
+    {
+      "id": 722,
+      "name": "OOBSVR-vlan-722"
+    },
+    {
+      "id": 723,
+      "name": "OOBSVR-vlan-723"
+    },
+    {
+      "id": 724,
+      "name": "OOBSVR-vlan-724"
+    },
+    {
+      "id": 725,
+      "name": "OOBSVR-vlan-725"
+    },
+    {
+      "id": 726,
+      "name": "OOBSVR-vlan-726"
+    },
+    {
+      "id": 727,
+      "name": "OOBSVR-vlan-727"
+    },
+    {
+      "id": 728,
+      "name": "OOBSVR-vlan-728"
+    },
+    {
+      "id": 729,
+      "name": "OOBSVR-vlan-729"
+    },
+    {
+      "id": 730,
+      "name": "OOBSVR-vlan-730"
+    },
+    {
+      "id": 731,
+      "name": "OOBSVR-vlan-731"
+    },
+    {
+      "id": 732,
+      "name": "OOBSVR-vlan-732"
+    },
+    {
+      "id": 733,
+      "name": "OOBSVR-vlan-733"
+    },
+    {
+      "id": 734,
+      "name": "OOBSVR-vlan-734"
+    },
+    {
+      "id": 735,
+      "name": "OOBSVR-vlan-735"
+    },
+    {
+      "id": 736
+    },
+    {
+      "id": 737
+    },
+    {
+      "id": 738
+    },
+    {
+      "id": 739
+    },
+    {
+      "id": 740,
+      "name": "OOBSVR-vlan-740"
+    },
+    {
+      "id": 741,
+      "name": "OOBSVR-vlan-741"
+    },
+    {
+      "id": 742,
+      "name": "OOBSVR-vlan-742"
+    },
+    {
+      "id": 743,
+      "name": "OOBSVR-vlan-743"
+    },
+    {
+      "id": 744,
+      "name": "OOBSVR-vlan-744"
+    },
+    {
+      "id": 745
+    },
+    {
+      "id": 746,
+      "name": "OOBSVR-vlan-746"
+    },
+    {
+      "id": 747,
+      "name": "OOBSVR-vlan-747"
+    },
+    {
+      "id": 748,
+      "name": "OOBSVR-vlan-748"
+    },
+    {
+      "id": 749
+    },
+    {
+      "id": 750,
+      "name": "OOBSVR-vlan-750"
+    },
+    {
+      "id": 752,
+      "name": "OOBSVR-vlan-752"
+    },
+    {
+      "id": 753,
+      "name": "OOBSVR-vlan-753"
+    },
+    {
+      "id": 754
+    },
+    {
+      "id": 755
+    },
+    {
+      "id": 756
+    },
+    {
+      "id": 1100,
+      "name": "OOBSVR-vlan-1100"
+    },
+    {
+      "id": 1102,
+      "name": "OOBSVR-vlan-1102"
+    },
+    {
+      "id": 1103,
+      "name": "OOBSVR-vlan-1103"
+    },
+    {
+      "id": 1104
+    },
+    {
+      "id": 1106
+    },
+    {
+      "id": 1107
+    },
+    {
+      "id": 1164,
+      "name": "OOBSVR-vlan-1164"
+    },
+    {
+      "id": 1165
+    },
+    {
+      "id": 3069,
+      "name": "Native"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "Mgmt-vrf"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "Port-channel1"
+    },
+    {
+      "name": "GigabitEthernet0/0",
+      "vrf": "Mgmt-vrf",
+      "shutdown": true,
+      "negotiation": "auto"
+    },
+    {
+      "name": "GigabitEthernet1/0/1",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "access_vlan": 717,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "access_vlan": 717,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "access_vlan": 717,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "description": "SWLXRASPODDEV2",
+      "switchport_mode": "access",
+      "access_vlan": 724,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "description": "SWLXAISGPCDBP1",
+      "switchport_mode": "access",
+      "access_vlan": 704,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "description": "SWLXAISOSDEV1",
+      "switchport_mode": "access",
+      "access_vlan": 712,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "description": "SWLXAISOSPROD1",
+      "switchport_mode": "access",
+      "access_vlan": 712,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "description": "swlxfocusdbqa1",
+      "switchport_mode": "access",
+      "access_vlan": 714,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "description": "SWLXEXAPGWAIS",
+      "switchport_mode": "access",
+      "access_vlan": 573,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/11",
+      "description": "SWLXCATDB1",
+      "switchport_mode": "access",
+      "access_vlan": 717,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/12",
+      "description": "CATISSUEDEV",
+      "switchport_mode": "access",
+      "access_vlan": 717,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/13",
+      "description": "SWMSRASRCDEV2",
+      "switchport_mode": "access",
+      "access_vlan": 722,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/14",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/15",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/16",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/17",
+      "description": "SWLXSPLNKIDX1",
+      "switchport_mode": "access",
+      "access_vlan": 717,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/18",
+      "description": "SWLXSPLNKLOG204D5",
+      "switchport_mode": "access",
+      "access_vlan": 714,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/19",
+      "description": "SWLXSPLNK4",
+      "switchport_mode": "access",
+      "access_vlan": 717,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/20",
+      "description": "SWTSM",
+      "switchport_mode": "access",
+      "access_vlan": 712,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/21",
+      "description": "SWTSM",
+      "switchport_mode": "access",
+      "access_vlan": 712,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/22",
+      "description": "SWLXSMTP2",
+      "switchport_mode": "access",
+      "access_vlan": 703,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/23",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "access_vlan": 714,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/24",
+      "description": "SWLX143",
+      "switchport_mode": "access",
+      "access_vlan": 709,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/25",
+      "description": "SWLXSPLNKIDX5",
+      "switchport_mode": "access",
+      "access_vlan": 714,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/26",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/27",
+      "description": "SWLXSPLNK5",
+      "switchport_mode": "access",
+      "access_vlan": 712,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/28",
+      "description": "SWLX12",
+      "switchport_mode": "access",
+      "access_vlan": 704,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/29",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/30",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/31",
+      "description": "swmsdc03",
+      "switchport_mode": "access",
+      "access_vlan": 712,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/32",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "access_vlan": 704,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/33",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/34",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/35",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/36",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/37",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/38",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/39",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/40",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/41",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/42",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/43",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/44",
+      "description": "OOBSVR",
+      "switchport_mode": "access",
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/45",
+      "description": "KVM_OR_PDU",
+      "switchport_mode": "access",
+      "access_vlan": 230,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/46",
+      "description": "KVM_OR_PDU",
+      "switchport_mode": "access",
+      "access_vlan": 230,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/47",
+      "description": "KVM_OR_PDU",
+      "switchport_mode": "access",
+      "access_vlan": 230,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/48",
+      "description": "KVM_OR_PDU",
+      "switchport_mode": "access",
+      "access_vlan": 230,
+      "spanning_tree": {
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/1/3",
+      "description": "DATACTR-OOBSW-EA01 Gi1/1/4",
+      "switchport_mode": "trunk",
+      "native_vlan": 3069,
+      "allowed_vlans": [
+        230,
+        236,
+        440,
+        501,
+        506,
+        507,
+        514,
+        534,
+        538,
+        570,
+        571,
+        572,
+        573,
+        578,
+        579,
+        585,
+        586,
+        587,
+        588,
+        589,
+        590,
+        712,
+        713,
+        714,
+        715,
+        716,
+        717,
+        718,
+        719,
+        720,
+        721,
+        722,
+        723,
+        724,
+        725,
+        726,
+        727,
+        728,
+        729,
+        730,
+        731,
+        732,
+        733,
+        734,
+        735,
+        740,
+        741,
+        742,
+        743,
+        744,
+        746,
+        747,
+        748,
+        750,
+        752,
+        753,
+        1100,
+        1102,
+        1103,
+        1104,
+        1106,
+        1107,
+        1164,
+        1165,
+        3069
+      ],
+      "udld": true
+    },
+    {
+      "name": "GigabitEthernet1/1/4",
+      "description": "DATACTR-OOBSW-EA01 Gi1/1/3",
+      "switchport_mode": "trunk",
+      "native_vlan": 3069,
+      "allowed_vlans": [
+        230,
+        236,
+        440,
+        501,
+        506,
+        507,
+        514,
+        534,
+        538,
+        570,
+        571,
+        572,
+        573,
+        578,
+        579,
+        585,
+        586,
+        587,
+        588,
+        589,
+        590,
+        712,
+        713,
+        714,
+        715,
+        716,
+        717,
+        718,
+        719,
+        720,
+        721,
+        722,
+        723,
+        724,
+        725,
+        726,
+        727,
+        728,
+        729,
+        730,
+        731,
+        732,
+        733,
+        734,
+        735,
+        740,
+        741,
+        742,
+        743,
+        744,
+        746,
+        747,
+        748,
+        750,
+        752,
+        753,
+        1100,
+        1102,
+        1103,
+        1104,
+        1106,
+        1107,
+        1164,
+        1165,
+        3069
+      ],
+      "udld": true
+    },
+    {
+      "name": "TenGigabitEthernet1/1/3",
+      "description": "DATACTR-OOBSW-EA01 Gi1/1/4",
+      "switchport_mode": "trunk",
+      "native_vlan": 3069,
+      "allowed_vlans": [
+        230,
+        236,
+        440,
+        501,
+        506,
+        507,
+        514,
+        534,
+        538,
+        570,
+        571,
+        572,
+        573,
+        578,
+        579,
+        585,
+        586,
+        587,
+        588,
+        589,
+        590,
+        701,
+        702,
+        703,
+        704,
+        705,
+        706,
+        707,
+        708,
+        709,
+        710,
+        711,
+        712,
+        713,
+        714,
+        715,
+        716,
+        717,
+        718,
+        719,
+        720,
+        721,
+        722,
+        723,
+        724,
+        725,
+        726,
+        727,
+        728,
+        729,
+        730,
+        731,
+        732,
+        733,
+        734,
+        735,
+        736,
+        737,
+        738,
+        739,
+        740,
+        741,
+        742,
+        743,
+        744,
+        746,
+        747,
+        748,
+        750,
+        752,
+        753,
+        754,
+        755,
+        756,
+        1100,
+        1102,
+        1103,
+        1104,
+        1106,
+        1107,
+        1164,
+        1165,
+        3069
+      ],
+      "udld": true
+    },
+    {
+      "name": "TenGigabitEthernet1/1/4",
+      "description": "DATACTR-OOBSW-EA01 Gi1/1/3",
+      "switchport_mode": "trunk",
+      "native_vlan": 3069,
+      "allowed_vlans": [
+        230,
+        236,
+        440,
+        501,
+        506,
+        507,
+        514,
+        534,
+        538,
+        570,
+        571,
+        572,
+        573,
+        578,
+        579,
+        585,
+        586,
+        587,
+        588,
+        589,
+        590,
+        701,
+        702,
+        703,
+        704,
+        705,
+        706,
+        707,
+        708,
+        709,
+        710,
+        711,
+        712,
+        713,
+        714,
+        715,
+        716,
+        717,
+        718,
+        719,
+        720,
+        721,
+        722,
+        723,
+        724,
+        725,
+        726,
+        727,
+        728,
+        729,
+        730,
+        731,
+        732,
+        733,
+        734,
+        735,
+        736,
+        737,
+        738,
+        739,
+        740,
+        741,
+        742,
+        743,
+        744,
+        746,
+        747,
+        748,
+        750,
+        752,
+        753,
+        754,
+        755,
+        756,
+        1100,
+        1102,
+        1103,
+        1104,
+        1106,
+        1107,
+        1164,
+        1165,
+        3069
+      ],
+      "udld": true
+    },
+    {
+      "name": "Vlan1",
+      "shutdown": true
+    },
+    {
+      "name": "Vlan236",
+      "ip_address": "192.0.2.143",
+      "ip_mask": "255.255.255.0",
+      "no_ip_redirects": true
+    }
+  ],
+  "routes": [
+    {
+      "type": "static",
+      "destination": "0.0.0.0/0",
+      "next_hop": "192.0.2.254"
+    }
+  ],
+  "snmp": {
+    "communities": [
+      {
+        "name": "xxxxxxxx",
+        "access": "RO",
+        "acl": "13"
+      }
+    ],
+    "location": "DATACTR-OOBSW-EA01",
+    "contact": "NOC",
+    "chassis_id": "DATACTR-OOBSW-EA01",
+    "hosts": [
+      {
+        "ip": "192.0.2.24",
+        "version": "2c",
+        "community": "xxxxxxxx"
+      }
+    ]
+  },
+  "acls": [
+    {
+      "name": "13",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.11",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "192.0.2.25",
+          "log": false
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "192.0.2.0 0.0.0.255",
+          "log": false
+        }
+      ]
+    },
+    {
+      "name": "111",
+      "type": "extended",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "protocol": "ip",
+          "source": "192.0.2.0 0.0.0.255",
+          "destination": "any",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "protocol": "ip",
+          "source": "192.0.2.192 0.0.0.127",
+          "destination": "any",
+          "log": false
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "protocol": "ip",
+          "source": "host 192.0.2.11",
+          "destination": "any",
+          "log": false
+        },
+        {
+          "sequence": 40,
+          "action": "permit",
+          "protocol": "ip",
+          "source": "host 192.0.2.25",
+          "destination": "any",
+          "log": false
+        },
+        {
+          "sequence": 50,
+          "action": "permit",
+          "protocol": "ip",
+          "source": "host 192.0.2.51",
+          "destination": "any",
+          "log": false
+        },
+        {
+          "sequence": 60,
+          "action": "permit",
+          "protocol": "ip",
+          "source": "host 192.0.2.53",
+          "destination": "any",
+          "log": false
+        },
+        {
+          "sequence": 70,
+          "action": "permit",
+          "protocol": "ip",
+          "source": "host 192.0.2.54",
+          "destination": "any",
+          "log": false
+        },
+        {
+          "sequence": 80,
+          "action": "permit",
+          "protocol": "ip",
+          "source": "host 192.0.2.55",
+          "destination": "any",
+          "log": false
+        },
+        {
+          "sequence": 90,
+          "action": "permit",
+          "protocol": "ip",
+          "source": "host 192.0.2.52",
+          "destination": "any",
+          "log": false
+        }
+      ]
+    }
+  ],
+  "aaa": {
+    "enabled": true,
+    "authentication": {
+      "login_default": [
+        "local",
+        "group tacacs+",
+        "enable"
+      ]
+    },
+    "session_id": "common",
+    "tacacs_servers": [
+      {
+        "name": "tacacs-svr-01",
+        "ip": "192.0.2.11",
+        "key_encrypted": true,
+        "timeout": 3
+      },
+      {
+        "name": "tacacs-svr-02",
+        "ip": "192.0.2.12",
+        "key_encrypted": true,
+        "timeout": 3
+      }
+    ]
+  },
+  "logging": {
+    "hosts": [
+      "192.0.2.21",
+      "192.0.2.22",
+      "192.0.2.25",
+      "192.0.2.24"
+    ]
+  },
+  "ntp": {
+    "servers": [
+      {
+        "ip": "192.0.2.11",
+        "prefer": true
+      },
+      {
+        "ip": "192.0.2.12"
+      }
+    ]
+  },
+  "dns_servers": [],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "switches": [
+      {
+        "switch_number": 1,
+        "model": "15"
+      }
+    ],
+    "master_switch": 1
+  },
+  "access_interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "switch": 1,
+      "module": 0,
+      "port": 1,
+      "config": {
+        "description": "OOBSVR",
+        "access_vlan": 717,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "switch": 1,
+      "module": 0,
+      "port": 2,
+      "config": {
+        "description": "OOBSVR",
+        "access_vlan": 717,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "switch": 1,
+      "module": 0,
+      "port": 3,
+      "config": {
+        "description": "OOBSVR",
+        "access_vlan": 717,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "switch": 1,
+      "module": 0,
+      "port": 4,
+      "config": {
+        "description": "SWLXRASPODDEV2",
+        "access_vlan": 724,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "switch": 1,
+      "module": 0,
+      "port": 5,
+      "config": {
+        "description": "SWLXAISGPCDBP1",
+        "access_vlan": 704,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "switch": 1,
+      "module": 0,
+      "port": 6,
+      "config": {
+        "description": "SWLXAISOSDEV1",
+        "access_vlan": 712,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "switch": 1,
+      "module": 0,
+      "port": 7,
+      "config": {
+        "description": "SWLXAISOSPROD1",
+        "access_vlan": 712,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "switch": 1,
+      "module": 0,
+      "port": 8,
+      "config": {
+        "description": "swlxfocusdbqa1",
+        "access_vlan": 714,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "switch": 1,
+      "module": 0,
+      "port": 9,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "switch": 1,
+      "module": 0,
+      "port": 10,
+      "config": {
+        "description": "SWLXEXAPGWAIS",
+        "access_vlan": 573,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/11",
+      "switch": 1,
+      "module": 0,
+      "port": 11,
+      "config": {
+        "description": "SWLXCATDB1",
+        "access_vlan": 717,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/12",
+      "switch": 1,
+      "module": 0,
+      "port": 12,
+      "config": {
+        "description": "CATISSUEDEV",
+        "access_vlan": 717,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/13",
+      "switch": 1,
+      "module": 0,
+      "port": 13,
+      "config": {
+        "description": "SWMSRASRCDEV2",
+        "access_vlan": 722,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/14",
+      "switch": 1,
+      "module": 0,
+      "port": 14,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/15",
+      "switch": 1,
+      "module": 0,
+      "port": 15,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/16",
+      "switch": 1,
+      "module": 0,
+      "port": 16,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/17",
+      "switch": 1,
+      "module": 0,
+      "port": 17,
+      "config": {
+        "description": "SWLXSPLNKIDX1",
+        "access_vlan": 717,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/18",
+      "switch": 1,
+      "module": 0,
+      "port": 18,
+      "config": {
+        "description": "SWLXSPLNKLOG204D5",
+        "access_vlan": 714,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/19",
+      "switch": 1,
+      "module": 0,
+      "port": 19,
+      "config": {
+        "description": "SWLXSPLNK4",
+        "access_vlan": 717,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/20",
+      "switch": 1,
+      "module": 0,
+      "port": 20,
+      "config": {
+        "description": "SWTSM",
+        "access_vlan": 712,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/21",
+      "switch": 1,
+      "module": 0,
+      "port": 21,
+      "config": {
+        "description": "SWTSM",
+        "access_vlan": 712,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/22",
+      "switch": 1,
+      "module": 0,
+      "port": 22,
+      "config": {
+        "description": "SWLXSMTP2",
+        "access_vlan": 703,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/23",
+      "switch": 1,
+      "module": 0,
+      "port": 23,
+      "config": {
+        "description": "OOBSVR",
+        "access_vlan": 714,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/24",
+      "switch": 1,
+      "module": 0,
+      "port": 24,
+      "config": {
+        "description": "SWLX143",
+        "access_vlan": 709,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/25",
+      "switch": 1,
+      "module": 0,
+      "port": 25,
+      "config": {
+        "description": "SWLXSPLNKIDX5",
+        "access_vlan": 714,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/26",
+      "switch": 1,
+      "module": 0,
+      "port": 26,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/27",
+      "switch": 1,
+      "module": 0,
+      "port": 27,
+      "config": {
+        "description": "SWLXSPLNK5",
+        "access_vlan": 712,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/28",
+      "switch": 1,
+      "module": 0,
+      "port": 28,
+      "config": {
+        "description": "SWLX12",
+        "access_vlan": 704,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/29",
+      "switch": 1,
+      "module": 0,
+      "port": 29,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/30",
+      "switch": 1,
+      "module": 0,
+      "port": 30,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/31",
+      "switch": 1,
+      "module": 0,
+      "port": 31,
+      "config": {
+        "description": "swmsdc03",
+        "access_vlan": 712,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/32",
+      "switch": 1,
+      "module": 0,
+      "port": 32,
+      "config": {
+        "description": "OOBSVR",
+        "access_vlan": 704,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/33",
+      "switch": 1,
+      "module": 0,
+      "port": 33,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/34",
+      "switch": 1,
+      "module": 0,
+      "port": 34,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/35",
+      "switch": 1,
+      "module": 0,
+      "port": 35,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/36",
+      "switch": 1,
+      "module": 0,
+      "port": 36,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/37",
+      "switch": 1,
+      "module": 0,
+      "port": 37,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/38",
+      "switch": 1,
+      "module": 0,
+      "port": 38,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/39",
+      "switch": 1,
+      "module": 0,
+      "port": 39,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/40",
+      "switch": 1,
+      "module": 0,
+      "port": 40,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/41",
+      "switch": 1,
+      "module": 0,
+      "port": 41,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/42",
+      "switch": 1,
+      "module": 0,
+      "port": 42,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/43",
+      "switch": 1,
+      "module": 0,
+      "port": 43,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/44",
+      "switch": 1,
+      "module": 0,
+      "port": 44,
+      "config": {
+        "description": "OOBSVR",
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/45",
+      "switch": 1,
+      "module": 0,
+      "port": 45,
+      "config": {
+        "description": "KVM_OR_PDU",
+        "access_vlan": 230,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/46",
+      "switch": 1,
+      "module": 0,
+      "port": 46,
+      "config": {
+        "description": "KVM_OR_PDU",
+        "access_vlan": 230,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/47",
+      "switch": 1,
+      "module": 0,
+      "port": 47,
+      "config": {
+        "description": "KVM_OR_PDU",
+        "access_vlan": 230,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    },
+    {
+      "name": "GigabitEthernet1/0/48",
+      "switch": 1,
+      "module": 0,
+      "port": 48,
+      "config": {
+        "description": "KVM_OR_PDU",
+        "access_vlan": 230,
+        "shutdown": false,
+        "portfast": true,
+        "bpduguard": true
+      }
+    }
+  ],
+  "uplinks": [
+    {
+      "type": "trunk",
+      "name": "TenGigabitEthernet1/1/1",
+      "description": "DISCOVERED-UPLINK-1",
+      "allowed_vlans": [
+        230,
+        236,
+        440,
+        501,
+        506,
+        507,
+        514,
+        534,
+        538,
+        570,
+        571,
+        572,
+        573,
+        578
+      ],
+      "native_vlan": 3069
+    },
+    {
+      "type": "trunk",
+      "name": "TenGigabitEthernet1/1/2",
+      "description": "DISCOVERED-UPLINK-2",
+      "allowed_vlans": [
+        230,
+        236,
+        440,
+        501,
+        506,
+        507,
+        514,
+        534,
+        538,
+        570,
+        571,
+        572,
+        573,
+        578
+      ],
+      "native_vlan": 3069
+    }
+  ],
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": [
+      {
+        "name": "tacacs-svr-01",
+        "ip": "192.0.2.11",
+        "key": "need_input"
+      },
+      {
+        "name": "tacacs-svr-02",
+        "ip": "192.0.2.12",
+        "key": "need_input"
+      }
+    ]
+  },
+  "snmp_config": {
+    "community_ro": "xxxxxxxx",
+    "acl_ro": "13",
+    "location": "DATACTR-OOBSW-EA01",
+    "contact": "NOC",
+    "chassis_id": "DATACTR-OOBSW-EA01",
+    "enable_traps": true
+  },
+  "local_users": [
+    {
+      "name": "xxxxxxxx",
+      "password": "need_input"
+    }
+  ],
+  "logging_hosts": [
+    "192.0.2.21",
+    "192.0.2.22",
+    "192.0.2.25",
+    "192.0.2.24"
+  ],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": {
+    "name": "Mgmt-vrf",
+    "rd": "",
+    "rt_export": "",
+    "rt_import": ""
+  }
+}

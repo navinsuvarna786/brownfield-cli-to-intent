@@ -1,0 +1,168 @@
+# Ground truth — NX-OS LLM fallback evaluation
+# Source: input/sanitized/nxos/CAMPUS-NX-ACCESS02.txt
+# Role: access-nac | Platform: NX-OS 10.3(3)F | Stack: 1 | 802.1X enabled
+# REVIEW: every field verified against raw CLI source
+---
+hostname: CAMPUS-NX-ACCESS02
+domain_name: campus.example.edu
+stp_mode: rapid-pvst
+dns_servers:
+- 192.0.2.15
+- 192.0.2.16
+ntp_servers:
+- 192.0.2.11|prefer
+- 192.0.2.12
+logging_hosts:
+- 192.0.2.17
+errdisable_config:
+  causes:
+  - dot1x
+  - bpduguard
+  recovery_interval: 300
+stack_info:
+  is_stack: false
+  member_count: 1
+  switches:
+  - - 1
+    - 24
+  master_switch: 1
+pnp_config:
+  pnp_vlan_id: 900
+  pnp_vlan_name: MGMT
+  pnp_vlan_network_add: 192.0.2.122
+  pnp_vlan_network_mask: 255.255.255.0
+  pnp_vlan_default_gateway: 192.0.2.254
+vlans:
+- id: 10
+  name: DATA
+- id: 20
+  name: VOICE
+- id: 40
+  name: IOT
+- id: 900
+  name: MGMT
+acls:
+- name: SNMP-ALLOWED
+  type: standard
+  entries:
+  - action: permit
+    source: 192.0.2.11
+    log: false
+    sequence: 10
+  - action: permit
+    source: 192.0.2.12
+    log: false
+    sequence: 20
+  - action: permit
+    source: 192.0.2.0 0.0.0.255
+    log: false
+    sequence: 30
+  - action: deny
+    source: any
+    log: false
+    sequence: 40
+  is_numbered: false
+uplinks:
+- type: trunk
+  name: Ethernet1/47
+  description: UPLINK-DIST-01
+  allowed_vlans:
+  - 10
+  - 20
+  - 40
+  - 900
+  native_vlan: 1
+- type: trunk
+  name: Ethernet1/48
+  description: UPLINK-DIST-02
+  allowed_vlans:
+  - 10
+  - 20
+  - 40
+  - 900
+  native_vlan: 1
+snmp_config:
+  community_ro: xxxxxxxx
+  acl_ro: SNMP-ALLOWED
+  location: Campus-Building-B Floor-2
+  contact: NOC-555-0100
+  chassis_id: CAMPUS-NX-ACCESS02
+  enable_traps: true
+aaa_config:
+  aaa_enabled: true
+  tacacs_group_name: TACACS_GROUP
+  tacacs_servers:
+  - name: tacacs-svr-01
+    ip: 192.0.2.11
+    key: need_input
+  - name: tacacs-svr-02
+    ip: 192.0.2.12
+    key: need_input
+  radius_servers:
+  - name: radius-svr-01
+    ip: 192.0.2.13
+    key: need_input
+    auth_port: 1812
+    acct_port: 1813
+  - name: radius-svr-02
+    ip: 192.0.2.14
+    key: need_input
+    auth_port: 1812
+    acct_port: 1813
+  radius_group_name: RADIUS_GROUP
+  dot1x_enabled: true
+banners:
+  login: "Authorized access only — campus.example.edu. All sessions are recorded."
+access_interfaces:
+- name: Ethernet1/1
+  config:
+    description: USER-PORT-101
+    access_vlan: 10
+    voice_vlan: 20
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    nac_enable: true
+    dot1x: true
+    storm_control_broadcast: 20.00 10.00
+    storm_control_multicast: 20.00 10.00
+- name: Ethernet1/2
+  config:
+    description: USER-PORT-102
+    access_vlan: 10
+    voice_vlan: 20
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    nac_enable: true
+    dot1x: true
+    storm_control_broadcast: 20.00 10.00
+    storm_control_multicast: 20.00 10.00
+- name: Ethernet1/3
+  config:
+    description: USER-PORT-103
+    access_vlan: 10
+    voice_vlan: 20
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    nac_enable: true
+    dot1x: true
+    storm_control_broadcast: 20.00 10.00
+    storm_control_multicast: 20.00 10.00
+- name: Ethernet1/4
+  config:
+    description: IOT-DEVICE-PORT
+    access_vlan: 40
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 5.00 2.00
+- name: Ethernet1/5
+  config:
+    description: IOT-DEVICE-PORT
+    access_vlan: 40
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 5.00 2.00

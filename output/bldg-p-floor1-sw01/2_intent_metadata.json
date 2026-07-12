@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces_bulk",
+    "confidence": 0.95,
+    "reason": "Identical config for multiple interfaces expanded from comment"
+  },
+  {
+    "field": "stack",
+    "confidence": 0.99,
+    "reason": "Legacy parser stack info matches config"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "No tacacs servers configured, only local auth"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.95,
+    "reason": "Communities and hosts extracted from config and legacy parser"
+  },
+  {
+    "field": "vlans",
+    "confidence": 0.99,
+    "reason": "All VLANs with IDs and names extracted from config and legacy parser"
+  }
+]

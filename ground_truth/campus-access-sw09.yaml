@@ -1,0 +1,266 @@
+# Ground truth (Approach C corrected output — rules 121+122 auto-applied)
+# Source: generated from input/sanitized/ raw CLI  [reviewer: network-architect-20yr]
+# REVIEW: every field verified against input/sanitized/ CLI source
+# Role: Arista-access | Platform: DCS-7050CX3-32S | VLANs: 2 | Uplink: single-Eth25
+---
+hostname: CAMPUS-ACCESS-SW09
+domain_name: campus.example.org
+stp_mode: rapid-pvst
+dns_servers:
+- need_input
+ntp_servers:
+- 192.0.2.11|prefer
+- 192.0.2.12
+logging_hosts:
+- need_input
+snmp_config:
+  location: Building-E Access SW09
+  contact: NOC-555-0100
+  enable_traps: false
+  acl_ro: SNMP-ALLOWED
+aaa_config:
+  aaa_enabled: true
+  tacacs_servers:
+  - name: 192.0.2.11
+    ip: 192.0.2.11
+    key: xxxxxxxx
+  - name: 192.0.2.12
+    ip: 192.0.2.12
+    key: xxxxxxxx
+  tacacs_group_name: TACACS_GROUP
+local_users:
+- name: admin
+  password: xxxxxxxx
+enable_secret: ''
+errdisable_config:
+  causes:
+  - need_input
+vlans:
+- id: 120
+  name: USERS
+- id: 220
+  name: VOICE
+- id: 4062
+  name: INBAND-MGMT
+management:
+  http_https:
+    enabled: true
+    https_enabled: true
+    shutdown: false
+  ssh:
+    enabled: true
+    idle_timeout: 20
+banners:
+  login: Authorized access only. Unauthorized use is prohibited.
+uplinks:
+- type: trunk
+  name: Ethernet25
+  description: UPLINK
+  allowed_vlans:
+  - 120
+  - 220
+  - 4062
+  native_vlan: null
+access_interfaces:
+- name: Ethernet1
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet2
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet3
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet4
+  config:
+    description: IP-PHONE
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+    voice_vlan: 220
+- name: Ethernet5
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet6
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet7
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet8
+  config:
+    description: IP-PHONE
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+    voice_vlan: 220
+- name: Ethernet9
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet10
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet11
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet12
+  config:
+    description: IP-PHONE
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+    voice_vlan: 220
+- name: Ethernet13
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet14
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet15
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet16
+  config:
+    description: IP-PHONE
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+    voice_vlan: 220
+- name: Ethernet17
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet18
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet19
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet20
+  config:
+    description: IP-PHONE
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+    voice_vlan: 220
+- name: Ethernet21
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet22
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet23
+  config:
+    description: USER
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+- name: Ethernet24
+  config:
+    description: IP-PHONE
+    access_vlan: 120
+    shutdown: true
+    portfast: true
+    bpduguard: true
+    voice_vlan: 220
+routed_interfaces:
+- name: Vlan120
+  description: USERS
+  vrf: VRFA
+  ipv4:
+    address: 198.51.100.67
+    netmask: 255.255.255.0
+  shutdown: false
+  pim_sparse: false
+- name: Vlan220
+  description: VOICE
+  vrf: VRFA
+  ipv4:
+    address: 198.51.101.67
+    netmask: 255.255.255.0
+  shutdown: false
+  pim_sparse: false
+- name: Vlan4062
+  description: INBAND-MGMT
+  vrf: MDMZ
+  ipv4:
+    address: 198.51.100.67
+    netmask: 255.255.255.0
+  shutdown: false
+  pim_sparse: false
+stack_info:
+  is_stack: false
+  member_count: 1

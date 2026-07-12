@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Explicit config and legacy parser match for all interfaces including identical config expansions"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "Complete AAA groups and servers parsed from config and legacy data"
+  },
+  {
+    "field": "vlans",
+    "confidence": 0.99,
+    "reason": "All VLANs explicitly defined in config and confirmed by legacy parser"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.9,
+    "reason": "SNMP communities, location, contact, chassis-id and hosts fully extracted"
+  },
+  {
+    "field": "stack_info",
+    "confidence": 0.95,
+    "reason": "Stack info from legacy parser matches switch provisioning commands"
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "config": "STRESS-AUTOCORRECT-SW01",
+  "vendor_tag": "cisco",
+  "hostname_extracted": "STRESS-AUTOCORRECT-SW01",
+  "routing_path": [
+    "Legacy Parser",
+    "Cisco Mapper",
+    "Intent Mapper",
+    "Schema Normalizer",
+    "Validator",
+    "Generator"
+  ],
+  "validator_iterations": 1,
+  "auto_corrections": [
+    "rule121: ntp_servers=['need_input']",
+    "rule121: dns_servers=['need_input']",
+    "rule121: stp_mode='need_input'",
+    "rule121: errdisable_config.causes=['need_input']"
+  ],
+  "outcome": "passed_first_try",
+  "valid": true,
+  "validation_score": 1.0,
+  "issues_flagged": [],
+  "latency_ms": 13790,
+  "error": null
+}

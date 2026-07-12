@@ -1,0 +1,522 @@
+{
+  "hostname": "CAMPUS-DIST-SW01",
+  "domain_name": "campus.example.org",
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "pnp_config": {
+    "pnp_vlan_id": 1,
+    "pnp_vlan_name": "default",
+    "pnp_vlan_network_add": "need_input",
+    "pnp_vlan_network_mask": "need_input",
+    "pnp_vlan_default_gateway": "need_input"
+  },
+  "vlans": [
+    {
+      "id": 100,
+      "name": "VRFA_USER"
+    },
+    {
+      "id": 110,
+      "name": "VRFA_VEEDEROOT"
+    },
+    {
+      "id": 130,
+      "name": "VRFA_PRINTER"
+    },
+    {
+      "id": 150,
+      "name": "VRFE_SECURITY_CAMERA"
+    },
+    {
+      "id": 210,
+      "name": "VRFA_ISTAR"
+    },
+    {
+      "id": 230,
+      "name": "VRFA_CITYTIME"
+    },
+    {
+      "id": 777,
+      "name": "VRFA_WIRELESS"
+    },
+    {
+      "id": 3000,
+      "name": "MDMZ_MGMT_UPS"
+    },
+    {
+      "id": 4060,
+      "name": "MDMZ_INBAND_MGMT"
+    },
+    {
+      "id": 4085,
+      "name": "MLAG_L3_VRF_VRFA"
+    },
+    {
+      "id": 4086,
+      "name": "MLAG_L3_VRF_VRFB"
+    },
+    {
+      "id": 4087,
+      "name": "MLAG_L3_VRF_VRFC"
+    },
+    {
+      "id": 4088,
+      "name": "MLAG_L3_VRF_VRFD"
+    },
+    {
+      "id": 4089,
+      "name": "MLAG_L3_VRF_VRFE"
+    },
+    {
+      "id": 4090,
+      "name": "MLAG_L3_VRF_VRFM"
+    },
+    {
+      "id": 4091,
+      "name": "MLAG_L3_VRF_VRFT"
+    },
+    {
+      "id": 4092,
+      "name": "MLAG_L3_VRF_MDMZ"
+    },
+    {
+      "id": 4094,
+      "name": "MLAG"
+    }
+  ],
+  "acls": [
+    {
+      "name": "API-ACCESS",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "host 198.51.100.11",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "host 198.51.100.12",
+          "log": false
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "host 198.51.100.13",
+          "log": false
+        },
+        {
+          "sequence": 40,
+          "action": "permit",
+          "source": "host 192.0.2.34",
+          "log": false
+        },
+        {
+          "sequence": 50,
+          "action": "permit",
+          "source": "host 192.0.2.35",
+          "log": false
+        },
+        {
+          "sequence": 60,
+          "action": "permit",
+          "source": "host 192.0.2.36",
+          "log": false
+        },
+        {
+          "sequence": 1000,
+          "action": "deny",
+          "source": "any",
+          "log": false
+        }
+      ]
+    },
+    {
+      "name": "SNMP-ALLOWED",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "host 192.0.2.37",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "host 192.0.2.38",
+          "log": false
+        },
+        {
+          "sequence": 30,
+          "action": "permit",
+          "source": "host 198.51.100.20",
+          "log": false
+        },
+        {
+          "sequence": 40,
+          "action": "permit",
+          "source": "host 198.51.100.21",
+          "log": false
+        },
+        {
+          "sequence": 50,
+          "action": "permit",
+          "source": "host 192.0.2.39",
+          "log": false
+        },
+        {
+          "sequence": 60,
+          "action": "permit",
+          "source": "host 192.0.2.40",
+          "log": false
+        },
+        {
+          "sequence": 70,
+          "action": "permit",
+          "source": "host 192.0.2.41",
+          "log": false
+        },
+        {
+          "sequence": 80,
+          "action": "permit",
+          "source": "host 198.51.100.21",
+          "log": false
+        },
+        {
+          "sequence": 90,
+          "action": "permit",
+          "source": "host 192.168.114.80",
+          "log": false
+        },
+        {
+          "sequence": 100,
+          "action": "permit",
+          "source": "host 192.168.114.64",
+          "log": false
+        },
+        {
+          "sequence": 110,
+          "action": "permit",
+          "source": "host 192.0.2.42",
+          "log": false
+        },
+        {
+          "sequence": 120,
+          "action": "permit",
+          "source": "host 198.51.100.11",
+          "log": false
+        },
+        {
+          "sequence": 130,
+          "action": "permit",
+          "source": "host 198.51.100.12",
+          "log": false
+        },
+        {
+          "sequence": 140,
+          "action": "permit",
+          "source": "host 198.51.100.13",
+          "log": false
+        },
+        {
+          "sequence": 210,
+          "action": "permit",
+          "source": "host 192.168.79.3",
+          "log": false
+        },
+        {
+          "sequence": 220,
+          "action": "permit",
+          "source": "host 192.168.87.3",
+          "log": false
+        },
+        {
+          "sequence": 230,
+          "action": "permit",
+          "source": "host 192.168.95.3",
+          "log": false
+        },
+        {
+          "sequence": 240,
+          "action": "permit",
+          "source": "host 192.168.71.3",
+          "log": false
+        },
+        {
+          "sequence": 250,
+          "action": "permit",
+          "source": "host 192.0.2.43",
+          "log": false
+        },
+        {
+          "sequence": 260,
+          "action": "permit",
+          "source": "host 192.0.2.44",
+          "log": false
+        },
+        {
+          "sequence": 270,
+          "action": "permit",
+          "source": "host 192.0.2.45",
+          "log": false
+        },
+        {
+          "sequence": 280,
+          "action": "permit",
+          "source": "host 192.0.2.46",
+          "log": false
+        },
+        {
+          "sequence": 290,
+          "action": "permit",
+          "source": "host 192.0.2.47",
+          "log": false
+        },
+        {
+          "sequence": 300,
+          "action": "permit",
+          "source": "host 192.0.2.48",
+          "log": false
+        },
+        {
+          "sequence": 310,
+          "action": "permit",
+          "source": "host 192.0.2.49",
+          "log": false
+        },
+        {
+          "sequence": 320,
+          "action": "permit",
+          "source": "host 192.0.2.50",
+          "log": false
+        },
+        {
+          "sequence": 330,
+          "action": "permit",
+          "source": "host 192.0.2.51",
+          "log": false
+        },
+        {
+          "sequence": 340,
+          "action": "permit",
+          "source": "host 192.0.2.52",
+          "log": false
+        },
+        {
+          "sequence": 350,
+          "action": "permit",
+          "source": "host 192.0.2.53",
+          "log": false
+        },
+        {
+          "sequence": 360,
+          "action": "permit",
+          "source": "host 192.0.2.54",
+          "log": false
+        },
+        {
+          "sequence": 1000,
+          "action": "deny",
+          "source": "any",
+          "log": true
+        }
+      ]
+    },
+    {
+      "name": "SSH-ACCESS",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "192.0.2.55/24",
+          "log": false
+        },
+        {
+          "sequence": 20,
+          "action": "permit",
+          "source": "192.0.2.56/27",
+          "log": false
+        },
+        {
+          "sequence": 1000,
+          "action": "deny",
+          "source": "any",
+          "log": false
+        }
+      ]
+    }
+  ],
+  "uplinks": [
+    {
+      "type": "port-channel",
+      "name": "Port-Channel2000",
+      "allowed_vlans": [
+        4085,
+        4086,
+        4087,
+        4088,
+        4089,
+        4090,
+        4091,
+        4092,
+        4094
+      ],
+      "native_vlan": "need_input"
+    }
+  ],
+  "snmp_config": {
+    "community_ro": "need_input",
+    "acl_ro": "SNMP-ALLOWED",
+    "location": "Campus Distribution Building-A",
+    "contact": "555-0100",
+    "chassis_id": "aabbccddeeff00112233",
+    "enable_traps": true
+  },
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": [
+      {
+        "name": "TACACS_Servers",
+        "ip": "192.0.2.10",
+        "key": "need_input"
+      },
+      {
+        "name": "TACACS_Servers",
+        "ip": "192.0.2.11",
+        "key": "need_input"
+      }
+    ],
+    "radius_servers": []
+  },
+  "nac_config": {
+    "dot1x_enabled": "need_input",
+    "radius_group_name": "need_input",
+    "radius_servers": []
+  },
+  "ntp_servers": [],
+  "dns_servers": [
+    "192.0.2.7",
+    "192.0.2.8",
+    "192.0.2.9",
+    "8.8.8.8",
+    "198.51.100.4",
+    "198.51.100.5"
+  ],
+  "stp_mode": "need_input",
+  "errdisable_config": {
+    "causes": [
+      "need_input"
+    ],
+    "recovery_interval": 30
+  },
+  "access_interfaces": [
+    {
+      "name": "Ethernet1",
+      "config": {
+        "access_vlan": 130,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet2",
+      "config": {
+        "access_vlan": 130,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet3",
+      "config": {
+        "access_vlan": 100,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet4",
+      "config": {
+        "access_vlan": 100,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet5",
+      "config": {
+        "access_vlan": 100,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet6",
+      "config": {
+        "access_vlan": 100,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet7",
+      "config": {
+        "access_vlan": 100,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet8",
+      "config": {
+        "access_vlan": 100,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet9",
+      "config": {
+        "access_vlan": 100,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    },
+    {
+      "name": "Ethernet10",
+      "config": {
+        "access_vlan": 100,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "10",
+        "storm_control_multicast": "10"
+      }
+    }
+  ],
+  "routed_interfaces": []
+}

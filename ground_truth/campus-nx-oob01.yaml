@@ -1,0 +1,220 @@
+# Ground truth — NX-OS LLM fallback evaluation
+# Source: input/sanitized/nxos/CAMPUS-NX-OOB01.txt
+# Role: OOB server-room | Platform: NX-OS 10.3(3)F | Large VLAN table | No NAC
+# REVIEW: every field verified against raw CLI source
+---
+hostname: CAMPUS-NX-OOB01
+domain_name: campus.example.edu
+stp_mode: rapid-pvst
+dns_servers:
+- 192.0.2.15
+- 192.0.2.16
+ntp_servers:
+- 192.0.2.11|prefer
+- 192.0.2.12
+logging_hosts:
+- 192.0.2.17
+errdisable_config:
+  causes:
+  - need_input
+stack_info:
+  is_stack: false
+  member_count: 1
+  switches:
+  - - 1
+    - 24
+  master_switch: 1
+pnp_config:
+  pnp_vlan_id: 500
+  pnp_vlan_name: OOB-MGMT
+  pnp_vlan_network_add: 192.0.2.160
+  pnp_vlan_network_mask: 255.255.255.0
+  pnp_vlan_default_gateway: 192.0.2.254
+vlans:
+- id: 500
+  name: OOB-MGMT
+- id: 501
+  name: OOB-PDU
+- id: 502
+  name: SERVER-VLAN-502
+- id: 503
+  name: SERVER-VLAN-503
+- id: 504
+  name: SERVER-VLAN-504
+- id: 505
+  name: SERVER-VLAN-505
+- id: 506
+  name: SERVER-VLAN-506
+- id: 507
+  name: SERVER-VLAN-507
+- id: 508
+  name: SERVER-VLAN-508
+- id: 509
+  name: SERVER-VLAN-509
+- id: 510
+  name: SERVER-VLAN-510
+- id: 511
+  name: SERVER-VLAN-511
+- id: 512
+  name: SERVER-VLAN-512
+- id: 513
+  name: SERVER-VLAN-513
+- id: 514
+  name: SERVER-VLAN-514
+- id: 515
+  name: SERVER-VLAN-515
+- id: 3069
+  name: NATIVE
+acls:
+- name: SNMP-ALLOWED
+  type: standard
+  entries:
+  - action: permit
+    source: 192.0.2.11
+    log: false
+    sequence: 10
+  - action: permit
+    source: 192.0.2.12
+    log: false
+    sequence: 20
+  - action: permit
+    source: 192.0.2.0 0.0.0.255
+    log: false
+    sequence: 30
+  - action: deny
+    source: any
+    log: false
+    sequence: 40
+  is_numbered: false
+uplinks:
+- type: trunk
+  name: Ethernet1/49
+  description: UPLINK-TRUNK-1
+  allowed_vlans:
+  - 500
+  - 501
+  - 502
+  - 503
+  - 504
+  - 505
+  - 506
+  - 507
+  - 508
+  - 509
+  - 510
+  - 511
+  - 512
+  - 513
+  - 514
+  - 515
+  - 3069
+  native_vlan: 3069
+- type: trunk
+  name: Ethernet1/50
+  description: UPLINK-TRUNK-2
+  allowed_vlans:
+  - 500
+  - 501
+  - 502
+  - 503
+  - 504
+  - 505
+  - 506
+  - 507
+  - 508
+  - 509
+  - 510
+  - 511
+  - 512
+  - 513
+  - 514
+  - 515
+  - 3069
+  native_vlan: 3069
+snmp_config:
+  community_ro: xxxxxxxx
+  acl_ro: SNMP-ALLOWED
+  location: Data-Center-Rack-A OOB-Switch
+  contact: NOC-555-0100
+  chassis_id: CAMPUS-NX-OOB01
+  enable_traps: true
+aaa_config:
+  aaa_enabled: true
+  tacacs_group_name: TACACS_GROUP
+  tacacs_servers:
+  - name: tacacs-svr-01
+    ip: 192.0.2.11
+    key: need_input
+  - name: tacacs-svr-02
+    ip: 192.0.2.12
+    key: need_input
+  dot1x_enabled: false
+banners:
+  login: AUTHORIZED ACCESS ONLY. Data center OOB management switch.
+access_interfaces:
+- name: Ethernet1/1
+  config:
+    description: SERVER-MGMT-PORT
+    access_vlan: 500
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: Ethernet1/2
+  config:
+    description: SERVER-MGMT-PORT
+    access_vlan: 500
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+    storm_control_multicast: 2.00 1.00
+- name: Ethernet1/3
+  config:
+    description: PDU-PORT
+    access_vlan: 501
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+- name: Ethernet1/4
+  config:
+    description: PDU-PORT
+    access_vlan: 501
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+- name: Ethernet1/5
+  config:
+    description: SERVER-DATA-PORT
+    access_vlan: 502
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+- name: Ethernet1/6
+  config:
+    description: SERVER-DATA-PORT
+    access_vlan: 503
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+- name: Ethernet1/7
+  config:
+    description: SERVER-DATA-PORT
+    access_vlan: 504
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00
+- name: Ethernet1/8
+  config:
+    description: SERVER-DATA-PORT
+    access_vlan: 505
+    shutdown: false
+    portfast: true
+    bpduguard: true
+    storm_control_broadcast: 2.00 1.00

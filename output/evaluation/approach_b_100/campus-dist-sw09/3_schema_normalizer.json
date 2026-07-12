@@ -1,0 +1,305 @@
+{
+  "hostname": "CAMPUS-DIST-SW09",
+  "domain_name": "campus.example.org",
+  "system": {
+    "local_users": [
+      {
+        "username": "admin",
+        "privilege": 15,
+        "role": "network-admin",
+        "secret_type": "sha512"
+      }
+    ]
+  },
+  "management": {
+    "api_http_commands": {
+      "http": false,
+      "https": true,
+      "shutdown": false,
+      "vrf": "MDMZ"
+    },
+    "ssh": {
+      "idle_timeout": 20,
+      "authentication_mode": "keyboard-interactive",
+      "vrf": "MDMZ"
+    }
+  },
+  "vlans": [
+    {
+      "id": 130,
+      "name": "USERS"
+    },
+    {
+      "id": 230,
+      "name": "VOICE"
+    },
+    {
+      "id": 330,
+      "name": "GUEST"
+    },
+    {
+      "id": 4063,
+      "name": "INBAND-MGMT"
+    },
+    {
+      "id": 4094,
+      "name": "MLAG-PEER"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "MDMZ"
+    },
+    {
+      "name": "VRFA"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "Port-Channel999",
+      "description": "MLAG-PEER-LINK",
+      "mode": "trunk",
+      "trunk_allowed_vlans": "all"
+    },
+    {
+      "name": "GigabitEthernet1/0/23",
+      "description": "MLAG-PEER-LINK-MEMBER",
+      "channel_group": 999,
+      "channel_mode": "active"
+    },
+    {
+      "name": "GigabitEthernet1/0/24",
+      "description": "MLAG-PEER-LINK-MEMBER",
+      "channel_group": 999,
+      "channel_mode": "active"
+    },
+    {
+      "name": "Vlan4094",
+      "description": "MLAG-PEER",
+      "ip_address": "169.254.0.15/30"
+    },
+    {
+      "name": "Port-Channel2004",
+      "description": "UPLINK-PC2004",
+      "mode": "trunk",
+      "trunk_allowed_vlans": "130,230,330,4063"
+    },
+    {
+      "name": "GigabitEthernet1/0/27",
+      "description": "UPLINK-MEMBER",
+      "channel_group": 2004,
+      "channel_mode": "active"
+    },
+    {
+      "name": "GigabitEthernet1/0/28",
+      "description": "UPLINK-MEMBER",
+      "channel_group": 2004,
+      "channel_mode": "active"
+    },
+    {
+      "name": "GigabitEthernet1/0/1",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/11",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/12",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/13",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/14",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/15",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/16",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/17",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/18",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/19",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "GigabitEthernet1/0/20",
+      "description": "DOWNLINK-ACCESS",
+      "access_vlan": 130,
+      "switchport": true
+    },
+    {
+      "name": "Vlan130",
+      "description": "USERS",
+      "vrf": "VRFA",
+      "ip_address": "198.51.100.77/24",
+      "virtual_router_address": "198.51.100.1"
+    },
+    {
+      "name": "Vlan230",
+      "description": "VOICE",
+      "vrf": "VRFA",
+      "ip_address": "198.51.101.77/24",
+      "virtual_router_address": "198.51.101.1"
+    },
+    {
+      "name": "Vlan330",
+      "description": "GUEST",
+      "vrf": "VRFA",
+      "ip_address": "198.51.102.77/24",
+      "virtual_router_address": "198.51.102.1"
+    },
+    {
+      "name": "Vlan4063",
+      "description": "INBAND-MGMT",
+      "vrf": "MDMZ",
+      "ip_address": "198.51.100.77/24"
+    }
+  ],
+  "routes": [],
+  "snmp": {
+    "communities": [],
+    "location": "Campus Distribution SW09",
+    "contact": "NOC-555-0100",
+    "traps_enabled": false,
+    "acl": "SNMP-ALLOWED",
+    "vrf": "MDMZ",
+    "local_interface": "Vlan4063"
+  },
+  "acls": [],
+  "aaa": {
+    "tacacs_servers": [
+      "192.0.2.11",
+      "192.0.2.12"
+    ],
+    "groups": [
+      {
+        "name": "TACACS_GROUP",
+        "servers": [
+          "192.0.2.11",
+          "192.0.2.12"
+        ]
+      }
+    ]
+  },
+  "logging": {},
+  "ntp": {
+    "servers": [
+      "192.0.2.11",
+      "192.0.2.12"
+    ],
+    "prefer": "192.0.2.11"
+  },
+  "dns_servers": [],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "access_interfaces": [],
+  "uplinks": [],
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "snmp_config": {
+    "location": "Campus Distribution SW09",
+    "contact": "NOC-555-0100",
+    "enable_traps": false
+  },
+  "local_users": [],
+  "logging_hosts": [],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": null
+}

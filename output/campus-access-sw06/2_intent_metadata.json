@@ -1,0 +1,27 @@
+[
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "aaa root disabled but tacacs servers configured"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "multiple identical configs expanded per comment"
+  },
+  {
+    "field": "management",
+    "confidence": 0.95,
+    "reason": "management api and ssh with vrf MDMZ configured"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "vlans fully parsed from config"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.9,
+    "reason": "snmp server config with vrf and ACL"
+  }
+]

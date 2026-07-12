@@ -1,0 +1,27 @@
+[
+  {
+    "field": "local_users.password",
+    "confidence": 0,
+    "reason": "password encrypted, not extracted"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": 0,
+    "reason": "secret encrypted, not extracted"
+  },
+  {
+    "field": "snmp-server community names",
+    "confidence": 0.9,
+    "reason": "masked in config"
+  },
+  {
+    "field": "aaa.tacacs_servers",
+    "confidence": 0.8,
+    "reason": "no tacacs server configured"
+  },
+  {
+    "field": "stack_info.switches.privilege_level",
+    "confidence": 0.95,
+    "reason": "extracted from legacy parser"
+  }
+]

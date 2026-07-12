@@ -1,0 +1,280 @@
+!Command: show running-config
+!Running configuration last done at: Thu Jan  2 00:00:00 2026
+!Time: Thu Jan  2 00:00:00 2026
+version 10.3(3)F
+hostname CAMPUS-NX-OOB01
+!
+feature lldp
+feature ssh
+!
+username admin password 7 xxxxxxxx role network-admin
+!
+ip access-list standard SNMP-ALLOWED
+  10 permit 192.0.2.11
+  20 permit 192.0.2.12
+  30 permit 192.0.2.0/24
+  40 deny any
+!
+vrf context management
+  ip route 0.0.0.0/0 192.0.2.254
+!
+vlan 1
+vlan 500
+  name OOB-MGMT
+vlan 501
+  name OOB-PDU
+vlan 502
+  name SERVER-VLAN-502
+vlan 503
+  name SERVER-VLAN-503
+vlan 504
+  name SERVER-VLAN-504
+vlan 505
+  name SERVER-VLAN-505
+vlan 506
+  name SERVER-VLAN-506
+vlan 507
+  name SERVER-VLAN-507
+vlan 508
+  name SERVER-VLAN-508
+vlan 509
+  name SERVER-VLAN-509
+vlan 510
+  name SERVER-VLAN-510
+vlan 511
+  name SERVER-VLAN-511
+vlan 512
+  name SERVER-VLAN-512
+vlan 513
+  name SERVER-VLAN-513
+vlan 514
+  name SERVER-VLAN-514
+vlan 515
+  name SERVER-VLAN-515
+vlan 3069
+  name NATIVE
+!
+interface mgmt0
+  vrf member management
+  ip address 192.0.2.160/24
+!
+interface Ethernet1/49
+  description UPLINK-TRUNK-1
+  switchport
+  switchport mode trunk
+  switchport trunk native vlan 3069
+  switchport trunk allowed vlan 500,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,3069
+  spanning-tree port type network
+  no shutdown
+!
+interface Ethernet1/50
+  description UPLINK-TRUNK-2
+  switchport
+  switchport mode trunk
+  switchport trunk native vlan 3069
+  switchport trunk allowed vlan 500,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,3069
+  spanning-tree port type network
+  no shutdown
+!
+interface Ethernet1/1
+  description SERVER-MGMT-PORT
+  switchport
+  switchport access vlan 500
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  storm-control multicast level 2.00 1.00
+  no shutdown
+!
+interface Ethernet1/2
+  description SERVER-MGMT-PORT
+  switchport
+  switchport access vlan 500
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  storm-control multicast level 2.00 1.00
+  no shutdown
+!
+interface Ethernet1/3
+  description PDU-PORT
+  switchport
+  switchport access vlan 501
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  no shutdown
+!
+interface Ethernet1/4
+  description PDU-PORT
+  switchport
+  switchport access vlan 501
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  no shutdown
+!
+interface Ethernet1/5
+  description SERVER-DATA-PORT
+  switchport
+  switchport access vlan 502
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  no shutdown
+!
+interface Ethernet1/6
+  description SERVER-DATA-PORT
+  switchport
+  switchport access vlan 503
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  no shutdown
+!
+interface Ethernet1/7
+  description SERVER-DATA-PORT
+  switchport
+  switchport access vlan 504
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  no shutdown
+!
+interface Ethernet1/8
+  description SERVER-DATA-PORT
+  switchport
+  switchport access vlan 505
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  no shutdown
+!
+interface Ethernet1/9
+  description SERVER-DATA-PORT
+  switchport
+  switchport access vlan 506
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  no shutdown
+!
+interface Ethernet1/10
+  description SERVER-DATA-PORT
+  switchport
+  switchport access vlan 507
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  no shutdown
+!
+interface Ethernet1/11
+  description SERVER-DATA-PORT
+  switchport
+  switchport access vlan 508
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  no shutdown
+!
+interface Ethernet1/12
+  description SERVER-DATA-PORT
+  switchport
+  switchport access vlan 509
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  no shutdown
+!
+interface Ethernet1/13
+  description SERVER-DATA-PORT
+  switchport
+  switchport access vlan 510
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  no shutdown
+!
+interface Ethernet1/14
+  description SERVER-DATA-PORT
+  switchport
+  switchport access vlan 511
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  no shutdown
+!
+interface Ethernet1/15
+  description SERVER-DATA-PORT
+  switchport
+  switchport access vlan 512
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  no shutdown
+!
+interface Ethernet1/16
+  description SERVER-DATA-PORT
+  switchport
+  switchport access vlan 513
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  no shutdown
+!
+interface Ethernet1/17
+  description SERVER-DATA-PORT
+  switchport
+  switchport access vlan 514
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  no shutdown
+!
+interface Ethernet1/18
+  description SERVER-DATA-PORT
+  switchport
+  switchport access vlan 515
+  spanning-tree port type edge
+  spanning-tree bpduguard enable
+  storm-control broadcast level 2.00 1.00
+  no shutdown
+!
+interface Vlan500
+  ip address 192.0.2.160/24
+  no shutdown
+!
+ip default-gateway 192.0.2.254
+!
+spanning-tree mode rapid-pvst
+!
+tacacs-server host 192.0.2.11 key 7 xxxxxxxx
+tacacs-server host 192.0.2.12 key 7 xxxxxxxx
+!
+aaa group server tacacs+ TACACS_GROUP
+  server 192.0.2.11
+  server 192.0.2.12
+!
+aaa authentication login default group TACACS_GROUP local
+aaa authorization exec default group TACACS_GROUP local
+!
+snmp-server community xxxxxxxx ro SNMP-ALLOWED
+snmp-server location Data-Center-Rack-A OOB-Switch
+snmp-server contact NOC-555-0100
+snmp-server enable traps
+!
+ntp server 192.0.2.11 prefer
+ntp server 192.0.2.12
+!
+ip name-server 192.0.2.15
+ip name-server 192.0.2.16
+!
+ip domain-name campus.example.edu
+!
+logging server 192.0.2.17
+!
+banner motd @
+AUTHORIZED ACCESS ONLY. Data center OOB management switch.
+@
+!
+end

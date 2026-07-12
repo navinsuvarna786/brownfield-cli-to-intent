@@ -1,0 +1,138 @@
+catalyst_center:
+  inventory:
+    devices:
+    - name: STRESS-UNKNOWN-VENDOR-SW01
+      fqdn_name: STRESS-UNKNOWN-VENDOR-SW01.campus.example.edu
+      device_ip: need_input
+      pid: C9300-24P
+      serial_number: TBD-MIGRATION
+      state: PNP
+      device_role: ACCESS
+      site: need_input
+      onboarding_template:
+        name: EDGE_PNP_template
+        variables:
+        - name: device_host_name
+          value: STRESS-UNKNOWN-VENDOR-SW01
+        - name: domain_name
+          value: campus.example.edu
+        - name: pnp_vlan_id
+          value: '1'
+        - name: pnp_vlan_name
+          value: MGMT
+        - name: pnp_vlan_network_add
+          value: need_input
+        - name: pnp_vlan_network_mask
+          value: 255.255.255.0
+        - name: pnp_vlan_default_gateway
+          value: need_input
+        - name: pnp_interface
+          value: GigabitEthernet1/0/1
+        - name: snmp_community_ro
+          value: xxxxxxxx
+        - name: log_server
+          value: need_input
+        - name: is_stack
+          value: 'false'
+        - name: stack_members
+          value: '1'
+      dayn_templates:
+        regular:
+        - name: EDGE_SYSTEM_template
+          variables:
+          - name: enable_secret
+            value: need_input
+          - name: hostname
+            value: STRESS-UNKNOWN-VENDOR-SW01
+          - name: domain_name
+            value: campus.example.edu
+          - name: timezone
+            value: CST
+          - name: timezone_offset
+            value: need_input
+          - name: daylight_savings_name
+            value: need_input
+          - name: dns_servers
+            value: |
+              192.0.2.50,192.0.2.60
+          - name: ntp_servers
+            value: |
+              192.0.2.11|prefer,192.0.2.12
+          - name: license_level
+            value: network-advantage
+          - name: stp_mode
+            value: need_input
+          - name: ntp_authenticate
+            value: 'false'
+          - name: ntp_master
+            value: 'false'
+          - name: logging_servers
+            value: |
+              need_input
+          - name: log_severity_level
+            value: informational
+          - name: errdisable_causes
+            value: |
+              need_input
+          - name: local_users
+            value: |
+              xxxxxxxx:need_input
+          redeploy_template: ON_CHANGE
+        - name: EDGE_VLAN_template
+          variables:
+          - name: vlans
+            value: 10|DATA,20|VOICE,30|GUEST,900|MGMT
+          - name: vtp_domain
+            value: CWAN
+          - name: vtp_mode
+            value: transparent
+          redeploy_template: ON_CHANGE
+        - name: EDGE_MGMT_template
+          variables:
+          - name: enable_management
+            value: 'false'
+          - name: http_server
+            value: 'true'
+          - name: https_server
+            value: 'true'
+          - name: mgmt_interface_type
+            value: vlan
+          - name: mgmt_vlan_id
+            value: '1'
+          - name: mgmt_ip_address
+            value: need_input
+          - name: mgmt_subnet_mask
+            value: 255.255.255.0
+          - name: mgmt_default_gateway
+            value: need_input
+          - name: mgmt_vlan_name
+            value: MGMT
+          redeploy_template: ON_CHANGE
+        - name: EDGE_ACL_template
+          variables:
+          - name: standard_acls
+            value: ''
+          - name: extended_acls
+            value: ''
+          redeploy_template: ON_CHANGE
+        - name: EDGE_SNMP_template
+          variables:
+          - name: snmp_community_ro
+            value: xxxxxxxx
+          - name: snmp_community_rw
+            value: need_input
+          - name: snmp_location
+            value: Building-Stress Floor-1 IDF
+          - name: snmp_contact
+            value: NOC
+          - name: snmp_acl_ro
+            value: '13'
+          - name: enable_traps
+            value: 'true'
+          redeploy_template: ON_CHANGE
+        - name: EDGE_ROUTED_PORT_template
+          variables:
+          - name: routed_interfaces
+            value: |
+              Vlan900|MGMT-SVI|false||192.0.2.201|255.255.255.0||false|false||
+          redeploy_template: ON_CHANGE

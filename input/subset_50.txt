@@ -1,0 +1,75 @@
+# 48-config stratified evaluation subset (expanded corpus)
+# Used for field-level accuracy (F1) comparison — 100-config paper.
+# Note: 50 GT files authored total; 2 orphaned IOS-XE GTs for CAMPUS-DIST
+#       hostnames that exist in both vendor dirs (Arista output overwrites)
+#       are excluded here to ensure clean GT-to-output matching.
+#
+# Groups:
+#   access-nac          : 21 configs (all BLDG-* with GT)
+#   oob-server          : 11 configs (DATACTR-OOBSW-*)
+#   arista-access       : 7  configs (CAMPUS-ACCESS-*)
+#   arista-distribution : 6  configs (CAMPUS-DIST-SW* Arista path)
+#   distribution        : 2  configs (DIST-SW-BLDG* IOS-XE)
+#   remote-edge         : 1  config  (EDGE-SW-REMOTE-03)
+#
+# Total: 48 configs spanning both vendors and all deployment roles.
+
+# --- access-nac (21) ---
+BLDG-A-FLOOR1-SW01.txt
+BLDG-A-FLOOR2-SW01.txt
+BLDG-A-FLOOR3-SW01.txt
+BLDG-B-FLOOR1-SW01.txt
+BLDG-B-FLOOR2-SW01.txt
+BLDG-C-FLOOR1-SW01.txt
+BLDG-C-FLOOR2-SW01.txt
+BLDG-D-FLOOR1-SW01.txt
+BLDG-D-FLOOR3-SW01.txt
+BLDG-E-FLOOR1-SW01.txt
+BLDG-E-FLOOR3-SW01.txt
+BLDG-F-FLOOR1-SW01.txt
+BLDG-F-FLOOR2-SW01.txt
+BLDG-FR-FLOOR1-SW01.txt
+BLDG-G-FLOOR1-SW01.txt
+BLDG-G-FLOOR3-SW01.txt
+BLDG-H-FLOOR1-SW01.txt
+BLDG-J-FLOOR1-SW01.txt
+BLDG-L-FLOOR1-SW01.txt
+BLDG-M-FLOOR1-SW01.txt
+BLDG-N-FLOOR1-SW01.txt
+
+# --- oob-server (11) ---
+DATACTR-OOBSW-01.txt
+DATACTR-OOBSW-02.txt
+DATACTR-OOBSW-03.txt
+DATACTR-OOBSW-04.txt
+DATACTR-OOBSW-F01.txt
+DATACTR-OOBSW-F02.txt
+DATACTR-OOBSW-G01.txt
+DATACTR-OOBSW-H01.txt
+DATACTR-OOBSW-J01.txt
+DATACTR-OOBSW-K01.txt
+DATACTR-OOBSW-K02.txt
+
+# --- arista-access (7) ---
+CAMPUS-ACCESS-SW03.txt
+CAMPUS-ACCESS-SW04.txt
+CAMPUS-ACCESS-SW05.txt
+CAMPUS-ACCESS-SW06.txt
+CAMPUS-ACCESS-SW07.txt
+CAMPUS-ACCESS-SW09.txt
+CAMPUS-ACCESS-SW12.txt
+
+# --- arista-distribution (6: original + new Arista path only) ---
+CAMPUS-DIST-SW01-original.txt
+CAMPUS-DIST-SW01.txt
+CAMPUS-DIST-SW02.txt
+campus-dist-sw03-arista.txt
+campus-dist-sw05-arista.txt
+campus-dist-sw07-arista.txt
+
+# --- distribution IOS-XE (2) ---
+dist-sw-bldgc-01-iosxe.txt
+dist-sw-bldge-01-iosxe.txt
+
+# --- remote-edge (1) ---
+EDGE-SW-REMOTE-03.txt

@@ -1,0 +1,85 @@
+"catalyst_center:\n  inventory:\n    devices:\n    - name: EDGE-SW-REMOTE-01\n   \
+  \   fqdn_name: EDGE-SW-REMOTE-01.campus.example.edu\n      device_ip: need_input\n\
+  \      pid: C9300-24P\n      serial_number: TBD-MIGRATION\n      state: PNP\n  \
+  \    device_role: ACCESS\n      site: need_input\n      onboarding_template:\n \
+  \       name: EDGE_PNP_template\n        variables:\n        - name: device_host_name\n\
+  \          value: EDGE-SW-REMOTE-01\n        - name: domain_name\n          value:\
+  \ campus.example.edu\n        - name: pnp_vlan_id\n          value: '1'\n      \
+  \  - name: pnp_vlan_name\n          value: MGMT\n        - name: pnp_vlan_network_add\n\
+  \          value: need_input\n        - name: pnp_vlan_network_mask\n          value:\
+  \ 255.255.255.0\n        - name: pnp_vlan_default_gateway\n          value: need_input\n\
+  \        - name: pnp_interface\n          value: GigabitEthernet1/0/1\n        -\
+  \ name: snmp_community_ro\n          value: xxxxxxxx\n        - name: log_server\n\
+  \          value: 192.0.2.21\n        - name: is_stack\n          value: 'false'\n\
+  \        - name: stack_members\n          value: '1'\n      dayn_templates:\n  \
+  \      regular:\n        - name: EDGE_SYSTEM_template\n          variables:\n  \
+  \        - name: enable_secret\n            value: need_input\n          - name:\
+  \ hostname\n            value: EDGE-SW-REMOTE-01\n          - name: domain_name\n\
+  \            value: campus.example.edu\n          - name: timezone\n           \
+  \ value: need_input\n          - name: timezone_offset\n            value: need_input\n\
+  \          - name: daylight_savings_name\n            value: need_input\n      \
+  \    - name: dns_servers\n            value: |\n              192.0.2.50,192.0.2.60\n\
+  \          - name: ntp_servers\n            value: |\n              192.0.2.11|prefer,192.0.2.12\n\
+  \          - name: license_level\n            value: network-advantage\n       \
+  \   - name: stp_mode\n            value: rapid-pvst\n          - name: ntp_authenticate\n\
+  \            value: 'false'\n          - name: ntp_master\n            value: 'false'\n\
+  \          - name: logging_servers\n            value: |\n              192.0.2.21,192.0.2.22,192.0.2.23\n\
+  \          - name: log_severity_level\n            value: informational\n      \
+  \    - name: local_users\n            value: |\n              xxxxxxxx:need_input\n\
+  \          redeploy_template: ON_CHANGE\n        - name: EDGE_VLAN_template\n  \
+  \        variables:\n          - name: vlans\n            value: 10|DATA,900|MGMT\n\
+  \          - name: vtp_domain\n            value: CWAN\n          - name: vtp_mode\n\
+  \            value: transparent\n          redeploy_template: ON_CHANGE\n      \
+  \  - name: EDGE_MGMT_template\n          variables:\n          - name: enable_management\n\
+  \            value: 'false'\n          - name: http_server\n            value: 'true'\n\
+  \          - name: https_server\n            value: 'true'\n          - name: mgmt_vrf_config\n\
+  \            value: |\n              Mgmt-vrf|||\n          - name: mgmt_interface_type\n\
+  \            value: vlan\n          - name: mgmt_vlan_id\n            value: '1'\n\
+  \          - name: mgmt_ip_address\n            value: need_input\n          - name:\
+  \ mgmt_subnet_mask\n            value: 255.255.255.0\n          - name: mgmt_default_gateway\n\
+  \            value: need_input\n          - name: mgmt_vlan_name\n            value:\
+  \ MGMT\n          redeploy_template: ON_CHANGE\n        - name: EDGE_ACL_template\n\
+  \          variables:\n          - name: standard_acls\n            value: |\n \
+  \             13|10|permit|host 192.0.2.11||false,\n              13|20|permit|host\
+  \ 192.0.2.12||false,\n              13|30|permit|host 192.0.2.0||false\n       \
+  \   - name: extended_acls\n            value: ''\n          redeploy_template: ON_CHANGE\n\
+  \        - name: EDGE_UPLINK_template\n          variables:\n          - name: uplinks\n\
+  \            value: |\n              trunk|TenGigabitEthernet1/1/1|DISCOVERED-UPLINK-1||10,900|900|true||,\n\
+  \              trunk|TenGigabitEthernet1/1/2|DISCOVERED-UPLINK-2||10,900|900|true||\n\
+  \          redeploy_template: ON_CHANGE\n        - name: EDGE_SNMP_template\n  \
+  \        variables:\n          - name: snmp_community_ro\n            value: xxxxxxxx\n\
+  \          - name: snmp_community_rw\n            value: need_input\n          -\
+  \ name: snmp_location\n            value: Remote-Site-01\n          - name: snmp_contact\n\
+  \            value: NOC\n          - name: chassis_id\n            value: EDGE-SW-REMOTE-01\n\
+  \          - name: snmp_acl_ro\n            value: '13'\n          - name: enable_traps\n\
+  \            value: 'true'\n          redeploy_template: ON_CHANGE\n        - name:\
+  \ EDGE_AAA_template\n          variables:\n          - name: tacacs_group_name\n\
+  \            value: need_input\n          - name: tacacs_servers\n            value:\
+  \ |\n              tacacs-svr-01|192.0.2.11|need_input,tacacs-svr-02|192.0.2.12|need_input\n\
+  \          redeploy_template: ON_CHANGE\n        - name: EDGE_ACCESS_PORT_template\n\
+  \          variables:\n          - name: access_interfaces\n            value: |\n\
+  \              GigabitEthernet1/0/1|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/2|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/3|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/4|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/5|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/6|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/7|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/8|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/9|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/10|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/11|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/12|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/13|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/14|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/15|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/16|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/17|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/18|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/19|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/20|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/21|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/22|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/23|Access Port|10||false|2|restrict|true|true|true|false||,\n\
+  \              GigabitEthernet1/0/24|Access Port|10||false|2|restrict|true|true|true|false||\n\
+  \          redeploy_template: ON_CHANGE\n"

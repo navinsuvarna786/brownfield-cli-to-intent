@@ -1,0 +1,4 @@
+{
+  "parse_error": "Expecting ',' delimiter: line 531 column 4 (char 12736)",
+  "raw": "{\n  \"hostname\": \"DATACTR-OOBSW-J01\",\n  \"domain_name\": \"campus.example.edu\",\n  \"stack_info\": {\n    \"is_stack\": false,\n    \"member_count\": 1,\n    \"master_switch\": 1\n  },\n  \"pnp_config\": {\n    \"pnp_vlan_id\": 3071,\n    \"pnp_vlan_name\": \"Native\",\n    \"pnp_vlan_network_add\": \"192.0.2.147\",\n    \"pnp_vlan_network_mask\": \"255.255.255.0\",\n    \"pnp_vlan_default_gateway\": \"192.0.2.254\"\n  },\n  \"vlans\": [\n    {\n      \"id\": 230,\n      \"name\": \"OOB-MGMT\"\n    },\n    {\n      \"id\": 3071,\n      \"name\": \"Native\"\n   "
+}

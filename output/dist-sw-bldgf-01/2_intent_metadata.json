@@ -1,0 +1,27 @@
+[
+  {
+    "field": "aaa.tacacs_servers",
+    "confidence": 0.8,
+    "reason": "Tacacs servers listed by name only, IPs not resolved"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": 0.9,
+    "reason": "Enable secret encrypted, value omitted for security"
+  },
+  {
+    "field": "local_users.password",
+    "confidence": 0.9,
+    "reason": "Local user password encrypted, value omitted for security"
+  },
+  {
+    "field": "snmp.community_names",
+    "confidence": 0.95,
+    "reason": "Community strings masked as xxxxxxxx"
+  },
+  {
+    "field": "ntp_servers",
+    "confidence": 0.95,
+    "reason": "NTP servers extracted with prefer flag"
+  }
+]

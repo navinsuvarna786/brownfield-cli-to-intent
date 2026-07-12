@@ -1,0 +1,27 @@
+[
+  {
+    "field": "interfaces",
+    "confidence": 0.95,
+    "reason": "Expanded identical config comments for all listed interfaces"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "Explicit vlan definitions in config and legacy parser"
+  },
+  {
+    "field": "hostname",
+    "confidence": 1,
+    "reason": "Explicit hostname in config and legacy parser"
+  },
+  {
+    "field": "aaa",
+    "confidence": 0.9,
+    "reason": "Standard AAA new-model with local authentication"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.9,
+    "reason": "SNMP communities and hosts explicitly configured"
+  }
+]

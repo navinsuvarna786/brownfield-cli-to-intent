@@ -1,0 +1,7 @@
+[
+  {
+    "field": "global",
+    "confidence": 0.0,
+    "reason": "Error: argument of type 'NoneType' is not iterable"
+  }
+]

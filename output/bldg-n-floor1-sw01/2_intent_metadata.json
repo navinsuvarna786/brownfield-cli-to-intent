@@ -1,0 +1,27 @@
+[
+  {
+    "field": "enable_secret",
+    "confidence": "high",
+    "reason": "enable secret present but redacted"
+  },
+  {
+    "field": "local_users.password",
+    "confidence": "high",
+    "reason": "password encrypted and redacted"
+  },
+  {
+    "field": "interfaces.access_interfaces",
+    "confidence": "high",
+    "reason": "parsed from config and legacy parser with identical config expansion"
+  },
+  {
+    "field": "snmp.communities",
+    "confidence": "high",
+    "reason": "communities and ACLs fully extracted"
+  },
+  {
+    "field": "ntp.servers",
+    "confidence": "high",
+    "reason": "ntp servers and prefer flag extracted from config"
+  }
+]

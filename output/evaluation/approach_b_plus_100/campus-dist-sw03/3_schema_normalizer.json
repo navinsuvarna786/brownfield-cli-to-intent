@@ -1,0 +1,358 @@
+{
+  "hostname": "CAMPUS-DIST-SW03",
+  "domain_name": "campus.example.org",
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "pnp_config": {
+    "pnp_vlan_id": 1,
+    "pnp_vlan_name": "default",
+    "pnp_vlan_network_add": "need_input",
+    "pnp_vlan_network_mask": "need_input",
+    "pnp_vlan_default_gateway": "need_input"
+  },
+  "vlans": [
+    {
+      "id": 100,
+      "name": "USERS"
+    },
+    {
+      "id": 200,
+      "name": "VOICE"
+    },
+    {
+      "id": 300,
+      "name": "IOT"
+    },
+    {
+      "id": 777,
+      "name": "AP-MGMT"
+    },
+    {
+      "id": 4060,
+      "name": "INBAND-MGMT"
+    },
+    {
+      "id": 4094,
+      "name": "MLAG-PEER"
+    }
+  ],
+  "acls": [],
+  "uplinks": [
+    {
+      "type": "port-channel",
+      "name": "Port-Channel999",
+      "allowed_vlans": [
+        "all"
+      ],
+      "native_vlan": 1
+    },
+    {
+      "type": "port-channel",
+      "name": "Port-Channel2001",
+      "allowed_vlans": [
+        100,
+        200,
+        300,
+        777,
+        4060
+      ],
+      "native_vlan": 1
+    }
+  ],
+  "snmp_config": {
+    "community_ro": "need_input",
+    "acl_ro": "SNMP-ALLOWED",
+    "location": "Campus Distribution SW03",
+    "contact": "NOC-555-0100",
+    "chassis_id": "need_input",
+    "enable_traps": false
+  },
+  "aaa_config": {
+    "aaa_enabled": false,
+    "tacacs_servers": [
+      {
+        "name": "need_input",
+        "ip": "192.0.2.11",
+        "key": "need_input"
+      },
+      {
+        "name": "need_input",
+        "ip": "192.0.2.12",
+        "key": "need_input"
+      }
+    ],
+    "radius_servers": []
+  },
+  "nac_config": {
+    "dot1x_enabled": false,
+    "radius_group_name": "need_input",
+    "radius_servers": []
+  },
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "dns_servers": [
+    "192.0.2.11"
+  ],
+  "stp_mode": "need_input",
+  "errdisable_config": {
+    "causes": [],
+    "recovery_interval": "need_input"
+  },
+  "access_interfaces": [
+    {
+      "name": "Ethernet1",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet2",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet3",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet4",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet5",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet6",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet7",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet8",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet9",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet10",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet11",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet12",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet13",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet14",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet15",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet16",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet17",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet18",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet19",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    },
+    {
+      "name": "Ethernet20",
+      "config": {
+        "access_vlan": 100,
+        "portfast": false,
+        "bpduguard": false,
+        "storm_control_broadcast": "need_input",
+        "storm_control_multicast": "need_input"
+      }
+    }
+  ],
+  "routed_interfaces": [
+    {
+      "name": "Vlan100",
+      "vrf": "VRFA",
+      "ipv4": {
+        "address": "198.51.100.71/24",
+        "netmask": "need_input"
+      }
+    },
+    {
+      "name": "Vlan200",
+      "vrf": "VRFA",
+      "ipv4": {
+        "address": "198.51.101.71/24",
+        "netmask": "need_input"
+      }
+    },
+    {
+      "name": "Vlan300",
+      "vrf": "VRFA",
+      "ipv4": {
+        "address": "198.51.102.71/24",
+        "netmask": "need_input"
+      }
+    },
+    {
+      "name": "Vlan777",
+      "vrf": "VRFA",
+      "ipv4": {
+        "address": "198.51.103.71/24",
+        "netmask": "need_input"
+      }
+    },
+    {
+      "name": "Vlan4060",
+      "vrf": "MDMZ",
+      "ipv4": {
+        "address": "198.51.100.71/24",
+        "netmask": "need_input"
+      }
+    },
+    {
+      "name": "Vlan4094",
+      "vrf": "need_input",
+      "ipv4": {
+        "address": "169.254.0.3/30",
+        "netmask": "need_input"
+      }
+    }
+  ]
+}

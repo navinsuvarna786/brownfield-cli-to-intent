@@ -1,0 +1,27 @@
+[
+  {
+    "field": "local_users.password",
+    "confidence": "low",
+    "reason": "password encrypted, redacted"
+  },
+  {
+    "field": "aaa.tacacs_servers.key",
+    "confidence": "low",
+    "reason": "key encrypted, redacted"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": "low",
+    "reason": "secret encrypted, redacted"
+  },
+  {
+    "field": "interfaces.access_interfaces",
+    "confidence": "high",
+    "reason": "expanded identical config for 48 interfaces"
+  },
+  {
+    "field": "dns_servers",
+    "confidence": "high",
+    "reason": "duplicate entries removed"
+  }
+]

@@ -1,0 +1,126 @@
+{
+  "approach": "B",
+  "description": "Single-pass LLM: legacy_parser + llm_mapper + generator; no normalizer, no validator",
+  "run_timestamp": "2026-04-28T20:56:28.566344",
+  "n_total": 17,
+  "n_cisco": 12,
+  "n_arista": 5,
+  "n_llm_invoked": 17,
+  "n_errors": 0,
+  "schema_valid_count": 17,
+  "schema_valid_rate": 1.0,
+  "semantic_valid_count": 3,
+  "semantic_valid_rate": 0.1765,
+  "yaml_generated_count": 17,
+  "yaml_generated_rate": 1.0,
+  "latency": {
+    "mean_s": 41.5543,
+    "median_s": 26.0114,
+    "stdev_s": 26.3805,
+    "min_s": 14.0607,
+    "max_s": 104.155
+  },
+  "llm_latency": {
+    "mean_s": 41.515,
+    "median_s": 25.9599,
+    "max_s": 104.1111
+  },
+  "rule_violation_summary": {
+    "119": {
+      "configs_affected": 1
+    },
+    "121": {
+      "configs_affected": 14
+    }
+  },
+  "template_coverage": {
+    "EDGE_PNP_template": {
+      "count": 17,
+      "rate": 1.0
+    },
+    "EDGE_SYSTEM_template": {
+      "count": 17,
+      "rate": 1.0
+    },
+    "EDGE_VLAN_template": {
+      "count": 17,
+      "rate": 1.0
+    },
+    "EDGE_MGMT_template": {
+      "count": 17,
+      "rate": 1.0
+    },
+    "EDGE_ACL_template": {
+      "count": 13,
+      "rate": 0.765
+    },
+    "EDGE_UPLINK_template": {
+      "count": 12,
+      "rate": 0.706
+    },
+    "EDGE_SNMP_template": {
+      "count": 17,
+      "rate": 1.0
+    },
+    "EDGE_AAA_template": {
+      "count": 12,
+      "rate": 0.706
+    },
+    "EDGE_NAC_template": {
+      "count": 0,
+      "rate": 0.0
+    },
+    "EDGE_ACCESS_PORT_template": {
+      "count": 12,
+      "rate": 0.706
+    },
+    "EDGE_ROUTED_PORT_template": {
+      "count": 0,
+      "rate": 0.0
+    }
+  },
+  "by_vendor": {
+    "cisco": {
+      "n": 12,
+      "schema_valid_rate": 1.0,
+      "semantic_valid_rate": 0.25,
+      "yaml_generated_rate": 1.0,
+      "mean_latency_s": 47.1617,
+      "median_latency_s": 54.4121
+    },
+    "arista": {
+      "n": 5,
+      "schema_valid_rate": 1.0,
+      "semantic_valid_rate": 0.0,
+      "yaml_generated_rate": 1.0,
+      "mean_latency_s": 28.0966,
+      "median_latency_s": 18.8508
+    }
+  },
+  "by_group": {
+    "access-nac": {
+      "n": 8,
+      "schema_valid_rate": 1.0,
+      "semantic_valid_rate": 0.25,
+      "yaml_generated_rate": 1.0,
+      "mean_latency_s": 46.3476,
+      "mean_llm_latency_s": 46.2959
+    },
+    "arista-distribution": {
+      "n": 5,
+      "schema_valid_rate": 1.0,
+      "semantic_valid_rate": 0.0,
+      "yaml_generated_rate": 1.0,
+      "mean_latency_s": 28.0966,
+      "mean_llm_latency_s": 28.0706
+    },
+    "oob-server": {
+      "n": 4,
+      "schema_valid_rate": 1.0,
+      "semantic_valid_rate": 0.25,
+      "yaml_generated_rate": 1.0,
+      "mean_latency_s": 48.7898,
+      "mean_llm_latency_s": 48.7585
+    }
+  }
+}

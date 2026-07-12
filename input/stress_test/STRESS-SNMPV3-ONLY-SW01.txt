@@ -1,0 +1,95 @@
+! Synthetic stress test config 2: IOS-XE with SNMPv3-only (no v2c community)
+! Purpose: parser gap forces LLM path; validator fires on missing snmp_config.community_ro
+! Expected routing: llm_parser -> llm_mapper -> normalizer -> validator
+!   validator: snmp_config lacks community_ro, acl_ro -> issues flagged -> retry_llm
+!   LLM receives feedback, fills need_input placeholders -> passes or aborts
+!
+version 17.09.05
+hostname STRESS-SNMPV3-ONLY-SW01
+
+ip domain name campus.example.edu
+
+! --- SNMPv3 ONLY — no v2c community string ---
+snmp-server group SNMPV3-GROUP v3 priv read SNMPV3-READ write SNMPV3-WRITE
+snmp-server view SNMPV3-READ 1.3.6.1 included
+snmp-server view SNMPV3-WRITE 1.3.6.1.2.1.1 included
+snmp-server user nmsuser SNMPV3-GROUP v3 localized 0A1B2C3D auth sha AAAAAAAAAAAA priv aes 128 BBBBBBBBBBBB
+snmp-server location Building-Stress Floor-2 IDF
+snmp-server contact NOC
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server host 192.0.2.24 version 3 priv nmsuser
+
+vlan 10
+ name DATA
+vlan 20
+ name VOICE
+vlan 900
+ name MGMT
+
+spanning-tree mode rapid-pvst
+
+aaa new-model
+aaa group server tacacs+ TACACS_GROUP
+ server name tacacs-svr-01
+ server name tacacs-svr-02
+aaa authentication login default group TACACS_GROUP local
+aaa authorization exec default group TACACS_GROUP local if-authenticated
+aaa accounting exec default start-stop group TACACS_GROUP
+
+tacacs server tacacs-svr-01
+ address ipv4 192.0.2.11
+ key 7 need_input
+tacacs server tacacs-svr-02
+ address ipv4 192.0.2.12
+ key 7 need_input
+
+ip name-server 192.0.2.50
+ip name-server 192.0.2.60
+
+ntp server 192.0.2.11 prefer
+ntp server 192.0.2.12
+
+logging host 192.0.2.21
+logging host 192.0.2.22
+logging host 192.0.2.23
+
+ip access-list standard 13
+ 10 permit 192.0.2.11
+ 20 permit 192.0.2.12
+ 30 permit 192.0.2.0 0.0.0.255
+
+clock timezone CST -6 0
+clock summer-time CDT recurring
+
+username xxxxxxxx privilege 15 secret 5 need_input
+
+interface Port-channel10
+ description UPLINK-PC10
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,900
+ switchport trunk native vlan 900
+
+interface TenGigabitEthernet1/1/1
+ description Uplink-to-Dist
+ channel-group 10 mode active
+
+interface GigabitEthernet1/0/1
+ description ACCESS-DATA
+ switchport access vlan 10
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+
+interface Vlan900
+ description MGMT-SVI
+ ip address 192.0.2.202 255.255.255.0
+ no shutdown
+
+ip default-gateway 192.0.2.254
+
+banner motd C
+*************************************************************
+* Authorized access only.                                   *
+* Unauthorized use is prohibited and may be prosecuted.     *
+*************************************************************
+C

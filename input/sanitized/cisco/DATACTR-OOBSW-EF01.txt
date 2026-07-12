@@ -1,0 +1,857 @@
+        
+no service pad
+service timestamps debug uptime
+service timestamps log datetime localtime
+service password-encryption
+service compress-config
+service sequence-numbers
+service call-home
+no platform punt-keepalive disable-kernel-core
+!
+hostname DATACTR-OOBSW-EF01
+!
+!
+vrf definition Mgmt-vrf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable secret 9 xxxxxxxx
+!
+aaa new-model
+!
+!
+aaa authentication login default local group tacacs+ enable
+!
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone CDT -6 0
+clock summer-time CDT recurring
+switch 1 provision ws-c3850-48p
+!
+!
+!
+!
+call-home
+ ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+ ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+ contact-email-addr sch-smart-licensing@cisco.com
+ http-proxy "192.0.2.1" port 3128
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+  no destination transport-method email
+!
+!
+!
+!
+!
+no ip domain lookup
+ip domain name campus.example.edu
+!
+!
+!
+login on-success log
+ipv6 mld snooping
+!
+!
+!
+!
+!
+!
+!
+vtp domain CAMPUS
+vtp mode transparent
+no device-tracking logging theft
+!
+crypto pki trustpoint xxxxxxx
+ enrollment pkcs12
+ revocation-check crl
+!
+!
+crypto pki certificate xxxxxxxx
+xxxxxxxx
+quit
+!
+!
+license boot level ipservicesk9
+!
+!
+diagnostic bootup level minimal
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+memory free low-watermark processor 79475
+file privilege 1
+!
+errdisable recovery cause udld
+errdisable recovery cause bpduguard
+errdisable recovery cause security-violation
+errdisable recovery cause channel-misconfig
+errdisable recovery cause pagp-flap
+errdisable recovery cause dtp-flap
+errdisable recovery cause link-flap
+errdisable recovery cause sfp-config-mismatch
+errdisable recovery cause gbic-invalid
+errdisable recovery cause l2ptguard
+errdisable recovery cause psecure-violation
+errdisable recovery cause port-mode-failure
+errdisable recovery cause dhcp-rate-limit
+errdisable recovery cause pppoe-ia-rate-limit
+errdisable recovery cause mac-limit
+errdisable recovery cause storm-control
+errdisable recovery cause inline-power
+errdisable recovery cause arp-inspection
+errdisable recovery cause link-monitor-failure
+errdisable recovery cause oam-remote-failure
+errdisable recovery cause loopback
+errdisable recovery cause psp
+errdisable recovery interval 100
+username xxxxxxxx password 7 xxxxxxxx
+!
+redundancy
+ mode sso
+!
+!
+!
+!
+!
+transceiver type all
+ monitoring
+!
+vlan 230
+ name OOB_PDU_KVM
+!
+vlan 236
+ name OOB-mgmt
+!
+vlan 440,501,506-507,514,534,538,570-573,578-579,585-590,701-711 
+!
+vlan 712
+ name OOBSVR-vlan-712
+!
+vlan 713
+ name OOBSVR-vlan-713
+!
+vlan 714
+ name OOBSVR-vlan-714
+!
+vlan 715
+ name OOBSVR-vlan-715
+!
+vlan 716
+ name OOBSVR-vlan-716
+!
+vlan 717
+ name OOBSVR-vlan-717
+!
+vlan 718
+ name OOBSVR-vlan-718
+!
+vlan 719
+ name OOBSVR-vlan-719
+!
+vlan 720
+ name OOBSVR-vlan-720
+!
+vlan 721
+ name OOBSVR-vlan-721
+!
+vlan 722
+ name OOBSVR-vlan-722
+!
+vlan 723
+ name OOBSVR-vlan-723
+!
+vlan 724
+ name OOBSVR-vlan-724
+!
+vlan 725
+ name OOBSVR-vlan-725
+!
+vlan 726
+ name OOBSVR-vlan-726
+!
+vlan 727
+ name OOBSVR-vlan-727
+!
+vlan 728
+ name OOBSVR-vlan-728
+!
+vlan 729
+ name OOBSVR-vlan-729
+!
+vlan 730
+ name OOBSVR-vlan-730
+!
+vlan 731
+ name OOBSVR-vlan-731
+!
+vlan 732
+ name OOBSVR-vlan-732
+!
+vlan 733
+ name OOBSVR-vlan-733
+!
+vlan 734
+ name OOBSVR-vlan-734
+!
+vlan 735
+ name OOBSVR-vlan-735
+!
+vlan 736-739 
+!
+vlan 740
+ name OOBSVR-vlan-740
+!
+vlan 741
+ name OOBSVR-vlan-741
+!
+vlan 742
+ name OOBSVR-vlan-742
+!
+vlan 743
+ name OOBSVR-vlan-743
+!
+vlan 744
+ name OOBSVR-vlan-744
+!
+vlan 745 
+!
+vlan 746
+ name OOBSVR-vlan-746
+!
+vlan 747
+ name OOBSVR-vlan-747
+!
+vlan 748
+ name OOBSVR-vlan-748
+!
+vlan 749 
+!
+vlan 750
+ name OOBSVR-vlan-750
+!
+vlan 752
+ name OOBSVR-vlan-752
+!
+vlan 753
+ name OOBSVR-vlan-753
+!
+vlan 754-756 
+!
+vlan 1100
+ name OOBSVR-vlan-1100
+!
+vlan 1102
+ name OOBSVR-vlan-1102
+!
+vlan 1103
+ name OOBSVR-vlan-1103
+!
+vlan 1104,1106-1107 
+!
+vlan 1164
+ name OOBSVR-vlan-1164
+!
+vlan 1165 
+!
+vlan 3069
+ name Native
+lldp run
+!
+!
+class-map match-any system-cpp-police-topology-control
+  description Topology control
+class-map match-any system-cpp-police-sw-forward
+  description Sw forwarding, L2 LVX data, LOGGING
+class-map match-any system-cpp-default
+  description EWLC control, EWLC data, Inter FED 
+class-map match-any system-cpp-police-sys-data
+  description Learning cache ovfl, High Rate App, Exception, EGR Exception, NFL SAMPLED DATA, RPF Failed
+class-map match-any system-cpp-police-punt-webauth
+  description Punt Webauth
+class-map match-any system-cpp-police-l2lvx-control
+  description L2 LVX control packets
+class-map match-any system-cpp-police-forus
+  description Forus Address resolution and Forus traffic
+class-map match-any system-cpp-police-multicast-end-station
+  description MCAST END STATION
+class-map match-any system-cpp-police-multicast
+  description Transit Traffic and MCAST Data
+class-map match-any system-cpp-police-l2-control
+  description L2 control
+class-map match-any system-cpp-police-dot1x-auth
+  description DOT1X Auth
+class-map match-any system-cpp-police-data
+  description ICMP redirect, ICMP_GEN and BROADCAST
+class-map match-any system-cpp-police-stackwise-virt-control
+  description Stackwise Virtual
+class-map match-any non-client-nrt-class
+class-map match-any system-cpp-police-routing-control
+  description Routing control and Low Latency
+class-map match-any system-cpp-police-protocol-snooping
+  description Protocol snooping
+class-map match-any system-cpp-police-dhcp-snooping
+  description DHCP snooping
+class-map match-any system-cpp-police-system-critical
+  description System Critical and Gold Pkt
+!
+policy-map system-cpp-policy
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+!
+interface GigabitEthernet0/0
+ vrf forwarding Mgmt-vrf
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet1/0/1
+ description OOBSVR
+ switchport access vlan 718
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/2
+ description OOBSVR
+ switchport access vlan 718
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/3
+ description OOBSVR
+ switchport access vlan 717
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/4
+ description OOBSVR
+ switchport access vlan 717
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/5
+ description OOBSVR
+ switchport access vlan 718
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/6
+ description OOBSVR
+ switchport access vlan 718
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/7
+ description OOBSVR
+ switchport access vlan 718
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/8
+ description OOBSVR
+ switchport access vlan 718
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/9
+ description OOBSVR
+ switchport access vlan 718
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/10
+ description OOBSVR
+ switchport access vlan 718
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/11
+ description swvs18
+ switchport access vlan 1100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/12
+ description swvs17
+ switchport access vlan 1100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/13
+ description swvs16
+ switchport access vlan 1100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/14
+ description swvs15
+ switchport access vlan 1100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/15
+ description OOBSVR
+ switchport access vlan 534
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/16
+ description OOBSVR
+ switchport access vlan 534
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/17
+ description OOBSVR
+ switchport access vlan 718
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/18
+ description OOBSVR
+ switchport access vlan 718
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/19
+ description SWVS23
+ switchport trunk native vlan 507
+ switchport trunk allowed vlan 1103
+ switchport mode trunk
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/20
+ description IDRAC-SWVS23
+ switchport access vlan 1100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/21
+ description IDRAC-SWVS24
+ switchport access vlan 1100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/22
+ description swvs22
+ switchport access vlan 1100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/23
+ description swvs21
+ switchport access vlan 1100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/24
+ description swvs20
+ switchport access vlan 1100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/25
+ description swvs19
+ switchport access vlan 1100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/26
+ description SWHV08
+ switchport access vlan 1100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/27
+ description SWHV09
+ switchport access vlan 1100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/28
+ description OOBSVR
+ switchport access vlan 1100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/29
+ description swhv09
+ switchport access vlan 1100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/30
+ description OOBSVR
+ switchport access vlan 1100
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/31
+ description OOBSVR
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/32
+ description OOBSVR
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/33
+ description SWVS23
+ switchport trunk native vlan 507
+ switchport trunk allowed vlan 1103
+ switchport mode trunk
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/34
+ description SWHV03
+ switchport access vlan 507
+ switchport trunk native vlan 507
+ switchport trunk allowed vlan 507,715,1103,1104
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/35
+ description SWHV03
+ switchport access vlan 507
+ switchport trunk native vlan 507
+ switchport trunk allowed vlan 507,715,1103,1104
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/36
+ description SWHV03
+ switchport access vlan 507
+ switchport trunk native vlan 507
+ switchport trunk allowed vlan 507,715,1103,1104
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/37
+ description SWHV03
+ switchport access vlan 507
+ switchport trunk native vlan 507
+ switchport trunk allowed vlan 507,715,1103,1104
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/38
+ description swhv08
+ switchport trunk native vlan 507
+ switchport trunk allowed vlan 507,715,1103,1104
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/39
+ description swhv08
+ switchport trunk native vlan 507
+ switchport trunk allowed vlan 507,715,1103,1104
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/40
+ description swhv10
+ switchport trunk native vlan 507
+ switchport trunk allowed vlan 507,715,1103,1104
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/41
+ description swhv11
+ switchport trunk native vlan 507
+ switchport trunk allowed vlan 507,715,1103,1104
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/42
+ description swhv12
+ switchport trunk native vlan 507
+ switchport trunk allowed vlan 507,715,1103,1104
+ switchport mode trunk
+!
+interface GigabitEthernet1/0/43
+ description OOBSVR
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/44
+ description OOBSVR
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/45
+ description KVM_OR_PDU
+ switchport access vlan 230
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/46
+ description KVM_OR_PDU
+ switchport access vlan 230
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/47
+ description KVM_OR_PDU
+ switchport access vlan 230
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/0/48
+ description KVM_OR_PDU
+ switchport access vlan 230
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/1/1
+!
+interface GigabitEthernet1/1/2
+!
+interface GigabitEthernet1/1/3
+ description DATACTR-OOBSW-EF01 Gi1/1/4
+ switchport trunk native vlan 3069
+ switchport trunk allowed vlan 230,236,440,501,506,507,514,534,538,570-573,578
+ switchport trunk allowed vlan add 579,585-590,701-750,752-756,1100,1102-1104
+ switchport trunk allowed vlan add 1106,1107,1164,1165,3069
+ switchport mode trunk
+ udld port
+!
+interface GigabitEthernet1/1/4
+ description DATACTR-OOBSW-EF01 Gi1/1/3
+ switchport trunk native vlan 3069
+ switchport trunk allowed vlan 230,236,440,501,506,507,514,534,538,570-573,578
+ switchport trunk allowed vlan add 579,585-590,701-750,752-756,1100,1102-1104
+ switchport trunk allowed vlan add 1106,1107,1164,1165,3069
+ switchport mode trunk
+ udld port
+!
+interface TenGigabitEthernet1/1/1
+!
+interface TenGigabitEthernet1/1/2
+!
+interface TenGigabitEthernet1/1/3
+!
+interface TenGigabitEthernet1/1/4
+!
+interface Vlan1
+ no ip address
+ no ip route-cache
+ shutdown
+!
+interface Vlan236
+ ip address 192.0.2.129 255.255.255.0
+ no ip redirects
+ no ip route-cache
+ no ipv6 redirects
+!
+ip default-gateway 192.0.2.254
+ip forward-protocol nd
+no ip http server
+ip http authentication aaa
+no ip http secure-server
+ip http client proxy-server 192.0.2.1 proxy-port 3128
+ip ssh version 2
+!
+!
+!
+logging host 192.0.2.21
+logging host 192.0.2.22
+logging host 192.0.2.25
+logging host 192.0.2.24
+ip access-list standard 13
+ 10 permit 192.0.2.11
+ 20 permit 192.0.2.25
+ 30 permit 192.0.2.0 0.0.0.255
+ip access-list extended 111
+ 10 permit ip 192.0.2.0 0.0.0.255 any
+ 20 permit ip 192.0.2.192 0.0.0.127 any
+ 30 permit ip host 192.0.2.11 any
+ 40 permit ip host 192.0.2.25 any
+ 50 permit ip host 192.0.2.51 any
+ 60 permit ip host 192.0.2.53 any
+ 70 permit ip host 192.0.2.54 any
+ 80 permit ip host 192.0.2.55 any
+ 90 permit ip host 192.0.2.52 any
+!
+!
+snmp-server community xxxxxxxx RO 13
+snmp-server location DATACTR-OOBSW-EF01
+snmp-server contact NOC
+snmp-server chassis-id DATACTR-OOBSW-EF01
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps flowmon
+snmp-server enable traps entity-perf throughput-notif
+snmp-server enable traps call-home message-send-fail server-fail
+snmp-server enable traps tty
+snmp-server enable traps ospf state-change
+snmp-server enable traps ospf errors
+snmp-server enable traps ospf retransmit
+snmp-server enable traps ospf lsa
+snmp-server enable traps ospf cisco-specific state-change nssa-trans-change
+snmp-server enable traps ospf cisco-specific state-change shamlink interface
+snmp-server enable traps ospf cisco-specific state-change shamlink neighbor
+snmp-server enable traps ospf cisco-specific errors
+snmp-server enable traps ospf cisco-specific retransmit
+snmp-server enable traps ospf cisco-specific lsa
+snmp-server enable traps eigrp
+snmp-server enable traps auth-framework sec-violation
+snmp-server enable traps rep
+snmp-server enable traps vtp
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps port-security
+snmp-server enable traps license
+snmp-server enable traps smart-license
+snmp-server enable traps cpu threshold
+snmp-server enable traps memory bufferpeak
+snmp-server enable traps stackwise
+snmp-server enable traps fru-ctrl
+snmp-server enable traps flash insertion removal lowspace
+snmp-server enable traps energywise
+snmp-server enable traps power-ethernet group 1 threshold 80
+snmp-server enable traps power-ethernet police
+snmp-server enable traps entity
+snmp-server enable traps envmon
+snmp-server enable traps ipsla
+snmp-server enable traps bfd
+snmp-server enable traps ike policy add
+snmp-server enable traps ike policy delete
+snmp-server enable traps ike tunnel start
+snmp-server enable traps ike tunnel stop
+snmp-server enable traps ipsec cryptomap add
+snmp-server enable traps ipsec cryptomap delete
+snmp-server enable traps ipsec cryptomap attach
+snmp-server enable traps ipsec cryptomap detach
+snmp-server enable traps ipsec tunnel start
+snmp-server enable traps ipsec tunnel stop
+snmp-server enable traps ipsec too-many-sas
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps config-ctid
+snmp-server enable traps dhcp
+snmp-server enable traps event-manager
+snmp-server enable traps ipmulticast
+snmp-server enable traps msdp
+snmp-server enable traps ospfv3 state-change
+snmp-server enable traps ospfv3 errors
+snmp-server enable traps pim neighbor-change rp-mapping-change invalid-pim-message
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps syslog
+snmp-server enable traps vlan-membership
+snmp-server enable traps errdisable
+snmp-server enable traps rf
+snmp-server enable traps transceiver all
+snmp-server enable traps bulkstat collection transfer
+snmp-server enable traps mac-notification change move threshold
+snmp-server enable traps vrfmib vrf-up vrf-down vnet-trunk-up vnet-trunk-down
+snmp-server host 192.0.2.24 version 2c xxxxxxxx 
+tacacs server tacacs-svr-01
+ address ipv4 192.0.2.11
+ key 7 xxxxxxxx
+ timeout 3
+tacacs server tacacs-svr-02
+ address ipv4 192.0.2.12
+ key 7 xxxxxxxx
+ timeout 3
+!
+!
+!
+control-plane
+ service-policy input system-cpp-policy
+!
+privilege exec level 1 show startup-config
+privilege exec all level 1 show running-config
+privilege exec level 1 show
+banner motd ^C
+*********************************************************************************
+* *
+* Unauthorized use of this Campus Network Operations system *
+* may subject you to criminal prosecution or disciplinary action. *
+* Use of this system, authorized or unauthorized, constitutes consent *
+* to monitoring of this system. *
+* *
+*********************************************************************************
+^C
+alias exec show-run show running-config view full
+!
+line con 0
+ exec-timeout 20 0
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ access-class 111 in
+ exec-timeout 20 0
+ privilege level 15
+ password 7 xxxxxxxx
+ transport preferred none
+ transport input ssh
+line vty 5 15
+ access-class 111 in
+ exec-timeout 20 0
+ privilege level 15
+ password 7 xxxxxxxx
+ transport preferred none
+ transport input ssh
+!
+ntp server 192.0.2.11 prefer
+ntp server 192.0.2.12
+!
+!
+!
+!
+!
+!
+end
+

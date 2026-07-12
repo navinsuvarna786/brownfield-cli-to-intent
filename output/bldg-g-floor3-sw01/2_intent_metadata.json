@@ -1,0 +1,27 @@
+[
+  {
+    "field": "enable_secret",
+    "confidence": "high",
+    "reason": "present in config but masked, key replaced with placeholder"
+  },
+  {
+    "field": "local_users.password",
+    "confidence": "high",
+    "reason": "password masked in config, replaced with placeholder"
+  },
+  {
+    "field": "aaa.tacacs_servers.key",
+    "confidence": "high",
+    "reason": "keys masked in config, replaced with placeholder"
+  },
+  {
+    "field": "snmp.community",
+    "confidence": "high",
+    "reason": "community strings masked in config"
+  },
+  {
+    "field": "interfaces_bulk.config.authentication",
+    "confidence": "high",
+    "reason": "extracted from repeated interface configs with dot1x and mab authentication"
+  }
+]

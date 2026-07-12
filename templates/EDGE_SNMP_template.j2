@@ -1,0 +1,14 @@
+{% if snmp_community_ro %}
+snmp-server community {{ snmp_community_ro }} RO{% if snmp_acl_ro %} {{ snmp_acl_ro }}{% endif %}
+{% endif %}
+{% if snmp_community_rw %}
+snmp-server community {{ snmp_community_rw }} RW{% if snmp_acl_rw %} {{ snmp_acl_rw }}{% endif %}
+{% endif %}
+snmp-server location {{ snmp_location }}
+snmp-server contact {{ snmp_contact }}
+{% if chassis_id %}
+snmp-server chassis-id {{ chassis_id }}
+{% endif %}
+{% if enable_traps %}
+snmp-server enable traps
+{% endif %}

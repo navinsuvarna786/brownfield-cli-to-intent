@@ -1,0 +1,27 @@
+[
+  {
+    "field": "local_users.password",
+    "confidence": "high",
+    "reason": "enable secret and user password encrypted in config"
+  },
+  {
+    "field": "aaa.server_radius_dynamic_author.server_key",
+    "confidence": "medium",
+    "reason": "radius server key encrypted, placeholder used"
+  },
+  {
+    "field": "aaa.groups.servers.key",
+    "confidence": "medium",
+    "reason": "tacacs and radius server keys encrypted, placeholders used"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": "high",
+    "reason": "enable secret encrypted in config"
+  },
+  {
+    "field": "interfaces",
+    "confidence": "high",
+    "reason": "interfaces fully parsed including identical config expansion"
+  }
+]

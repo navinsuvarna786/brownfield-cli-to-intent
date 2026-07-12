@@ -1,0 +1,7 @@
+[
+  {
+    "field": "global",
+    "confidence": 1.0,
+    "reason": "Deterministic parser (no LLM)"
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "field": "local_users.password",
+    "confidence": 0,
+    "reason": "masked in config"
+  },
+  {
+    "field": "enable_secret",
+    "confidence": 0,
+    "reason": "masked in config"
+  },
+  {
+    "field": "aaa.tacacs_servers",
+    "confidence": 1,
+    "reason": "no tacacs servers configured"
+  },
+  {
+    "field": "snmp.communities",
+    "confidence": 0.9,
+    "reason": "community strings masked"
+  },
+  {
+    "field": "interfaces.GigabitEthernet1/1/1.description",
+    "confidence": 0.95,
+    "reason": "description differs from legacy parser"
+  }
+]

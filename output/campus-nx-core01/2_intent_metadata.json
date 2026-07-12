@@ -1,0 +1,27 @@
+[
+  {
+    "field": "aaa",
+    "confidence": 0.95,
+    "reason": "tacacs servers and groups fully parsed from config"
+  },
+  {
+    "field": "interfaces",
+    "confidence": 0.98,
+    "reason": "all interfaces and port-channels mapped and expanded"
+  },
+  {
+    "field": "acls",
+    "confidence": 1,
+    "reason": "complete ACL entries extracted from config"
+  },
+  {
+    "field": "vlans",
+    "confidence": 1,
+    "reason": "all VLANs with IDs and names extracted"
+  },
+  {
+    "field": "snmp",
+    "confidence": 0.99,
+    "reason": "snmp community, location, contact, traps extracted"
+  }
+]

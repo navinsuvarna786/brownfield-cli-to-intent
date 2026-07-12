@@ -1,0 +1,144 @@
+{
+  "hostname": "DATACTR-OOBSW-02",
+  "domain_name": "campus.example.edu",
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "pnp_config": {
+    "pnp_vlan_id": 236,
+    "pnp_vlan_name": "OOB-MGMT",
+    "pnp_vlan_network_add": "192.0.2.137",
+    "pnp_vlan_network_mask": "255.255.255.0",
+    "pnp_vlan_default_gateway": "192.0.2.254"
+  },
+  "vlans": [
+    {
+      "id": 230,
+      "name": "OOB-PDU"
+    },
+    {
+      "id": 236,
+      "name": "OOB-MGMT"
+    },
+    {
+      "id": 720,
+      "name": "SERVER-VLAN-720"
+    },
+    {
+      "id": 721,
+      "name": "SERVER-VLAN-721"
+    },
+    {
+      "id": 722,
+      "name": "SERVER-VLAN-722"
+    },
+    {
+      "id": 3069,
+      "name": "Native"
+    }
+  ],
+  "acls": [
+    {
+      "name": "need_input",
+      "type": "standard",
+      "entries": [
+        {
+          "sequence": 10,
+          "action": "permit",
+          "source": "any",
+          "log": false
+        }
+      ]
+    }
+  ],
+  "uplinks": [
+    {
+      "type": "trunk",
+      "name": "TenGigabitEthernet1/1/1",
+      "allowed_vlans": [
+        230,
+        236,
+        720,
+        721,
+        722,
+        3069
+      ],
+      "native_vlan": 3069
+    }
+  ],
+  "snmp_config": {
+    "community_ro": "need_input",
+    "acl_ro": "need_input",
+    "location": "need_input",
+    "contact": "need_input",
+    "chassis_id": "DATACTR-OOBSW-02",
+    "enable_traps": false
+  },
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": [
+      {
+        "name": "need_input",
+        "ip": "need_input",
+        "key": "need_input"
+      }
+    ],
+    "radius_servers": [
+      {
+        "name": "need_input",
+        "ip": "need_input",
+        "key": "need_input"
+      }
+    ]
+  },
+  "nac_config": {
+    "dot1x_enabled": false,
+    "radius_group_name": "need_input",
+    "radius_servers": [
+      {
+        "name": "need_input",
+        "ip": "need_input"
+      }
+    ]
+  },
+  "ntp_servers": [
+    "need_input"
+  ],
+  "dns_servers": [
+    "192.0.2.50",
+    "192.0.2.60"
+  ],
+  "stp_mode": "rapid-pvst",
+  "errdisable_config": {
+    "causes": [
+      "security-violation",
+      "gbic-invalid",
+      "psecure-violation"
+    ],
+    "recovery_interval": 100
+  },
+  "access_interfaces": [
+    {
+      "name": "GigabitEthernet1/0/1",
+      "config": {
+        "access_vlan": 230,
+        "portfast": true,
+        "bpduguard": true,
+        "storm_control_broadcast": "2.00 1.00",
+        "storm_control_multicast": "2.00 1.00"
+      }
+    }
+  ],
+  "routed_interfaces": [
+    {
+      "name": "Vlan236",
+      "vrf": "Mgmt-vrf",
+      "ipv4": {
+        "address": "192.0.2.137",
+        "netmask": "255.255.255.0"
+      }
+    }
+  ]
+}

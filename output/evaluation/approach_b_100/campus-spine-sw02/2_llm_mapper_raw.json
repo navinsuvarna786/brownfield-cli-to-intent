@@ -1,0 +1,140 @@
+{
+  "hostname": "CAMPUS-SPINE-SW02",
+  "domain_name": "campus.example.org",
+  "system": {},
+  "management": {
+    "api_http_commands": {
+      "protocol_https": true,
+      "no_protocol_http": true,
+      "vrf_MDMZ": {
+        "no_shutdown": true
+      }
+    },
+    "ssh": {
+      "idle_timeout": 20,
+      "authentication_mode": "keyboard-interactive",
+      "vrf_MDMZ": {
+        "no_shutdown": true
+      }
+    }
+  },
+  "vlans": [
+    {
+      "id": 4090,
+      "name": "INBAND-MGMT"
+    }
+  ],
+  "vrfs": [
+    {
+      "name": "MDMZ"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "Vlan4090",
+      "description": "INBAND-MGMT",
+      "vrf": "MDMZ",
+      "ip_address": "198.51.100.82/24"
+    },
+    {
+      "name": "Loopback0",
+      "ip_address": "198.51.100.182/32"
+    },
+    {
+      "name": "GigabitEthernet1/0/1",
+      "description": "DOWNLINK-DIST-01",
+      "no_switchport": true,
+      "ip_address": "203.0.113.328/30"
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "description": "DOWNLINK-DIST-02",
+      "no_switchport": true,
+      "ip_address": "203.0.113.332/30"
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "description": "DOWNLINK-DIST-03",
+      "no_switchport": true,
+      "ip_address": "203.0.113.336/30"
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "description": "DOWNLINK-DIST-04",
+      "no_switchport": true,
+      "ip_address": "203.0.113.340/30"
+    }
+  ],
+  "routes": [],
+  "snmp": {
+    "communities": [],
+    "location": "Campus Spine SW02",
+    "contact": "NOC-555-0100",
+    "traps_enabled": false,
+    "acl": "SNMP-ALLOWED",
+    "vrf": "MDMZ",
+    "local_interface": "Vlan4090"
+  },
+  "acls": [],
+  "aaa": {
+    "groups": [
+      {
+        "name": "TACACS_GROUP",
+        "servers": [
+          "192.0.2.11",
+          "192.0.2.12"
+        ]
+      }
+    ],
+    "servers": [
+      {
+        "host": "192.0.2.11",
+        "key": "7 xxxxxxxx"
+      },
+      {
+        "host": "192.0.2.12",
+        "key": "7 xxxxxxxx"
+      }
+    ],
+    "local_users": [
+      {
+        "username": "admin",
+        "privilege": 15,
+        "role": "network-admin",
+        "secret_type": "sha512"
+      }
+    ]
+  },
+  "logging": {},
+  "ntp": {
+    "servers": [
+      "192.0.2.11",
+      "192.0.2.12"
+    ],
+    "prefer": "192.0.2.11"
+  },
+  "dns_servers": [],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "access_interfaces": [],
+  "uplinks": [],
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "snmp_config": {
+    "location": "Campus Spine SW02",
+    "contact": "NOC-555-0100",
+    "enable_traps": false
+  },
+  "local_users": [],
+  "logging_hosts": [],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": null
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "field": "local_users.password",
+    "confidence": "low",
+    "reason": "password encrypted and redacted in config"
+  },
+  {
+    "field": "aaa.aaa_enabled",
+    "confidence": "medium",
+    "reason": "legacy parser shows false but tacacs servers and groups configured in config"
+  },
+  {
+    "field": "management.interfaces[0].name",
+    "confidence": "high",
+    "reason": "mapped mgmt0 to GigabitEthernet0/0/0 for Catalyst 9300"
+  },
+  {
+    "field": "interfaces[].name",
+    "confidence": "high",
+    "reason": "mapped Ethernet1/x to GigabitEthernet1/0/x for Catalyst 9300"
+  },
+  {
+    "field": "vlans[0].name",
+    "confidence": "medium",
+    "reason": "legacy parser vlan 1 name VLAN_0001 vs config no name, used legacy"
+  }
+]

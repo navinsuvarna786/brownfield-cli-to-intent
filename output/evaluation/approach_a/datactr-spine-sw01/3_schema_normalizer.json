@@ -1,0 +1,100 @@
+{
+  "hostname": "DATACTR-SPINE-SW01",
+  "domain_name": "campus.example.org",
+  "timezone_config": {},
+  "stp_mode": "rapid-pvst",
+  "dns_servers": [],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "logging_hosts": [],
+  "snmp_config": {
+    "location": "Data Center Spine SW01",
+    "contact": "NOC-555-0100",
+    "enable_traps": false,
+    "acl_ro": "SNMP-ALLOWED"
+  },
+  "aaa_config": {
+    "aaa_enabled": true,
+    "tacacs_servers": [
+      {
+        "name": "192.0.2.11",
+        "ip": "192.0.2.11",
+        "key": "xxxxxxxx"
+      },
+      {
+        "name": "192.0.2.12",
+        "ip": "192.0.2.12",
+        "key": "xxxxxxxx"
+      }
+    ],
+    "tacacs_group_name": "TACACS_GROUP"
+  },
+  "local_users": [
+    {
+      "name": "admin",
+      "password": "xxxxxxxx"
+    }
+  ],
+  "enable_secret": "",
+  "errdisable_config": {},
+  "vlans": [
+    {
+      "id": 4091,
+      "name": "INBAND-MGMT"
+    }
+  ],
+  "vrfs": [],
+  "acls": [],
+  "management": {
+    "http_https": {
+      "enabled": true,
+      "https_enabled": true,
+      "shutdown": false
+    },
+    "ssh": {
+      "enabled": true,
+      "idle_timeout": 20
+    }
+  },
+  "banners": {
+    "login": "Authorized access only. Unauthorized use is prohibited."
+  },
+  "uplinks": [],
+  "access_interfaces": [],
+  "routed_interfaces": [
+    {
+      "name": "Vlan4091",
+      "description": "INBAND-MGMT",
+      "vrf": "MDMZ",
+      "ipv4": {
+        "address": "198.51.100.83",
+        "netmask": "255.255.255.0"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false,
+      "dot1q_vlan": null
+    },
+    {
+      "name": "Loopback0",
+      "description": "",
+      "vrf": "",
+      "ipv4": {
+        "address": "198.51.100.183",
+        "netmask": "255.255.255.255"
+      },
+      "mtu": null,
+      "shutdown": false,
+      "pim_sparse": false,
+      "dot1q_vlan": null
+    }
+  ],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1
+  },
+  "pnp_config": {},
+  "vrf_config": {}
+}

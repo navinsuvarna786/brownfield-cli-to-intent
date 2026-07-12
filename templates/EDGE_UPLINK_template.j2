@@ -1,0 +1,73 @@
+{# Uplink Configuration - Pipe delimited format for CC compatibility #}
+{# Format: type|name|description|port_channel_id|allowed_vlans|native_vlan|spanning_tree_root_guard|load_interval|member_interfaces #}
+{%- set uplink_list = uplinks.split(',') if uplinks else [] %}
+{%- for uplink_entry in uplink_list %}
+{%- set uplink_parts = uplink_entry.strip().split('|') %}
+{%- if uplink_parts|length >= 3 %}
+{%- set uplink_type = uplink_parts[0] %}
+{%- set uplink_name = uplink_parts[1] %}
+{%- set uplink_desc = uplink_parts[2] if uplink_parts[2] else 'UPSTREAM-TRUNK' %}
+{%- set port_channel_id = uplink_parts[3] if uplink_parts|length > 3 and uplink_parts[3] else '' %}
+{%- set allowed_vlans = uplink_parts[4] if uplink_parts|length > 4 and uplink_parts[4] else '' %}
+{%- set native_vlan = uplink_parts[5] if uplink_parts|length > 5 and uplink_parts[5] else '' %}
+{%- set root_guard = uplink_parts[6] if uplink_parts|length > 6 and uplink_parts[6] else 'true' %}
+{%- set load_interval = uplink_parts[7] if uplink_parts|length > 7 and uplink_parts[7] else '' %}
+{%- set member_interfaces = uplink_parts[8] if uplink_parts|length > 8 and uplink_parts[8] else '' %}
+
+{%- if uplink_type == 'port-channel' %}
+{# Port-Channel Configuration #}
+interface Port-channel{{ port_channel_id }}
+ description {{ uplink_desc }}
+ switchport mode trunk
+{%- if allowed_vlans %}
+ switchport trunk allowed vlan {{ allowed_vlans }}
+{%- endif %}
+{%- if native_vlan %}
+ switchport trunk native vlan {{ native_vlan }}
+{%- endif %}
+{%- if root_guard != 'false' %}
+ spanning-tree guard root
+{%- endif %}
+{%- if load_interval %}
+ load-interval {{ load_interval }}
+{%- endif %}
+
+{# Physical Member Interfaces - Format: interface1:lacp_mode:description;interface2:lacp_mode:description #}
+{%- if member_interfaces %}
+{%- for member_entry in member_interfaces.split(';') %}
+{%- set member_parts = member_entry.strip().split(':') %}
+{%- if member_parts|length >= 1 and member_parts[0] %}
+{%- set member_name = member_parts[0] %}
+{%- set lacp_mode = member_parts[1] if member_parts|length > 1 and member_parts[1] else 'active' %}
+{%- set member_desc = member_parts[2] if member_parts|length > 2 and member_parts[2] else 'PORT-CHANNEL MEMBER' %}
+interface {{ member_name }}
+ description {{ member_desc }}
+ channel-group {{ port_channel_id }} mode {{ lacp_mode }}
+{%- if load_interval %}
+ load-interval {{ load_interval }}
+{%- endif %}
+{%- endif %}
+{%- endfor %}
+{%- endif %}
+
+{%- elif uplink_type == 'trunk' %}
+{# Regular Trunk Interface Configuration #}
+interface {{ uplink_name }}
+ description {{ uplink_desc }}
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+{%- if allowed_vlans %}
+ switchport trunk allowed vlan {{ allowed_vlans }}
+{%- endif %}
+{%- if native_vlan %}
+ switchport trunk native vlan {{ native_vlan }}
+{%- endif %}
+{%- if root_guard != 'false' %}
+ spanning-tree guard root
+{%- endif %}
+{%- if load_interval %}
+ load-interval {{ load_interval }}
+{%- endif %}
+{%- endif %}
+{%- endif %}
+{%- endfor %}

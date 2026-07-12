@@ -1,0 +1,27 @@
+[
+  {
+    "field": "aaa.tacacs_servers",
+    "confidence": "high",
+    "reason": "explicit keys and addresses configured"
+  },
+  {
+    "field": "interfaces",
+    "confidence": "high",
+    "reason": "all interfaces explicitly configured"
+  },
+  {
+    "field": "vlans",
+    "confidence": "high",
+    "reason": "all VLANs defined in config"
+  },
+  {
+    "field": "snmp",
+    "confidence": "high",
+    "reason": "snmp-server commands present"
+  },
+  {
+    "field": "ntp",
+    "confidence": "high",
+    "reason": "ntp server commands with prefer flag"
+  }
+]

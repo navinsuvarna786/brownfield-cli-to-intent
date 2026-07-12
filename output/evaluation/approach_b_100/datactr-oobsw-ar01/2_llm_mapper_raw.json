@@ -1,0 +1,444 @@
+{
+  "hostname": "DATACTR-OOBSW-AR01",
+  "domain_name": "campus.example.org",
+  "system": {
+    "local_users": [
+      {
+        "username": "admin",
+        "privilege": 15,
+        "role": "network-admin",
+        "secret_type": "sha512"
+      }
+    ],
+    "banners": [
+      "Authorized access only. Unauthorized use is prohibited."
+    ]
+  },
+  "management": {
+    "interfaces": [
+      {
+        "name": "Vlan4090",
+        "description": "INBAND-MGMT",
+        "vrf": "MDMZ",
+        "ip_address": "198.51.100.84/24"
+      }
+    ],
+    "vrfs": [
+      {
+        "name": "MDMZ"
+      }
+    ],
+    "http": {
+      "enabled": false
+    },
+    "https": {
+      "enabled": true,
+      "vrf": "MDMZ"
+    },
+    "ssh": {
+      "idle_timeout": 20,
+      "authentication_mode": "keyboard-interactive",
+      "vrf": "MDMZ"
+    }
+  },
+  "vlans": [
+    {
+      "id": 510,
+      "name": "SERVER-510"
+    },
+    {
+      "id": 511,
+      "name": "SERVER-511"
+    },
+    {
+      "id": 512,
+      "name": "SERVER-512"
+    },
+    {
+      "id": 513,
+      "name": "SERVER-513"
+    },
+    {
+      "id": 514,
+      "name": "SERVER-514"
+    },
+    {
+      "id": 515,
+      "name": "SERVER-515"
+    },
+    {
+      "id": 4090,
+      "name": "INBAND-MGMT"
+    }
+  ],
+  "interfaces": [
+    {
+      "name": "GigabitEthernet1/0/49",
+      "description": "UPLINK-OOB",
+      "mode": "trunk",
+      "trunk_allowed_vlans": [
+        510,
+        511,
+        512,
+        513,
+        514,
+        515,
+        4090
+      ]
+    },
+    {
+      "name": "GigabitEthernet1/0/1",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 511
+    },
+    {
+      "name": "GigabitEthernet1/0/7",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 511
+    },
+    {
+      "name": "GigabitEthernet1/0/13",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 511
+    },
+    {
+      "name": "GigabitEthernet1/0/19",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 511
+    },
+    {
+      "name": "GigabitEthernet1/0/25",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 511
+    },
+    {
+      "name": "GigabitEthernet1/0/31",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 511
+    },
+    {
+      "name": "GigabitEthernet1/0/37",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 511
+    },
+    {
+      "name": "GigabitEthernet1/0/43",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 511
+    },
+    {
+      "name": "GigabitEthernet1/0/2",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 512
+    },
+    {
+      "name": "GigabitEthernet1/0/8",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 512
+    },
+    {
+      "name": "GigabitEthernet1/0/14",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 512
+    },
+    {
+      "name": "GigabitEthernet1/0/20",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 512
+    },
+    {
+      "name": "GigabitEthernet1/0/26",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 512
+    },
+    {
+      "name": "GigabitEthernet1/0/32",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 512
+    },
+    {
+      "name": "GigabitEthernet1/0/38",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 512
+    },
+    {
+      "name": "GigabitEthernet1/0/44",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 512
+    },
+    {
+      "name": "GigabitEthernet1/0/3",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 513
+    },
+    {
+      "name": "GigabitEthernet1/0/9",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 513
+    },
+    {
+      "name": "GigabitEthernet1/0/15",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 513
+    },
+    {
+      "name": "GigabitEthernet1/0/21",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 513
+    },
+    {
+      "name": "GigabitEthernet1/0/27",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 513
+    },
+    {
+      "name": "GigabitEthernet1/0/33",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 513
+    },
+    {
+      "name": "GigabitEthernet1/0/39",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 513
+    },
+    {
+      "name": "GigabitEthernet1/0/45",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 513
+    },
+    {
+      "name": "GigabitEthernet1/0/4",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 514
+    },
+    {
+      "name": "GigabitEthernet1/0/10",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 514
+    },
+    {
+      "name": "GigabitEthernet1/0/16",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 514
+    },
+    {
+      "name": "GigabitEthernet1/0/22",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 514
+    },
+    {
+      "name": "GigabitEthernet1/0/28",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 514
+    },
+    {
+      "name": "GigabitEthernet1/0/34",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 514
+    },
+    {
+      "name": "GigabitEthernet1/0/40",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 514
+    },
+    {
+      "name": "GigabitEthernet1/0/46",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 514
+    },
+    {
+      "name": "GigabitEthernet1/0/5",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 515
+    },
+    {
+      "name": "GigabitEthernet1/0/11",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 515
+    },
+    {
+      "name": "GigabitEthernet1/0/17",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 515
+    },
+    {
+      "name": "GigabitEthernet1/0/23",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 515
+    },
+    {
+      "name": "GigabitEthernet1/0/29",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 515
+    },
+    {
+      "name": "GigabitEthernet1/0/35",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 515
+    },
+    {
+      "name": "GigabitEthernet1/0/41",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 515
+    },
+    {
+      "name": "GigabitEthernet1/0/47",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 515
+    },
+    {
+      "name": "GigabitEthernet1/0/6",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 510
+    },
+    {
+      "name": "GigabitEthernet1/0/12",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 510
+    },
+    {
+      "name": "GigabitEthernet1/0/18",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 510
+    },
+    {
+      "name": "GigabitEthernet1/0/24",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 510
+    },
+    {
+      "name": "GigabitEthernet1/0/30",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 510
+    },
+    {
+      "name": "GigabitEthernet1/0/36",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 510
+    },
+    {
+      "name": "GigabitEthernet1/0/42",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 510
+    },
+    {
+      "name": "GigabitEthernet1/0/48",
+      "description": "SERVER-PORT",
+      "mode": "access",
+      "access_vlan": 510
+    }
+  ],
+  "snmp": {
+    "communities": [],
+    "location": "DC OOB Arista SW01",
+    "contact": "NOC-555-0100",
+    "traps_enabled": false,
+    "acl": "SNMP-ALLOWED",
+    "vrf": "MDMZ",
+    "local_interface": "Vlan4090"
+  },
+  "aaa": {
+    "groups": [
+      {
+        "name": "TACACS_GROUP",
+        "servers": [
+          "192.0.2.11",
+          "192.0.2.12"
+        ]
+      }
+    ],
+    "servers": [
+      {
+        "host": "192.0.2.11",
+        "key_type": 7
+      },
+      {
+        "host": "192.0.2.12",
+        "key_type": 7
+      }
+    ]
+  },
+  "ntp": {
+    "servers": [
+      {
+        "address": "192.0.2.11",
+        "prefer": true
+      },
+      {
+        "address": "192.0.2.12"
+      }
+    ]
+  },
+  "dns_servers": [],
+  "stack_info": {
+    "is_stack": false,
+    "member_count": 1,
+    "master_switch": 1
+  },
+  "access_interfaces": [],
+  "uplinks": [],
+  "acls": [],
+  "aaa_config": {
+    "aaa_enabled": false
+  },
+  "snmp_config": {
+    "location": "DC OOB Arista SW01",
+    "contact": "NOC-555-0100",
+    "enable_traps": false
+  },
+  "local_users": [],
+  "logging_hosts": [],
+  "ntp_servers": [
+    "192.0.2.11|prefer",
+    "192.0.2.12"
+  ],
+  "ntp_auth_keys": [],
+  "vrf_config": null
+}
